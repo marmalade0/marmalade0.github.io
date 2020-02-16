@@ -9,7 +9,7 @@
 <p>注册阿里云，买一个域名marmalade.vip（英文意思为橘子酱）</p>
 </blockquote>
 </blockquote>
-<h4 id="2、GitHub创建个人仓库"><a href="#2、GitHub创建个人仓库" class="headerlink" title="2、GitHub创建个人仓库"></a>2、GitHub创建个人仓库</h4><p>用邮箱注册一GitHub账号 username：marmalade0<br>开始用qq邮箱不行，一直提醒验证邮箱，转用163邮箱注册成功<br> 点击GitHub中的New repository创建新仓库，<br> 仓库名：marmalade.github.io</p>
+<h4 id="2、GitHub创建个人仓库"><a href="#2、GitHub创建个人仓库" class="headerlink" title="2、GitHub创建个人仓库"></a>2、GitHub创建个人仓库</h4><p>用邮箱注册一GitHub账号 username：marmalade0<br>开始用qq邮箱不行，一直提醒验证邮箱，转用163邮箱注册成功<br> 点击GitHub中的New repository创建新仓库，<br> 仓库名：marmalade0.github.io</p>
 <h4 id="3、安装Git"><a href="#3、安装Git" class="headerlink" title="3、安装Git"></a>3、安装Git</h4><p> <a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">实用Git教程</a><br> 下载64位Git，全默认安装<br> <img src="en-resource://database/743:1" alt="dee8bf851abb8ac45aa8467ee5fc2c36.png"></p>
 <h6 id="将git与github绑定"><a href="#将git与github绑定" class="headerlink" title="将git与github绑定"></a>将git与github绑定</h6><p> ssh-keygen -t rsa -C “<a href="mailto:1563972718@qq.com">1563972718@qq.com</a>“<br>然后找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容全部复制<br>打开GitHub_Settings_keys 页面，新建new SSH Key<br><img src="en-resource://database/745:1" alt="42d793f5e11a63d85152788039686570.png"></p>
 <p>Title为标题，任意填即可，将刚刚复制的id_rsa.pub内容粘贴进去，最后点击Add SSH key。<br>在Git Bash中检测GitHub公钥设置是否成功，输入 ssh <a href="mailto:git@github.com">git@github.com</a> 检验<br><img src="en-resource://database/750:1" alt="00f7e12cc75aa22957e6f8b72187f128.png"></p>
@@ -36,6 +36,7 @@
 <p>有人使用github后，在某些网络下发现打开慢，甚至打不开，这都是因为他是国外站；目前互联网的连接机制导致超过一定的路由节点的连接就会出现这个问题，解决办法就是直接告诉本机ip。不要先层层询问域名转ip，这样速度和连接的速度都可以进一步的大副提升，将下面的内容帖到本机的hosts文件中</p>
 </blockquote>
 </blockquote>
+<a id="more"></a>
 <hr>
 ]]></content>
       <categories>
