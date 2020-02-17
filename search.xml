@@ -4,6 +4,7 @@
     <title>艰难的博客建立过程及碰到的坑</title>
     <url>/2020/02/10/%E8%89%B0%E9%9A%BE%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<p><strong><em>小白的一个不断碰坑填坑的过程</em></strong><br>参考<br><a href="https://zhuanlan.zhihu.com/p/26625249" target="_blank" rel="noopener">GitHub+Hexo 搭建个人网站详细教程</a></p>
+<a id="more"></a>
 <h4 id="1、获得个人网站域名"><a href="#1、获得个人网站域名" class="headerlink" title="1、获得个人网站域名"></a>1、获得个人网站域名</h4><blockquote>
 <blockquote>
 <p>注册阿里云，买一个域名marmalade.vip（英文意思为橘子酱）</p>
@@ -39,7 +40,7 @@
 <p>有人使用github后，在某些网络下发现打开慢，甚至打不开，这都是因为他是国外站；目前互联网的连接机制导致超过一定的路由节点的连接就会出现这个问题，解决办法就是直接告诉本机ip。不要先层层询问域名转ip，这样速度和连接的速度都可以进一步的大副提升，将下面的内容帖到本机的hosts文件中</p>
 </blockquote>
 </blockquote>
-<a id="more"></a>
+<!-- more -->
 ]]></content>
       <categories>
         <category>博客创建探索</category>
