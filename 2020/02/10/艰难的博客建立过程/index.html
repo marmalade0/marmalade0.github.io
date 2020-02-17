@@ -53,27 +53,27 @@
 <meta property="og:site_name" content="Marmalade&#39;s Blog">
 <meta property="og:description" content="小白的一个不断碰坑填坑的过程参考GitHub+Hexo 搭建个人网站详细教程 1、获得个人网站域名  注册阿里云，买一个域名marmalade.vip（英文意思为橘子酱）   2、GitHub创建个人仓库用邮箱注册一GitHub账号 username：marmalade0开始用qq邮箱不行，一直提醒验证邮箱，转用163邮箱注册成功 点击GitHub中的New repository创建新仓库， 仓库">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="en-resource://database/743:1">
-<meta property="og:image" content="en-resource://database/745:1">
-<meta property="og:image" content="en-resource://database/750:1">
-<meta property="og:image" content="en-resource://database/752:1">
-<meta property="og:image" content="en-resource://database/754:1">
-<meta property="og:image" content="en-resource://database/756:1">
-<meta property="og:image" content="en-resource://database/758:1">
-<meta property="og:image" content="en-resource://database/760:1">
-<meta property="og:image" content="en-resource://database/766:1">
-<meta property="og:image" content="en-resource://database/784:1">
-<meta property="og:image" content="en-resource://database/764:1">
-<meta property="og:image" content="en-resource://database/768:1">
-<meta property="og:image" content="en-resource://database/770:1">
+<meta property="og:image" content="https://marmalade.vip/images/ScreenClip.png">
+<meta property="og:image" content="https://marmalade.vip/images/1.png">
+<meta property="og:image" content="https://marmalade.vip/images/2.png">
+<meta property="og:image" content="https://marmalade.vip/images/3.png">
+<meta property="og:image" content="https://marmalade.vip/images/4.png">
+<meta property="og:image" content="https://marmalade.vip/images/5.png">
+<meta property="og:image" content="https://marmalade.vip/images/6.png">
+<meta property="og:image" content="https://marmalade.vip/images/7.png">
+<meta property="og:image" content="https://marmalade.vip/images/8.png">
+<meta property="og:image" content="https://marmalade.vip/images/9.png">
+<meta property="og:image" content="https://marmalade.vip/images/10.png">
+<meta property="og:image" content="https://marmalade.vip/images/11.png">
+<meta property="og:image" content="https://marmalade.vip/images/12.png">
 <meta property="article:published_time" content="2020-02-09T17:36:43.000Z">
-<meta property="article:modified_time" content="2020-02-16T10:59:45.567Z">
+<meta property="article:modified_time" content="2020-02-17T02:45:11.989Z">
 <meta property="article:author" content="lijunliang">
 <meta property="article:tag" content="博客建立">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="next主题">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="en-resource://database/743:1">
+<meta name="twitter:image" content="https://marmalade.vip/images/ScreenClip.png">
 
 <link rel="canonical" href="https://marmalade.vip/2020/02/10/%E8%89%B0%E9%9A%BE%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E8%BF%87%E7%A8%8B/">
 
@@ -257,7 +257,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-16 18:59:45" itemprop="dateModified" datetime="2020-02-16T18:59:45+08:00">2020-02-16</time>
+                <time title="修改时间：2020-02-17 10:45:11" itemprop="dateModified" datetime="2020-02-17T10:45:11+08:00">2020-02-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -310,19 +310,22 @@
 </blockquote>
 </blockquote>
 <h4 id="2、GitHub创建个人仓库"><a href="#2、GitHub创建个人仓库" class="headerlink" title="2、GitHub创建个人仓库"></a>2、GitHub创建个人仓库</h4><p>用邮箱注册一GitHub账号 username：marmalade0<br>开始用qq邮箱不行，一直提醒验证邮箱，转用163邮箱注册成功<br> 点击GitHub中的New repository创建新仓库，<br> 仓库名：marmalade0.github.io</p>
-<h4 id="3、安装Git"><a href="#3、安装Git" class="headerlink" title="3、安装Git"></a>3、安装Git</h4><p> <a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">实用Git教程</a><br> 下载64位Git，全默认安装<br> <img src="en-resource://database/743:1" alt="dee8bf851abb8ac45aa8467ee5fc2c36.png"></p>
-<h6 id="将git与github绑定"><a href="#将git与github绑定" class="headerlink" title="将git与github绑定"></a>将git与github绑定</h6><p> ssh-keygen -t rsa -C “<a href="mailto:1563972718@qq.com">1563972718@qq.com</a>“<br>然后找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容全部复制<br>打开GitHub_Settings_keys 页面，新建new SSH Key<br><img src="en-resource://database/745:1" alt="42d793f5e11a63d85152788039686570.png"></p>
-<p>Title为标题，任意填即可，将刚刚复制的id_rsa.pub内容粘贴进去，最后点击Add SSH key。<br>在Git Bash中检测GitHub公钥设置是否成功，输入 ssh <a href="mailto:git@github.com">git@github.com</a> 检验<br><img src="en-resource://database/750:1" alt="00f7e12cc75aa22957e6f8b72187f128.png"></p>
+<h4 id="3、安装Git"><a href="#3、安装Git" class="headerlink" title="3、安装Git"></a>3、安装Git</h4><p> <a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">实用Git教程</a><br> 下载64位Git，全默认安装<br> <img src="/images/ScreenClip.png" alt=""></p>
+<h6 id="将git与github绑定"><a href="#将git与github绑定" class="headerlink" title="将git与github绑定"></a>将git与github绑定</h6><p> ssh-keygen -t rsa -C “<a href="mailto:1563972718@qq.com">1563972718@qq.com</a>“<br>然后找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容全部复制<br>打开GitHub_Settings_keys 页面，新建new SSH Key<br><img src="/images/1.png" alt="42d793f5e11a63d85152788039686570.png"></p>
+<p>Title为标题，任意填即可，将刚刚复制的id_rsa.pub内容粘贴进去，最后点击Add SSH key。<br>在Git Bash中检测GitHub公钥设置是否成功，输入 ssh <a href="mailto:git@github.com">git@github.com</a> 检验<br><img src="/images/2.png" alt="00f7e12cc75aa22957e6f8b72187f128.png"></p>
 <p>设置GitHub密钥原因是，通过非对称加密的公钥与私钥来完成加密，公钥放置在GitHub上，私钥放置在自己的电脑里。GitHub要求每次推送代码都是合法用户，所以每次推送都需要输入账号密码验证推送用户是否是合法用户，为了省去每次输入密码的步骤，采用了ssh，当你推送的时候，git就会匹配你的私钥跟GitHub上面的公钥是否是配对的，若是匹配就认为你是合法用户，则允许推送。这样可以保证每次的推送都是正确合法的。</p>
-<h4 id="4、安装Node-js"><a href="#4、安装Node-js" class="headerlink" title="4、安装Node.js"></a>4、安装Node.js</h4><p><a href="https://nodejs.org/dist/v4.4.3/node-v4.4.3-x64.msi" target="_blank" rel="noopener">64位安装地址</a><br>安装成功后检验环境变量中是否有<br><img src="en-resource://database/752:1" alt="06bea625b17581dd388ca0386f702221.png"><br>在系统环境变量添加NODE_PATH<br>值为F:\nodejs\node_global\node_modules<br>安装一个express<br>npm install express -g<br>cmd中输入node，然后输入require(‘express’)<br>出现<br><img src="en-resource://database/754:1" alt="52657a6521fa92244759f23d5c1f2e36.png"><br>即成功正常加载模块</p>
-<h6 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h6><p>（阿里开发，国内速度快）<br>输入<br>npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br>输入cnpm -v ，检测是否正常，但是这里会报错<br>添加环境变量后再输<br><img src="en-resource://database/756:1" alt="21d0163dea46a40305b99c02ee485d28.png"><br>安装成功</p>
-<h3 id="5、hexo安装"><a href="#5、hexo安装" class="headerlink" title="5、hexo安装"></a>5、hexo安装</h3><p>百度hexo<br>选择文档|hexo，按照教程安装<br>新建一个blog文件夹，cmd切换到该目录下，<br>npm install -g hexo-cli安装<br>等较长时间后<br>hexo init 博客名<br>cd 博客名<br>npm install<br><img src="en-resource://database/758:1" alt="093d34b7b0923d359032f28b3b625004.png"><br>完成<br><img src="en-resource://database/760:1" alt="d765e4114126706e112277382f345bb7.png"></p>
+<h4 id="4、安装Node-js"><a href="#4、安装Node-js" class="headerlink" title="4、安装Node.js"></a>4、安装Node.js</h4><p><a href="https://nodejs.org/dist/v4.4.3/node-v4.4.3-x64.msi" target="_blank" rel="noopener">64位安装地址</a><br>安装成功后检验环境变量中是否有<br><img src="/images/3.png" alt="06bea625b17581dd388ca0386f702221.png"><br>在系统环境变量添加NODE_PATH<br>值为F:\nodejs\node_global\node_modules<br>安装一个express<br>npm install express -g<br>cmd中输入node，然后输入require(‘express’)<br>出现<br><img src="/images/4.png" alt="52657a6521fa92244759f23d5c1f2e36.png"><br>即成功正常加载模块</p>
+<h6 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h6><p>（阿里开发，国内速度快）<br>输入<br>npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br>输入cnpm -v ，检测是否正常，但是这里会报错<br>添加环境变量后再输<br><img src="/images/5.png" alt="21d0163dea46a40305b99c02ee485d28.png"><br>安装成功</p>
+<h3 id="5、hexo安装"><a href="#5、hexo安装" class="headerlink" title="5、hexo安装"></a>5、hexo安装</h3><p>百度hexo<br>选择文档|hexo，按照教程安装<br>新建一个blog文件夹，cmd切换到该目录下，<br>npm install -g hexo-cli安装<br>等较长时间后<br>hexo init 博客名<br>cd 博客名<br>npm install<br><img src="/images/6.png" alt="093d34b7b0923d359032f28b3b625004.png"><br>完成<br><img src="/images/7.png" alt="d765e4114126706e112277382f345bb7.png"></p>
 <p>hexo s -p 5555选择5555端口，浏览器搜localhost:5555即可进入博客</p>
 <p>看一下是什么样子的！</p>
+<blockquote>
+<p><strong>注：<br>根目录：My Blog/marmalade<br>hexo网站配置文件：根目录下的_config.yml<br>主题配置文件：next主题里的_config.yml</strong></p>
+</blockquote>
 <h3 id="6、hexo发布至github"><a href="#6、hexo发布至github" class="headerlink" title="6、hexo发布至github"></a>6、hexo发布至github</h3><p>把博客文件夹拖入sublime里<br>Source里面的_posts为内容</p>
-<h6 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h6><p>打开_config.yml改最后的为<br><img src="en-resource://database/766:1" alt="2418aff8ccf1a0e2ae46bdc2fa467e45.png"></p>
-<p>前面的改为url: <a href="https://marmalade0.github.io" target="_blank" rel="noopener">https://marmalade0.github.io</a><br>autnor：lijunliang<br><img src="en-resource://database/784:1" alt="395d5f727e5461bca6a37ae7d673df55.png"></p>
-<p>hexo clean （清除缓存）<br>cmd中hexo g(生成静态文件)(即同步到博客中)<br>hexo d（部署到github）<strong>两者可以连起来写为hexo g -d</strong><br><img src="en-resource://database/764:1" alt="bde9280975c1018708585ddb8e40ab3f.png"><br>报错<br>装一个插件<br>npm install hexo-deployer-git –save<br>末尾加分支branch: master<br>然后hexo d同步到github上<br><strong>后来再hexo d的时候出现错误</strong><br><img src="en-resource://database/768:1" alt="28e7647f32d5c36e3bd3eeaf6594ac62.png"><br>，上网搜Error: Spawn failed，见有相同问题的<br>解决方法：把F:\Git\Git\bin添加到系统变量的path中<br>再运行，成功<br><img src="en-resource://database/770:1" alt="4736407547ddf276d040bf34bc2217cf.png"></p>
+<h6 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h6><p>打开_config.yml改最后的为<br><img src="/images/8.png" alt="2418aff8ccf1a0e2ae46bdc2fa467e45.png"></p>
+<p>前面的改为url: <a href="https://marmalade0.github.io" target="_blank" rel="noopener">https://marmalade0.github.io</a><br>autnor：lijunliang<br><img src="/images/9.png" alt="395d5f727e5461bca6a37ae7d673df55.png"></p>
+<p>hexo clean （清除缓存）<br>cmd中hexo g(生成静态文件)(即同步到博客中)<br>hexo d（部署到github）<strong>两者可以连起来写为hexo g -d</strong><br><img src="/images/10.png" alt="bde9280975c1018708585ddb8e40ab3f.png"><br>报错<br>装一个插件<br>npm install hexo-deployer-git –save<br>末尾加分支branch: master<br>然后hexo d同步到github上<br><strong>后来再hexo d的时候出现错误</strong><br><img src="/images/11.png" alt="28e7647f32d5c36e3bd3eeaf6594ac62.png"><br>，上网搜Error: Spawn failed，见有相同问题的<br>解决方法：把F:\Git\Git\bin添加到系统变量的path中<br>再运行，成功<br><img src="/images/12.png" alt="4736407547ddf276d040bf34bc2217cf.png"></p>
 <h4 id="gt-解决github下载慢的问题"><a href="#gt-解决github下载慢的问题" class="headerlink" title="&gt;解决github下载慢的问题"></a>&gt;解决github下载慢的问题</h4><p>方法一：dns查询github.com找到TTL值最小的IP输入到host里<br>即<br>13.229.188.59 <a href="https://github.com" target="_blank" rel="noopener">https://github.com</a></p>
 <blockquote>
 <blockquote>
