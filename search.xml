@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>艰难的hexo博客建立过程及碰到的坑</title>
-    <url>/2020/02/10/%E8%89%B0%E9%9A%BE%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E8%BF%87%E7%A8%8B/</url>
+    <url>/2020/02/10/%E8%89%B0%E9%9A%BE%E7%9A%84hexo%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<p><strong><em>小白的一个不断碰坑填坑的过程</em></strong><br>参考<br><a href="https://zhuanlan.zhihu.com/p/26625249" target="_blank" rel="noopener">GitHub+Hexo 搭建个人网站详细教程</a></p>
 <a id="more"></a>
 <h4 id="1、获得个人网站域名"><a href="#1、获得个人网站域名" class="headerlink" title="1、获得个人网站域名"></a>1、获得个人网站域名</h4><blockquote>
@@ -27,20 +27,6 @@
 <h6 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h6><p>打开_config.yml改最后的为<br><img src="/images/8.png" alt="2418aff8ccf1a0e2ae46bdc2fa467e45.png"></p>
 <p>前面的改为url: <a href="https://marmalade0.github.io" target="_blank" rel="noopener">https://marmalade0.github.io</a><br>autnor：lijunliang<br><img src="/images/9.png" alt="395d5f727e5461bca6a37ae7d673df55.png"></p>
 <p>hexo clean （清除缓存）<br>cmd中hexo g(生成静态文件)(即同步到博客中)<br>hexo d（部署到github）<strong>两者可以连起来写为hexo g -d</strong><br><img src="/images/10.png" alt="bde9280975c1018708585ddb8e40ab3f.png"><br>报错<br>装一个插件<br>npm install hexo-deployer-git –save<br>末尾加分支branch: master<br>然后hexo d同步到github上<br><strong>后来再hexo d的时候出现错误</strong><br><img src="/images/11.png" alt="28e7647f32d5c36e3bd3eeaf6594ac62.png"><br>，上网搜Error: Spawn failed，见有相同问题的<br>解决方法：把F:\Git\Git\bin添加到系统变量的path中<br>再运行，成功<br><img src="/images/12.png" alt=""></p>
-<h4 id="gt-解决github下载慢的问题"><a href="#gt-解决github下载慢的问题" class="headerlink" title="&gt;解决github下载慢的问题"></a>&gt;解决github下载慢的问题</h4><p>方法一：dns查询github.com找到TTL值最小的IP输入到host里<br>即<br>13.229.188.59 <a href="https://github.com" target="_blank" rel="noopener">https://github.com</a></p>
-<blockquote>
-<blockquote>
-<p><strong>host保存问题</strong><br>host路径：C:\Windows\System32\drivers\etc<br>用文本文档打开，后无法保存，可先用txt形式保存在桌面上，然后去掉.txt后缀，将原来的host文件删除，再把桌面上的复制粘贴上即可</p>
-</blockquote>
-</blockquote>
-<p>据说效果不明显<br>方法二：打开码云<a href="https://gitee.com" target="_blank" rel="noopener">https://gitee.com</a><br>注册登录<br>我的账号：marmalade0<br>密22<br>创建仓库，选择导入已有仓库并复制需要下载的git链接，点击创建然后下载</p>
-<h5 id="后来发现github打不开"><a href="#后来发现github打不开" class="headerlink" title="后来发现github打不开"></a>后来发现github打不开</h5><p><a href="https://www.cnblogs.com/yswenli/p/9419427.html" target="_blank" rel="noopener">github打开慢，甚至打不开</a><br>复制上面的内容到hosts文件上，保存，解决！超快！<br>原因：</p>
-<blockquote>
-<blockquote>
-<p>有人使用github后，在某些网络下发现打开慢，甚至打不开，这都是因为他是国外站；目前互联网的连接机制导致超过一定的路由节点的连接就会出现这个问题，解决办法就是直接告诉本机ip。不要先层层询问域名转ip，这样速度和连接的速度都可以进一步的大副提升，将下面的内容帖到本机的hosts文件中</p>
-</blockquote>
-</blockquote>
-<!-- more -->
 ]]></content>
       <categories>
         <category>博客创建探索</category>
