@@ -929,7 +929,7 @@ pre .javascript .function {
   }
 }
 .header {
-  background: transparent;
+  background: url("/images/1c7b8813d148f6037f8b4a9f4b849e81.gif");
 }
 .header-inner {
   margin: 0 auto;
@@ -1166,7 +1166,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffd637;
+  background: #ffff59;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
