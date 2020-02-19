@@ -1166,7 +1166,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #308efc;
+  background: #52a37d;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2860,7 +2860,7 @@ article .post-copyright {
   font-size: 14px;
   box-shadow: rgba(0,0,0,0.1) 0px 15px 35px 0px, rgba(0,0,0,0.31) 6px 6px 10px 0px;
   border-radius: 16px;
-  background-color: #ffc0cb;
+  background-color: #fff0f5;
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
   transition: transform 0.3s, -webkit-transform 0.3s;
