@@ -1166,7 +1166,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #cfb171;
+  background: #6cb986;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2859,7 +2859,7 @@ article .post-copyright {
   padding: 40px 20px;
   font-size: 14px;
   box-shadow: rgba(0,0,0,0.1) 0px 15px 35px 0px, rgba(0,0,0,0.31) 6px 6px 10px 0px;
-  border-radius: 16px;
+  border-radius: 20px;
   background-color: #fff0f5;
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
@@ -2873,4 +2873,16 @@ article .post-copyright {
   color: #666;
   font-size: 15px;
   word-break: break-word;
+}
+.tag-cloud a {
+  box-shadow: 0 1px 3px #6f42c1, 0 1px 2px #d9534f;
+  padding: 2px 10px;
+  margin: 8px;
+  background: rgba(193,66,92,0);
+  border-bottom: none;
+  border-radius: 20px;
+}
+.headband {
+  height: 0px;
+  background: #fc6423;
 }
