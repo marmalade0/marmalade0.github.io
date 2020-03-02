@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo博客百度收录seo</title>
+    <url>/2020/02/19/Hexo%E5%8D%9A%E5%AE%A2%E7%99%BE%E5%BA%A6%E6%94%B6%E5%BD%95seo/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>用阿里云建造一个属于自己的域名</title>
     <url>/2020/02/19/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/</url>
     <content><![CDATA[<h3 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h3><p>依托github搭建起来的博客域名格式一般是固定的（尾端.github.io），无法做到自己自定义那种常见的baidu.com那种简洁好记的域名<br>网上自定义域名方法有些描述的模糊不清，让我进了不少坑，于是便记录下自己详细的自定义域名的过程</p>
