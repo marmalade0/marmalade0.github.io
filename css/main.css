@@ -1198,7 +1198,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #17f6ff;
+  background: #756150;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2915,4 +2915,8 @@ article .post-copyright {
 }
 .busuanzi-value {
   color: #1890ff;
+}
+.highlight-wrap .copy-btn {
+  padding: 1px 6px;
+  top: 3px;
 }
