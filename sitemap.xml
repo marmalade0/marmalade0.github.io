@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://marmalade.vip/categories/index.html</loc>
+    
+    <lastmod>2020-03-19T08:27:01.477Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://marmalade.vip/tags/index.html</loc>
+    
+    <lastmod>2020-03-19T08:27:01.455Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://marmalade.vip/2020/02/17/%E8%A7%A3%E5%86%B3github%E4%B8%8B%E8%BD%BD%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
+    
+    <lastmod>2020-03-19T08:27:01.446Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://marmalade.vip/2020/02/10/%E8%89%B0%E9%9A%BE%E7%9A%84hexo%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E8%BF%87%E7%A8%8B/</loc>
+    
+    <lastmod>2020-03-14T12:16:09.329Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://marmalade.vip/2020/02/19/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/</loc>
     
     <lastmod>2020-02-19T09:05:54.656Z</lastmod>
@@ -9,37 +37,9 @@
   </url>
   
   <url>
-    <loc>https://marmalade.vip/2020/02/10/%E8%89%B0%E9%9A%BE%E7%9A%84hexo%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E8%BF%87%E7%A8%8B/</loc>
-    
-    <lastmod>2020-02-19T03:16:00.112Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://marmalade.vip/about/index.html</loc>
     
     <lastmod>2020-02-18T14:06:25.699Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://marmalade.vip/tags/index.html</loc>
-    
-    <lastmod>2020-02-18T14:05:00.319Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://marmalade.vip/categories/index.html</loc>
-    
-    <lastmod>2020-02-18T13:46:43.182Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://marmalade.vip/2020/02/17/%E8%A7%A3%E5%86%B3github%E4%B8%8B%E8%BD%BD%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
-    
-    <lastmod>2020-02-17T04:31:45.065Z</lastmod>
     
   </url>
   
