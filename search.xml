@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>用阿里云建造一个属于自己的域名</title>
-    <url>/2020/02/19/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/</url>
+    <url>/zidingyiyuming.html</url>
     <content><![CDATA[<h3 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h3><p>依托github搭建起来的博客域名格式一般是固定的（尾端.github.io），无法做到自己自定义那种常见的baidu.com那种简洁好记的域名<br>网上自定义域名方法有些描述的模糊不清，让我进了不少坑，于是便记录下自己详细的自定义域名的过程</p>
 <a id="more"></a>
 <p>先在根目录/source文件夹下新建一个CNAME文件，存域名<br>（尽量不加www，这样以后访问加不加www.都可以访问）<br>cmd博客目录下执行hexo g -d<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image1.png" alt="32e66fc5fd4da0624c29aef589c095a5.png"><br><a href="https://www.zhihu.com/question/31377141" target="_blank" rel="noopener">借鉴知乎问题</a><br>阿里云实名注册域名后ping一下marmalad0.github.io<br>得到一个IP地址<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image2.png" alt="84d76b43931c1c3fa11cd48212aa163d.png"><br>点击阿里云域名解析，添加两条记录<br>格式如下：<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image3.png" alt="dcc3ad3502c4fbdbe08f89e8e11272b0.png"><br>然后在自己的github上打开建的仓库（用户名.github.io）<br>点击settings找到<br>Custom domain写上自己自定义的域名（一般自动就有），再在https上打一个勾<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image4.png" alt="a11d7497d345e1f008deca099dcaa1de.png"><br>成功</p>
@@ -13,7 +13,7 @@
   </entry>
   <entry>
     <title>解决github下载慢加载慢的问题</title>
-    <url>/2020/02/17/%E8%A7%A3%E5%86%B3github%E4%B8%8B%E8%BD%BD%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <url>/jiejuegithubman.html</url>
     <content><![CDATA[<h3 id="解决github下载慢加载慢的问题"><a href="#解决github下载慢加载慢的问题" class="headerlink" title="解决github下载慢加载慢的问题"></a>解决github下载慢加载慢的问题</h3><p>github是国外网站，因此我们在访问的时候总会感觉加载非常的慢，要等好长时间<br>而且要是需要下载一些大的压缩包要等很长时间，于是我从网上各种方法里亲测出几个使用有效简便的方法来大幅提升github的速度。</p>
 <a id="more"></a>
 <p>方法一：dns查询github.com找到TTL值最小的IP输入到host里<br>即<br>13.229.188.59 <a href="https://github.com" target="_blank" rel="noopener">https://github.com</a></p>
@@ -35,8 +35,8 @@
       </tags>
   </entry>
   <entry>
-    <title>艰难的hexo博客建立过程及碰到的坑</title>
-    <url>/2020/02/10/%E8%89%B0%E9%9A%BE%E7%9A%84hexo%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E8%BF%87%E7%A8%8B/</url>
+    <title>hexo+github博客建立过程及碰到的坑</title>
+    <url>/hexoblogbuilding.html</url>
     <content><![CDATA[<p><strong><em>小白的一个不断碰坑填坑的过程</em></strong><br>过程确实很复杂，但是一步一步来，一个问题一个问题解决，成功只在朝夕！<br>参考<br><a href="https://zhuanlan.zhihu.com/p/26625249" target="_blank" rel="noopener">GitHub+Hexo 搭建个人网站详细教程</a></p>
 <a id="more"></a>
 <h4 id="1、获得个人网站域名"><a href="#1、获得个人网站域名" class="headerlink" title="1、获得个人网站域名"></a>1、获得个人网站域名</h4><blockquote>
@@ -73,7 +73,7 @@
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/2020/01/28/hello-world/</url>
+    <url>/hello-world.html</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <a id="more"></a>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
