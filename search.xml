@@ -19,7 +19,10 @@
 </blockquote>
 <h5 id="文档中添加图片："><a href="#文档中添加图片：" class="headerlink" title="文档中添加图片："></a>文档中添加图片：</h5><p>这里为了好整理把图片统一放在source/images文件夹里（没有的新建）<br>固定格式：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">插入本地图片：</span><br><span class="line">![](&#x2F;images&#x2F;图片的名字)</span><br><span class="line">或</span><br><span class="line">插入网络图片：</span><br><span class="line">![](图片的网址)</span><br></pre></td></tr></table></figure>
-<p>中括号里也可以加提示性语言，这样鼠标长时间放在图片上就会显示文字<br>也支持用HTML标签来插入<br><img src="路径或地址" alt="提示语言"><br>alt也可省略</p>
+<p>中括号里也可以加提示性语言，这样鼠标长时间放在图片上就会显示文字<br>也支持用HTML标签来插入</p>
+<img src="路径或地址" alt="提示语言">
+alt也可省略
+
 <blockquote>
 <p>注：markdown格式加感叹号直接显示图片<br>不加感叹号则显示蓝色文字，点开得图片<br>（可以自己尝试一下区别）</p>
 </blockquote>
