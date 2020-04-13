@@ -85,7 +85,7 @@
 <p>先在根目录/source文件夹下新建一个CNAME文件，存域名<br>（尽量不加www，这样以后访问加不加www.都可以访问）<br>cmd博客目录下执行hexo g -d<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image1.png" alt="32e66fc5fd4da0624c29aef589c095a5.png"><br><a href="https://www.zhihu.com/question/31377141" target="_blank" rel="noopener">借鉴知乎问题</a><br>阿里云实名注册域名后ping一下marmalad0.github.io<br>得到一个IP地址<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image2.png" alt="84d76b43931c1c3fa11cd48212aa163d.png"><br>点击阿里云域名解析，添加两条记录<br>格式如下：<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image3.png" alt="dcc3ad3502c4fbdbe08f89e8e11272b0.png"><br>然后在自己的github上打开建的仓库（用户名.github.io）<br>点击settings找到<br>Custom domain写上自己自定义的域名（一般自动就有），再在https上打一个勾<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image4.png" alt="a11d7497d345e1f008deca099dcaa1de.png"><br>成功</p>
 ]]></content>
       <categories>
-        <category>个人博客建立与美化</category>
+        <category>hexo+github博客建立与美化</category>
       </categories>
       <tags>
         <tag>自定义域名</tag>
