@@ -144,7 +144,7 @@
 <p>hexo clean （清除缓存，即删除public文件夹，在部署博客时最好先用一下此命令来清理缓存）<br>cmd中hexo g(生成静态文件)(即同步到博客中)<br>hexo d（部署到github）<strong>两者可以连起来写为hexo g -d</strong><br>以上几个命令用来部署博客内容到网站中，以后会经常用到。<br><img src="/images/1/10.png" alt="bde9280975c1018708585ddb8e40ab3f.png"><br>报错<br>装一个插件<br>npm install hexo-deployer-git –save<br>末尾加分支branch: master<br>然后hexo d同步到github上<br><strong>后来再hexo d的时候出现错误</strong><br><img src="/images/1/11.png" alt="28e7647f32d5c36e3bd3eeaf6594ac62.png"><br>，上网搜Error: Spawn failed，见有相同问题的<br>解决方法：把F:\Git\Git\bin添加到系统变量的path中<br>再运行，成功<br><img src="/images/1/12.png" alt=""></p>
 ]]></content>
       <categories>
-        <category>个人博客建立与美化</category>
+        <category>hexo+github博客建立与美化</category>
       </categories>
       <tags>
         <tag>博客建立</tag>
