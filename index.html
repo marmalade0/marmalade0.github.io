@@ -209,6 +209,112 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://marmalade.vip/shodanuse.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="lijunliang">
+      <meta itemprop="description" content="一个ctf小白的成长之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Marmalade's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/shodanuse.html" class="post-title-link" itemprop="url">shodanuse</a>
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-14 18:35:24 / 修改时间：18:42:15" itemprop="dateCreated datePublished" datetime="2020-04-14T18:35:24+08:00">2020-04-14</time>
+            </span>
+
+          
+            <span id="/shodanuse.html" class="post-meta-item leancloud_visitors" data-flag-title="shodanuse" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/shodanuse.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/shodanuse.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="互联网上最可怕的搜索引擎-Shodan"><a href="#互联网上最可怕的搜索引擎-Shodan" class="headerlink" title="互联网上最可怕的搜索引擎(Shodan)"></a><strong>互联网上最可怕的搜索引擎(Shodan)</strong></h2><h4 id="Shodan简介"><a href="#Shodan简介" class="headerlink" title="Shodan简介"></a>Shodan简介</h4><p>CNNMoney的一篇文章写道，虽然目前人们都认为谷歌是最强劲的搜索引擎，但Shodan才是互联网上最可怕的搜索引擎。<br>与谷歌不同的是，Shodan不是在网上搜索网址，而是直接进入互联网的背后通道。Shodan可以说是一款“黑暗”谷歌，一刻不停的在寻找着所有和互联网关联的服务器、摄像头、打印机、路由器等等。每个月Shodan都会在大约5亿个服务器上日夜不停地搜集信息。<br>Shodan所搜集到的信息是极其惊人的。凡是链接到互联网的红绿灯、安全摄像头、家庭自动化设备以及加热系统等等都会被轻易的搜索到。Shodan的使用者曾发现过一个水上公园的控制系统，一个加油站，甚至一个酒店的葡萄酒冷却器。而网站的研究者也曾使用Shodan定位到了核电站的指挥和控制系统及一个粒子回旋加速器。<br>Shodan真正值得注意的能力就是能找到几乎所有和互联网相关联的东西。而Shodan真正的可怕之处就是这些设备几乎都没有安装安全防御措施，其可以随意进入。<br>Rapid 7 的首席安全官HD Moore,表示：你可以用一个默认密码登陆几乎一半的互联网。就安全而言，这是一个巨大的失误。<br>如果你搜索“默认密码”的话，你会发现无数的打印机，服务器及系统的用户名都是“admin”，密码全都是“1234”。还有很多系统根本不需要认证，你所需要做的就是用浏览器进行链接。所以如果你在使用默认密码的话，请现在就改换新的密码。</p>
+<h3 id="Shodan简单使用"><a href="#Shodan简单使用" class="headerlink" title="Shodan简单使用"></a>Shodan简单使用</h3><p><a href="https://www.cnblogs.com/student-programmer/p/6732873.html" target="_blank" rel="noopener">参考网址</a><br>在主页的搜索框中输入想要搜索的内容即可，例如下面我搜索 “SSH”：<img src="/images/shodanuse/1.png" alt="75338c870de76be92b48ef4b0acc1f31.png"><br>上图的搜索结果包含两个部分，左侧是大量的汇总数据包括：<br>Results map – 搜索结果展示地图<br>Top services (Ports) – 使用最多的服务/端口<br>Top organizations (ISPs) – 使用最多的组织/ISP<br>Top operating systems – 使用最多的操作系统<br>Top products (Software name) – 使用最多的产品/软件名称<br>随后，在中间的主页面我们可以看到包含如下的搜索结果：<br>IP 地址<br>主机名<br>ISP<br>该条目的收录收录时间<br>该主机位于的国家<br>Banner 信息</p>
+<p>想要了解每个条目的具体信息，只需要点击每个条目下方的 details 按钮即可。此时，URL 会变成这种格式 <a href="https://www.shodan.io/host/[IP]，所以我们也可以通过直接访问指定的" target="_blank" rel="noopener">https://www.shodan.io/host/[IP]，所以我们也可以通过直接访问指定的</a> IP 来查看详细信息。<br><img src="/images/shodanuse/2.png" alt="8851d535ee54b6ec7be7606a8d974de9.png"></p>
+<p>上图中我们可以从顶部在地图中看到主机的物理地址，从左侧了解到主机的相关信息，右侧则包含目标主机的端口列表及其详细信息。</p>
+<p>使用搜索过滤如果像前面单纯只使用关键字直接进行搜索，搜索结果可能不尽人意，那么此时我们就需要使用一些特定的命令对搜索结果进行过滤，常见用的过滤命令如下所示：</p>
+<blockquote>
+<p>hostname：搜索指定的主机或域名，例如 hostname:”google”<br>port：搜索指定的端口或服务，例如 port:”21”<br>country：搜索指定的国家，例如 country:”CN”<br>city：搜索指定的城市，例如 city:”Hefei”<br>org：搜索指定的组织或公司，例如 org:”google”<br>isp：搜索指定的ISP供应商，例如 isp:”China Telecom”<br>product：搜索指定的操作系统/软件/平台，例如 product:”Apache httpd”<br>version：搜索指定的软件版本，例如 version:”1.6.2”<br>geo：搜索指定的地理位置，参数为经纬度，例如 geo:”31.8639, 117.2808”<br>before/after：搜索指定收录时间前后的数据，格式为dd-mm-yy，例如 before:”11-11-15”<br>net：搜索指定的IP地址或子网，例如 net:”210.45.240.0/24”</p>
+</blockquote>
+<h6 id="搜索实例"><a href="#搜索实例" class="headerlink" title="搜索实例"></a>搜索实例</h6><p>查找位于山东的 Apache 服务器：<br>apache city:”Shandon”<br>查找位于国内的 Nginx 服务器：<br>nginx country:”CN”<br>查找 GWS(Google Web Server) 服务器：<br>“Server: gws” hostname:”google”<br>查找指定网段的华为设备：<br>huawei net:”61.191.146.0/24”<br>如上通过在基本关键字后增加指定的过滤关键字，能快速的帮助发现我们感兴趣的内容。<br>当然，还有更快速更有意思的方法，那就是点击 Shodan 搜索栏右侧的 “Explore” 按钮，就会得到很多别人分享的搜索语法，你问我别人分享的语法有什么好玩的？那咱们就随便来看看吧：<br><img src="/images/shodanuse/3.png" alt="0d746d90d70bf51005aafc89c9005b5f.png"><br><strong>高能！</strong><br>随便选取一个名为“NetSureveillance Web”的用户分享语法，从下面的描述信息我们基本就能得知这就是一个弱密码的漏洞，为了方便测试让我们把语法在增加一个国家的过滤信息，最终语法如下：<br>Server: uc-httpd 1.0.0 200 OK Country:”CN”<br><img src="/images/shodanuse/4.png" alt="5d371cabf338d0bc48b34d30d2612715.png"><br>随便选取一个页面进去输入，使用admin账号和空密码就能顺利进入了!<br><img src="/images/shodanuse/5.png" alt="f0f300cb8583697bdb625bd3ebaa57e0.png"></p>
+<p>某马来西亚一家公寓的监控，admin+123456进入<br>60.50.115.98:60001<br><img src="/images/shodanuse/6.png" alt="c7f36cc5b5a67cf58ecdd7c96b996e49.png"></p>
+<p>泰国一家商店监控，admin+空<br><a href="http://124.121.168.78:60001" target="_blank" rel="noopener">http://124.121.168.78:60001</a><br><img src="/images/shodanuse/7.png" alt="983cf49b5a01ce2ce676aeb5ef23ab81.png"></p>
+<h6 id="在shodan中搜索JAWS-1-0，会查到一批admin-空密码（或123456等弱密码）即可进入的监控"><a href="#在shodan中搜索JAWS-1-0，会查到一批admin-空密码（或123456等弱密码）即可进入的监控" class="headerlink" title="在shodan中搜索JAWS/1.0，会查到一批admin+空密码（或123456等弱密码）即可进入的监控"></a>在shodan中搜索JAWS/1.0，会查到一批admin+空密码（或123456等弱密码）即可进入的监控</h6><p>慎用！！！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://marmalade.vip/nextthemebeautify2.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1078,7 +1184,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1091,7 +1197,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1138,13 +1244,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">10k</span>
+    <span title="站点总字数">12k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">9 分钟</span>
+    <span title="站点阅读时长">11 分钟</span>
 </div>
 
 
