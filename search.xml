@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（三）文章样式美化</title>
+    <title>hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（三）---文章样式美化</title>
     <url>/nextthemebeautify3.html</url>
     <content><![CDATA[<h1 id="13-文章样式美化大全"><a href="#13-文章样式美化大全" class="headerlink" title="(13)文章样式美化大全"></a>(13)文章样式美化大全</h1><h5 id="大坑！！next新版-7-x-背景设置位置有变化，custom-styl没有！"><a href="#大坑！！next新版-7-x-背景设置位置有变化，custom-styl没有！" class="headerlink" title="大坑！！next新版(7.x)背景设置位置有变化，custom.styl没有！"></a>大坑！！next新版(7.x)背景设置位置有变化，custom.styl没有！</h5><p>因此网上大部分教程都是无效的。<br>正确设置方法：<br>首先主题配置文件取消注释(去掉下方的#号)</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">  #style: source&#x2F;_data&#x2F;styles.styl</span><br></pre></td></tr></table></figure>
