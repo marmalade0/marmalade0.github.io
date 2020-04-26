@@ -3,7 +3,9 @@
   <entry>
     <title>Hexo博客百度谷歌收录</title>
     <url>/baidugoogleseo.html</url>
-    <content><![CDATA[<h3 id="Hexo博客百度收录（SEO）"><a href="#Hexo博客百度收录（SEO）" class="headerlink" title="Hexo博客百度收录（SEO）"></a>Hexo博客百度收录（SEO）</h3><p>曾迫不及待地想在百度上找到我的博文，可是找不到<br>后发现还要有百度收录操作才可显示<br>那就开始吧！<br><strong>1.</strong> 百度搜索自己的域名，会发现找不到，显示<br><img src="/images/HexoSEO/1.png" alt="ec4ca260ed1644a3e0c5133e2fd88cf4.png"><br>点击提交网址，并登录<br>提交好网站后没有下文……<br><strong>2.</strong> 验证网站的所有权<br>登录百度站长平台 ,<br>登录成功之后在站点管理中点击添加网站然后输入你的站点地址，建议输入的网站为www开头的，</p>
+    <content><![CDATA[<h3 id="Hexo博客百度收录（SEO）"><a href="#Hexo博客百度收录（SEO）" class="headerlink" title="Hexo博客百度收录（SEO）"></a>Hexo博客百度收录（SEO）</h3><p>曾迫不及待地想在百度上找到我的博文，可是找不到<br>后发现还要有百度收录操作才可显示<br>那就开始吧！</p>
+<a id="more"></a>
+<p><strong>1.</strong> 百度搜索自己的域名，会发现找不到，显示<br><img src="/images/HexoSEO/1.png" alt="ec4ca260ed1644a3e0c5133e2fd88cf4.png"><br>点击提交网址，并登录<br>提交好网站后没有下文……<br><strong>2.</strong> 验证网站的所有权<br>登录百度站长平台 ,<br>登录成功之后在站点管理中点击添加网站然后输入你的站点地址，建议输入的网站为www开头的，</p>
 <blockquote>
 <p>注意：不要输入github.io的，因为github是不允许百度的spider爬取github上的内容的，所以如果想让你的站点被百度收录，只能使用自己购买的域名</p>
 </blockquote>
