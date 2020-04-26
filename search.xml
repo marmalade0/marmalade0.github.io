@@ -12,7 +12,7 @@
 <p>在选择完网站的类型后需要验证网站的所有权，验证网站所有权的方式有三种：文件验证,html标签验证和cname解析验证，使用哪一种方式都可以。</p>
 <blockquote>
 <p>坑：我用的是文件验证</p>
-<p><strong><em>将验证文件放置于您所配置域名&gt;(<a href="http://www.marmalade.vip)的根目录下" target="_blank" rel="noopener">www.marmalade.vip)的根目录下</a></em></strong><br>根目录是网站的source文件夹<br>但是<br><img src="/images/HexoSEO/2.png" alt="a2cf1b8aa1e383d1972f556175d0970a.png"><br>验证失败？<br>果断放弃<br><strong>解决方法：</strong>在验证文件开头加一段</p>
+<p><strong><em>将验证文件放置于您所配置域名&gt;(<a href="http://www.marmalade.vip)的根目录下" target="_blank" rel="noopener">www.marmalade.vip)的根目录下</a></em></strong><br>根目录是网站的source文件夹<br>但是<br><img src="/images/HexoSEO/2.png" alt="a2cf1b8aa1e383d1972f556175d0970a.png"><br>验证失败？<br>果断放弃!</p>
 </blockquote>
 <p>采用第三种cname方法<br>域名解析增加一条<br><img src="/images/HexoSEO/3.png" alt="1ba07eae2c660763c8d19364d515b14d.png"><br>成功！<br><img src="/images/HexoSEO/4.png" alt="66a9ea7ee351dc7b8666285c533052dc.png"></p>
 <p><strong>3.</strong> 生成网站地图<br>先安装sitemap插件<br>cmd添加两个插件</p>
