@@ -1,19 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>wangzhanbeian</title>
+    <title>ICP和公安网备案以及网站底部添加相应备案号</title>
     <url>/wangzhanbeian.html</url>
     <content><![CDATA[<h2 id="网站备案"><a href="#网站备案" class="headerlink" title="网站备案"></a>网站备案</h2><p>要分别进行公信网备案和公安备案</p>
 <a id="more"></a>
-<h5 id="公信网备案"><a href="#公信网备案" class="headerlink" title="公信网备案"></a>公信网备案</h5><p>用阿里云，买一个服务器进行个人信息填写<br><img src="%5Cimages%5Cwangzhanbeian%5C1.png" alt="ca1903480daa2dd58e1cf1ce8a35baa2.png"><br>等待一段时间（一周到三周不等）的审核后通过<br><img src="%5Cimages%5Cwangzhanbeian%5C2.png" alt="39cfd992a4a42b30ceb0249cf81d452a.png"></p>
+<h5 id="公信网备案"><a href="#公信网备案" class="headerlink" title="公信网备案"></a>公信网备案</h5><p>用阿里云，买一个服务器进行个人信息填写<br><img src="/images/wangzhanbeian/1.png" alt="ca1903480daa2dd58e1cf1ce8a35baa2.png"><br>等待一段时间（一周到三周不等）的审核后通过<br><img src="/images/wangzhanbeian/2.png" alt="39cfd992a4a42b30ceb0249cf81d452a.png"></p>
 <h5 id="公安网备案"><a href="#公安网备案" class="headerlink" title="公安网备案"></a>公安网备案</h5><p>比较公信网，这个就要快很多<br>1.打开全国公安机关网站<a href="http://www.beian.gov.cn注册一个帐号登录" target="_blank" rel="noopener">www.beian.gov.cn注册一个帐号登录</a></p>
 <p>2.登录后会提示填写开办主体管理，如果没有提示登录后点击左边的菜单就行</p>
 <p>3.填写主体相关的信息，比如个人，姓名，身份证等信息，然后保存</p>
-<p>4.找到左边菜单新办网站申请，这点不用填写，直接点击下一步<br><img src="%5Cimages%5Cwangzhanbeian%5C3.png" alt="f2395378ba06cdcd34bf805811c7dbc0.png"><br>接下来填写网站基本信息<br>包括网站开通日期，名称等，<br><strong>域名证书照片</strong>去域名网站下载，我的域名在阿里云购买，即可在阿里云点击管理域名<br><img src="%5Cimages%5Cwangzhanbeian%5C4.png" alt="e456170389f729ba4e344fb6d3f71752.png"><br>域名证书下载处下载好图片上传即可</p>
+<p>4.找到左边菜单新办网站申请，这点不用填写，直接点击下一步<br><img src="/images/wangzhanbeian/3.png" alt="f2395378ba06cdcd34bf805811c7dbc0.png"><br>接下来填写网站基本信息<br>包括网站开通日期，名称等，<br><strong>域名证书照片</strong>去域名网站下载，我的域名在阿里云购买，即可在阿里云点击管理域名<br><img src="/images/wangzhanbeian/4.png" alt="e456170389f729ba4e344fb6d3f71752.png"><br>域名证书下载处下载好图片上传即可</p>
 <p>至于网络接入服务商信息和域名注册服务商信息<br>可在阿里云上搜索公安联网备案信息填写指南<br>里面的信息都有，也可问网站客服<br>下一步同主体负责人信息前的框都打上勾，然后提交等待审核就行了</p>
 <p>后当地网安大队网警会让你填写两个表格</p>
 <p>博客个人空间服务企业基础信息登记表.xls<br>和<br>交互式服务安全检查表.xls<br>然后等待通过即可</p>
+<h2 id="底部添加ICP备案和公安网备案"><a href="#底部添加ICP备案和公安网备案" class="headerlink" title="底部添加ICP备案和公安网备案"></a>底部添加ICP备案和公安网备案</h2><p><a href="https://www.chingow.cn/posts/c7372a12.html" target="_blank" rel="noopener">参考大佬文章</a><br>我们的网站已经有备案号了，但是应该如何添加备案号到博客最下面呢？</p>
+<p>首先，在 主题配置文件  _config.yml 中的配置添加备案配置：<br>位置：<br>themes/next/_config.yml</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 这里打开备案信息，填写ICP备案号   </span><br><span class="line">beian:   </span><br><span class="line">enable: true  </span><br><span class="line">icp: 鲁ICP备20005811号 </span><br><span class="line"># 这里是新加的内容，填写公安备案信息</span><br><span class="line">+  gongan:</span><br><span class="line">+    enable: true</span><br><span class="line">+    local: 鲁</span><br><span class="line">+    num: 3711022000277</span><br></pre></td></tr></table></figure>
+<p>将多余的注释掉，不然会报错<br><img src="/images/wangzhanbeian/5.png" alt="f260561f144f68fdcc2c91fbc46618a3.png"></p>
+<p>然后，在语言配置文件里，添加表述文案beian：<br>位置:<br>themes/next/languages/zh-CN.yml<br><img src="/images/wangzhanbeian/6.png" alt="eab3fca27ff1e7456241e58f76a3f5e4.png"></p>
+<p>接下来，删除原有的布局文件中备案样式的代码：(标注处全删)<br>位置:<br>themes/next/layout/_partials/footer.swig<br><img src="/images/wangzhanbeian/7.png" alt="5283d46f4a83dac14b69ea97c1f50d10.png"><br>找到如下位置插入一行代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;span class&#x3D;&quot;author&quot; itemprop&#x3D;&quot;copyrightHolder&quot;&gt;&#123;&#123; theme.footer.copyright || author &#125;&#125;&lt;&#x2F;span&gt;</span><br><span class="line">+  &lt;span class&#x3D;&quot;post-meta-divider footer-ages-icon&quot;&gt; | &lt;&#x2F;span&gt;</span><br><span class="line">&#123;% if config.symbols_count_time.total_symbols %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后，在主题布局文件中添加我们自定义的备案样式：<br>位置：<br>themes/next/layout/_layout.swig</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;footer-inner&quot;&gt;   </span><br><span class="line">&#123;&#123; partial(&#39;_partials&#x2F;footer.swig&#39;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;    </span><br><span class="line">&#123;% include &#39;_third-party&#x2F;analytics&#x2F;analytics-with-widget.swig&#39; %&#125;</span><br><span class="line">+        &lt;div class&#x3D;&quot;footer-custom&quot;&gt;</span><br><span class="line">+                    &#123;% if theme.footer.beian.enable %&#125;&#123;#</span><br><span class="line">+                  #&#125;&#123;&#123; next_url(&#39;http:&#x2F;&#x2F;www.beian.miit.gov.cn&#39;, theme.footer.beian.icp + &#39; &#39;) &#125;&#125;&#123;#</span><br><span class="line">+                  #&#125;&#123;% endif %&#125;</span><br><span class="line">+                  &#123;% if theme.footer.beian.enable and theme.footer.gongan.enable %&#125;</span><br><span class="line">+                    &lt;span class&#x3D;&quot;post-meta-divider&quot;&gt;|&lt;&#x2F;span&gt;</span><br><span class="line">+                  &#123;% endif %&#125;</span><br><span class="line">+                  &#123;% if theme.footer.gongan.enable %&#125;&#123;#</span><br><span class="line">+                  #&#125; &lt;span style&#x3D;&quot;padding-left:25px;background:url(&#x2F;images&#x2F;beian.png) no-repeat left center&quot; rel&#x3D;&quot;nofollow&quot;&gt;&#123;#</span><br><span class="line">+                  #&#125; &#123;&#123; theme.footer.gongan.local&#125;&#125;&#123;&#123;__(&#39;footer.beian.gongan&#39;, next_url(&#39;http:&#x2F;&#x2F;www.beian.gov.cn&#x2F;portal&#x2F;registerSystemInfo?recordcode&#x3D;&#39;+theme.footer.gongan.num, theme.footer.gongan.num )) &#125;&#125;&#123;#</span><br><span class="line">+                  #&#125;&#123;% endif %&#125;</span><br><span class="line">+                 &lt;&#x2F;div&gt;</span><br><span class="line">        </span><br><span class="line">  &#123;% block footer %&#125;&#123;% endblock %&#125; </span><br><span class="line">  &lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意将公安网图标保存并命名/images/beian.png</p>
+</blockquote>
+<p>成功<br><img src="/images/wangzhanbeian/8.png" alt="3b991c5458d20080e149701386acf7ea.png"></p>
 ]]></content>
+      <categories>
+        <category>hexoSEO</category>
+      </categories>
+      <tags>
+        <tag>备案</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hexo博客百度谷歌收录</title>
@@ -131,6 +152,11 @@
 <p>位置如图：<br><img src="/images/beautify4/4.png" alt="9101ecf89850afa2cb5138f2fd697b6f.png"><br>效果：<br><img src="/images/beautify4/5.png" alt="9f4becd2c4b3a1bfef7ec2719510407f.png"></p>
 <p><a href="https://www.zhyong.cn/posts/fc22/" target="_blank" rel="noopener">参考文章</a></p>
 <h3 id="18-添加阅读进度条"><a href="#18-添加阅读进度条" class="headerlink" title="(18)添加阅读进度条"></a>(18)添加阅读进度条</h3><p>主题配置文件中改为true即可<br><img src="/images/beautify4/6.png" alt="20b57e7540501ab8cc1449da87f9c51b.png"></p>
+<h3 id="19-添加代码复制块"><a href="#19-添加代码复制块" class="headerlink" title="(19)添加代码复制块"></a>(19)添加代码复制块</h3><p>代码块会展示出该效果<br><img src="/images/beautify4/7.png" alt="620e5f1673ab17d2566b090e6947d58e.png"><br>在之前创建的styles.styl末尾添加</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 复制按钮样式top调整</span><br><span class="line">.highlight-wrap .copy-btn &#123;</span><br><span class="line">padding: </span><br><span class="line">1px 6px;  </span><br><span class="line">top: 3px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="20-全国哀悼日将网站变灰"><a href="#20-全国哀悼日将网站变灰" class="headerlink" title="(20)全国哀悼日将网站变灰"></a>(20)全国哀悼日将网站变灰</h3><p>方法：fn+f12打开调试面板，在body处添加<br>-webkit-filter: grayscale(100%)即可实现<br><img src="/images/beautify4/8.png" alt="30614fc0971e64f5feca869629564d09.png"></p>
+<p><img src="/images/beautify4/9.png" alt="69a3a6e3bf2b81272782db4c086d12f4.png"></p>
 ]]></content>
       <categories>
         <category>hexo+github博客建立与美化</category>
@@ -403,10 +429,10 @@
         <category>hexo+github博客建立与美化</category>
       </categories>
       <tags>
+        <tag>github</tag>
         <tag>博客建立</tag>
         <tag>hexo</tag>
         <tag>next主题</tag>
-        <tag>github</tag>
       </tags>
   </entry>
 </search>
