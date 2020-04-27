@@ -100,6 +100,12 @@
 
 <p>去掉其中的noopener noreferrer，再生成即可。</p>
 ]]></content>
+      <categories>
+        <category>hexoSEO</category>
+      </categories>
+      <tags>
+        <tag>seo</tag>
+      </tags>
   </entry>
   <entry>
     <title>hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（四）</title>
