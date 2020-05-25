@@ -64,7 +64,7 @@
 <meta property="og:image" content="https://marmalade.vip/images/beautify2/9.png">
 <meta property="og:image" content="https://marmalade.vip/images/beautify2/10.png">
 <meta property="article:published_time" content="2020-04-14T05:11:17.000Z">
-<meta property="article:modified_time" content="2020-04-26T16:22:58.022Z">
+<meta property="article:modified_time" content="2020-05-25T10:53:48.901Z">
 <meta property="article:author" content="lijunliang">
 <meta property="article:tag" content="next主题">
 <meta property="article:tag" content="next主题美化">
@@ -256,7 +256,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-27 00:22:58" itemprop="dateModified" datetime="2020-04-27T00:22:58+08:00">2020-04-27</time>
+                <time title="修改时间：2020-05-25 18:53:48" itemprop="dateModified" datetime="2020-05-25T18:53:48+08:00">2020-05-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -328,7 +328,7 @@
 <h6 id="本地和网站不同步？hexo-clean"><a href="#本地和网站不同步？hexo-clean" class="headerlink" title="本地和网站不同步？hexo clean!"></a>本地和网站不同步？hexo clean!</h6><p>下面是接上一篇的更多网站美化功能</p>
 <a id="more"></a>
 
-<h3 id="8-在网站底部添加访问量"><a href="#8-在网站底部添加访问量" class="headerlink" title="(8)在网站底部添加访问量"></a>(8)在网站底部添加访问量</h3><p>进入\themes\next\layout\ _partials\footer.swig文件顶部第一行添加</p>
+<h3 id="8-在网站底部添加访问量"><a href="#8-在网站底部添加访问量" class="headerlink" title="(8)在网站底部添加访问量"></a>(8)在网站底部添加访问量</h3><p>进入<code>\themes\next\layout\ _partials\footer.swig</code>文件顶部第一行添加</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script async src&#x3D;&quot;https:&#x2F;&#x2F;dn-lbstatics.qbox.me&#x2F;busuanzi&#x2F;2.3&#x2F;busuanzi.pure.mini.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
 
@@ -349,7 +349,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">leancloud_visitors:</span><br><span class="line"> enable: true 设置为true 默认为false</span><br><span class="line"> app_id:  #你的App ID，注意冒号后面空格</span><br><span class="line"> app_key:  #你的App Key，注意冒号后面空格</span><br><span class="line"> Dependencies:  https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;hexo-leancloud-counter-security #设置依赖</span><br><span class="line"> security: true #如果您不关心lc计数器中的安全性并且只想直接使用它（没有hexo-leancloud-counter-security插件），请将&#96;security&#96;设置为&#96;false&#96;。  betterPerformance: true #更好的性能</span><br></pre></td></tr></table></figure>
 
 <p>5.在leancloud存储的位置创建Class,必须命名为Counter<br><img src="/images/beautify2/4.png" alt="a1021618af30065d9ef1cf3b5eb0ab48.png"><br>6.查看后台统计数据<br><img src="/images/beautify2/5.png" alt="542d40c0448b9bcbf050c9b5bd509508.png"></p>
-<h5 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h5><p>选择的是Valine系统<br>进入leancloud<br>1.创建应用<br><img src="/images/beautify2/6.png" alt="f3cfd885cc0e436d58d6ac13ae2c7cef.png"><br>2.进入设置页面<br><img src="/images/beautify2/7.png" alt="4749312c24ca3633a258d13d15459ae9.png"><br>3.应用key<br><img src="/images/beautify2/8.png" alt="986351dd5c71bed5c9fefb54abf8737f.png"><br>4.在next/_config.yml进行一下配置</p>
+<h5 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h5><p>选择的是Valine系统<br>进入leancloud<br>1.创建应用<br><img src="/images/beautify2/6.png" alt="f3cfd885cc0e436d58d6ac13ae2c7cef.png"><br>2.进入设置页面<br><img src="/images/beautify2/7.png" alt="4749312c24ca3633a258d13d15459ae9.png"><br>3.应用key<br><img src="/images/beautify2/8.png" alt="986351dd5c71bed5c9fefb54abf8737f.png"><br>4.在<code>next/_config.yml</code>进行一下配置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">valine:</span><br><span class="line">  enable: true # 设置为true，默认为false</span><br><span class="line">  appid:  # 将应用key的App ID设置在这里</span><br><span class="line">  appkey: # 将应用key的App Key设置在这里</span><br><span class="line">  notify: true# 邮箱通知 , https:&#x2F;&#x2F;github.com&#x2F;xCss&#x2F;Valine&#x2F;wiki，默认为false</span><br><span class="line">  verify: true# 验证码 默认为false </span><br><span class="line">  placeholder: Just go go ^_^ # 初始化评论显示，根据自己修改，这里默认， </span><br><span class="line">  avatar: wavatar # 头像风格，默认为mm，可进入网址：https:&#x2F;&#x2F;valine.js.org&#x2F;visitor.html查看头像设置，这里有许多头像风格，进行设置  </span><br><span class="line">  guest_info: nick,mail,link # 自定义评论标题  </span><br><span class="line">  pageSize: 10 # 分页大小，10页就自动分页  </span><br><span class="line">  visitor: true # 是否允许游客评论 ，进入官网查看设置：https:&#x2F;&#x2F;valine.js.org&#x2F;visitor.html</span><br></pre></td></tr></table></figure>
 
 <p>完成<br>6.在后台查看评论数据<br>在valine后台，存储位置中的数据里面创建Class，名称必须为命名为Comment<br><img src="/images/beautify2/9.png" alt="dba10b9c2f501621d0243fa4c0bedbbe.png"></p>
@@ -412,7 +412,7 @@
   <p><span>本文标题:</span>hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（二）</a></p>
   <p><span>文章作者:</span>lijunliang</a></p>
   <p><span>发布时间:</span>2020年04月14日 - 13:11:17</p>
-  <p><span>最后更新:</span>2020年04月27日 - 00:22:58</p>
+  <p><span>最后更新:</span>2020年05月25日 - 18:53:48</p>
   <p><span>原始链接:</span><a href="/nextthemebeautify2.html" title="hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（二）">https://marmalade.vip/nextthemebeautify2.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://marmalade.vip/nextthemebeautify2.html"  aria-label="复制成功！"></i></span>
   </p>
