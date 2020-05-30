@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>win10下右键菜单添加“打开cmd”</title>
+    <url>/cmdcaidan.html</url>
+    <content><![CDATA[<p>最近使用cmd比较多，就想在某个文件夹下右键打开cmd，这样不用每次都在默认情况下切换目录。无奈win10 1703版本下shift+右键不能打开cmd，只能打开powershell。<br>好，那就自己整一个吧。</p>
+<a id="more"></a>
+
+<p>首先，在桌面新建一个文本文档。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39;Windows Registry Editor Version 5.00</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\cmd_here]</span><br><span class="line"> </span><br><span class="line">@&#x3D;&quot;在此处打开命令行&quot;</span><br><span class="line">&quot;Icon&quot;&#x3D;&quot;cmd.exe&quot;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\cmd_here\command]</span><br><span class="line"> </span><br><span class="line">@&#x3D;&quot;\&quot;C:\\Windows\\System32\\cmd.exe\&quot;&quot;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\cmdPrompt]</span><br><span class="line"> </span><br><span class="line">@&#x3D;&quot;在此处打开命令行&quot;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\cmdPrompt\command]</span><br><span class="line"> </span><br><span class="line">@&#x3D;&quot;\&quot;C:\\Windows\\System32\\cmd.exe\&quot; \&quot;cd %1\&quot;&quot;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\cmd_here]</span><br><span class="line"> </span><br><span class="line">@&#x3D;&quot;在此处打开命令行&quot;</span><br><span class="line">&quot;Icon&quot;&#x3D;&quot;cmd.exe&quot;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\cmd_here\command]</span><br><span class="line"> </span><br><span class="line">@&#x3D;&quot;\&quot;C:\\Windows\\System32\\cmd.exe\&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>然后、将上面内容粘贴到该文本文档中，保存。并将该文本文档以.reg结尾即可，名字可以随意取。（PS：@=”此处打开命令行”  该引号内文字可以随意修改成你想要显示的文字）</p>
+<p>最后，双击注册一下就可以了，结果右键菜单中就有了。</p>
+]]></content>
+      <tags>
+        <tag>cmd</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo个人博客SEO优化技巧</title>
     <url>/seoyouhua.html</url>
     <content><![CDATA[<h2 id="hexo个人博客SEO优化技巧"><a href="#hexo个人博客SEO优化技巧" class="headerlink" title="hexo个人博客SEO优化技巧"></a>hexo个人博客SEO优化技巧</h2><p>SEO定义:提高网站浏览量即更容易让百度推送到文章而做的优化手段。<br><a href="https://blog.csdn.net/yixu0534/article/details/92092386?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">具体的SEO介绍</a></p>
