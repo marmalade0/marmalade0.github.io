@@ -3,7 +3,8 @@
   <entry>
     <title>Hexo博客：您备案的网站未指向阿里云国内节点（不含香港）服务器，备案号可能被取消接入</title>
     <url>/aliyunbeianjinggao.html</url>
-    <content><![CDATA[<p>工信部备案后一段时间会发来<br> <code>Hexo博客：您备案的网站未指向阿里云国内节点（不含香港）服务器，备案号可能被取消接入</code><br> 的短信警告，<br><img src="/images/aliyunbeianjinggao/1.jpg" alt="碰到问题不要慌"></p>
+    <content><![CDATA[<p>工信部备案后一段时间会发来<br> <code>Hexo博客：您备案的网站未指向阿里云国内节点（不含香港）服务器，备案号可能被取消接入</code><br> 的短信警告，<br><img src="/images/aliyunbeianjinggao/1.jpg" alt="碰到问题不要慌"><br>下面讲述该问题的原因及解决方法。</p>
+<a id="more"></a>
 <h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><p>经检查您的网站域名 xxxxxx 未指向阿里云国内节点（不含香港）服务器且无访问记录 ，依据工信部相关法规规定属于空壳网站，请您尽快将域名解析IP地址指向阿里云国内节点（不含香港）服务器。 如果3个工作日后检查发现该备案域名在在阿里云国内节点（不含香港）服务器上仍无访问记录，我们将删除网站备案接入信息。您的备案号可能会被注销，网站访问可能受到影响。</p>
 <p>这个问题常见于个人博客，特别是 hexo 博客，购买了域名，并且备了案，由于 hexo 博客静态托管于 Github Pages 或者 Coding Pages，所以也就没有阿里云的服务器，也就不可能存在域名解析IP地址指向阿里云国内节点服务器。<br><img src="/images/aliyunbeianjinggao/2.png" alt="278aa9789f80e5d30a8a121324e7c709.png"></p>
 <h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4><p>将你的域名添加一个二级域名，解析到某些阿里云国内节点服务器上就行了。例如我博客域名为 <a href="http://www.itrhx.com，就可以添加一个或者两个" target="_blank" rel="noopener">www.itrhx.com，就可以添加一个或者两个</a> A 记录，记录值为阿里云国内节点服务器的 IP。然后<strong>隔一段时间访问一下</strong> 1.itrhx.com 或者 2.itrhx.com ，确保有一点儿访问量就行了。<br><img src="/images/aliyunbeianjinggao/3.png" alt="a8b964517570dcefe573e34daaa6ce99.png"><br>下面列出一些阿里云国内节点服务器 IP，挑一些能访问的就行了。</p>
