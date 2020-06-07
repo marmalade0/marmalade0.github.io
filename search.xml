@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>sqlmapbasicuse</title>
+    <title>Sqlmap工具基础用法详解</title>
     <url>/sqlmapbasicuse.html</url>
-    <content><![CDATA[<h3 id="Sqlmap工具基础用法详解"><a href="#Sqlmap工具基础用法详解" class="headerlink" title="Sqlmap工具基础用法详解"></a>Sqlmap工具基础用法详解</h3><h6 id="1-主要功能："><a href="#1-主要功能：" class="headerlink" title="1.主要功能："></a>1.主要功能：</h6><p>一个用来做sql注入攻击的工具。<br>扫描、发现、利用给定的url的sql注入漏洞，内置许多绕过插件。</p>
+    <content><![CDATA[<h6 id="1-主要功能："><a href="#1-主要功能：" class="headerlink" title="1.主要功能："></a>1.主要功能：</h6><p>一个用来做sql注入攻击的工具。<br>扫描、发现、利用给定的url的sql注入漏洞，内置许多绕过插件。</p>
 <blockquote>
 <p>注意：需要python2才能运行，python3不可</p>
 </blockquote>
