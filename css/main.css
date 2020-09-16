@@ -1198,7 +1198,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #96cfff;
+  background: #ed04d2;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2994,16 +2994,4 @@ article .post-copyright {
 .highlight-wrap .copy-btn {
   padding: 1px 6px;
   top: 3px;
-}
-.links-all-page,
-.use-motion .links-all-page {
-  opacity: 1;
-}
-.links-all-page-list {
-  display: inline-flex;
-}
-.links-all-page-item {
-  display: flex;
-  flex-direction: column;
-  margin: 3px 5px;
 }
