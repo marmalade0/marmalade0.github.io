@@ -1198,7 +1198,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #610e3d;
+  background: #fae225;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1243,6 +1243,7 @@ pre .javascript .function {
   padding: 0;
 }
 .links-of-blogroll-item {
+  display: inline-block;
   padding: 2px 10px;
 }
 .links-of-blogroll-item a,
@@ -2704,8 +2705,31 @@ ul.breadcrumb li + li:last-child {
 .links-of-author-item .fa {
   margin-right: 2px;
 }
+.links-of-blogroll::before,
+.links-of-blogroll::after {
+  content: ' ';
+  display: table;
+}
+.links-of-blogroll::after {
+  clear: both;
+}
 .links-of-blogroll-item {
   padding: 0;
+  margin: 5px 0 0;
+  width: 50%;
+  width: unset;
+}
+.links-of-blogroll-item a,
+.links-of-blogroll-item span.exturl {
+  box-sizing: border-box;
+  display: inline-block;
+  margin-bottom: 0;
+  margin-right: 0;
+  max-width: 216px;
+  overflow: hidden;
+  padding: 0 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .content-wrap {
   background: initial;
@@ -2970,4 +2994,16 @@ article .post-copyright {
 .highlight-wrap .copy-btn {
   padding: 1px 6px;
   top: 3px;
+}
+.links-all-page,
+.use-motion .links-all-page {
+  opacity: 1;
+}
+.links-all-page-list {
+  display: inline-flex;
+}
+.links-all-page-item {
+  display: flex;
+  flex-direction: column;
+  margin: 3px 5px;
 }
