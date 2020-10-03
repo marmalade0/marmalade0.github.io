@@ -30,9 +30,9 @@
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
-    lazyload: false,
+    lazyload: true,
     pangu: false,
-    comments: {"style":"valine","active":null,"storage":true,"lazyload":false,"nav":null},
+    comments: {"style":"valine","active":null,"storage":true,"lazyload":true,"nav":null},
     algolia: {
       appID: '',
       apiKey: '',
@@ -332,16 +332,16 @@
       
         <h3 id="Hexo博客百度收录（SEO）"><a href="#Hexo博客百度收录（SEO）" class="headerlink" title="Hexo博客百度收录（SEO）"></a>Hexo博客百度收录（SEO）</h3><p>曾迫不及待地想在百度上找到我的博文，可是找不到<br>后发现还要有百度收录操作才可显示<br>那就开始吧！</p>
 <a id="more"></a>
-<p><strong>1.</strong> 百度搜索自己的域名，会发现找不到，显示<br><img src="/images/HexoSEO/1.png" alt="ec4ca260ed1644a3e0c5133e2fd88cf4.png"><br>点击提交网址，并登录<br>提交好网站后没有下文……<br><strong>2.</strong> 验证网站的所有权<br>登录百度站长平台 ,<br>登录成功之后在站点管理中点击添加网站然后输入你的站点地址，建议输入的网站为www开头的，</p>
+<p><strong>1.</strong> 百度搜索自己的域名，会发现找不到，显示<br><img data-src="/images/HexoSEO/1.png" alt="ec4ca260ed1644a3e0c5133e2fd88cf4.png"><br>点击提交网址，并登录<br>提交好网站后没有下文……<br><strong>2.</strong> 验证网站的所有权<br>登录百度站长平台 ,<br>登录成功之后在站点管理中点击添加网站然后输入你的站点地址，建议输入的网站为www开头的，</p>
 <blockquote>
 <p>注意：不要输入github.io的，因为github是不允许百度的spider爬取github上的内容的，所以如果想让你的站点被百度收录，只能使用自己购买的域名</p>
 </blockquote>
 <p>在选择完网站的类型后需要验证网站的所有权，验证网站所有权的方式有三种：文件验证,html标签验证和cname解析验证，使用哪一种方式都可以。</p>
 <blockquote>
 <p>坑：我用的是文件验证</p>
-<p><strong><em>将验证文件放置于您所配置域名&gt;(<a href="http://www.marmalade.vip)的根目录下" target="_blank" rel="noopener">www.marmalade.vip)的根目录下</a></em></strong><br>根目录是网站的source文件夹<br>但是<br><img src="/images/HexoSEO/2.png" alt="a2cf1b8aa1e383d1972f556175d0970a.png"><br>验证失败？<br>果断放弃!</p>
+<p><strong><em>将验证文件放置于您所配置域名&gt;(<a href="http://www.marmalade.vip)的根目录下" target="_blank" rel="noopener">www.marmalade.vip)的根目录下</a></em></strong><br>根目录是网站的source文件夹<br>但是<br><img data-src="/images/HexoSEO/2.png" alt="a2cf1b8aa1e383d1972f556175d0970a.png"><br>验证失败？<br>果断放弃!</p>
 </blockquote>
-<p>采用第三种cname方法<br>域名解析增加一条<br><img src="/images/HexoSEO/3.png" alt="1ba07eae2c660763c8d19364d515b14d.png"><br>成功！<br><img src="/images/HexoSEO/4.png" alt="66a9ea7ee351dc7b8666285c533052dc.png"></p>
+<p>采用第三种cname方法<br>域名解析增加一条<br><img data-src="/images/HexoSEO/3.png" alt="1ba07eae2c660763c8d19364d515b14d.png"><br>成功！<br><img data-src="/images/HexoSEO/4.png" alt="66a9ea7ee351dc7b8666285c533052dc.png"></p>
 <p><strong>3.</strong> 生成网站地图<br>先安装sitemap插件<br>cmd添加两个插件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line"></span><br><span class="line">npm install hexo-generator-baidu-sitemap --save12</span><br></pre></td></tr></table></figure>
 
@@ -355,37 +355,37 @@
 <p>在deploy里添加新的配置项</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">deploy: </span><br><span class="line"> - type: git # 原来就有的</span><br><span class="line"> repo: 巴拉巴拉</span><br><span class="line"> branch: master </span><br><span class="line"> message: blog update </span><br><span class="line"> - type: baidu_url_submitter # 注意，这个为新增的</span><br></pre></td></tr></table></figure>
 <p><strong>结果报错：？？？</strong></p>
-<p><img src="/images/HexoSEO/5.png" alt="44b0cd11f2f4cb20745d82a709148306.png"><br>百度这个错误<br><a href="https://blog.csdn.net/elgong/article/details/97839395" target="_blank" rel="noopener">hexo错误 TypeError: Cannot read property ‘count’ of undefined</a></p>
+<p><img data-src="/images/HexoSEO/5.png" alt="44b0cd11f2f4cb20745d82a709148306.png"><br>百度这个错误<br><a href="https://blog.csdn.net/elgong/article/details/97839395" target="_blank" rel="noopener">hexo错误 TypeError: Cannot read property ‘count’ of undefined</a></p>
 <blockquote>
 <p>解决方案：</p>
 <p>npm remove hexo-baidu-url-submit<br>hexo clean<br>hexo g</p>
 <p>删除百度自动提交就好了。</p>
 </blockquote>
-<p>可是删除了百度自动提交不就不行了？？？<br>暂时删除<br>以后每次hexo个 g -d<br>会提示<br><img src="/images/HexoSEO/6.png" alt="202c95616dea93d1870b4da3c452eb2e.png"></p>
+<p>可是删除了百度自动提交不就不行了？？？<br>暂时删除<br>以后每次hexo个 g -d<br>会提示<br><img data-src="/images/HexoSEO/6.png" alt="202c95616dea93d1870b4da3c452eb2e.png"></p>
 <p><strong><em>过了很久以后</em></strong><br>忍不住又使用了一遍指令<br>npm install hexo-baidu-url-submit –save</p>
 <h6 id="结果这次hexo-g-d不报错了！？？"><a href="#结果这次hexo-g-d不报错了！？？" class="headerlink" title="结果这次hexo g -d不报错了！？？"></a><strong><em>结果这次hexo g -d不报错了！？？</em></strong></h6><p>所以成功！</p>
 <blockquote>
 <p>参考文章：<br><a href="https://blog.csdn.net/Ivan_zcy/article/details/82938260" target="_blank" rel="noopener">如何让hexo博文被百度收录</a></p>
 </blockquote>
-<h3 id="链接提交：自动推送"><a href="#链接提交：自动推送" class="headerlink" title="链接提交：自动推送"></a>链接提交：自动推送</h3><p>进入主题配置文件，开启baidu_push(fause变为true)<br><img src="/images/HexoSEO/7.png" alt="3f2a9dae745aaf66fa957dde3e8c8fe0.png"></p>
+<h3 id="链接提交：自动推送"><a href="#链接提交：自动推送" class="headerlink" title="链接提交：自动推送"></a>链接提交：自动推送</h3><p>进入主题配置文件，开启baidu_push(fause变为true)<br><img data-src="/images/HexoSEO/7.png" alt="3f2a9dae745aaf66fa957dde3e8c8fe0.png"></p>
 <p>站点根目录\themes\next\layout_scripts目录，修改baidu_push.swig文件为以下内容，若无该文件直接创建一个</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.baidu_push %&#125;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">(function()&#123;</span><br><span class="line">    var bp &#x3D; document.createElement(&#39;script&#39;);</span><br><span class="line">    var curProtocol &#x3D; window.location.protocol.split(&#39;:&#39;)[0];</span><br><span class="line">    if (curProtocol &#x3D;&#x3D;&#x3D; &#39;https&#39;) &#123;</span><br><span class="line">        bp.src &#x3D; &#39;https:&#x2F;&#x2F;zz.bdstatic.com&#x2F;linksubmit&#x2F;push.js&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        bp.src &#x3D; &#39;http:&#x2F;&#x2F;push.zhanzhang.baidu.com&#x2F;push.js&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">    var s &#x3D; document.getElementsByTagName(&quot;script&quot;)[0];</span><br><span class="line">    s.parentNode.insertBefore(bp, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
 
-<p>重新编译生成部署即可，这样每次访问一个页面都会主动把这个页面的地址提交给百度<br>访问博客任一页面，然后按F12，切换到Elements，如果看到如下代码说明以上js代码插入成功<br><img src="/images/HexoSEO/8.png" alt="6146748ff883ba414b1e01d641d475be.png"></p>
-<h3 id="sitemap提交"><a href="#sitemap提交" class="headerlink" title="sitemap提交"></a>sitemap提交</h3><p>在百度站长平台找到链接提交，自动提交中找到sitemap<br>将以下两行（域名写自己的）提交，然后等待回复就可以啦<br><a href="https://marmalade.vip/baidusitemap.xml">https://marmalade.vip/baidusitemap.xml</a><br><a href="https://marmalade.vip/sitemap.xml">https://marmalade.vip/sitemap.xml</a><br><img src="/images/HexoSEO/9.png" alt="893dc490024a13ce5c879d7b5ec42925.png"></p>
-<h3 id="谷歌收录"><a href="#谷歌收录" class="headerlink" title="谷歌收录"></a>谷歌收录</h3><p>需要范强才可，首先要有一个谷歌账号<br>打开该网址<br><code>https://search.google.com/</code><br>登录后输入自己的域名会有DNS域名所有权验证<br><img src="/images/HexoSEO/10.png" alt="4826e3fcf6a817d2adcfb959bfe6e6f6.png"></p>
-<p>要用到域名解析，打开自己域名的域名解析界面，<br><img src="/images/HexoSEO/11.png" alt="6678138a3ceba3134e430d119eb5e49f.png"></p>
-<p>添加TXT记录，完成DNS验证<br><img src="/images/HexoSEO/12.png" alt="b69491d9868012b841bf03452b03e9c1.png"></p>
+<p>重新编译生成部署即可，这样每次访问一个页面都会主动把这个页面的地址提交给百度<br>访问博客任一页面，然后按F12，切换到Elements，如果看到如下代码说明以上js代码插入成功<br><img data-src="/images/HexoSEO/8.png" alt="6146748ff883ba414b1e01d641d475be.png"></p>
+<h3 id="sitemap提交"><a href="#sitemap提交" class="headerlink" title="sitemap提交"></a>sitemap提交</h3><p>在百度站长平台找到链接提交，自动提交中找到sitemap<br>将以下两行（域名写自己的）提交，然后等待回复就可以啦<br><a href="https://marmalade.vip/baidusitemap.xml">https://marmalade.vip/baidusitemap.xml</a><br><a href="https://marmalade.vip/sitemap.xml">https://marmalade.vip/sitemap.xml</a><br><img data-src="/images/HexoSEO/9.png" alt="893dc490024a13ce5c879d7b5ec42925.png"></p>
+<h3 id="谷歌收录"><a href="#谷歌收录" class="headerlink" title="谷歌收录"></a>谷歌收录</h3><p>需要范强才可，首先要有一个谷歌账号<br>打开该网址<br><code>https://search.google.com/</code><br>登录后输入自己的域名会有DNS域名所有权验证<br><img data-src="/images/HexoSEO/10.png" alt="4826e3fcf6a817d2adcfb959bfe6e6f6.png"></p>
+<p>要用到域名解析，打开自己域名的域名解析界面，<br><img data-src="/images/HexoSEO/11.png" alt="6678138a3ceba3134e430d119eb5e49f.png"></p>
+<p>添加TXT记录，完成DNS验证<br><img data-src="/images/HexoSEO/12.png" alt="b69491d9868012b841bf03452b03e9c1.png"></p>
 <p>对应值：2017030909245xxxxxxxxxxxxxxxxxx（直接复制 “记录值”输入），</p>
 <blockquote>
 <p>（如果是二级域名，比如west.qk365.vip，主机名就是 &gt;“west”，对应值复制输入系统提示的 “记录值”）</p>
 </blockquote>
 <p>然后等待一天后可进入管理页面</p>
-<p>直接在站点控制台添加<br><img src="/images/HexoSEO/13.png" alt="6c68a6c05cead57cca8df9a728bda11d.png"><br>即提交成功</p>
+<p>直接在站点控制台添加<br><img data-src="/images/HexoSEO/13.png" alt="6c68a6c05cead57cca8df9a728bda11d.png"><br>即提交成功</p>
 <h5 id="添加蜘蛛协议"><a href="#添加蜘蛛协议" class="headerlink" title="添加蜘蛛协议"></a>添加蜘蛛协议</h5><p>蜘蛛协议就是告诉爬虫，你的哪些文件爬虫可以爬取，哪些不能的文件。新建一个robots.txt文件，添加以下内容，然后放到/yoursite/source/文件夹下面：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">User-agent: *Allow: &#x2F;</span><br><span class="line">Allow: &#x2F;archives&#x2F;</span><br><span class="line">Allow: &#x2F;tags&#x2F;</span><br><span class="line">Allow: &#x2F;categories&#x2F;</span><br><span class="line">Allow: &#x2F;about&#x2F;</span><br><span class="line">Disallow: &#x2F;js&#x2F;Disallow: &#x2F;css&#x2F;</span><br><span class="line">Disallow: &#x2F;lib&#x2F;</span><br><span class="line">Sitemap: 刚刚sitemap的地址</span><br></pre></td></tr></table></figure>
 
-<p>在百度站长平台，左侧，Robots里面可以检测你写的是否正确：<br><img src="/images/HexoSEO/14.png" alt="94e08374e20e16a2fe0e80ad92276bd1.png"></p>
+<p>在百度站长平台，左侧，Robots里面可以检测你写的是否正确：<br><img data-src="/images/HexoSEO/14.png" alt="94e08374e20e16a2fe0e80ad92276bd1.png"></p>
 <h3 id="禁止爬虫跟踪外链"><a href="#禁止爬虫跟踪外链" class="headerlink" title="(禁止爬虫跟踪外链)"></a>(禁止爬虫跟踪外链)</h3><p>当你提交了链接，写好了蜘蛛爬取协议之后，搜索引擎的蜘蛛就会来爬取你的文章内容。但是，如果你的文章中有外链，蜘蛛就会通过这个链接到别人的站点去。如果这个站点是友情链接还好，如果是非友链，就回严重影响网站的爬取。<br>为了避免蜘蛛进入非友情链接，需要为非友链添加上nofollow属性。推荐使用hexo-autonofollow插件。<br>在站点根目录下执行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-autonofollow --save</span><br></pre></td></tr></table></figure>
 <p>修改站点配置文件，添加如下内容：</p>
@@ -699,6 +699,7 @@
   
   <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

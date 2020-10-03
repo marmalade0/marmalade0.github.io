@@ -30,9 +30,9 @@
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
-    lazyload: false,
+    lazyload: true,
     pangu: false,
-    comments: {"style":"valine","active":null,"storage":true,"lazyload":false,"nav":null},
+    comments: {"style":"valine","active":null,"storage":true,"lazyload":true,"nav":null},
     algolia: {
       appID: '',
       apiKey: '',
@@ -331,18 +331,18 @@
 <p>在开始“大展身手”前，要注意一点：<br>每添加了一项新代码或功能后不要着急部署到github里，<br>健康的方式是用<br>hexo s -p 5555<br>指令开启5555端口，然后浏览器输入127.0.0.1:5555或localhost:5555便可浏览网站，保存之后再刷新本地浏览的页面会相应修改，<br>等调试无误后才可用<br>hexo clean<br>hexo g -d<br>指令部署，这样能够防止出错时及时检查并修改，而不至于网站崩溃。</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="1-目录中创建标签和分类菜单及应用"><a href="#1-目录中创建标签和分类菜单及应用" class="headerlink" title="(1)目录中创建标签和分类菜单及应用"></a>(1)目录中创建标签和分类菜单及应用</h3><p>博客目录下hexo new page “tags”<br>然后在source文件夹下出现tags<br><img src="/images/beautify1/1.png" alt="d8a4349c886b117733dce99910a5a540.png"><br>打开对应的index，改为<br><img src="/images/beautify1/2.png" alt="b60a2cc94f7f85a30a8725f88622557c.png"></p>
-<p>同理hexo new page “categories”<br><img src="/images/beautify1/3.png" alt="b0b1f3f16bafa03f1d188a0831acfb57.png"><br>在主题配置文件中找到menu，去掉对应井号即可<br><img src="/images/beautify1/4.png" alt="b0fcd6d7938cf576b9b8d75ac61e0ed0.png"><br>想要在某篇文章中添加标签或分类只需在文章前面加上下图效果<br><img src="/images/beautify1/5.png" alt="f289d5e5a2d86c422e255cd05d6b2aee.png"></p>
-<h3 id="2-标签美化"><a href="#2-标签美化" class="headerlink" title="(2)标签美化"></a>(2)标签美化</h3><p><img src="/images/beautify1/6.png" alt="b658164ad4ee428656cb8d6b0f11a74d.png"><br>井号样式不好看，改为图标</p>
+<h3 id="1-目录中创建标签和分类菜单及应用"><a href="#1-目录中创建标签和分类菜单及应用" class="headerlink" title="(1)目录中创建标签和分类菜单及应用"></a>(1)目录中创建标签和分类菜单及应用</h3><p>博客目录下hexo new page “tags”<br>然后在source文件夹下出现tags<br><img data-src="/images/beautify1/1.png" alt="d8a4349c886b117733dce99910a5a540.png"><br>打开对应的index，改为<br><img data-src="/images/beautify1/2.png" alt="b60a2cc94f7f85a30a8725f88622557c.png"></p>
+<p>同理hexo new page “categories”<br><img data-src="/images/beautify1/3.png" alt="b0b1f3f16bafa03f1d188a0831acfb57.png"><br>在主题配置文件中找到menu，去掉对应井号即可<br><img data-src="/images/beautify1/4.png" alt="b0fcd6d7938cf576b9b8d75ac61e0ed0.png"><br>想要在某篇文章中添加标签或分类只需在文章前面加上下图效果<br><img data-src="/images/beautify1/5.png" alt="f289d5e5a2d86c422e255cd05d6b2aee.png"></p>
+<h3 id="2-标签美化"><a href="#2-标签美化" class="headerlink" title="(2)标签美化"></a>(2)标签美化</h3><p><img data-src="/images/beautify1/6.png" alt="b658164ad4ee428656cb8d6b0f11a74d.png"><br>井号样式不好看，改为图标</p>
 <p>在博客项目中找到<code>/themes/next/layout/_macro/post.swig</code>，搜索 rel=”tag”，将 #号 换成</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;i class&#x3D;&quot;fa fa-tag&quot;&gt;&lt;&#x2F;i&gt;</span><br></pre></td></tr></table></figure>
-<p>完成样子：<br><img src="/images/beautify1/7.png" alt="7479a2848622b7cf6f36a56ac783cbdc.png"></p>
+<p>完成样子：<br><img data-src="/images/beautify1/7.png" alt="7479a2848622b7cf6f36a56ac783cbdc.png"></p>
 <h3 id="3-添加点击爱心效果"><a href="#3-添加点击爱心效果" class="headerlink" title="(3)添加点击爱心效果"></a>(3)添加点击爱心效果</h3><p>在页面中点击任意位置实现蹦出爱心效果<br>在 <code>/themes/next/source/js</code>下新建文件 clicklove.js，接着把如下代码复制粘贴到 clicklove.js 文件中，代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!function(e,t,a)&#123;function n()&#123;c(&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#39;&#39;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;),o(),r()&#125;function r()&#123;for(var e&#x3D;0;e&lt;d.length;e++)d[e].alpha&lt;&#x3D;0?(t.body.removeChild(d[e].el),d.splice(e,1)):(d[e].y--,d[e].scale+&#x3D;.004,d[e].alpha-&#x3D;.013,d[e].el.style.cssText&#x3D;&quot;left:&quot;+d[e].x+&quot;px;top:&quot;+d[e].y+&quot;px;opacity:&quot;+d[e].alpha+&quot;;transform:scale(&quot;+d[e].scale+&quot;,&quot;+d[e].scale+&quot;) rotate(45deg);background:&quot;+d[e].color+&quot;;z-index:99999&quot;);requestAnimationFrame(r)&#125;function o()&#123;var t&#x3D;&quot;function&quot;&#x3D;&#x3D;typeof e.onclick&amp;&amp;e.onclick;e.onclick&#x3D;function(e)&#123;t&amp;&amp;t(),i(e)&#125;&#125;function i(e)&#123;var a&#x3D;t.createElement(&quot;div&quot;);a.className&#x3D;&quot;heart&quot;,d.push(&#123;el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:s()&#125;),t.body.appendChild(a)&#125;function c(e)&#123;var a&#x3D;t.createElement(&quot;style&quot;);a.type&#x3D;&quot;text&#x2F;css&quot;;try&#123;a.appendChild(t.createTextNode(e))&#125;catch(t)&#123;a.styleSheet.cssText&#x3D;e&#125;t.getElementsByTagName(&quot;head&quot;)[0].appendChild(a)&#125;function s()&#123;return&quot;rgb(&quot;+~~(255*Math.random())+&quot;,&quot;+~~(255*Math.random())+&quot;,&quot;+~~(255*Math.random())+&quot;)&quot;&#125;var d&#x3D;[];e.requestAnimationFrame&#x3D;function()&#123;return e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e)&#123;setTimeout(e,1e3&#x2F;60)&#125;&#125;(),n()&#125;(window,document);</span><br></pre></td></tr></table></figure>
 <p>在 <code>\themes\next\layout\_layout.swig</code> 文件末尾添加：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 页面点击小红心 --&gt; &lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;js&#x2F;clicklove.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="4-网站头像修改"><a href="#4-网站头像修改" class="headerlink" title="(4)网站头像修改"></a>(4)网站头像修改</h3><p>主题配置文件中找到avatar<br>全变成true，url里写自己图像的路径<br><img src="/images/beautify1/8.png" alt="4304959957ae1fde9391e0bde50f21af.png"></p>
+<h3 id="4-网站头像修改"><a href="#4-网站头像修改" class="headerlink" title="(4)网站头像修改"></a>(4)网站头像修改</h3><p>主题配置文件中找到avatar<br>全变成true，url里写自己图像的路径<br><img data-src="/images/beautify1/8.png" alt="4304959957ae1fde9391e0bde50f21af.png"></p>
 <h3 id="5-网站图标修改"><a href="#5-网站图标修改" class="headerlink" title="(5)网站图标修改"></a>(5)网站图标修改</h3><p>在next主题配置文件中找favicon:<br>路径改为自己的图标所在<br>最好路径形式为(/images/…)<br>然后将图标保存在根目录下的source/images文件夹里就可</p>
 <h3 id="6-添加站内搜索"><a href="#6-添加站内搜索" class="headerlink" title="(6)添加站内搜索"></a>(6)添加站内搜索</h3><p>由于可能我需要快速查找相关文章，那么就需要添加站内搜索。</p>
 <p>1.安装站内搜索插件<br>  npm install hexo-generator-searchdb –save<br>2.在根目录下的_config.yml添加</p>
@@ -658,6 +658,7 @@
   
   <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

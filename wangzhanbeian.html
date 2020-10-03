@@ -30,9 +30,9 @@
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
-    lazyload: false,
+    lazyload: true,
     pangu: false,
-    comments: {"style":"valine","active":null,"storage":true,"lazyload":false,"nav":null},
+    comments: {"style":"valine","active":null,"storage":true,"lazyload":true,"nav":null},
     algolia: {
       appID: '',
       apiKey: '',
@@ -320,20 +320,20 @@
       
         <h2 id="网站备案"><a href="#网站备案" class="headerlink" title="网站备案"></a>网站备案</h2><p>要分别进行公信网备案和公安备案然后部署在网站底部</p>
 <a id="more"></a>
-<h5 id="公信网备案"><a href="#公信网备案" class="headerlink" title="公信网备案"></a>公信网备案</h5><p>用阿里云，买一个服务器进行个人信息填写<br><img src="/images/wangzhanbeian/1.png" alt="ca1903480daa2dd58e1cf1ce8a35baa2.png"><br>等待一段时间（一周到三周不等）的审核后通过<br><img src="/images/wangzhanbeian/2.png" alt="39cfd992a4a42b30ceb0249cf81d452a.png"></p>
+<h5 id="公信网备案"><a href="#公信网备案" class="headerlink" title="公信网备案"></a>公信网备案</h5><p>用阿里云，买一个服务器进行个人信息填写<br><img data-src="/images/wangzhanbeian/1.png" alt="ca1903480daa2dd58e1cf1ce8a35baa2.png"><br>等待一段时间（一周到三周不等）的审核后通过<br><img data-src="/images/wangzhanbeian/2.png" alt="39cfd992a4a42b30ceb0249cf81d452a.png"></p>
 <h5 id="公安网备案"><a href="#公安网备案" class="headerlink" title="公安网备案"></a>公安网备案</h5><p>比较公信网，这个就要快很多<br>1.打开全国公安机关网站<a href="http://www.beian.gov.cn注册一个帐号登录" target="_blank" rel="noopener">www.beian.gov.cn注册一个帐号登录</a></p>
 <p>2.登录后会提示填写开办主体管理，如果没有提示登录后点击左边的菜单就行</p>
 <p>3.填写主体相关的信息，比如个人，姓名，身份证等信息，然后保存</p>
-<p>4.找到左边菜单新办网站申请，这点不用填写，直接点击下一步<br><img src="/images/wangzhanbeian/3.png" alt="f2395378ba06cdcd34bf805811c7dbc0.png"><br>接下来填写网站基本信息<br>包括网站开通日期，名称等，<br><strong>域名证书照片</strong>去域名网站下载，我的域名在阿里云购买，即可在阿里云点击管理域名<br><img src="/images/wangzhanbeian/4.png" alt="e456170389f729ba4e344fb6d3f71752.png"><br>域名证书下载处下载好图片上传即可</p>
+<p>4.找到左边菜单新办网站申请，这点不用填写，直接点击下一步<br><img data-src="/images/wangzhanbeian/3.png" alt="f2395378ba06cdcd34bf805811c7dbc0.png"><br>接下来填写网站基本信息<br>包括网站开通日期，名称等，<br><strong>域名证书照片</strong>去域名网站下载，我的域名在阿里云购买，即可在阿里云点击管理域名<br><img data-src="/images/wangzhanbeian/4.png" alt="e456170389f729ba4e344fb6d3f71752.png"><br>域名证书下载处下载好图片上传即可</p>
 <p>至于网络接入服务商信息和域名注册服务商信息<br>可在阿里云上搜索公安联网备案信息填写指南<br>里面的信息都有，也可问网站客服<br>下一步同主体负责人信息前的框都打上勾，然后提交等待审核就行了</p>
 <p>后当地网安大队网警会让你填写两个表格</p>
 <p>博客个人空间服务企业基础信息登记表.xls<br>和<br>交互式服务安全检查表.xls<br>然后等待通过即可</p>
 <h2 id="底部添加ICP备案和公安网备案"><a href="#底部添加ICP备案和公安网备案" class="headerlink" title="底部添加ICP备案和公安网备案"></a>底部添加ICP备案和公安网备案</h2><p><a href="https://www.chingow.cn/posts/c7372a12.html" target="_blank" rel="noopener">参考大佬文章</a><br>我们的网站已经有备案号了，但是应该如何添加备案号到博客最下面呢？</p>
 <p>首先，在 主题配置文件  _config.yml 中的配置添加备案配置：<br>位置：<br>themes/next/_config.yml</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 这里打开备案信息，填写ICP备案号   </span><br><span class="line">beian:   </span><br><span class="line">enable: true  </span><br><span class="line">icp: 鲁ICP备20005811号 </span><br><span class="line"># 这里是新加的内容，填写公安备案信息</span><br><span class="line">+  gongan:</span><br><span class="line">+    enable: true</span><br><span class="line">+    local: 鲁</span><br><span class="line">+    num: 3711022000277</span><br></pre></td></tr></table></figure>
-<p>将多余的注释掉，不然会报错<br><img src="/images/wangzhanbeian/5.png" alt="f260561f144f68fdcc2c91fbc46618a3.png"></p>
-<p>然后，在语言配置文件里，添加表述文案beian：<br>位置:<br>themes/next/languages/zh-CN.yml<br><img src="/images/wangzhanbeian/6.png" alt="eab3fca27ff1e7456241e58f76a3f5e4.png"></p>
-<p>接下来，删除原有的布局文件中备案样式的代码：(标注处全删)<br>位置:<br>themes/next/layout/_partials/footer.swig<br><img src="/images/wangzhanbeian/7.png" alt="5283d46f4a83dac14b69ea97c1f50d10.png"><br>找到如下位置插入一行代码：</p>
+<p>将多余的注释掉，不然会报错<br><img data-src="/images/wangzhanbeian/5.png" alt="f260561f144f68fdcc2c91fbc46618a3.png"></p>
+<p>然后，在语言配置文件里，添加表述文案beian：<br>位置:<br>themes/next/languages/zh-CN.yml<br><img data-src="/images/wangzhanbeian/6.png" alt="eab3fca27ff1e7456241e58f76a3f5e4.png"></p>
+<p>接下来，删除原有的布局文件中备案样式的代码：(标注处全删)<br>位置:<br>themes/next/layout/_partials/footer.swig<br><img data-src="/images/wangzhanbeian/7.png" alt="5283d46f4a83dac14b69ea97c1f50d10.png"><br>找到如下位置插入一行代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;span class&#x3D;&quot;author&quot; itemprop&#x3D;&quot;copyrightHolder&quot;&gt;&#123;&#123; theme.footer.copyright || author &#125;&#125;&lt;&#x2F;span&gt;</span><br><span class="line">+  &lt;span class&#x3D;&quot;post-meta-divider footer-ages-icon&quot;&gt; | &lt;&#x2F;span&gt;</span><br><span class="line">&#123;% if config.symbols_count_time.total_symbols %&#125;</span><br></pre></td></tr></table></figure>
 
 <p>最后，在主题布局文件中添加我们自定义的备案样式：<br>位置：<br>themes/next/layout/_layout.swig</p>
@@ -342,7 +342,7 @@
 <blockquote>
 <p>注意将公安网图标保存并命名/images/beian.png</p>
 </blockquote>
-<p>成功<br><img src="/images/wangzhanbeian/8.png" alt="3b991c5458d20080e149701386acf7ea.png"></p>
+<p>成功<br><img data-src="/images/wangzhanbeian/8.png" alt="3b991c5458d20080e149701386acf7ea.png"></p>
 
     </div>
 
@@ -643,6 +643,7 @@
   
   <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

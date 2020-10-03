@@ -14,22 +14,22 @@
 <h6 id="4-用法"><a href="#4-用法" class="headerlink" title="4.用法"></a>4.用法</h6><blockquote>
 <p>以DVWA的low等级为实验网站,url为<code>http://127.0.0.1/DVWA-master/vulnerabilities/sqli/</code></p>
 </blockquote>
-<p><strong>(1)判断是否有注入点</strong><br>首先三步拿到url<br><img src="/images/sqlmapbasicuse/1.png" alt="03d75491bfd3b0989cda112f18a5626b.png"></p>
+<p><strong>(1)判断是否有注入点</strong><br>首先三步拿到url<br><img data-src="/images/sqlmapbasicuse/1.png" alt="03d75491bfd3b0989cda112f18a5626b.png"></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python2 sqlmap.py  -u &quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;DVWA-master&#x2F;vulnerabilities&#x2F;sqli&#x2F;?id&#x3D;1&amp;Submit&#x3D;Submit#&quot;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>注：当注入点后的参数大于等于两个时，需要加双引号</p>
 </blockquote>
 <p>如果出现以下结果则表明sqlmap检测到有可以注入的地方</p>
-<p>结果显示如下<br><img src="/images/sqlmapbasicuse/2.png" alt="7597e5bf9a8503668c6acde63dee578f.png"><br>发现没有找到注入点。</p>
+<p>结果显示如下<br><img data-src="/images/sqlmapbasicuse/2.png" alt="7597e5bf9a8503668c6acde63dee578f.png"><br>发现没有找到注入点。</p>
 <p>从结果看发现我们是需要cookie的，然后去dvwa看一下cookie</p>
 <p>然后在命令中加入cookie：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">python2 sqlmap.py -u &quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;DVWA-master&#x2F;vulnerabilities&#x2F;sqli&#x2F;?id&#x3D;1&amp;Submit&#x3D;Submit#&quot; --cookie &quot;security&#x3D;low;PHPSESSID&#x3D;b3qlu23g2t781bk3aslt******&quot;</span><br></pre></td></tr></table></figure>
 
-<p>如果出现以下结果则表明sqlmap检测到有可以注入的地方<br><img src="/images/sqlmapbasicuse/3.png" alt="30235e9a3dfae35f806441331df7a74e.png"></p>
+<p>如果出现以下结果则表明sqlmap检测到有可以注入的地方<br><img data-src="/images/sqlmapbasicuse/3.png" alt="30235e9a3dfae35f806441331df7a74e.png"></p>
 <p><strong>(2)判断文本中的请求是否存在注入</strong></p>
 <p>sqlmap可以从一个文本文件中获取http请求（这样的好处在于：不用设置其他参数，例如cookie、post数据等）</p>
-<p>下图1.txt的内容是web数据包<br><img src="/images/sqlmapbasicuse/4.png" alt="dc032fb692dbd9e6ba6deb92354dfdf4.png"></p>
+<p>下图1.txt的内容是web数据包<br><img data-src="/images/sqlmapbasicuse/4.png" alt="dc032fb692dbd9e6ba6deb92354dfdf4.png"></p>
 <p>sqlmap.py  -r  路径/1.txt</p>
 <blockquote>
 <p>注：-r一般存在cookie注入时使用</p>
@@ -37,23 +37,23 @@
 <p><strong>(3)查询当前用户下的所有数据库</strong></p>
 <p>小提示：首先你要先确定有注入点，才能用该命令查询用户的数据库</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python2 sqlmap.py  -u  &quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;DVWA-master&#x2F;vulnerabilities&#x2F;sqli&#x2F;?id&#x3D;1&amp;Submit&#x3D;Submit#&quot; --cookie &quot;security&#x3D;low;PHPSESSID&#x3D;b3qlu23g2t781bk3aslt******&quot; --dbs</span><br></pre></td></tr></table></figure>
-<p>执行后会拿到数据库信息<br><img src="/images/sqlmapbasicuse/5.png" alt="4079615a55a3fb4f22d5e5ff52dfe6f4.png"></p>
+<p>执行后会拿到数据库信息<br><img data-src="/images/sqlmapbasicuse/5.png" alt="4079615a55a3fb4f22d5e5ff52dfe6f4.png"></p>
 <p><strong>(4)获取数据库中表的信息</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python2 sqlmap.py -u &quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;DVWA-master&#x2F;vulnerabilities&#x2F;sqli&#x2F;?id&#x3D;1&amp;Submit&#x3D;Submit#&quot; --cookie &quot;security&#x3D;low;PHPSESSID&#x3D;b3qlu23g2t781bk3aslt******&quot; -D dvwa --tables</span><br></pre></td></tr></table></figure>
-<p>可以拿到dvwa库中所有表的名字<br><img src="/images/sqlmapbasicuse/6.png" alt="bab165841e616ed70eea4fad1495fa91.png"></p>
+<p>可以拿到dvwa库中所有表的名字<br><img data-src="/images/sqlmapbasicuse/6.png" alt="bab165841e616ed70eea4fad1495fa91.png"></p>
 <blockquote>
 <p>注：将上一条命令中的–table缩写成-T时，表示在某表中继续查询<br>       若在该命令中不加-D参数来指定具体的数据库，那么sqlmap会把数据库中所有表列出</p>
 </blockquote>
 <p><strong>(5)获取表中的字段信息</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python2 sqlmap.py -u &quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;DVWA-master&#x2F;vulnerabilities&#x2F;sqli&#x2F;?id&#x3D;1&amp;Submit&#x3D;Submit#&quot; --cookie &quot;security&#x3D;low;PHPSESSID&#x3D;b3qlu23g2t781bk3aslt******&quot; -D dvwa -T users --columns</span><br></pre></td></tr></table></figure>
-<p>拿到了表中的所有字段<br><img src="/images/sqlmapbasicuse/7.png" alt="8475adb05acdab6fc0b7197226e03087.png"></p>
+<p>拿到了表中的所有字段<br><img data-src="/images/sqlmapbasicuse/7.png" alt="8475adb05acdab6fc0b7197226e03087.png"></p>
 <blockquote>
 <p>注：在后续注入中 –columns可以缩写成-C</p>
 </blockquote>
 <p><strong>(6)获取字段内容</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python2 sqlmap.py -u &quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;DVWA-master&#x2F;vulnerabilities&#x2F;sqli&#x2F;?id&#x3D;1&amp;Submit&#x3D;Submit#&quot; --cookie &quot;security&#x3D;low;PHPSESSID&#x3D;b3qlu23g2t781bk3aslt******&quot; -D dvwa -T users -C username,password --dump</span><br></pre></td></tr></table></figure>
 
-<p>这里获取的是dvwa数据库里的users表中的username和password的值<br><img src="/images/sqlmapbasicuse/8.png" alt="e61e6bfb9438a7f9b9c8bb5a5af80de8.png"></p>
+<p>这里获取的是dvwa数据库里的users表中的username和password的值<br><img data-src="/images/sqlmapbasicuse/8.png" alt="e61e6bfb9438a7f9b9c8bb5a5af80de8.png"></p>
 <p><strong>(7)获取数据库的所有用户</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python2 sqlmap.py -u &quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;DVWA-master&#x2F;vulnerabilities&#x2F;sqli&#x2F;?id&#x3D;1&amp;Submit&#x3D;Submit#&quot; --cookie &quot;security&#x3D;low;PHPSESSID&#x3D;b3qlu23g2t781bk3aslt******&quot; --users</span><br></pre></td></tr></table></figure>
 
@@ -62,10 +62,10 @@
 
 <p><strong>(9)获取当前网站数据库的名称</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python2 sqlmap.py -u &quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;DVWA-master&#x2F;vulnerabilities&#x2F;sqli&#x2F;?id&#x3D;1&amp;Submit&#x3D;Submit#&quot; --cookie &quot;security&#x3D;low;PHPSESSID&#x3D;b3qlu23g2t781bk3aslt******&quot; --current-db</span><br></pre></td></tr></table></figure>
-<p><img src="/images/sqlmapbasicuse/9.png" alt="a9215034277537f3c18a2e891bf9640d.png"></p>
+<p><img data-src="/images/sqlmapbasicuse/9.png" alt="a9215034277537f3c18a2e891bf9640d.png"></p>
 <p><strong>(10)获取当前网站数据库的用户名称</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python2 sqlmap.py -u &quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;DVWA-master&#x2F;vulnerabilities&#x2F;sqli&#x2F;?id&#x3D;1&amp;Submit&#x3D;Submit#&quot; --cookie &quot;security&#x3D;low;PHPSESSID&#x3D;b3qlu23g2t781bk3aslt******&quot; --current-user</span><br></pre></td></tr></table></figure>
-<p><img src="/images/sqlmapbasicuse/10.png" alt="984c2a56621209c4e9284cd63103991b.png"></p>
+<p><img data-src="/images/sqlmapbasicuse/10.png" alt="984c2a56621209c4e9284cd63103991b.png"></p>
 ]]></content>
       <tags>
         <tag>sqlmap,dvwa</tag>
@@ -74,11 +74,11 @@
   <entry>
     <title>Hexo博客：您备案的网站未指向阿里云国内节点（不含香港）服务器，备案号可能被取消接入</title>
     <url>/aliyunbeianjinggao.html</url>
-    <content><![CDATA[<p>工信部备案后一段时间会发来<br> <code>Hexo博客：您备案的网站未指向阿里云国内节点（不含香港）服务器，备案号可能被取消接入</code><br> 的短信警告，<br><img src="/images/aliyunbeianjinggao/1.jpg" alt="碰到问题不要慌"><br>下面讲述该问题的原因及解决方法。</p>
+    <content><![CDATA[<p>工信部备案后一段时间会发来<br> <code>Hexo博客：您备案的网站未指向阿里云国内节点（不含香港）服务器，备案号可能被取消接入</code><br> 的短信警告，<br><img data-src="/images/aliyunbeianjinggao/1.jpg" alt="碰到问题不要慌"><br>下面讲述该问题的原因及解决方法。</p>
 <a id="more"></a>
 <h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><p>经检查您的网站域名 xxxxxx 未指向阿里云国内节点（不含香港）服务器且无访问记录 ，依据工信部相关法规规定属于空壳网站，请您尽快将域名解析IP地址指向阿里云国内节点（不含香港）服务器。 如果3个工作日后检查发现该备案域名在在阿里云国内节点（不含香港）服务器上仍无访问记录，我们将删除网站备案接入信息。您的备案号可能会被注销，网站访问可能受到影响。</p>
-<p>这个问题常见于个人博客，特别是 hexo 博客，购买了域名，并且备了案，由于 hexo 博客静态托管于 Github Pages 或者 Coding Pages，所以也就没有阿里云的服务器，也就不可能存在域名解析IP地址指向阿里云国内节点服务器。<br><img src="/images/aliyunbeianjinggao/2.png" alt="278aa9789f80e5d30a8a121324e7c709.png"></p>
-<h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4><p>将你的域名添加一个二级域名，解析到某些阿里云国内节点服务器上就行了。例如我博客域名为 <a href="http://www.itrhx.com，就可以添加一个或者两个" target="_blank" rel="noopener">www.itrhx.com，就可以添加一个或者两个</a> A 记录，记录值为阿里云国内节点服务器的 IP。然后<strong>隔一段时间访问一下</strong> 1.itrhx.com 或者 2.itrhx.com ，确保有一点儿访问量就行了。<br><img src="/images/aliyunbeianjinggao/3.png" alt="a8b964517570dcefe573e34daaa6ce99.png"><br>下面列出一些阿里云国内节点服务器 IP，挑一些能访问的就行了。</p>
+<p>这个问题常见于个人博客，特别是 hexo 博客，购买了域名，并且备了案，由于 hexo 博客静态托管于 Github Pages 或者 Coding Pages，所以也就没有阿里云的服务器，也就不可能存在域名解析IP地址指向阿里云国内节点服务器。<br><img data-src="/images/aliyunbeianjinggao/2.png" alt="278aa9789f80e5d30a8a121324e7c709.png"></p>
+<h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4><p>将你的域名添加一个二级域名，解析到某些阿里云国内节点服务器上就行了。例如我博客域名为 <a href="http://www.itrhx.com，就可以添加一个或者两个" target="_blank" rel="noopener">www.itrhx.com，就可以添加一个或者两个</a> A 记录，记录值为阿里云国内节点服务器的 IP。然后<strong>隔一段时间访问一下</strong> 1.itrhx.com 或者 2.itrhx.com ，确保有一点儿访问量就行了。<br><img data-src="/images/aliyunbeianjinggao/3.png" alt="a8b964517570dcefe573e34daaa6ce99.png"><br>下面列出一些阿里云国内节点服务器 IP，挑一些能访问的就行了。</p>
 <p>39.100.0.2 【恭喜，站点创建成功！】<br>39.100.0.16 【恭喜，站点创建成功！】<br>39.100.0.17 【恭喜，站点创建成功！】<br>39.100.0.23 【Document】<br>39.100.0.59 【恭喜，站点创建成功！】<br>39.100.0.64 【贵州鸿巨热力(集团)有限责任公司】<br>39.100.0.68 【恭喜，站点创建成功！】<br>39.100.0.75 【没有找到站点】<br>39.100.0.77 【Welcome to nginx!】<br>39.100.0.88 【恭喜，站点创建成功！】<br>39.100.0.94 【没有找到站点】<br>39.100.0.113 【IIS Windows Server】<br>39.100.0.117 【phpinfo()】<br>39.100.0.118 【没有找到站点】<br>39.100.0.119 【恭喜，站点创建成功！】<br>39.100.0.134 【宁夏塞上优家互联科技有限公司】<br>39.100.0.138 【没有找到站点】<br>39.100.0.149 【没有找到站点】<br>39.100.0.158 【没有找到站点】<br>39.100.0.159 【学点云管理后台】<br>39.100.0.167 【财经·新经济】<br>39.100.0.168 【苏州市相城区燃气有限责任公司】<br>39.100.0.169 【恭喜，站点创建成功！】<br>39.100.0.174 【The page is not foun】<br>39.100.0.177 【恭喜，站点创建成功！】<br>39.100.0.182 【IIS7】<br>39.100.0.192 【恭喜，站点创建成功！】<br>39.100.0.204 【恭喜，站点创建成功！】<br>39.100.0.209 【千胜ERP】<br>39.100.0.214 【LANMP一键安装包,集lamp,lnm】<br>39.100.0.238 【登录 - 大庆井下】<br>39.100.1.1 【上海美凯龙美学装饰工程有限公司ERP】<br>39.100.1.28 【恭喜，站点创建成功！】<br>39.100.1.44 【IIS Windows Server】<br>39.100.1.65 【恭喜，站点创建成功！】<br>39.100.1.68 【Test Page for the Ng】<br>39.100.1.95 【恭喜，站点创建成功！】</p>
 ]]></content>
   </entry>
@@ -122,20 +122,20 @@
     <url>/wangzhanbeian.html</url>
     <content><![CDATA[<h2 id="网站备案"><a href="#网站备案" class="headerlink" title="网站备案"></a>网站备案</h2><p>要分别进行公信网备案和公安备案然后部署在网站底部</p>
 <a id="more"></a>
-<h5 id="公信网备案"><a href="#公信网备案" class="headerlink" title="公信网备案"></a>公信网备案</h5><p>用阿里云，买一个服务器进行个人信息填写<br><img src="/images/wangzhanbeian/1.png" alt="ca1903480daa2dd58e1cf1ce8a35baa2.png"><br>等待一段时间（一周到三周不等）的审核后通过<br><img src="/images/wangzhanbeian/2.png" alt="39cfd992a4a42b30ceb0249cf81d452a.png"></p>
+<h5 id="公信网备案"><a href="#公信网备案" class="headerlink" title="公信网备案"></a>公信网备案</h5><p>用阿里云，买一个服务器进行个人信息填写<br><img data-src="/images/wangzhanbeian/1.png" alt="ca1903480daa2dd58e1cf1ce8a35baa2.png"><br>等待一段时间（一周到三周不等）的审核后通过<br><img data-src="/images/wangzhanbeian/2.png" alt="39cfd992a4a42b30ceb0249cf81d452a.png"></p>
 <h5 id="公安网备案"><a href="#公安网备案" class="headerlink" title="公安网备案"></a>公安网备案</h5><p>比较公信网，这个就要快很多<br>1.打开全国公安机关网站<a href="http://www.beian.gov.cn注册一个帐号登录" target="_blank" rel="noopener">www.beian.gov.cn注册一个帐号登录</a></p>
 <p>2.登录后会提示填写开办主体管理，如果没有提示登录后点击左边的菜单就行</p>
 <p>3.填写主体相关的信息，比如个人，姓名，身份证等信息，然后保存</p>
-<p>4.找到左边菜单新办网站申请，这点不用填写，直接点击下一步<br><img src="/images/wangzhanbeian/3.png" alt="f2395378ba06cdcd34bf805811c7dbc0.png"><br>接下来填写网站基本信息<br>包括网站开通日期，名称等，<br><strong>域名证书照片</strong>去域名网站下载，我的域名在阿里云购买，即可在阿里云点击管理域名<br><img src="/images/wangzhanbeian/4.png" alt="e456170389f729ba4e344fb6d3f71752.png"><br>域名证书下载处下载好图片上传即可</p>
+<p>4.找到左边菜单新办网站申请，这点不用填写，直接点击下一步<br><img data-src="/images/wangzhanbeian/3.png" alt="f2395378ba06cdcd34bf805811c7dbc0.png"><br>接下来填写网站基本信息<br>包括网站开通日期，名称等，<br><strong>域名证书照片</strong>去域名网站下载，我的域名在阿里云购买，即可在阿里云点击管理域名<br><img data-src="/images/wangzhanbeian/4.png" alt="e456170389f729ba4e344fb6d3f71752.png"><br>域名证书下载处下载好图片上传即可</p>
 <p>至于网络接入服务商信息和域名注册服务商信息<br>可在阿里云上搜索公安联网备案信息填写指南<br>里面的信息都有，也可问网站客服<br>下一步同主体负责人信息前的框都打上勾，然后提交等待审核就行了</p>
 <p>后当地网安大队网警会让你填写两个表格</p>
 <p>博客个人空间服务企业基础信息登记表.xls<br>和<br>交互式服务安全检查表.xls<br>然后等待通过即可</p>
 <h2 id="底部添加ICP备案和公安网备案"><a href="#底部添加ICP备案和公安网备案" class="headerlink" title="底部添加ICP备案和公安网备案"></a>底部添加ICP备案和公安网备案</h2><p><a href="https://www.chingow.cn/posts/c7372a12.html" target="_blank" rel="noopener">参考大佬文章</a><br>我们的网站已经有备案号了，但是应该如何添加备案号到博客最下面呢？</p>
 <p>首先，在 主题配置文件  _config.yml 中的配置添加备案配置：<br>位置：<br>themes/next/_config.yml</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 这里打开备案信息，填写ICP备案号   </span><br><span class="line">beian:   </span><br><span class="line">enable: true  </span><br><span class="line">icp: 鲁ICP备20005811号 </span><br><span class="line"># 这里是新加的内容，填写公安备案信息</span><br><span class="line">+  gongan:</span><br><span class="line">+    enable: true</span><br><span class="line">+    local: 鲁</span><br><span class="line">+    num: 3711022000277</span><br></pre></td></tr></table></figure>
-<p>将多余的注释掉，不然会报错<br><img src="/images/wangzhanbeian/5.png" alt="f260561f144f68fdcc2c91fbc46618a3.png"></p>
-<p>然后，在语言配置文件里，添加表述文案beian：<br>位置:<br>themes/next/languages/zh-CN.yml<br><img src="/images/wangzhanbeian/6.png" alt="eab3fca27ff1e7456241e58f76a3f5e4.png"></p>
-<p>接下来，删除原有的布局文件中备案样式的代码：(标注处全删)<br>位置:<br>themes/next/layout/_partials/footer.swig<br><img src="/images/wangzhanbeian/7.png" alt="5283d46f4a83dac14b69ea97c1f50d10.png"><br>找到如下位置插入一行代码：</p>
+<p>将多余的注释掉，不然会报错<br><img data-src="/images/wangzhanbeian/5.png" alt="f260561f144f68fdcc2c91fbc46618a3.png"></p>
+<p>然后，在语言配置文件里，添加表述文案beian：<br>位置:<br>themes/next/languages/zh-CN.yml<br><img data-src="/images/wangzhanbeian/6.png" alt="eab3fca27ff1e7456241e58f76a3f5e4.png"></p>
+<p>接下来，删除原有的布局文件中备案样式的代码：(标注处全删)<br>位置:<br>themes/next/layout/_partials/footer.swig<br><img data-src="/images/wangzhanbeian/7.png" alt="5283d46f4a83dac14b69ea97c1f50d10.png"><br>找到如下位置插入一行代码：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;span class&#x3D;&quot;author&quot; itemprop&#x3D;&quot;copyrightHolder&quot;&gt;&#123;&#123; theme.footer.copyright || author &#125;&#125;&lt;&#x2F;span&gt;</span><br><span class="line">+  &lt;span class&#x3D;&quot;post-meta-divider footer-ages-icon&quot;&gt; | &lt;&#x2F;span&gt;</span><br><span class="line">&#123;% if config.symbols_count_time.total_symbols %&#125;</span><br></pre></td></tr></table></figure>
 
 <p>最后，在主题布局文件中添加我们自定义的备案样式：<br>位置：<br>themes/next/layout/_layout.swig</p>
@@ -144,7 +144,7 @@
 <blockquote>
 <p>注意将公安网图标保存并命名/images/beian.png</p>
 </blockquote>
-<p>成功<br><img src="/images/wangzhanbeian/8.png" alt="3b991c5458d20080e149701386acf7ea.png"></p>
+<p>成功<br><img data-src="/images/wangzhanbeian/8.png" alt="3b991c5458d20080e149701386acf7ea.png"></p>
 ]]></content>
       <categories>
         <category>hexoSEO</category>
@@ -158,16 +158,16 @@
     <url>/baidugoogleseo.html</url>
     <content><![CDATA[<h3 id="Hexo博客百度收录（SEO）"><a href="#Hexo博客百度收录（SEO）" class="headerlink" title="Hexo博客百度收录（SEO）"></a>Hexo博客百度收录（SEO）</h3><p>曾迫不及待地想在百度上找到我的博文，可是找不到<br>后发现还要有百度收录操作才可显示<br>那就开始吧！</p>
 <a id="more"></a>
-<p><strong>1.</strong> 百度搜索自己的域名，会发现找不到，显示<br><img src="/images/HexoSEO/1.png" alt="ec4ca260ed1644a3e0c5133e2fd88cf4.png"><br>点击提交网址，并登录<br>提交好网站后没有下文……<br><strong>2.</strong> 验证网站的所有权<br>登录百度站长平台 ,<br>登录成功之后在站点管理中点击添加网站然后输入你的站点地址，建议输入的网站为www开头的，</p>
+<p><strong>1.</strong> 百度搜索自己的域名，会发现找不到，显示<br><img data-src="/images/HexoSEO/1.png" alt="ec4ca260ed1644a3e0c5133e2fd88cf4.png"><br>点击提交网址，并登录<br>提交好网站后没有下文……<br><strong>2.</strong> 验证网站的所有权<br>登录百度站长平台 ,<br>登录成功之后在站点管理中点击添加网站然后输入你的站点地址，建议输入的网站为www开头的，</p>
 <blockquote>
 <p>注意：不要输入github.io的，因为github是不允许百度的spider爬取github上的内容的，所以如果想让你的站点被百度收录，只能使用自己购买的域名</p>
 </blockquote>
 <p>在选择完网站的类型后需要验证网站的所有权，验证网站所有权的方式有三种：文件验证,html标签验证和cname解析验证，使用哪一种方式都可以。</p>
 <blockquote>
 <p>坑：我用的是文件验证</p>
-<p><strong><em>将验证文件放置于您所配置域名&gt;(<a href="http://www.marmalade.vip)的根目录下" target="_blank" rel="noopener">www.marmalade.vip)的根目录下</a></em></strong><br>根目录是网站的source文件夹<br>但是<br><img src="/images/HexoSEO/2.png" alt="a2cf1b8aa1e383d1972f556175d0970a.png"><br>验证失败？<br>果断放弃!</p>
+<p><strong><em>将验证文件放置于您所配置域名&gt;(<a href="http://www.marmalade.vip)的根目录下" target="_blank" rel="noopener">www.marmalade.vip)的根目录下</a></em></strong><br>根目录是网站的source文件夹<br>但是<br><img data-src="/images/HexoSEO/2.png" alt="a2cf1b8aa1e383d1972f556175d0970a.png"><br>验证失败？<br>果断放弃!</p>
 </blockquote>
-<p>采用第三种cname方法<br>域名解析增加一条<br><img src="/images/HexoSEO/3.png" alt="1ba07eae2c660763c8d19364d515b14d.png"><br>成功！<br><img src="/images/HexoSEO/4.png" alt="66a9ea7ee351dc7b8666285c533052dc.png"></p>
+<p>采用第三种cname方法<br>域名解析增加一条<br><img data-src="/images/HexoSEO/3.png" alt="1ba07eae2c660763c8d19364d515b14d.png"><br>成功！<br><img data-src="/images/HexoSEO/4.png" alt="66a9ea7ee351dc7b8666285c533052dc.png"></p>
 <p><strong>3.</strong> 生成网站地图<br>先安装sitemap插件<br>cmd添加两个插件</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line"></span><br><span class="line">npm install hexo-generator-baidu-sitemap --save12</span><br></pre></td></tr></table></figure>
 
@@ -181,37 +181,37 @@
 <p>在deploy里添加新的配置项</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy: </span><br><span class="line"> - type: git # 原来就有的</span><br><span class="line"> repo: 巴拉巴拉</span><br><span class="line"> branch: master </span><br><span class="line"> message: blog update </span><br><span class="line"> - type: baidu_url_submitter # 注意，这个为新增的</span><br></pre></td></tr></table></figure>
 <p><strong>结果报错：？？？</strong></p>
-<p><img src="/images/HexoSEO/5.png" alt="44b0cd11f2f4cb20745d82a709148306.png"><br>百度这个错误<br><a href="https://blog.csdn.net/elgong/article/details/97839395" target="_blank" rel="noopener">hexo错误 TypeError: Cannot read property ‘count’ of undefined</a></p>
+<p><img data-src="/images/HexoSEO/5.png" alt="44b0cd11f2f4cb20745d82a709148306.png"><br>百度这个错误<br><a href="https://blog.csdn.net/elgong/article/details/97839395" target="_blank" rel="noopener">hexo错误 TypeError: Cannot read property ‘count’ of undefined</a></p>
 <blockquote>
 <p>解决方案：</p>
 <p>npm remove hexo-baidu-url-submit<br>hexo clean<br>hexo g</p>
 <p>删除百度自动提交就好了。</p>
 </blockquote>
-<p>可是删除了百度自动提交不就不行了？？？<br>暂时删除<br>以后每次hexo个 g -d<br>会提示<br><img src="/images/HexoSEO/6.png" alt="202c95616dea93d1870b4da3c452eb2e.png"></p>
+<p>可是删除了百度自动提交不就不行了？？？<br>暂时删除<br>以后每次hexo个 g -d<br>会提示<br><img data-src="/images/HexoSEO/6.png" alt="202c95616dea93d1870b4da3c452eb2e.png"></p>
 <p><strong><em>过了很久以后</em></strong><br>忍不住又使用了一遍指令<br>npm install hexo-baidu-url-submit –save</p>
 <h6 id="结果这次hexo-g-d不报错了！？？"><a href="#结果这次hexo-g-d不报错了！？？" class="headerlink" title="结果这次hexo g -d不报错了！？？"></a><strong><em>结果这次hexo g -d不报错了！？？</em></strong></h6><p>所以成功！</p>
 <blockquote>
 <p>参考文章：<br><a href="https://blog.csdn.net/Ivan_zcy/article/details/82938260" target="_blank" rel="noopener">如何让hexo博文被百度收录</a></p>
 </blockquote>
-<h3 id="链接提交：自动推送"><a href="#链接提交：自动推送" class="headerlink" title="链接提交：自动推送"></a>链接提交：自动推送</h3><p>进入主题配置文件，开启baidu_push(fause变为true)<br><img src="/images/HexoSEO/7.png" alt="3f2a9dae745aaf66fa957dde3e8c8fe0.png"></p>
+<h3 id="链接提交：自动推送"><a href="#链接提交：自动推送" class="headerlink" title="链接提交：自动推送"></a>链接提交：自动推送</h3><p>进入主题配置文件，开启baidu_push(fause变为true)<br><img data-src="/images/HexoSEO/7.png" alt="3f2a9dae745aaf66fa957dde3e8c8fe0.png"></p>
 <p>站点根目录\themes\next\layout_scripts目录，修改baidu_push.swig文件为以下内容，若无该文件直接创建一个</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% if theme.baidu_push %&#125;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">(function()&#123;</span><br><span class="line">    var bp &#x3D; document.createElement(&#39;script&#39;);</span><br><span class="line">    var curProtocol &#x3D; window.location.protocol.split(&#39;:&#39;)[0];</span><br><span class="line">    if (curProtocol &#x3D;&#x3D;&#x3D; &#39;https&#39;) &#123;</span><br><span class="line">        bp.src &#x3D; &#39;https:&#x2F;&#x2F;zz.bdstatic.com&#x2F;linksubmit&#x2F;push.js&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        bp.src &#x3D; &#39;http:&#x2F;&#x2F;push.zhanzhang.baidu.com&#x2F;push.js&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">    var s &#x3D; document.getElementsByTagName(&quot;script&quot;)[0];</span><br><span class="line">    s.parentNode.insertBefore(bp, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
 
-<p>重新编译生成部署即可，这样每次访问一个页面都会主动把这个页面的地址提交给百度<br>访问博客任一页面，然后按F12，切换到Elements，如果看到如下代码说明以上js代码插入成功<br><img src="/images/HexoSEO/8.png" alt="6146748ff883ba414b1e01d641d475be.png"></p>
-<h3 id="sitemap提交"><a href="#sitemap提交" class="headerlink" title="sitemap提交"></a>sitemap提交</h3><p>在百度站长平台找到链接提交，自动提交中找到sitemap<br>将以下两行（域名写自己的）提交，然后等待回复就可以啦<br><a href="https://marmalade.vip/baidusitemap.xml">https://marmalade.vip/baidusitemap.xml</a><br><a href="https://marmalade.vip/sitemap.xml">https://marmalade.vip/sitemap.xml</a><br><img src="/images/HexoSEO/9.png" alt="893dc490024a13ce5c879d7b5ec42925.png"></p>
-<h3 id="谷歌收录"><a href="#谷歌收录" class="headerlink" title="谷歌收录"></a>谷歌收录</h3><p>需要范强才可，首先要有一个谷歌账号<br>打开该网址<br><code>https://search.google.com/</code><br>登录后输入自己的域名会有DNS域名所有权验证<br><img src="/images/HexoSEO/10.png" alt="4826e3fcf6a817d2adcfb959bfe6e6f6.png"></p>
-<p>要用到域名解析，打开自己域名的域名解析界面，<br><img src="/images/HexoSEO/11.png" alt="6678138a3ceba3134e430d119eb5e49f.png"></p>
-<p>添加TXT记录，完成DNS验证<br><img src="/images/HexoSEO/12.png" alt="b69491d9868012b841bf03452b03e9c1.png"></p>
+<p>重新编译生成部署即可，这样每次访问一个页面都会主动把这个页面的地址提交给百度<br>访问博客任一页面，然后按F12，切换到Elements，如果看到如下代码说明以上js代码插入成功<br><img data-src="/images/HexoSEO/8.png" alt="6146748ff883ba414b1e01d641d475be.png"></p>
+<h3 id="sitemap提交"><a href="#sitemap提交" class="headerlink" title="sitemap提交"></a>sitemap提交</h3><p>在百度站长平台找到链接提交，自动提交中找到sitemap<br>将以下两行（域名写自己的）提交，然后等待回复就可以啦<br><a href="https://marmalade.vip/baidusitemap.xml">https://marmalade.vip/baidusitemap.xml</a><br><a href="https://marmalade.vip/sitemap.xml">https://marmalade.vip/sitemap.xml</a><br><img data-src="/images/HexoSEO/9.png" alt="893dc490024a13ce5c879d7b5ec42925.png"></p>
+<h3 id="谷歌收录"><a href="#谷歌收录" class="headerlink" title="谷歌收录"></a>谷歌收录</h3><p>需要范强才可，首先要有一个谷歌账号<br>打开该网址<br><code>https://search.google.com/</code><br>登录后输入自己的域名会有DNS域名所有权验证<br><img data-src="/images/HexoSEO/10.png" alt="4826e3fcf6a817d2adcfb959bfe6e6f6.png"></p>
+<p>要用到域名解析，打开自己域名的域名解析界面，<br><img data-src="/images/HexoSEO/11.png" alt="6678138a3ceba3134e430d119eb5e49f.png"></p>
+<p>添加TXT记录，完成DNS验证<br><img data-src="/images/HexoSEO/12.png" alt="b69491d9868012b841bf03452b03e9c1.png"></p>
 <p>对应值：2017030909245xxxxxxxxxxxxxxxxxx（直接复制 “记录值”输入），</p>
 <blockquote>
 <p>（如果是二级域名，比如west.qk365.vip，主机名就是 &gt;“west”，对应值复制输入系统提示的 “记录值”）</p>
 </blockquote>
 <p>然后等待一天后可进入管理页面</p>
-<p>直接在站点控制台添加<br><img src="/images/HexoSEO/13.png" alt="6c68a6c05cead57cca8df9a728bda11d.png"><br>即提交成功</p>
+<p>直接在站点控制台添加<br><img data-src="/images/HexoSEO/13.png" alt="6c68a6c05cead57cca8df9a728bda11d.png"><br>即提交成功</p>
 <h5 id="添加蜘蛛协议"><a href="#添加蜘蛛协议" class="headerlink" title="添加蜘蛛协议"></a>添加蜘蛛协议</h5><p>蜘蛛协议就是告诉爬虫，你的哪些文件爬虫可以爬取，哪些不能的文件。新建一个robots.txt文件，添加以下内容，然后放到/yoursite/source/文件夹下面：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">User-agent: *Allow: &#x2F;</span><br><span class="line">Allow: &#x2F;archives&#x2F;</span><br><span class="line">Allow: &#x2F;tags&#x2F;</span><br><span class="line">Allow: &#x2F;categories&#x2F;</span><br><span class="line">Allow: &#x2F;about&#x2F;</span><br><span class="line">Disallow: &#x2F;js&#x2F;Disallow: &#x2F;css&#x2F;</span><br><span class="line">Disallow: &#x2F;lib&#x2F;</span><br><span class="line">Sitemap: 刚刚sitemap的地址</span><br></pre></td></tr></table></figure>
 
-<p>在百度站长平台，左侧，Robots里面可以检测你写的是否正确：<br><img src="/images/HexoSEO/14.png" alt="94e08374e20e16a2fe0e80ad92276bd1.png"></p>
+<p>在百度站长平台，左侧，Robots里面可以检测你写的是否正确：<br><img data-src="/images/HexoSEO/14.png" alt="94e08374e20e16a2fe0e80ad92276bd1.png"></p>
 <h3 id="禁止爬虫跟踪外链"><a href="#禁止爬虫跟踪外链" class="headerlink" title="(禁止爬虫跟踪外链)"></a>(禁止爬虫跟踪外链)</h3><p>当你提交了链接，写好了蜘蛛爬取协议之后，搜索引擎的蜘蛛就会来爬取你的文章内容。但是，如果你的文章中有外链，蜘蛛就会通过这个链接到别人的站点去。如果这个站点是友情链接还好，如果是非友链，就回严重影响网站的爬取。<br>为了避免蜘蛛进入非友情链接，需要为非友链添加上nofollow属性。推荐使用hexo-autonofollow插件。<br>在站点根目录下执行：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-autonofollow --save</span><br></pre></td></tr></table></figure>
 <p>修改站点配置文件，添加如下内容：</p>
@@ -238,7 +238,7 @@
     <url>/hexothemebeautify4.html</url>
     <content><![CDATA[<p>自定义文章底部版权声明<br>在每篇文章末尾添加“本文结束”标记<br>字数统计和阅读时长(网站底部/文章内)<br>添加文章置顶功能</p>
 <a id="more"></a>
-<h3 id="14-Hexo博客NexT主题美化之自定义文章底部版权声明"><a href="#14-Hexo博客NexT主题美化之自定义文章底部版权声明" class="headerlink" title="(14)Hexo博客NexT主题美化之自定义文章底部版权声明"></a>(14)Hexo博客NexT主题美化之自定义文章底部版权声明</h3><p><a href="https://blog.pangao.vip/Hexo%E5%8D%9A%E5%AE%A2NexT%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E/" target="_blank" rel="noopener">参考文章</a><br><strong>效果如下</strong><br><img src="/images/beautify4/1.png" alt="4ae7368fbd9bb2ab52f9f8d2eb35b508.png"></p>
+<h3 id="14-Hexo博客NexT主题美化之自定义文章底部版权声明"><a href="#14-Hexo博客NexT主题美化之自定义文章底部版权声明" class="headerlink" title="(14)Hexo博客NexT主题美化之自定义文章底部版权声明"></a>(14)Hexo博客NexT主题美化之自定义文章底部版权声明</h3><p><a href="https://blog.pangao.vip/Hexo%E5%8D%9A%E5%AE%A2NexT%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E/" target="_blank" rel="noopener">参考文章</a><br><strong>效果如下</strong><br><img data-src="/images/beautify4/1.png" alt="4ae7368fbd9bb2ab52f9f8d2eb35b508.png"></p>
 <p>1.在目录<code>themes/next/layout/_macro/</code>下添加<code>my-copyright.swig</code> ，内容如下：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% if page.copyright %&#125; &lt;div class&#x3D;&quot;my_post_copyright&quot;&gt; &lt;script src&#x3D;&quot;&#x2F;&#x2F;cdn.bootcss.com&#x2F;clipboard.js&#x2F;1.5.10&#x2F;clipboard.min.js&quot;&gt;&lt;&#x2F;script&gt; &lt;!-- JS库 sweetalert 可修改路径 --&gt; &lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;http:&#x2F;&#x2F;jslibs.wuxubj.cn&#x2F;sweetalert_mini&#x2F;jquery-1.7.1.min.js&quot;&gt;&lt;&#x2F;script&gt; &lt;script src&#x3D;&quot;http:&#x2F;&#x2F;jslibs.wuxubj.cn&#x2F;sweetalert_mini&#x2F;sweetalert.min.js&quot;&gt;&lt;&#x2F;script&gt; &lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;http:&#x2F;&#x2F;jslibs.wuxubj.cn&#x2F;sweetalert_mini&#x2F;sweetalert.mini.css&quot;&gt; &lt;p&gt;&lt;span&gt;本文标题:&lt;&#x2F;span&gt;&#123;&#123; page.title &#125;&#125;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt; &lt;p&gt;&lt;span&gt;文章作者:&lt;&#x2F;span&gt;&#123;&#123; theme.author &#125;&#125;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt; &lt;p&gt;&lt;span&gt;发布时间:&lt;&#x2F;span&gt;&#123;&#123; page.date.format(&quot;YYYY年MM月DD日 - HH:mm:ss&quot;) &#125;&#125;&lt;&#x2F;p&gt; &lt;p&gt;&lt;span&gt;最后更新:&lt;&#x2F;span&gt;&#123;&#123; page.updated.format(&quot;YYYY年MM月DD日 - HH:mm:ss&quot;) &#125;&#125;&lt;&#x2F;p&gt; &lt;p&gt;&lt;span&gt;原始链接:&lt;&#x2F;span&gt;&lt;a href&#x3D;&quot;&#123;&#123; url_for(page.path) &#125;&#125;&quot; title&#x3D;&quot;&#123;&#123; page.title &#125;&#125;&quot;&gt;&#123;&#123; page.permalink &#125;&#125;&lt;&#x2F;a&gt; &lt;span class&#x3D;&quot;copy-path&quot; title&#x3D;&quot;点击复制文章链接&quot;&gt;&lt;i class&#x3D;&quot;fa fa-clipboard&quot; data-clipboard-text&#x3D;&quot;&#123;&#123; page.permalink &#125;&#125;&quot; aria-label&#x3D;&quot;复制成功！&quot;&gt;&lt;&#x2F;i&gt;&lt;&#x2F;span&gt; &lt;&#x2F;p&gt; &lt;p&gt;&lt;span&gt;许可协议:&lt;&#x2F;span&gt;&lt;i class&#x3D;&quot;fa fa-creative-commons&quot;&gt;&lt;&#x2F;i&gt; &lt;a rel&#x3D;&quot;license&quot; href&#x3D;&quot;https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-nc-nd&#x2F;4.0&#x2F;&quot; target&#x3D;&quot;_blank&quot; title&#x3D;&quot;Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)&quot;&gt;署名-非商业性使用-禁止演绎 4.0 国际&lt;&#x2F;a&gt; 转载请保留原文链接及作者。&lt;&#x2F;p&gt; &lt;&#x2F;div&gt; &lt;script&gt; var clipboard &#x3D; new Clipboard(&#39;.fa-clipboard&#39;); clipboard.on(&#39;success&#39;, $(function()&#123; $(&quot;.fa-clipboard&quot;).click(function()&#123; swal(&#123; title: &quot;&quot;, text: &#39;复制成功&#39;, html: false, timer: 500, showConfirmButton: false &#125;); &#125;); &#125;)); &lt;&#x2F;script&gt; &#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
 
@@ -266,7 +266,7 @@
 <p>然后打开主题配置文件（_config.yml),在末尾添加：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#文章末尾添加“本文结束”标记</span><br><span class="line">passage_end_tag:</span><br><span class="line">  enabled: true</span><br></pre></td></tr></table></figure>
 
-<p>效果：<br><img src="/images/beautify4/2.png" alt="0d1e0b70152f40ce40f33c5968a718df.png"></p>
+<p>效果：<br><img data-src="/images/beautify4/2.png" alt="0d1e0b70152f40ce40f33c5968a718df.png"></p>
 <h3 id="16-字数统计和阅读时长-网站底部-文章内"><a href="#16-字数统计和阅读时长-网站底部-文章内" class="headerlink" title="(16)字数统计和阅读时长(网站底部/文章内)"></a>(16)字数统计和阅读时长(网站底部/文章内)</h3><p>首先安装插件:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-symbols-count-time --save</span><br></pre></td></tr></table></figure>
 <p>然后修改主题配置文件如下:</p>
@@ -274,22 +274,22 @@
 
 <p>站点配置文件中添加：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line"> #文章内是否显示</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line"> # 网页底部是否显示</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br></pre></td></tr></table></figure>
-<p>完成后并不能显示，而是<br><img src="/images/beautify4/3.png" alt="f5c454b547469ca7b220fdb8f16fd6d2.png"><br>？？<br>后来文章统计正常，但网页下方未变<br>勿急，等一会（可能要一天）会显示出来</p>
+<p>完成后并不能显示，而是<br><img data-src="/images/beautify4/3.png" alt="f5c454b547469ca7b220fdb8f16fd6d2.png"><br>？？<br>后来文章统计正常，但网页下方未变<br>勿急，等一会（可能要一天）会显示出来</p>
 <h3 id="17-添加文章置顶功能"><a href="#17-添加文章置顶功能" class="headerlink" title="(17)添加文章置顶功能"></a>(17)添加文章置顶功能</h3><h5 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h5><p>卸载原来的插件，安装带置顶功能的插件 <a href="https://github.com/netcan/hexo-generator-index-pin-top" target="_blank" rel="noopener">netcan/hexo-generator-index-pin-top: Index generator plugin for Hexo. Pin top version</a></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm uninstall hexo-generator-index --save</span><br><span class="line">$ npm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></table></figure>
 
 <h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><p>在需要置顶的文章中的 Front-matter 加入 <strong>top: true</strong> 即可。</p>
 <h5 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h5><p>打开 <code>/themes/next/layout/_macro</code>下的 post.swig 文件，定位到 <code>&lt;div class=&quot;post-meta&quot;&gt;</code> 下 (约 63 行)，插入如下代码：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% if post.top %&#125;   </span><br><span class="line">     &lt;i class&#x3D;&quot;fa fa-thumb-tack&quot;&gt;&lt;&#x2F;i&gt;    </span><br><span class="line">     &lt;font color&#x3D;7D26CD&gt;置顶&lt;&#x2F;font&gt;  </span><br><span class="line">     &lt;span class&#x3D;&quot;post-meta-divider&quot;&gt;|&lt;&#x2F;span&gt;</span><br><span class="line"> &#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<p>位置如图：<br><img src="/images/beautify4/4.png" alt="9101ecf89850afa2cb5138f2fd697b6f.png"><br>效果：<br><img src="/images/beautify4/5.png" alt="9f4becd2c4b3a1bfef7ec2719510407f.png"></p>
+<p>位置如图：<br><img data-src="/images/beautify4/4.png" alt="9101ecf89850afa2cb5138f2fd697b6f.png"><br>效果：<br><img data-src="/images/beautify4/5.png" alt="9f4becd2c4b3a1bfef7ec2719510407f.png"></p>
 <p><a href="https://www.zhyong.cn/posts/fc22/" target="_blank" rel="noopener">参考文章</a></p>
-<h3 id="18-添加阅读进度条"><a href="#18-添加阅读进度条" class="headerlink" title="(18)添加阅读进度条"></a>(18)添加阅读进度条</h3><p>主题配置文件中改为true即可<br><img src="/images/beautify4/6.png" alt="20b57e7540501ab8cc1449da87f9c51b.png"></p>
-<h3 id="19-添加代码复制块"><a href="#19-添加代码复制块" class="headerlink" title="(19)添加代码复制块"></a>(19)添加代码复制块</h3><p>代码块会展示出该效果<br><img src="/images/beautify4/7.png" alt="620e5f1673ab17d2566b090e6947d58e.png"><br>在之前创建的styles.styl末尾添加</p>
+<h3 id="18-添加阅读进度条"><a href="#18-添加阅读进度条" class="headerlink" title="(18)添加阅读进度条"></a>(18)添加阅读进度条</h3><p>主题配置文件中改为true即可<br><img data-src="/images/beautify4/6.png" alt="20b57e7540501ab8cc1449da87f9c51b.png"></p>
+<h3 id="19-添加代码复制块"><a href="#19-添加代码复制块" class="headerlink" title="(19)添加代码复制块"></a>(19)添加代码复制块</h3><p>代码块会展示出该效果<br><img data-src="/images/beautify4/7.png" alt="620e5f1673ab17d2566b090e6947d58e.png"><br>在之前创建的styles.styl末尾添加</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 复制按钮样式top调整</span><br><span class="line">.highlight-wrap .copy-btn &#123;</span><br><span class="line">padding: </span><br><span class="line">1px 6px;  </span><br><span class="line">top: 3px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="20-全国哀悼日将网站变灰"><a href="#20-全国哀悼日将网站变灰" class="headerlink" title="(20)全国哀悼日将网站变灰"></a>(20)全国哀悼日将网站变灰</h3><p>方法：fn+f12打开调试面板，在body处添加<br>-webkit-filter: grayscale(100%)即可实现<br><img src="/images/beautify4/8.png" alt="30614fc0971e64f5feca869629564d09.png"></p>
-<p><img src="/images/beautify4/9.png" alt="69a3a6e3bf2b81272782db4c086d12f4.png"></p>
-<h3 id="21-点击爆炸效果"><a href="#21-点击爆炸效果" class="headerlink" title="(21)点击爆炸效果"></a>(21)点击爆炸效果</h3><p>实现的效果图：<br><img src="/images/beautify4/10.png" alt="c4c7ed41469cc193303b9c53cad4a938.png"></p>
+<h3 id="20-全国哀悼日将网站变灰"><a href="#20-全国哀悼日将网站变灰" class="headerlink" title="(20)全国哀悼日将网站变灰"></a>(20)全国哀悼日将网站变灰</h3><p>方法：fn+f12打开调试面板，在body处添加<br>-webkit-filter: grayscale(100%)即可实现<br><img data-src="/images/beautify4/8.png" alt="30614fc0971e64f5feca869629564d09.png"></p>
+<p><img data-src="/images/beautify4/9.png" alt="69a3a6e3bf2b81272782db4c086d12f4.png"></p>
+<h3 id="21-点击爆炸效果"><a href="#21-点击爆炸效果" class="headerlink" title="(21)点击爆炸效果"></a>(21)点击爆炸效果</h3><p>实现的效果图：<br><img data-src="/images/beautify4/10.png" alt="c4c7ed41469cc193303b9c53cad4a938.png"></p>
 <p>实现方法跟那个红心是差不多的，首先在<code>themes/next/source/js/src</code>里面建一个叫fireworks.js的文件，代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;use strict&quot;;function updateCoords(e)&#123;pointerX&#x3D;(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY&#x3D;e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top&#125;function setParticuleDirection(e)&#123;var t&#x3D;anime.random(0,360)*Math.PI&#x2F;180,a&#x3D;anime.random(50,180),n&#x3D;[-1,1][anime.random(0,1)]*a;return&#123;x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)&#125;&#125;function createParticule(e,t)&#123;var a&#x3D;&#123;&#125;;return a.x&#x3D;e,a.y&#x3D;t,a.color&#x3D;colors[anime.random(0,colors.length-1)],a.radius&#x3D;anime.random(16,32),a.endPos&#x3D;setParticuleDirection(a),a.draw&#x3D;function()&#123;ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle&#x3D;a.color,ctx.fill()&#125;,a&#125;function createCircle(e,t)&#123;var a&#x3D;&#123;&#125;;return a.x&#x3D;e,a.y&#x3D;t,a.color&#x3D;&quot;#F00&quot;,a.radius&#x3D;0.1,a.alpha&#x3D;0.5,a.lineWidth&#x3D;6,a.draw&#x3D;function()&#123;ctx.globalAlpha&#x3D;a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth&#x3D;a.lineWidth,ctx.strokeStyle&#x3D;a.color,ctx.stroke(),ctx.globalAlpha&#x3D;1&#125;,a&#125;function renderParticule(e)&#123;for(var t&#x3D;0;t&lt;e.animatables.length;t++)&#123;e.animatables[t].target.draw()&#125;&#125;function animateParticules(e,t)&#123;for(var a&#x3D;createCircle(e,t),n&#x3D;[],i&#x3D;0;i&lt;numberOfParticules;i++)&#123;n.push(createParticule(e,t))&#125;anime.timeline().add(&#123;targets:n,x:function(e)&#123;return e.endPos.x&#125;,y:function(e)&#123;return e.endPos.y&#125;,radius:0.1,duration:anime.random(1200,1800),easing:&quot;easeOutExpo&quot;,update:renderParticule&#125;).add(&#123;targets:a,radius:anime.random(80,160),lineWidth:0,alpha:&#123;value:0,easing:&quot;linear&quot;,duration:anime.random(600,800)&#125;,duration:anime.random(1200,1800),easing:&quot;easeOutExpo&quot;,update:renderParticule,offset:0&#125;)&#125;function debounce(e,t)&#123;var a;return function()&#123;var n&#x3D;this,i&#x3D;arguments;clearTimeout(a),a&#x3D;setTimeout(function()&#123;e.apply(n,i)&#125;,t)&#125;&#125;var canvasEl&#x3D;document.querySelector(&quot;.fireworks&quot;);if(canvasEl)&#123;var ctx&#x3D;canvasEl.getContext(&quot;2d&quot;),numberOfParticules&#x3D;30,pointerX&#x3D;0,pointerY&#x3D;0,tap&#x3D;&quot;mousedown&quot;,colors&#x3D;[&quot;#FF1461&quot;,&quot;#18FF92&quot;,&quot;#5A87FF&quot;,&quot;#FBF38C&quot;],setCanvasSize&#x3D;debounce(function()&#123;canvasEl.width&#x3D;2*window.innerWidth,canvasEl.height&#x3D;2*window.innerHeight,canvasEl.style.width&#x3D;window.innerWidth+&quot;px&quot;,canvasEl.style.height&#x3D;window.innerHeight+&quot;px&quot;,canvasEl.getContext(&quot;2d&quot;).scale(2,2)&#125;,500),render&#x3D;anime(&#123;duration:1&#x2F;0,update:function()&#123;ctx.clearRect(0,0,canvasEl.width,canvasEl.height)&#125;&#125;);document.addEventListener(tap,function(e)&#123;&quot;sidebar&quot;!&#x3D;&#x3D;e.target.id&amp;&amp;&quot;toggle-sidebar&quot;!&#x3D;&#x3D;e.target.id&amp;&amp;&quot;A&quot;!&#x3D;&#x3D;e.target.nodeName&amp;&amp;&quot;IMG&quot;!&#x3D;&#x3D;e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))&#125;,!1),setCanvasSize(),window.addEventListener(&quot;resize&quot;,setCanvasSize,!1)&#125;&quot;use strict&quot;;function updateCoords(e)&#123;pointerX&#x3D;(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY&#x3D;e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top&#125;function setParticuleDirection(e)&#123;var t&#x3D;anime.random(0,360)*Math.PI&#x2F;180,a&#x3D;anime.random(50,180),n&#x3D;[-1,1][anime.random(0,1)]*a;return&#123;x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)&#125;&#125;function createParticule(e,t)&#123;var a&#x3D;&#123;&#125;;return a.x&#x3D;e,a.y&#x3D;t,a.color&#x3D;colors[anime.random(0,colors.length-1)],a.radius&#x3D;anime.random(16,32),a.endPos&#x3D;setParticuleDirection(a),a.draw&#x3D;function()&#123;ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle&#x3D;a.color,ctx.fill()&#125;,a&#125;function createCircle(e,t)&#123;var a&#x3D;&#123;&#125;;return a.x&#x3D;e,a.y&#x3D;t,a.color&#x3D;&quot;#F00&quot;,a.radius&#x3D;0.1,a.alpha&#x3D;0.5,a.lineWidth&#x3D;6,a.draw&#x3D;function()&#123;ctx.globalAlpha&#x3D;a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth&#x3D;a.lineWidth,ctx.strokeStyle&#x3D;a.color,ctx.stroke(),ctx.globalAlpha&#x3D;1&#125;,a&#125;function renderParticule(e)&#123;for(var t&#x3D;0;t&lt;e.animatables.length;t++)&#123;e.animatables[t].target.draw()&#125;&#125;function animateParticules(e,t)&#123;for(var a&#x3D;createCircle(e,t),n&#x3D;[],i&#x3D;0;i&lt;numberOfParticules;i++)&#123;n.push(createParticule(e,t))&#125;anime.timeline().add(&#123;targets:n,x:function(e)&#123;return e.endPos.x&#125;,y:function(e)&#123;return e.endPos.y&#125;,radius:0.1,duration:anime.random(1200,1800),easing:&quot;easeOutExpo&quot;,update:renderParticule&#125;).add(&#123;targets:a,radius:anime.random(80,160),lineWidth:0,alpha:&#123;value:0,easing:&quot;linear&quot;,duration:anime.random(600,800)&#125;,duration:anime.random(1200,1800),easing:&quot;easeOutExpo&quot;,update:renderParticule,offset:0&#125;)&#125;function debounce(e,t)&#123;var a;return function()&#123;var n&#x3D;this,i&#x3D;arguments;clearTimeout(a),a&#x3D;setTimeout(function()&#123;e.apply(n,i)&#125;,t)&#125;&#125;var canvasEl&#x3D;document.querySelector(&quot;.fireworks&quot;);if(canvasEl)&#123;var ctx&#x3D;canvasEl.getContext(&quot;2d&quot;),numberOfParticules&#x3D;30,pointerX&#x3D;0,pointerY&#x3D;0,tap&#x3D;&quot;mousedown&quot;,colors&#x3D;[&quot;#FF1461&quot;,&quot;#18FF92&quot;,&quot;#5A87FF&quot;,&quot;#FBF38C&quot;],setCanvasSize&#x3D;debounce(function()&#123;canvasEl.width&#x3D;2*window.innerWidth,canvasEl.height&#x3D;2*window.innerHeight,canvasEl.style.width&#x3D;window.innerWidth+&quot;px&quot;,canvasEl.style.height&#x3D;window.innerHeight+&quot;px&quot;,canvasEl.getContext(&quot;2d&quot;).scale(2,2)&#125;,500),render&#x3D;anime(&#123;duration:1&#x2F;0,update:function()&#123;ctx.clearRect(0,0,canvasEl.width,canvasEl.height)&#125;&#125;);document.addEventListener(tap,function(e)&#123;&quot;sidebar&quot;!&#x3D;&#x3D;e.target.id&amp;&amp;&quot;toggle-sidebar&quot;!&#x3D;&#x3D;e.target.id&amp;&amp;&quot;A&quot;!&#x3D;&#x3D;e.target.nodeName&amp;&amp;&quot;IMG&quot;!&#x3D;&#x3D;e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))&#125;,!1),setCanvasSize(),window.addEventListener(&quot;resize&quot;,setCanvasSize,!1)&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -331,17 +331,17 @@
   <entry>
     <title>在kali虚拟机中使用msf的shodan“入侵”网络摄像头</title>
     <url>/shodankaliuse.html</url>
-    <content><![CDATA[<h3 id="在kali虚拟机中使用msf的shodan入侵网络摄像头"><a href="#在kali虚拟机中使用msf的shodan入侵网络摄像头" class="headerlink" title="在kali虚拟机中使用msf的shodan入侵网络摄像头"></a>在kali虚拟机中使用msf的shodan入侵网络摄像头</h3><h5 id="实验步骤："><a href="#实验步骤：" class="headerlink" title="实验步骤："></a>实验步骤：</h5><p>1.0 打开msf5，第一次使用msf5：<br>①、先启动postgresql数据库，这个是msf5 的默认数据库。<br>service postgresql start<br><img src="/images/shodankaliuse/1.png" alt="3b7295cbd980d3f391c8bd41cfc08cec.png"></p>
+    <content><![CDATA[<h3 id="在kali虚拟机中使用msf的shodan入侵网络摄像头"><a href="#在kali虚拟机中使用msf的shodan入侵网络摄像头" class="headerlink" title="在kali虚拟机中使用msf的shodan入侵网络摄像头"></a>在kali虚拟机中使用msf的shodan入侵网络摄像头</h3><h5 id="实验步骤："><a href="#实验步骤：" class="headerlink" title="实验步骤："></a>实验步骤：</h5><p>1.0 打开msf5，第一次使用msf5：<br>①、先启动postgresql数据库，这个是msf5 的默认数据库。<br>service postgresql start<br><img data-src="/images/shodankaliuse/1.png" alt="3b7295cbd980d3f391c8bd41cfc08cec.png"></p>
 <a id="more"></a>
 
-<p>②、启动msf控制台<br>msfconsole<br><img src="/images/shodankaliuse/2.png" alt="14e36693a7df2b116799a94faffbaba9.png"><br>将 postgresql数据库设置kaili成开机自启：<br>update-rc.d postgresql enable<br><img src="/images/shodankaliuse/3.png" alt="2340662b3599b29c67ae81452bd9f608.png"></p>
-<p>2.0 输入命令use auxiliary/gather/shodan_search<br><img src="/images/shodankaliuse/4.png" alt="696f1b5573cc4d826e8d7c8bf34a3ee6.png"></p>
-<p>3.0然后输入show options看看有哪些需要设置<br><img src="/images/shodankaliuse/5.png" alt="d16c1a518ab2d963954c18e864fd0ad8.png"></p>
+<p>②、启动msf控制台<br>msfconsole<br><img data-src="/images/shodankaliuse/2.png" alt="14e36693a7df2b116799a94faffbaba9.png"><br>将 postgresql数据库设置kaili成开机自启：<br>update-rc.d postgresql enable<br><img data-src="/images/shodankaliuse/3.png" alt="2340662b3599b29c67ae81452bd9f608.png"></p>
+<p>2.0 输入命令use auxiliary/gather/shodan_search<br><img data-src="/images/shodankaliuse/4.png" alt="696f1b5573cc4d826e8d7c8bf34a3ee6.png"></p>
+<p>3.0然后输入show options看看有哪些需要设置<br><img data-src="/images/shodankaliuse/5.png" alt="d16c1a518ab2d963954c18e864fd0ad8.png"></p>
 <p>主要需要设置的是SHODAN_APIKEY</p>
-<p>5.0 我们要登陆到shodan获取apikey<br>登陆网页shodan，注册一个账号<br><img src="/images/shodankaliuse/6.png" alt="81ac583ba68a8510ec38bb232dd34326.png"></p>
+<p>5.0 我们要登陆到shodan获取apikey<br>登陆网页shodan，注册一个账号<br><img data-src="/images/shodankaliuse/6.png" alt="81ac583ba68a8510ec38bb232dd34326.png"></p>
 <p>6.0 设置SHODAN_APIKEY<br>set SHODAN_APIKEY xxxxxxxxxxxx</p>
-<p>   set SHODAN_APIKEY dIiUHk4U0eWViHG0lAPhovyXACxNBm04<br>再输入命令：set QUERY “webcamxp”<br><img src="/images/shodankaliuse/7.png" alt="328e48ab5c51c0d7f600737b16e6dd0b.png"></p>
-<p>最后输入run等待查询结果：<br>报错：<br><img src="/images/shodankaliuse/8.png" alt="4adf1d17d5d60cb2a2094995c18b6d96.png"></p>
+<p>   set SHODAN_APIKEY dIiUHk4U0eWViHG0lAPhovyXACxNBm04<br>再输入命令：set QUERY “webcamxp”<br><img data-src="/images/shodankaliuse/7.png" alt="328e48ab5c51c0d7f600737b16e6dd0b.png"></p>
+<p>最后输入run等待查询结果：<br>报错：<br><img data-src="/images/shodankaliuse/8.png" alt="4adf1d17d5d60cb2a2094995c18b6d96.png"></p>
 ]]></content>
       <tags>
         <tag>shodan</tag>
@@ -353,16 +353,16 @@
     <content><![CDATA[<h2 id="互联网上最可怕的搜索引擎-Shodan-介绍及简单使用"><a href="#互联网上最可怕的搜索引擎-Shodan-介绍及简单使用" class="headerlink" title="互联网上最可怕的搜索引擎(Shodan)介绍及简单使用"></a><strong>互联网上最可怕的搜索引擎(Shodan)介绍及简单使用</strong></h2><h4 id="Shodan简介"><a href="#Shodan简介" class="headerlink" title="Shodan简介"></a>Shodan简介</h4><p>CNNMoney的一篇文章写道，虽然目前人们都认为谷歌是最强劲的搜索引擎，但Shodan才是互联网上最可怕的搜索引擎。下面简单介绍一下shodan和它的极其强大乃至恐怖的搜索能力。</p>
 <a id="more"></a>
 <p>与谷歌不同的是，Shodan不是在网上搜索网址，而是直接进入互联网的背后通道。Shodan可以说是一款“黑暗”谷歌，一刻不停的在寻找着所有和互联网关联的服务器、摄像头、打印机、路由器等等。每个月Shodan都会在大约5亿个服务器上日夜不停地搜集信息。<br>Shodan所搜集到的信息是极其惊人的。凡是链接到互联网的红绿灯、安全摄像头、家庭自动化设备以及加热系统等等都会被轻易的搜索到。Shodan的使用者曾发现过一个水上公园的控制系统，一个加油站，甚至一个酒店的葡萄酒冷却器。而网站的研究者也曾使用Shodan定位到了核电站的指挥和控制系统及一个粒子回旋加速器。<br>Shodan真正值得注意的能力就是能找到几乎所有和互联网相关联的东西。而Shodan真正的可怕之处就是这些设备几乎都没有安装安全防御措施，其可以随意进入。<br>Rapid 7 的首席安全官HD Moore,表示：你可以用一个默认密码登陆几乎一半的互联网。就安全而言，这是一个巨大的失误。<br>如果你搜索“默认密码”的话，你会发现无数的打印机，服务器及系统的用户名都是“admin”，密码全都是“1234”。还有很多系统根本不需要认证，你所需要做的就是用浏览器进行链接。所以如果你在使用默认密码的话，请现在就改换新的密码。</p>
-<h3 id="Shodan简单使用"><a href="#Shodan简单使用" class="headerlink" title="Shodan简单使用"></a>Shodan简单使用</h3><p><a href="https://www.cnblogs.com/student-programmer/p/6732873.html" target="_blank" rel="noopener">参考网址</a><br>在主页的搜索框中输入想要搜索的内容即可，例如下面我搜索 “SSH”：<img src="/images/shodanuse/1.png" alt="75338c870de76be92b48ef4b0acc1f31.png"><br>上图的搜索结果包含两个部分，左侧是大量的汇总数据包括：<br>Results map – 搜索结果展示地图<br>Top services (Ports) – 使用最多的服务/端口<br>Top organizations (ISPs) – 使用最多的组织/ISP<br>Top operating systems – 使用最多的操作系统<br>Top products (Software name) – 使用最多的产品/软件名称<br>随后，在中间的主页面我们可以看到包含如下的搜索结果：<br>IP 地址<br>主机名<br>ISP<br>该条目的收录收录时间<br>该主机位于的国家<br>Banner 信息</p>
-<p>想要了解每个条目的具体信息，只需要点击每个条目下方的 details 按钮即可。此时，URL 会变成这种格式 <a href="https://www.shodan.io/host/[IP]，所以我们也可以通过直接访问指定的" target="_blank" rel="noopener">https://www.shodan.io/host/[IP]，所以我们也可以通过直接访问指定的</a> IP 来查看详细信息。<br><img src="/images/shodanuse/2.png" alt="8851d535ee54b6ec7be7606a8d974de9.png"></p>
+<h3 id="Shodan简单使用"><a href="#Shodan简单使用" class="headerlink" title="Shodan简单使用"></a>Shodan简单使用</h3><p><a href="https://www.cnblogs.com/student-programmer/p/6732873.html" target="_blank" rel="noopener">参考网址</a><br>在主页的搜索框中输入想要搜索的内容即可，例如下面我搜索 “SSH”：<img data-src="/images/shodanuse/1.png" alt="75338c870de76be92b48ef4b0acc1f31.png"><br>上图的搜索结果包含两个部分，左侧是大量的汇总数据包括：<br>Results map – 搜索结果展示地图<br>Top services (Ports) – 使用最多的服务/端口<br>Top organizations (ISPs) – 使用最多的组织/ISP<br>Top operating systems – 使用最多的操作系统<br>Top products (Software name) – 使用最多的产品/软件名称<br>随后，在中间的主页面我们可以看到包含如下的搜索结果：<br>IP 地址<br>主机名<br>ISP<br>该条目的收录收录时间<br>该主机位于的国家<br>Banner 信息</p>
+<p>想要了解每个条目的具体信息，只需要点击每个条目下方的 details 按钮即可。此时，URL 会变成这种格式 <a href="https://www.shodan.io/host/[IP]，所以我们也可以通过直接访问指定的" target="_blank" rel="noopener">https://www.shodan.io/host/[IP]，所以我们也可以通过直接访问指定的</a> IP 来查看详细信息。<br><img data-src="/images/shodanuse/2.png" alt="8851d535ee54b6ec7be7606a8d974de9.png"></p>
 <p>上图中我们可以从顶部在地图中看到主机的物理地址，从左侧了解到主机的相关信息，右侧则包含目标主机的端口列表及其详细信息。</p>
 <p>使用搜索过滤如果像前面单纯只使用关键字直接进行搜索，搜索结果可能不尽人意，那么此时我们就需要使用一些特定的命令对搜索结果进行过滤，常见用的过滤命令如下所示：</p>
 <blockquote>
 <p>hostname：搜索指定的主机或域名，例如 hostname:”google”<br>port：搜索指定的端口或服务，例如 port:”21”<br>country：搜索指定的国家，例如 country:”CN”<br>city：搜索指定的城市，例如 city:”Hefei”<br>org：搜索指定的组织或公司，例如 org:”google”<br>isp：搜索指定的ISP供应商，例如 isp:”China Telecom”<br>product：搜索指定的操作系统/软件/平台，例如 product:”Apache httpd”<br>version：搜索指定的软件版本，例如 version:”1.6.2”<br>geo：搜索指定的地理位置，参数为经纬度，例如 geo:”31.8639, 117.2808”<br>before/after：搜索指定收录时间前后的数据，格式为dd-mm-yy，例如 before:”11-11-15”<br>net：搜索指定的IP地址或子网，例如 net:”210.45.240.0/24”</p>
 </blockquote>
-<h6 id="搜索实例"><a href="#搜索实例" class="headerlink" title="搜索实例"></a>搜索实例</h6><p>查找位于山东的 Apache 服务器：<br>apache city:”Shandon”<br>查找位于国内的 Nginx 服务器：<br>nginx country:”CN”<br>查找 GWS(Google Web Server) 服务器：<br>“Server: gws” hostname:”google”<br>查找指定网段的华为设备：<br>huawei net:”61.191.146.0/24”<br>如上通过在基本关键字后增加指定的过滤关键字，能快速的帮助发现我们感兴趣的内容。<br>当然，还有更快速更有意思的方法，那就是点击 Shodan 搜索栏右侧的 “Explore” 按钮，就会得到很多别人分享的搜索语法，你问我别人分享的语法有什么好玩的？那咱们就随便来看看吧：<br><img src="/images/shodanuse/3.png" alt="0d746d90d70bf51005aafc89c9005b5f.png"><br><strong>高能！</strong><br>随便选取一个名为“NetSureveillance Web”的用户分享语法，从下面的描述信息我们基本就能得知这就是一个弱密码的漏洞，为了方便测试让我们把语法在增加一个国家的过滤信息，最终语法如下：<br>Server: uc-httpd 1.0.0 200 OK Country:”CN”<br><img src="/images/shodanuse/4.png" alt="5d371cabf338d0bc48b34d30d2612715.png"><br>随便选取一个页面进去输入，使用admin账号和空密码就能顺利进入了!<br><img src="/images/shodanuse/5.png" alt="f0f300cb8583697bdb625bd3ebaa57e0.png"></p>
-<p>某马来西亚一家公寓的监控，admin+123456进入<br>60.50.115.98:60001<br><img src="/images/shodanuse/6.png" alt="c7f36cc5b5a67cf58ecdd7c96b996e49.png"></p>
-<p>泰国一家商店监控，admin+空<br><a href="http://124.121.168.78:60001" target="_blank" rel="noopener">http://124.121.168.78:60001</a><br><img src="/images/shodanuse/7.png" alt="983cf49b5a01ce2ce676aeb5ef23ab81.png"></p>
+<h6 id="搜索实例"><a href="#搜索实例" class="headerlink" title="搜索实例"></a>搜索实例</h6><p>查找位于山东的 Apache 服务器：<br>apache city:”Shandon”<br>查找位于国内的 Nginx 服务器：<br>nginx country:”CN”<br>查找 GWS(Google Web Server) 服务器：<br>“Server: gws” hostname:”google”<br>查找指定网段的华为设备：<br>huawei net:”61.191.146.0/24”<br>如上通过在基本关键字后增加指定的过滤关键字，能快速的帮助发现我们感兴趣的内容。<br>当然，还有更快速更有意思的方法，那就是点击 Shodan 搜索栏右侧的 “Explore” 按钮，就会得到很多别人分享的搜索语法，你问我别人分享的语法有什么好玩的？那咱们就随便来看看吧：<br><img data-src="/images/shodanuse/3.png" alt="0d746d90d70bf51005aafc89c9005b5f.png"><br><strong>高能！</strong><br>随便选取一个名为“NetSureveillance Web”的用户分享语法，从下面的描述信息我们基本就能得知这就是一个弱密码的漏洞，为了方便测试让我们把语法在增加一个国家的过滤信息，最终语法如下：<br>Server: uc-httpd 1.0.0 200 OK Country:”CN”<br><img data-src="/images/shodanuse/4.png" alt="5d371cabf338d0bc48b34d30d2612715.png"><br>随便选取一个页面进去输入，使用admin账号和空密码就能顺利进入了!<br><img data-src="/images/shodanuse/5.png" alt="f0f300cb8583697bdb625bd3ebaa57e0.png"></p>
+<p>某马来西亚一家公寓的监控，admin+123456进入<br>60.50.115.98:60001<br><img data-src="/images/shodanuse/6.png" alt="c7f36cc5b5a67cf58ecdd7c96b996e49.png"></p>
+<p>泰国一家商店监控，admin+空<br><a href="http://124.121.168.78:60001" target="_blank" rel="noopener">http://124.121.168.78:60001</a><br><img data-src="/images/shodanuse/7.png" alt="983cf49b5a01ce2ce676aeb5ef23ab81.png"></p>
 <h6 id="在shodan中搜索JAWS-1-0，会查到一批admin-空密码（或123456等弱密码）即可进入的监控"><a href="#在shodan中搜索JAWS-1-0，会查到一批admin-空密码（或123456等弱密码）即可进入的监控" class="headerlink" title="在shodan中搜索JAWS/1.0，会查到一批admin+空密码（或123456等弱密码）即可进入的监控"></a>在shodan中搜索JAWS/1.0，会查到一批admin+空密码（或123456等弱密码）即可进入的监控</h6><p>慎用！！！</p>
 ]]></content>
       <tags>
@@ -388,8 +388,8 @@
 
 <p>注：这里的id值可以选择两种</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># busuanzi_value_site_uv  表示用户连续点击n篇文章，只记录1次访客数# busuanzi_value_site_pv  表示用户连续点击n篇文章，记录+n次访问量</span><br><span class="line"># 这里对应的是2上的id值</span><br></pre></td></tr></table></figure>
-<p>效果如下：<br>本地访问会出现人数爆棚现象，正常，部署到github上会恢复正常<br><img src="/images/beautify2/1.png" alt="bc3439ac113ed8ca432e2b3ec0f6d5ca.png"></p>
-<h3 id="9-添加打赏功能"><a href="#9-添加打赏功能" class="headerlink" title="(9)添加打赏功能"></a>(9)添加打赏功能</h3><p>在主题配置文件中搜索Reward，改为如下形式<br><img src="/images/beautify2/2.png" alt="e3897be70d0db4287935e8a4489568de.png"><br>效果：<br><img src="/images/beautify2/3.png" alt="5f98934f4d64ccd9e1159d9ee4bbcc77.png"></p>
+<p>效果如下：<br>本地访问会出现人数爆棚现象，正常，部署到github上会恢复正常<br><img data-src="/images/beautify2/1.png" alt="bc3439ac113ed8ca432e2b3ec0f6d5ca.png"></p>
+<h3 id="9-添加打赏功能"><a href="#9-添加打赏功能" class="headerlink" title="(9)添加打赏功能"></a>(9)添加打赏功能</h3><p>在主题配置文件中搜索Reward，改为如下形式<br><img data-src="/images/beautify2/2.png" alt="e3897be70d0db4287935e8a4489568de.png"><br>效果：<br><img data-src="/images/beautify2/3.png" alt="5f98934f4d64ccd9e1159d9ee4bbcc77.png"></p>
 <blockquote>
 <p><a href="https://segmentfault.com/a/1190000016527304?utm_source=tag-newest" target="_blank" rel="noopener">参考文章</a></p>
 </blockquote>
@@ -397,11 +397,11 @@
 <h5 id="添加阅读次数统计"><a href="#添加阅读次数统计" class="headerlink" title="添加阅读次数统计"></a>添加阅读次数统计</h5><p>需要用到leancloud网站，<br>1.注册一个账号<br>2.创建应用(开发版)<br>3.进入设置页面<br>4.应用key<br>将App ID、App Key 配置到next/_config.yml中leancloud_visitors</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">leancloud_visitors:</span><br><span class="line"> enable: true 设置为true 默认为false</span><br><span class="line"> app_id:  #你的App ID，注意冒号后面空格</span><br><span class="line"> app_key:  #你的App Key，注意冒号后面空格</span><br><span class="line"> Dependencies:  https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;hexo-leancloud-counter-security #设置依赖</span><br><span class="line"> security: true #如果您不关心lc计数器中的安全性并且只想直接使用它（没有hexo-leancloud-counter-security插件），请将&#96;security&#96;设置为&#96;false&#96;。  betterPerformance: true #更好的性能</span><br></pre></td></tr></table></figure>
 
-<p>5.在leancloud存储的位置创建Class,必须命名为Counter<br><img src="/images/beautify2/4.png" alt="a1021618af30065d9ef1cf3b5eb0ab48.png"><br>6.查看后台统计数据<br><img src="/images/beautify2/5.png" alt="542d40c0448b9bcbf050c9b5bd509508.png"></p>
-<h5 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h5><p>选择的是Valine系统<br>进入leancloud<br>1.创建应用<br><img src="/images/beautify2/6.png" alt="f3cfd885cc0e436d58d6ac13ae2c7cef.png"><br>2.进入设置页面<br><img src="/images/beautify2/7.png" alt="4749312c24ca3633a258d13d15459ae9.png"><br>3.应用key<br><img src="/images/beautify2/8.png" alt="986351dd5c71bed5c9fefb54abf8737f.png"><br>4.在<code>next/_config.yml</code>进行一下配置</p>
+<p>5.在leancloud存储的位置创建Class,必须命名为Counter<br><img data-src="/images/beautify2/4.png" alt="a1021618af30065d9ef1cf3b5eb0ab48.png"><br>6.查看后台统计数据<br><img data-src="/images/beautify2/5.png" alt="542d40c0448b9bcbf050c9b5bd509508.png"></p>
+<h5 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h5><p>选择的是Valine系统<br>进入leancloud<br>1.创建应用<br><img data-src="/images/beautify2/6.png" alt="f3cfd885cc0e436d58d6ac13ae2c7cef.png"><br>2.进入设置页面<br><img data-src="/images/beautify2/7.png" alt="4749312c24ca3633a258d13d15459ae9.png"><br>3.应用key<br><img data-src="/images/beautify2/8.png" alt="986351dd5c71bed5c9fefb54abf8737f.png"><br>4.在<code>next/_config.yml</code>进行一下配置</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">valine:</span><br><span class="line">  enable: true # 设置为true，默认为false</span><br><span class="line">  appid:  # 将应用key的App ID设置在这里</span><br><span class="line">  appkey: # 将应用key的App Key设置在这里</span><br><span class="line">  notify: true# 邮箱通知 , https:&#x2F;&#x2F;github.com&#x2F;xCss&#x2F;Valine&#x2F;wiki，默认为false</span><br><span class="line">  verify: true# 验证码 默认为false </span><br><span class="line">  placeholder: Just go go ^_^ # 初始化评论显示，根据自己修改，这里默认， </span><br><span class="line">  avatar: wavatar # 头像风格，默认为mm，可进入网址：https:&#x2F;&#x2F;valine.js.org&#x2F;visitor.html查看头像设置，这里有许多头像风格，进行设置  </span><br><span class="line">  guest_info: nick,mail,link # 自定义评论标题  </span><br><span class="line">  pageSize: 10 # 分页大小，10页就自动分页  </span><br><span class="line">  visitor: true # 是否允许游客评论 ，进入官网查看设置：https:&#x2F;&#x2F;valine.js.org&#x2F;visitor.html</span><br></pre></td></tr></table></figure>
 
-<p>完成<br>6.在后台查看评论数据<br>在valine后台，存储位置中的数据里面创建Class，名称必须为命名为Comment<br><img src="/images/beautify2/9.png" alt="dba10b9c2f501621d0243fa4c0bedbbe.png"></p>
+<p>完成<br>6.在后台查看评论数据<br>在valine后台，存储位置中的数据里面创建Class，名称必须为命名为Comment<br><img data-src="/images/beautify2/9.png" alt="dba10b9c2f501621d0243fa4c0bedbbe.png"></p>
 <blockquote>
 <p>注：选择valine评论系统是因为支持国内网络，不需要连接外网（翻墙）就可以进行显示评论系统，而且很好管理，页面简单。</p>
 </blockquote>
@@ -409,7 +409,7 @@
 <p>指令加到文章哪个部分，就从哪部分向下不显示</p>
 <h3 id="12-网页底部的动态桃心图像"><a href="#12-网页底部的动态桃心图像" class="headerlink" title="(12)网页底部的动态桃心图像"></a>(12)网页底部的动态桃心图像</h3><p><strong>修改主题配置文件:</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">icon:</span><br><span class="line">	name: heart      #如果name的值为heart表示引用fontawesome网站上的心形图标</span><br><span class="line">	animated: true     #如果想用动态图标应该将animated的值设为true</span><br><span class="line">	color: &quot;#ff0000&quot;     #图标的色--用16进制数</span><br></pre></td></tr></table></figure>
-<p>效果如下：<br><img src="/images/beautify2/10.png" alt="c3704c2babdf19d93e17ddb1f04597c8.png"><br>（心还在跳）</p>
+<p>效果如下：<br><img data-src="/images/beautify2/10.png" alt="c3704c2babdf19d93e17ddb1f04597c8.png"><br>（心还在跳）</p>
 ]]></content>
       <categories>
         <category>hexo+github博客建立与美化</category>
@@ -428,18 +428,18 @@
 <p>在开始“大展身手”前，要注意一点：<br>每添加了一项新代码或功能后不要着急部署到github里，<br>健康的方式是用<br>hexo s -p 5555<br>指令开启5555端口，然后浏览器输入127.0.0.1:5555或localhost:5555便可浏览网站，保存之后再刷新本地浏览的页面会相应修改，<br>等调试无误后才可用<br>hexo clean<br>hexo g -d<br>指令部署，这样能够防止出错时及时检查并修改，而不至于网站崩溃。</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="1-目录中创建标签和分类菜单及应用"><a href="#1-目录中创建标签和分类菜单及应用" class="headerlink" title="(1)目录中创建标签和分类菜单及应用"></a>(1)目录中创建标签和分类菜单及应用</h3><p>博客目录下hexo new page “tags”<br>然后在source文件夹下出现tags<br><img src="/images/beautify1/1.png" alt="d8a4349c886b117733dce99910a5a540.png"><br>打开对应的index，改为<br><img src="/images/beautify1/2.png" alt="b60a2cc94f7f85a30a8725f88622557c.png"></p>
-<p>同理hexo new page “categories”<br><img src="/images/beautify1/3.png" alt="b0b1f3f16bafa03f1d188a0831acfb57.png"><br>在主题配置文件中找到menu，去掉对应井号即可<br><img src="/images/beautify1/4.png" alt="b0fcd6d7938cf576b9b8d75ac61e0ed0.png"><br>想要在某篇文章中添加标签或分类只需在文章前面加上下图效果<br><img src="/images/beautify1/5.png" alt="f289d5e5a2d86c422e255cd05d6b2aee.png"></p>
-<h3 id="2-标签美化"><a href="#2-标签美化" class="headerlink" title="(2)标签美化"></a>(2)标签美化</h3><p><img src="/images/beautify1/6.png" alt="b658164ad4ee428656cb8d6b0f11a74d.png"><br>井号样式不好看，改为图标</p>
+<h3 id="1-目录中创建标签和分类菜单及应用"><a href="#1-目录中创建标签和分类菜单及应用" class="headerlink" title="(1)目录中创建标签和分类菜单及应用"></a>(1)目录中创建标签和分类菜单及应用</h3><p>博客目录下hexo new page “tags”<br>然后在source文件夹下出现tags<br><img data-src="/images/beautify1/1.png" alt="d8a4349c886b117733dce99910a5a540.png"><br>打开对应的index，改为<br><img data-src="/images/beautify1/2.png" alt="b60a2cc94f7f85a30a8725f88622557c.png"></p>
+<p>同理hexo new page “categories”<br><img data-src="/images/beautify1/3.png" alt="b0b1f3f16bafa03f1d188a0831acfb57.png"><br>在主题配置文件中找到menu，去掉对应井号即可<br><img data-src="/images/beautify1/4.png" alt="b0fcd6d7938cf576b9b8d75ac61e0ed0.png"><br>想要在某篇文章中添加标签或分类只需在文章前面加上下图效果<br><img data-src="/images/beautify1/5.png" alt="f289d5e5a2d86c422e255cd05d6b2aee.png"></p>
+<h3 id="2-标签美化"><a href="#2-标签美化" class="headerlink" title="(2)标签美化"></a>(2)标签美化</h3><p><img data-src="/images/beautify1/6.png" alt="b658164ad4ee428656cb8d6b0f11a74d.png"><br>井号样式不好看，改为图标</p>
 <p>在博客项目中找到<code>/themes/next/layout/_macro/post.swig</code>，搜索 rel=”tag”，将 #号 换成</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;i class&#x3D;&quot;fa fa-tag&quot;&gt;&lt;&#x2F;i&gt;</span><br></pre></td></tr></table></figure>
-<p>完成样子：<br><img src="/images/beautify1/7.png" alt="7479a2848622b7cf6f36a56ac783cbdc.png"></p>
+<p>完成样子：<br><img data-src="/images/beautify1/7.png" alt="7479a2848622b7cf6f36a56ac783cbdc.png"></p>
 <h3 id="3-添加点击爱心效果"><a href="#3-添加点击爱心效果" class="headerlink" title="(3)添加点击爱心效果"></a>(3)添加点击爱心效果</h3><p>在页面中点击任意位置实现蹦出爱心效果<br>在 <code>/themes/next/source/js</code>下新建文件 clicklove.js，接着把如下代码复制粘贴到 clicklove.js 文件中，代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">!function(e,t,a)&#123;function n()&#123;c(&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#39;&#39;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;),o(),r()&#125;function r()&#123;for(var e&#x3D;0;e&lt;d.length;e++)d[e].alpha&lt;&#x3D;0?(t.body.removeChild(d[e].el),d.splice(e,1)):(d[e].y--,d[e].scale+&#x3D;.004,d[e].alpha-&#x3D;.013,d[e].el.style.cssText&#x3D;&quot;left:&quot;+d[e].x+&quot;px;top:&quot;+d[e].y+&quot;px;opacity:&quot;+d[e].alpha+&quot;;transform:scale(&quot;+d[e].scale+&quot;,&quot;+d[e].scale+&quot;) rotate(45deg);background:&quot;+d[e].color+&quot;;z-index:99999&quot;);requestAnimationFrame(r)&#125;function o()&#123;var t&#x3D;&quot;function&quot;&#x3D;&#x3D;typeof e.onclick&amp;&amp;e.onclick;e.onclick&#x3D;function(e)&#123;t&amp;&amp;t(),i(e)&#125;&#125;function i(e)&#123;var a&#x3D;t.createElement(&quot;div&quot;);a.className&#x3D;&quot;heart&quot;,d.push(&#123;el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:s()&#125;),t.body.appendChild(a)&#125;function c(e)&#123;var a&#x3D;t.createElement(&quot;style&quot;);a.type&#x3D;&quot;text&#x2F;css&quot;;try&#123;a.appendChild(t.createTextNode(e))&#125;catch(t)&#123;a.styleSheet.cssText&#x3D;e&#125;t.getElementsByTagName(&quot;head&quot;)[0].appendChild(a)&#125;function s()&#123;return&quot;rgb(&quot;+~~(255*Math.random())+&quot;,&quot;+~~(255*Math.random())+&quot;,&quot;+~~(255*Math.random())+&quot;)&quot;&#125;var d&#x3D;[];e.requestAnimationFrame&#x3D;function()&#123;return e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e)&#123;setTimeout(e,1e3&#x2F;60)&#125;&#125;(),n()&#125;(window,document);</span><br></pre></td></tr></table></figure>
 <p>在 <code>\themes\next\layout\_layout.swig</code> 文件末尾添加：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- 页面点击小红心 --&gt; &lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;js&#x2F;clicklove.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="4-网站头像修改"><a href="#4-网站头像修改" class="headerlink" title="(4)网站头像修改"></a>(4)网站头像修改</h3><p>主题配置文件中找到avatar<br>全变成true，url里写自己图像的路径<br><img src="/images/beautify1/8.png" alt="4304959957ae1fde9391e0bde50f21af.png"></p>
+<h3 id="4-网站头像修改"><a href="#4-网站头像修改" class="headerlink" title="(4)网站头像修改"></a>(4)网站头像修改</h3><p>主题配置文件中找到avatar<br>全变成true，url里写自己图像的路径<br><img data-src="/images/beautify1/8.png" alt="4304959957ae1fde9391e0bde50f21af.png"></p>
 <h3 id="5-网站图标修改"><a href="#5-网站图标修改" class="headerlink" title="(5)网站图标修改"></a>(5)网站图标修改</h3><p>在next主题配置文件中找favicon:<br>路径改为自己的图标所在<br>最好路径形式为(/images/…)<br>然后将图标保存在根目录下的source/images文件夹里就可</p>
 <h3 id="6-添加站内搜索"><a href="#6-添加站内搜索" class="headerlink" title="(6)添加站内搜索"></a>(6)添加站内搜索</h3><p>由于可能我需要快速查找相关文章，那么就需要添加站内搜索。</p>
 <p>1.安装站内搜索插件<br>  npm install hexo-generator-searchdb –save<br>2.在根目录下的_config.yml添加</p>
@@ -468,9 +468,9 @@
     <url>/nextthemesetup.html</url>
     <content><![CDATA[<h2 id="安装NexT主题"><a href="#安装NexT主题" class="headerlink" title="安装NexT主题"></a>安装NexT主题</h2><p>介绍一个公认最常用的next最新版主题以及安装使用方法。<br><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">参考next官网教程</a></p>
 <a id="more"></a>
-<h5 id="下载next主题包"><a href="#下载next主题包" class="headerlink" title="下载next主题包"></a>下载next主题包</h5><p><a href="https://github.com/theme-next/hexo-theme-next/releases/tag/v7.7.2" target="_blank" rel="noopener">next-v7.7.2压缩包下载地址</a><br><img src="/images/3/1.png" alt="838e7c57786cd645be77a5c68f8a2b52.png"><br>下载zip，<br>解压所下载的压缩包至站点的 themes 目录下， 并将 解压后的文件夹名称（hexo-theme-next-0.4.0）更改为 next。</p>
-<h5 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h5><p>当 下载 完成后，打开 站点配置文件（blogname/config.yml）， 找到 theme 字段，注释掉默认的主题并将其值更改为 next。<br><img src="/images/3/2.png" alt="2453faafe127e7b38369368dcaf1d1a0.png"></p>
-<h5 id="选择-Scheme（风格）"><a href="#选择-Scheme（风格）" class="headerlink" title="选择 Scheme（风格）"></a>选择 Scheme（风格）</h5><p>NexT 提供三种不同风格主题方案：<br><img src="/images/3/3.png" alt="c49bc7a9f1d1d7c6889e0f74bd1e4880.png"><br>Scheme 的切换通过更改 主题配置文件，搜索 scheme 关键字。 你会看到有三行 scheme 的配置，将你需用启用的 scheme 前面注释 # 去除即可。</p>
+<h5 id="下载next主题包"><a href="#下载next主题包" class="headerlink" title="下载next主题包"></a>下载next主题包</h5><p><a href="https://github.com/theme-next/hexo-theme-next/releases/tag/v7.7.2" target="_blank" rel="noopener">next-v7.7.2压缩包下载地址</a><br><img data-src="/images/3/1.png" alt="838e7c57786cd645be77a5c68f8a2b52.png"><br>下载zip，<br>解压所下载的压缩包至站点的 themes 目录下， 并将 解压后的文件夹名称（hexo-theme-next-0.4.0）更改为 next。</p>
+<h5 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h5><p>当 下载 完成后，打开 站点配置文件（blogname/config.yml）， 找到 theme 字段，注释掉默认的主题并将其值更改为 next。<br><img data-src="/images/3/2.png" alt="2453faafe127e7b38369368dcaf1d1a0.png"></p>
+<h5 id="选择-Scheme（风格）"><a href="#选择-Scheme（风格）" class="headerlink" title="选择 Scheme（风格）"></a>选择 Scheme（风格）</h5><p>NexT 提供三种不同风格主题方案：<br><img data-src="/images/3/3.png" alt="c49bc7a9f1d1d7c6889e0f74bd1e4880.png"><br>Scheme 的切换通过更改 主题配置文件，搜索 scheme 关键字。 你会看到有三行 scheme 的配置，将你需用启用的 scheme 前面注释 # 去除即可。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#scheme: Muse </span><br><span class="line">#scheme: Mist </span><br><span class="line">#scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure>
 <p>然后网站根目录下运行<br>hexo clean<br>hexo g -d<br>就可以等待查看不同风格效果了。</p>
 <h2 id="博客文章"><a href="#博客文章" class="headerlink" title="博客文章"></a>博客文章</h2><h5 id="向博客中添加一篇文章"><a href="#向博客中添加一篇文章" class="headerlink" title="向博客中添加一篇文章"></a>向博客中添加一篇文章</h5><p>hexo new “标题”<br>或hexo new 标题 (标题不能有空格，若要加空格用上面形式)<br>新建好的自动保存在博客文件夹下的source/_posts里，以md形式创立，故写文章要用到markdown语法。</p>
@@ -488,7 +488,7 @@
 <blockquote>
 <p>注：markdown格式加感叹号直接显示图片<br>不加感叹号则显示蓝色文字，点开得图片<br>（可以自己尝试一下区别）</p>
 </blockquote>
-<p><strong>遇到的小麻烦</strong><br><img src="/images/3/4.png" alt="f977c13be2a2b035c3a647a773fc328c.png"><br>百度YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 8, column 1:<br>发现tag：后要加空格即可解决问题</p>
+<p><strong>遇到的小麻烦</strong><br><img data-src="/images/3/4.png" alt="f977c13be2a2b035c3a647a773fc328c.png"><br>百度YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 8, column 1:<br>发现tag：后要加空格即可解决问题</p>
 <h5 id="文档中添加网页链接"><a href="#文档中添加网页链接" class="headerlink" title="文档中添加网页链接"></a>文档中添加网页链接</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[文字描述](网址，如www.baidu.com)</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>hexo+github博客建立与美化</category>
@@ -504,7 +504,7 @@
     <url>/zidingyiyuming.html</url>
     <content><![CDATA[<h3 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h3><p>依托github搭建起来的博客域名格式一般是固定的（尾端.github.io），无法做到自己自定义那种常见的baidu.com那种简洁好记的域名<br>网上自定义域名方法有些描述的模糊不清，让我进了不少坑，于是便记录下自己详细的自定义域名的过程</p>
 <a id="more"></a>
-<p>先在根目录/source文件夹下新建一个CNAME文件，存域名<br>（尽量不加www，这样以后访问加不加www.都可以访问）<br>cmd博客目录下执行hexo g -d<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image1.png" alt="32e66fc5fd4da0624c29aef589c095a5.png"><br><a href="https://www.zhihu.com/question/31377141" target="_blank" rel="noopener">借鉴知乎问题</a><br>阿里云实名注册域名后ping一下marmalad0.github.io<br>得到一个IP地址<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image2.png" alt="84d76b43931c1c3fa11cd48212aa163d.png"><br>点击阿里云域名解析，添加两条记录<br>格式如下：<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image3.png" alt="dcc3ad3502c4fbdbe08f89e8e11272b0.png"><br>然后在自己的github上打开建的仓库（用户名.github.io）<br>点击settings找到<br>Custom domain写上自己自定义的域名（一般自动就有），再在https上打一个勾<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image4.png" alt="a11d7497d345e1f008deca099dcaa1de.png"><br>成功</p>
+<p>先在根目录/source文件夹下新建一个CNAME文件，存域名<br>（尽量不加www，这样以后访问加不加www.都可以访问）<br>cmd博客目录下执行hexo g -d<br><img data-src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image1.png" alt="32e66fc5fd4da0624c29aef589c095a5.png"><br><a href="https://www.zhihu.com/question/31377141" target="_blank" rel="noopener">借鉴知乎问题</a><br>阿里云实名注册域名后ping一下marmalad0.github.io<br>得到一个IP地址<br><img data-src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image2.png" alt="84d76b43931c1c3fa11cd48212aa163d.png"><br>点击阿里云域名解析，添加两条记录<br>格式如下：<br><img data-src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image3.png" alt="dcc3ad3502c4fbdbe08f89e8e11272b0.png"><br>然后在自己的github上打开建的仓库（用户名.github.io）<br>点击settings找到<br>Custom domain写上自己自定义的域名（一般自动就有），再在https上打一个勾<br><img data-src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image4.png" alt="a11d7497d345e1f008deca099dcaa1de.png"><br>成功</p>
 ]]></content>
       <categories>
         <category>hexo+github博客建立与美化</category>
@@ -548,22 +548,22 @@
 </blockquote>
 </blockquote>
 <h4 id="2、GitHub创建个人仓库"><a href="#2、GitHub创建个人仓库" class="headerlink" title="2、GitHub创建个人仓库"></a>2、GitHub创建个人仓库</h4><p>用邮箱注册一GitHub账号 username：marmalade0<br>开始用qq邮箱不行，一直提醒验证邮箱，转用163邮箱注册成功<br> 点击GitHub中的New repository创建新仓库，<br> 仓库名：marmalade0.github.io</p>
-<h4 id="3、安装Git"><a href="#3、安装Git" class="headerlink" title="3、安装Git"></a>3、安装Git</h4><p> <a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">实用Git教程</a><br> 下载64位Git，全默认安装<br> <img src="/images/1/ScreenClip.png" alt=""></p>
-<h6 id="将git与github绑定"><a href="#将git与github绑定" class="headerlink" title="将git与github绑定"></a>将git与github绑定</h6><p> ssh-keygen -t rsa -C “<a href="mailto:1563972718@qq.com">1563972718@qq.com</a>“<br>然后找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容全部复制<br>打开GitHub_Settings_keys 页面，新建new SSH Key<br><img src="/images/1/01.png" alt="42d793f5e11a63d85152788039686570.png"></p>
-<p>Title为标题，任意填即可，将刚刚复制的id_rsa.pub内容粘贴进去，最后点击Add SSH key。<br>在Git Bash中检测GitHub公钥设置是否成功，输入 ssh <a href="mailto:git@github.com">git@github.com</a> 检验<br><img src="/images/1/02.png" alt="00f7e12cc75aa22957e6f8b72187f128.png"></p>
+<h4 id="3、安装Git"><a href="#3、安装Git" class="headerlink" title="3、安装Git"></a>3、安装Git</h4><p> <a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">实用Git教程</a><br> 下载64位Git，全默认安装<br> <img data-src="/images/1/ScreenClip.png" alt=""></p>
+<h6 id="将git与github绑定"><a href="#将git与github绑定" class="headerlink" title="将git与github绑定"></a>将git与github绑定</h6><p> ssh-keygen -t rsa -C “<a href="mailto:1563972718@qq.com">1563972718@qq.com</a>“<br>然后找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容全部复制<br>打开GitHub_Settings_keys 页面，新建new SSH Key<br><img data-src="/images/1/01.png" alt="42d793f5e11a63d85152788039686570.png"></p>
+<p>Title为标题，任意填即可，将刚刚复制的id_rsa.pub内容粘贴进去，最后点击Add SSH key。<br>在Git Bash中检测GitHub公钥设置是否成功，输入 ssh <a href="mailto:git@github.com">git@github.com</a> 检验<br><img data-src="/images/1/02.png" alt="00f7e12cc75aa22957e6f8b72187f128.png"></p>
 <p>设置GitHub密钥原因是，通过非对称加密的公钥与私钥来完成加密，公钥放置在GitHub上，私钥放置在自己的电脑里。GitHub要求每次推送代码都是合法用户，所以每次推送都需要输入账号密码验证推送用户是否是合法用户，为了省去每次输入密码的步骤，采用了ssh，当你推送的时候，git就会匹配你的私钥跟GitHub上面的公钥是否是配对的，若是匹配就认为你是合法用户，则允许推送。这样可以保证每次的推送都是正确合法的。</p>
-<h4 id="4、安装Node-js"><a href="#4、安装Node-js" class="headerlink" title="4、安装Node.js"></a>4、安装Node.js</h4><p><a href="https://nodejs.org/dist/v4.4.3/node-v4.4.3-x64.msi" target="_blank" rel="noopener">64位安装地址</a><br>安装成功后检验环境变量中是否有<br><img src="/images/1/3.png" alt="06bea625b17581dd388ca0386f702221.png"><br>在系统环境变量添加NODE_PATH<br>值为F:\nodejs\node_global\node_modules<br>安装一个express<br>npm install express -g<br>cmd中输入node，然后输入require(‘express’)<br>出现<br><img src="/images/1/4.png" alt="52657a6521fa92244759f23d5c1f2e36.png"><br>即成功正常加载模块</p>
-<h6 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h6><p>（阿里开发，国内速度快）<br>输入<br>npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br>输入cnpm -v ，检测是否正常，但是这里会报错<br>添加环境变量后再输<br><img src="/images/1/5.png" alt="21d0163dea46a40305b99c02ee485d28.png"><br>安装成功</p>
-<h3 id="5、hexo安装"><a href="#5、hexo安装" class="headerlink" title="5、hexo安装"></a>5、hexo安装</h3><p>百度hexo<br>选择文档|hexo，按照教程安装<br>新建一个blog文件夹，cmd切换到该目录下，<br>npm install -g hexo-cli安装<br>等较长时间后<br>hexo init 博客名<br>cd 博客名<br>npm install<br><img src="/images/1/6.png" alt="093d34b7b0923d359032f28b3b625004.png"><br>完成<br><img src="/images/1/7.png" alt="d765e4114126706e112277382f345bb7.png"></p>
+<h4 id="4、安装Node-js"><a href="#4、安装Node-js" class="headerlink" title="4、安装Node.js"></a>4、安装Node.js</h4><p><a href="https://nodejs.org/dist/v4.4.3/node-v4.4.3-x64.msi" target="_blank" rel="noopener">64位安装地址</a><br>安装成功后检验环境变量中是否有<br><img data-src="/images/1/3.png" alt="06bea625b17581dd388ca0386f702221.png"><br>在系统环境变量添加NODE_PATH<br>值为F:\nodejs\node_global\node_modules<br>安装一个express<br>npm install express -g<br>cmd中输入node，然后输入require(‘express’)<br>出现<br><img data-src="/images/1/4.png" alt="52657a6521fa92244759f23d5c1f2e36.png"><br>即成功正常加载模块</p>
+<h6 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h6><p>（阿里开发，国内速度快）<br>输入<br>npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br>输入cnpm -v ，检测是否正常，但是这里会报错<br>添加环境变量后再输<br><img data-src="/images/1/5.png" alt="21d0163dea46a40305b99c02ee485d28.png"><br>安装成功</p>
+<h3 id="5、hexo安装"><a href="#5、hexo安装" class="headerlink" title="5、hexo安装"></a>5、hexo安装</h3><p>百度hexo<br>选择文档|hexo，按照教程安装<br>新建一个blog文件夹，cmd切换到该目录下，<br>npm install -g hexo-cli安装<br>等较长时间后<br>hexo init 博客名<br>cd 博客名<br>npm install<br><img data-src="/images/1/6.png" alt="093d34b7b0923d359032f28b3b625004.png"><br>完成<br><img data-src="/images/1/7.png" alt="d765e4114126706e112277382f345bb7.png"></p>
 <p>hexo s -p 5555选择5555端口，浏览器搜localhost:5555即可进入博客（为安全起见，开一个端口来本地预览，无误后再部署到GitHub上）</p>
 <p>看一下是什么样子的！</p>
 <blockquote>
 <p><strong>注：<br>根目录：My Blog/marmalade<br>hexo网站配置文件：根目录下的_config.yml<br>主题配置文件：next主题里的_config.yml</strong></p>
 </blockquote>
 <h3 id="6、hexo发布至github"><a href="#6、hexo发布至github" class="headerlink" title="6、hexo发布至github"></a>6、hexo发布至github</h3><p>把博客文件夹拖入sublime里<br>Source里面的_posts为内容</p>
-<h6 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h6><p>打开_config.yml改最后的为<br><img src="/images/1/8.png" alt="2418aff8ccf1a0e2ae46bdc2fa467e45.png"></p>
-<p>前面的改为url: <a href="https://marmalade0.github.io" target="_blank" rel="noopener">https://marmalade0.github.io</a><br>autnor：lijunliang<br><img src="/images/1/9.png" alt="395d5f727e5461bca6a37ae7d673df55.png"></p>
-<p>hexo clean （清除缓存，即删除public文件夹，在部署博客时最好先用一下此命令来清理缓存）<br>cmd中hexo g(生成静态文件)(即同步到博客中)<br>hexo d（部署到github）<strong>两者可以连起来写为hexo g -d</strong><br>以上几个命令用来部署博客内容到网站中，以后会经常用到。<br><img src="/images/1/10.png" alt="bde9280975c1018708585ddb8e40ab3f.png"><br>报错<br>装一个插件<br>npm install hexo-deployer-git –save<br>末尾加分支branch: master<br>然后hexo d同步到github上<br><strong>后来再hexo d的时候出现错误</strong><br><img src="/images/1/11.png" alt="28e7647f32d5c36e3bd3eeaf6594ac62.png"><br>，上网搜Error: Spawn failed，见有相同问题的<br>解决方法：把F:\Git\Git\bin添加到系统变量的path中<br>再运行，成功<br><img src="/images/1/12.png" alt=""></p>
+<h6 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h6><p>打开_config.yml改最后的为<br><img data-src="/images/1/8.png" alt="2418aff8ccf1a0e2ae46bdc2fa467e45.png"></p>
+<p>前面的改为url: <a href="https://marmalade0.github.io" target="_blank" rel="noopener">https://marmalade0.github.io</a><br>autnor：lijunliang<br><img data-src="/images/1/9.png" alt="395d5f727e5461bca6a37ae7d673df55.png"></p>
+<p>hexo clean （清除缓存，即删除public文件夹，在部署博客时最好先用一下此命令来清理缓存）<br>cmd中hexo g(生成静态文件)(即同步到博客中)<br>hexo d（部署到github）<strong>两者可以连起来写为hexo g -d</strong><br>以上几个命令用来部署博客内容到网站中，以后会经常用到。<br><img data-src="/images/1/10.png" alt="bde9280975c1018708585ddb8e40ab3f.png"><br>报错<br>装一个插件<br>npm install hexo-deployer-git –save<br>末尾加分支branch: master<br>然后hexo d同步到github上<br><strong>后来再hexo d的时候出现错误</strong><br><img data-src="/images/1/11.png" alt="28e7647f32d5c36e3bd3eeaf6594ac62.png"><br>，上网搜Error: Spawn failed，见有相同问题的<br>解决方法：把F:\Git\Git\bin添加到系统变量的path中<br>再运行，成功<br><img data-src="/images/1/12.png" alt=""></p>
 ]]></content>
       <categories>
         <category>hexo+github博客建立与美化</category>
