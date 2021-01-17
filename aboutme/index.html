@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（三）---文章样式美化, Marmalade&#39;s Blog">
+    <meta name="keywords" content="Marmalade&#39;s Blog">
     <meta name="description" content="一个ctfer的成长之路">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（三）---文章样式美化 | Marmalade&#39;s Blog</title>
+    <title>Marmalade&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -372,12 +372,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（三）---文章样式美化</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -491,33 +491,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/next%E4%B8%BB%E9%A2%98/">
-                                <span class="chip bg-color">next主题</span>
-                            </a>
-                        
-                            <a href="/tags/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/">
-                                <span class="chip bg-color">next主题美化</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD/">
-                                <span class="chip bg-color">网站添加功能</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/" class="post-category">
-                                hexo+github博客建立与美化
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -526,14 +505,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-23
+                    2021-01-17
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-06-21
+                    2021-01-17
                 </div>
                 
 
@@ -552,202 +531,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="13-文章样式美化大全"><a href="#13-文章样式美化大全" class="headerlink" title="(13)文章样式美化大全"></a>(13)文章样式美化大全</h1><h5 id="大坑！！next新版-7-x-背景设置位置有变化，custom-styl没有！"><a href="#大坑！！next新版-7-x-背景设置位置有变化，custom-styl没有！" class="headerlink" title="大坑！！next新版(7.x)背景设置位置有变化，custom.styl没有！"></a>大坑！！next新版(7.x)背景设置位置有变化，custom.styl没有！</h5><p>因此网上大部分教程都是无效的。<br>正确设置方法：<br>首先主题配置文件取消注释(去掉下方的#号)</p>
-<pre><code>custom_file_path:
-  #style: source/_data/styles.styl</code></pre><p>在路径<code>~/hexo_blog/source</code>创建_data文件夹并在里面创建styles.styl文件，并添加以下内容<br>实现背景图片颜色透明度等修改，让你的博客更具“自我”！<br>详情请点击：</p>
-<a id="more"></a>
-
-<pre><code>// 添加背景图片
-body {
- background-image: url(/images/u=1217520976,1493455735&amp;fm=26&amp;gp=0.jpg);
-  background-repeat: no-repeat; //不重复
-  background-attachment: fixed; //不随页面滚动
-  background-position: 50% 50%; //center居中 
-  background-size: 100% 100%;  //cover为填充
-}
-
-
-// 主页文章添加阴影效果
-.post {
-  margin-top: 60px;
-  margin-bottom: 60px;
-  padding: 25px;
-  -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
-  -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
- }
-
-
-// 标题栏背景
-.site-meta {
-    padding: 20px 0;
-    color: #fff;
-    background-image: url(/images/95033e2a5404c30e2ab560e72b157a0a.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: 100% 100%;
-}  
-
-
-// 修改主体透明度
-.main-inner{
-    background: #fff;
-    opacity: 0.85;
-
-}
-
-
-// 修改菜单栏透明度，会引起本地搜索菜单bug
-.header-inner {
-//    opacity: 0.95;
-      border-radius: 30px 30px 30px 30px; //菜单栏椭圆化
-      box-shadow: rgba(0,0,0,0.1) 0px 15px 35px 0px, rgba(0,0,0,0.31) 6px 6px 10px 0px;
-}
-
-
-
-//主标题颜色
-.brand{
-    color: #390044
-}
-
-//副标题颜色
-.site-subtitle {
-    margin-top: 10px;
-    font-size: 13px;
-    color: #ffffff;
-}
-
-
-//目录背景色
-.header-inner{  
-  background: #bc0100;
-  background: linear-gradient(0deg, #bc0100 20%, #9b1d22 80%);
-}
-
-
-//侧边栏与文字的颜色
-.menu-item a{
-
-  color: #fbda41 //左上目录文字颜色
-}
-
-.menu-item-active a{
-  color: #555555
-}
-
-//页脚文字
-.footer,.footer a,.footer .with-love{
-  //color: #31ff00
-}
-
-
-//文章样式
-//每一篇文章标题右侧增加图片
-article .post-header{
-  background: url(/images/46265dece9bce1c56eb6dc6d4c931423.jpeg);
-  background-repeat: no-repeat;//不重复
-  background-position: right ; //居右
-  background-size: contain;//合适大小
-  //color: #ff0000; //归档的日期文字颜色
-}
-
-
-//文章版权处右侧增加图片（没有找到图片所在位置）
-article .post-copyright{
-  background: url(https://s1.ax1x.com/2018/12/20/FrD60g.png);//瑾贺新年 透明
-  background-repeat: no-repeat;//不重复
-  background-position: right bottom ; //居右下
-  background-size: contain;//auto按图片比例缩放
-}
-
-
-//文章内页左边栏样式
-//左边栏概览
-.sidebar-inner {
-  //background: url(https://s1.ax1x.com/2018/12/20/FrBGIs.jpg);//元旦 大红背景
-  background: url(/images/d487657bd263d8d9d17e23b75c241034.jpg);// 左下格式
-
-  background-repeat: no-repeat;//不重复
-  background-position: center ; //居右下
-  background-size: cover;//auto按图片比例缩放
-
-  //color: #fbda41;
-  border-radius: 30px 30px 30px 30px;
-  position: absolute;
-  overflow: hidden;//上面三行效果：左下栏椭圆化
-  box-shadow: rgba(0,0,0,0.1) 0px 15px 35px 0px, rgba(0,0,0,0.31) 6px 6px 10px 0px;
-}
-
-.sidebar-inner .site-overview-wrap .site-overview,.sidebar-inner .site-overview-wrap .site-overview .site-author-name,.sidebar a,.sidebar span.exturl,.site-state-item-name,.site-description{
-  color: #fbda41;  //左下文字颜色
-}
-
-//文章内页左边栏(要改下方的颜色尽量全改，不然会颜色混杂)
-.sidebar-nav .sidebar-nav-active{
-  color: #fbda41;
-  border-bottom-color: #fbda41;
-}
-.sidebar-nav li{
-  color: #fbda41;
-  border-bottom-color: #fbda41;
-}
-.links-of-blogroll-list{
-  text-shadow: red 0 1px 0;//给links部分添加文字阴影
-}
-.post-toc ol a{
-  color: #fbda41;
-}
-
-
-//二次深度美化
-//给文章概述与文章标题添加上一个方框
-.content .posts-expand .post-block{
-    position: relative;
-    margin-bottom: 30px;
-    padding: 40px 20px;
-    font-size: 14px;
-    box-shadow: rgba(0,0,0,0.1) 0px 15px 35px 0px, rgba(0,0,0,0.31) 6px 6px 10px 0px;//添加阴影效果
-    border-radius: 20px;//添加椭圆效果
-    background-color: #FFF0F5;//文章的背景色
-    transition: -webkit-transform .3s;
-    transition: transform .3s;
-    transition: transform .3s,-webkit-transform .3s;
-    transform-style: preserve-3d;
-}
-.post-expand .post-body{
-    position: relative;
-    overflow: visible;
-    padding: 20px;
-    color: #666;
-    font-size: 15px;
-    word-break: break-word;
-}
-
-
-//标签的美化，使用圆形方框美化
-.tag-cloud a {
-  box-shadow: 0 1px 3px #6f42c1, 0 1px 2px #d9534f;
-  padding: 2px 10px;
-  margin: 8px;
-  background: #c1425c00;
-  border-bottom: none;
-  border-radius: 20px;
-}
-
-
-//顶部进度条的隐藏代码(亲测未找到效果)
-.headband{
-  height: 0px;
-  background: #fc6423;
-
-}
-
-
-//修改不蒜子数据颜色
-.busuanzi-value {
-  color: #1890ff;
-}</code></pre><p>颜色为十六进制形式，<a href="https://www.sioe.cn/yingyong/yanse-rgb-16/" target="_blank" rel="noopener">在线颜色hex转化对照</a><br>可以自己寻找适合的颜色<br><a href="https://xian6ge.cn/posts/40ba2cba/" target="_blank" rel="noopener">参考大佬文章</a><br>效果都可在本网站显示，建议亲自修改后体会不同。</p>
+                <pre><code>一位平凡但喜欢探索的19级的公安网安专业大学生，正苦命学习ctf以及网络安全</code></pre><p>非常欢迎志同道合的朋友与我联系，共同交流ctf、博客搭建、安全攻防、C语言等疑惑。<br><strong>Mutual influence, mutual learning and common progress!</strong><br>QQ： 1563972718<br>邮箱： <a href="mailto:1563972718@qq.com">1563972718@qq.com</a><br>微信：15553390992<br><img src="/images/56a798bc517641cae99ba1b7d6d263a7.jpg" alt=""></p>
 
                 
             </div>
@@ -774,7 +558,7 @@ article .post-copyright{
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://marmalade.vip/nextthemebeautify3.html">https://marmalade.vip/nextthemebeautify3.html</a>
+                    <a href="https://marmalade.vip/aboutme/index.html">https://marmalade.vip/aboutme/index.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -811,19 +595,7 @@ article .post-copyright{
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/next%E4%B8%BB%E9%A2%98/">
-                                    <span class="chip bg-color">next主题</span>
-                                </a>
-                            
-                                <a href="/tags/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/">
-                                    <span class="chip bg-color">next主题美化</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD/">
-                                    <span class="chip bg-color">网站添加功能</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1256,85 +1028,29 @@ article .post-copyright{
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/hexothemebeautify4.html">
+                <a href="/aboutme/index.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（四）">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">Hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（四）</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            自定义文章底部版权声明在每篇文章末尾添加“本文结束”标记字数统计和阅读时长(网站底部/文章内)添加文章置顶功能
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-26
-                        </span>
-                        <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/" class="post-category">
-                                    hexo+github博客建立与美化
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/next%E4%B8%BB%E9%A2%98/">
-                        <span class="chip bg-color">next主题</span>
-                    </a>
-                    
-                    <a href="/tags/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/">
-                        <span class="chip bg-color">next主题美化</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD/">
-                        <span class="chip bg-color">网站添加功能</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/shodankaliuse.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="在kali虚拟机中使用msf的shodan“入侵”网络摄像头">
-                        
-                        <span class="card-title">在kali虚拟机中使用msf的shodan“入侵”网络摄像头</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            在kali虚拟机中使用msf的shodan入侵网络摄像头实验步骤：1.0 打开msf5，第一次使用msf5：①、先启动postgresql数据库，这个是msf5 的默认数据库。service postgresql start
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-17
                             </span>
                         <span class="publish-author">
                             
@@ -1344,14 +1060,45 @@ article .post-copyright{
                         </span>
                     </div>
                 </div>
+
                 
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/shodan/">
-                        <span class="chip bg-color">shodan</span>
-                    </a>
-                    
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/aboutme/index.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            lijunliang
+                            
+                        </span>
+                    </div>
                 </div>
+
                 
             </div>
         </div>
