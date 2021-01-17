@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 4.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-
+<link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -553,201 +553,13 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="13-文章样式美化大全"><a href="#13-文章样式美化大全" class="headerlink" title="(13)文章样式美化大全"></a>(13)文章样式美化大全</h1><h5 id="大坑！！next新版-7-x-背景设置位置有变化，custom-styl没有！"><a href="#大坑！！next新版-7-x-背景设置位置有变化，custom-styl没有！" class="headerlink" title="大坑！！next新版(7.x)背景设置位置有变化，custom.styl没有！"></a>大坑！！next新版(7.x)背景设置位置有变化，custom.styl没有！</h5><p>因此网上大部分教程都是无效的。<br>正确设置方法：<br>首先主题配置文件取消注释(去掉下方的#号)</p>
-<pre><code>custom_file_path:
-  #style: source/_data/styles.styl</code></pre><p>在路径<code>~/hexo_blog/source</code>创建_data文件夹并在里面创建styles.styl文件，并添加以下内容<br>实现背景图片颜色透明度等修改，让你的博客更具“自我”！<br>详情请点击：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">  #style: source/_data/styles.styl</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在路径<code>~/hexo_blog/source</code>创建_data文件夹并在里面创建styles.styl文件，并添加以下内容<br>实现背景图片颜色透明度等修改，让你的博客更具“自我”！<br>详情请点击：</p>
 <a id="more"></a>
 
-<pre><code>// 添加背景图片
-body {
- background-image: url(/images/u=1217520976,1493455735&amp;fm=26&amp;gp=0.jpg);
-  background-repeat: no-repeat; //不重复
-  background-attachment: fixed; //不随页面滚动
-  background-position: 50% 50%; //center居中 
-  background-size: 100% 100%;  //cover为填充
-}
-
-
-// 主页文章添加阴影效果
-.post {
-  margin-top: 60px;
-  margin-bottom: 60px;
-  padding: 25px;
-  -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
-  -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
- }
-
-
-// 标题栏背景
-.site-meta {
-    padding: 20px 0;
-    color: #fff;
-    background-image: url(/images/95033e2a5404c30e2ab560e72b157a0a.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: 100% 100%;
-}  
-
-
-// 修改主体透明度
-.main-inner{
-    background: #fff;
-    opacity: 0.85;
-
-}
-
-
-// 修改菜单栏透明度，会引起本地搜索菜单bug
-.header-inner {
-//    opacity: 0.95;
-      border-radius: 30px 30px 30px 30px; //菜单栏椭圆化
-      box-shadow: rgba(0,0,0,0.1) 0px 15px 35px 0px, rgba(0,0,0,0.31) 6px 6px 10px 0px;
-}
-
-
-
-//主标题颜色
-.brand{
-    color: #390044
-}
-
-//副标题颜色
-.site-subtitle {
-    margin-top: 10px;
-    font-size: 13px;
-    color: #ffffff;
-}
-
-
-//目录背景色
-.header-inner{  
-  background: #bc0100;
-  background: linear-gradient(0deg, #bc0100 20%, #9b1d22 80%);
-}
-
-
-//侧边栏与文字的颜色
-.menu-item a{
-
-  color: #fbda41 //左上目录文字颜色
-}
-
-.menu-item-active a{
-  color: #555555
-}
-
-//页脚文字
-.footer,.footer a,.footer .with-love{
-  //color: #31ff00
-}
-
-
-//文章样式
-//每一篇文章标题右侧增加图片
-article .post-header{
-  background: url(/images/46265dece9bce1c56eb6dc6d4c931423.jpeg);
-  background-repeat: no-repeat;//不重复
-  background-position: right ; //居右
-  background-size: contain;//合适大小
-  //color: #ff0000; //归档的日期文字颜色
-}
-
-
-//文章版权处右侧增加图片（没有找到图片所在位置）
-article .post-copyright{
-  background: url(https://s1.ax1x.com/2018/12/20/FrD60g.png);//瑾贺新年 透明
-  background-repeat: no-repeat;//不重复
-  background-position: right bottom ; //居右下
-  background-size: contain;//auto按图片比例缩放
-}
-
-
-//文章内页左边栏样式
-//左边栏概览
-.sidebar-inner {
-  //background: url(https://s1.ax1x.com/2018/12/20/FrBGIs.jpg);//元旦 大红背景
-  background: url(/images/d487657bd263d8d9d17e23b75c241034.jpg);// 左下格式
-
-  background-repeat: no-repeat;//不重复
-  background-position: center ; //居右下
-  background-size: cover;//auto按图片比例缩放
-
-  //color: #fbda41;
-  border-radius: 30px 30px 30px 30px;
-  position: absolute;
-  overflow: hidden;//上面三行效果：左下栏椭圆化
-  box-shadow: rgba(0,0,0,0.1) 0px 15px 35px 0px, rgba(0,0,0,0.31) 6px 6px 10px 0px;
-}
-
-.sidebar-inner .site-overview-wrap .site-overview,.sidebar-inner .site-overview-wrap .site-overview .site-author-name,.sidebar a,.sidebar span.exturl,.site-state-item-name,.site-description{
-  color: #fbda41;  //左下文字颜色
-}
-
-//文章内页左边栏(要改下方的颜色尽量全改，不然会颜色混杂)
-.sidebar-nav .sidebar-nav-active{
-  color: #fbda41;
-  border-bottom-color: #fbda41;
-}
-.sidebar-nav li{
-  color: #fbda41;
-  border-bottom-color: #fbda41;
-}
-.links-of-blogroll-list{
-  text-shadow: red 0 1px 0;//给links部分添加文字阴影
-}
-.post-toc ol a{
-  color: #fbda41;
-}
-
-
-//二次深度美化
-//给文章概述与文章标题添加上一个方框
-.content .posts-expand .post-block{
-    position: relative;
-    margin-bottom: 30px;
-    padding: 40px 20px;
-    font-size: 14px;
-    box-shadow: rgba(0,0,0,0.1) 0px 15px 35px 0px, rgba(0,0,0,0.31) 6px 6px 10px 0px;//添加阴影效果
-    border-radius: 20px;//添加椭圆效果
-    background-color: #FFF0F5;//文章的背景色
-    transition: -webkit-transform .3s;
-    transition: transform .3s;
-    transition: transform .3s,-webkit-transform .3s;
-    transform-style: preserve-3d;
-}
-.post-expand .post-body{
-    position: relative;
-    overflow: visible;
-    padding: 20px;
-    color: #666;
-    font-size: 15px;
-    word-break: break-word;
-}
-
-
-//标签的美化，使用圆形方框美化
-.tag-cloud a {
-  box-shadow: 0 1px 3px #6f42c1, 0 1px 2px #d9534f;
-  padding: 2px 10px;
-  margin: 8px;
-  background: #c1425c00;
-  border-bottom: none;
-  border-radius: 20px;
-}
-
-
-//顶部进度条的隐藏代码(亲测未找到效果)
-.headband{
-  height: 0px;
-  background: #fc6423;
-
-}
-
-
-//修改不蒜子数据颜色
-.busuanzi-value {
-  color: #1890ff;
-}</code></pre><p>颜色为十六进制形式，<a href="https://www.sioe.cn/yingyong/yanse-rgb-16/" target="_blank" rel="noopener">在线颜色hex转化对照</a><br>可以自己寻找适合的颜色<br><a href="https://xian6ge.cn/posts/40ba2cba/" target="_blank" rel="noopener">参考大佬文章</a><br>效果都可在本网站显示，建议亲自修改后体会不同。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br></pre></td><td class="code"><pre><span class="line">// 添加背景图片</span><br><span class="line">body {</span><br><span class="line"> background-image: url(/images/u=1217520976,1493455735&amp;fm=26&amp;gp=0.jpg);</span><br><span class="line">  background-repeat: no-repeat; //不重复</span><br><span class="line">  background-attachment: fixed; //不随页面滚动</span><br><span class="line">  background-position: 50% 50%; //center居中 </span><br><span class="line">  background-size: 100% 100%;  //cover为填充</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 主页文章添加阴影效果</span><br><span class="line">.post {</span><br><span class="line">  margin-top: 60px;</span><br><span class="line">  margin-bottom: 60px;</span><br><span class="line">  padding: 25px;</span><br><span class="line">  -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);</span><br><span class="line">  -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);</span><br><span class="line"> }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 标题栏背景</span><br><span class="line">.site-meta {</span><br><span class="line">    padding: 20px 0;</span><br><span class="line">    color: #fff;</span><br><span class="line">    background-image: url(/images/95033e2a5404c30e2ab560e72b157a0a.jpg);</span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line">    background-attachment: fixed;</span><br><span class="line">    background-position: center;</span><br><span class="line">    background-size: 100% 100%;</span><br><span class="line">}  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 修改主体透明度</span><br><span class="line">.main-inner{</span><br><span class="line">    background: #fff;</span><br><span class="line">    opacity: 0.85;</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 修改菜单栏透明度，会引起本地搜索菜单bug</span><br><span class="line">.header-inner {</span><br><span class="line">//    opacity: 0.95;</span><br><span class="line">      border-radius: 30px 30px 30px 30px; //菜单栏椭圆化</span><br><span class="line">      box-shadow: rgba(0,0,0,0.1) 0px 15px 35px 0px, rgba(0,0,0,0.31) 6px 6px 10px 0px;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//主标题颜色</span><br><span class="line">.brand{</span><br><span class="line">    color: #390044</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">//副标题颜色</span><br><span class="line">.site-subtitle {</span><br><span class="line">    margin-top: 10px;</span><br><span class="line">    font-size: 13px;</span><br><span class="line">    color: #ffffff;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//目录背景色</span><br><span class="line">.header-inner{  </span><br><span class="line">  background: #bc0100;</span><br><span class="line">  background: linear-gradient(0deg, #bc0100 20%, #9b1d22 80%);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//侧边栏与文字的颜色</span><br><span class="line">.menu-item a{</span><br><span class="line"></span><br><span class="line">  color: #fbda41 //左上目录文字颜色</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">.menu-item-active a{</span><br><span class="line">  color: #555555</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">//页脚文字</span><br><span class="line">.footer,.footer a,.footer .with-love{</span><br><span class="line">  //color: #31ff00</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//文章样式</span><br><span class="line">//每一篇文章标题右侧增加图片</span><br><span class="line">article .post-header{</span><br><span class="line">  background: url(/images/46265dece9bce1c56eb6dc6d4c931423.jpeg);</span><br><span class="line">  background-repeat: no-repeat;//不重复</span><br><span class="line">  background-position: right ; //居右</span><br><span class="line">  background-size: contain;//合适大小</span><br><span class="line">  //color: #ff0000; //归档的日期文字颜色</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//文章版权处右侧增加图片（没有找到图片所在位置）</span><br><span class="line">article .post-copyright{</span><br><span class="line">  background: url(https://s1.ax1x.com/2018/12/20/FrD60g.png);//瑾贺新年 透明</span><br><span class="line">  background-repeat: no-repeat;//不重复</span><br><span class="line">  background-position: right bottom ; //居右下</span><br><span class="line">  background-size: contain;//auto按图片比例缩放</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//文章内页左边栏样式</span><br><span class="line">//左边栏概览</span><br><span class="line">.sidebar-inner {</span><br><span class="line">  //background: url(https://s1.ax1x.com/2018/12/20/FrBGIs.jpg);//元旦 大红背景</span><br><span class="line">  background: url(/images/d487657bd263d8d9d17e23b75c241034.jpg);// 左下格式</span><br><span class="line"></span><br><span class="line">  background-repeat: no-repeat;//不重复</span><br><span class="line">  background-position: center ; //居右下</span><br><span class="line">  background-size: cover;//auto按图片比例缩放</span><br><span class="line"></span><br><span class="line">  //color: #fbda41;</span><br><span class="line">  border-radius: 30px 30px 30px 30px;</span><br><span class="line">  position: absolute;</span><br><span class="line">  overflow: hidden;//上面三行效果：左下栏椭圆化</span><br><span class="line">  box-shadow: rgba(0,0,0,0.1) 0px 15px 35px 0px, rgba(0,0,0,0.31) 6px 6px 10px 0px;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">.sidebar-inner .site-overview-wrap .site-overview,.sidebar-inner .site-overview-wrap .site-overview .site-author-name,.sidebar a,.sidebar span.exturl,.site-state-item-name,.site-description{</span><br><span class="line">  color: #fbda41;  //左下文字颜色</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">//文章内页左边栏(要改下方的颜色尽量全改，不然会颜色混杂)</span><br><span class="line">.sidebar-nav .sidebar-nav-active{</span><br><span class="line">  color: #fbda41;</span><br><span class="line">  border-bottom-color: #fbda41;</span><br><span class="line">}</span><br><span class="line">.sidebar-nav li{</span><br><span class="line">  color: #fbda41;</span><br><span class="line">  border-bottom-color: #fbda41;</span><br><span class="line">}</span><br><span class="line">.links-of-blogroll-list{</span><br><span class="line">  text-shadow: red 0 1px 0;//给links部分添加文字阴影</span><br><span class="line">}</span><br><span class="line">.post-toc ol a{</span><br><span class="line">  color: #fbda41;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//二次深度美化</span><br><span class="line">//给文章概述与文章标题添加上一个方框</span><br><span class="line">.content .posts-expand .post-block{</span><br><span class="line">    position: relative;</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">    padding: 40px 20px;</span><br><span class="line">    font-size: 14px;</span><br><span class="line">    box-shadow: rgba(0,0,0,0.1) 0px 15px 35px 0px, rgba(0,0,0,0.31) 6px 6px 10px 0px;//添加阴影效果</span><br><span class="line">    border-radius: 20px;//添加椭圆效果</span><br><span class="line">    background-color: #FFF0F5;//文章的背景色</span><br><span class="line">    transition: -webkit-transform .3s;</span><br><span class="line">    transition: transform .3s;</span><br><span class="line">    transition: transform .3s,-webkit-transform .3s;</span><br><span class="line">    transform-style: preserve-3d;</span><br><span class="line">}</span><br><span class="line">.post-expand .post-body{</span><br><span class="line">    position: relative;</span><br><span class="line">    overflow: visible;</span><br><span class="line">    padding: 20px;</span><br><span class="line">    color: #666;</span><br><span class="line">    font-size: 15px;</span><br><span class="line">    word-break: break-word;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//标签的美化，使用圆形方框美化</span><br><span class="line">.tag-cloud a {</span><br><span class="line">  box-shadow: 0 1px 3px #6f42c1, 0 1px 2px #d9534f;</span><br><span class="line">  padding: 2px 10px;</span><br><span class="line">  margin: 8px;</span><br><span class="line">  background: #c1425c00;</span><br><span class="line">  border-bottom: none;</span><br><span class="line">  border-radius: 20px;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//顶部进度条的隐藏代码(亲测未找到效果)</span><br><span class="line">.headband{</span><br><span class="line">  height: 0px;</span><br><span class="line">  background: #fc6423;</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//修改不蒜子数据颜色</span><br><span class="line">.busuanzi-value {</span><br><span class="line">  color: #1890ff;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>颜色为十六进制形式，<a href="https://www.sioe.cn/yingyong/yanse-rgb-16/" target="_blank" rel="noopener">在线颜色hex转化对照</a><br>可以自己寻找适合的颜色<br><a href="https://xian6ge.cn/posts/40ba2cba/" target="_blank" rel="noopener">参考大佬文章</a><br>效果都可在本网站显示，建议亲自修改后体会不同。</p>
 
                 
             </div>
@@ -1592,13 +1404,13 @@ article .post-copyright{
             
             
             
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;本站总访问量:&nbsp;<span id="busuanzi_value_site_pv"
                     class="white-color"></span>&nbsp;次
             </span>
             
             
-            <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_container_site_uv" style='display:none'>
                 |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
                     class="white-color"></span>&nbsp;人
             </span>
@@ -1705,6 +1517,26 @@ article .post-copyright{
 </footer>
 
 <div class="progress-bar"></div>
+
+<script>
+    $(document).ready(function () {
+
+        var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+        var pvcountOffset = 80000;  // 初始化首次数据
+        var uvcountOffset = 20000;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int); // 停止检测
+            }
+        }
+    });
+</script>
 
 
     <!-- 搜索遮罩框 -->

@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 4.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-
+<link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -547,23 +547,10 @@
                 <h2 id="hexo个人博客SEO优化技巧"><a href="#hexo个人博客SEO优化技巧" class="headerlink" title="hexo个人博客SEO优化技巧"></a>hexo个人博客SEO优化技巧</h2><p>SEO定义:提高网站浏览量即更容易让百度推送到文章而做的优化手段。<br><a href="https://blog.csdn.net/yixu0534/article/details/92092386?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">具体的SEO介绍</a></p>
 <a id="more"></a>
 <h3 id="优化归档结构"><a href="#优化归档结构" class="headerlink" title="优化归档结构"></a>优化归档结构</h3><p>seo搜索引擎优化中，网站的最佳结构是用户从首页点击三次就可以到达任何一个页面，<br>但是我们使用hexo编译的站点打开文章的url是：sitename/year/mounth/day/title四层的结构，<br>这样的url结构很不利于seo，爬虫就会经常爬不到我们的文章，于是，我们可以将url直接改成sitename/title的形式，并且title最好是用英文，在根目录的配置文件下修改permalink如下</p>
-<pre><code>url: http://你的网站
-root: /
-permalink: :title.html
-permalink_defaults:</code></pre><p>重新hexo general后，随便打开一篇日志，url的绝对地址结构就改成 <a href="http://yoursite/title.xml" target="_blank" rel="noopener">http://yoursite/title.xml</a> 了</p>
-<h3 id="robots配置"><a href="#robots配置" class="headerlink" title="robots配置"></a>robots配置</h3><pre><code>User-agent: *
-Allow: /
-Allow: /home/
-Allow: /archives/
-Allow: /about/
-Disallow: /vendors/
-Disallow: /js/
-Disallow: /css/
-Disallow: /fonts/
-Disallow: /vendors/
-Disallow: /fancybox/
-Sitemap: http://lansus.coding.me/sitemap.xml
-Sitemap: http://lansus.coding.me/baidusitemap.xml</code></pre><p>Allow表示允许被访问的，Disallow是不允许的意思。注意后面两个Sitemap就是网站地图了。而网站地图前面说了是给爬虫用的。这里配置在robots中。把上面的代码保存为robots.txt放入theme/yourtheme/source 。在编译后这个文件会出现在blog/public中。后面会使用到</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">url: http://你的网站</span><br><span class="line">root: /</span><br><span class="line">permalink: :title.html</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></tbody></table></figure>
+<p>重新hexo general后，随便打开一篇日志，url的绝对地址结构就改成 <a href="http://yoursite/title.xml" target="_blank" rel="noopener">http://yoursite/title.xml</a> 了</p>
+<h3 id="robots配置"><a href="#robots配置" class="headerlink" title="robots配置"></a>robots配置</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /home/</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /about/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /js/</span><br><span class="line">Disallow: /css/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fancybox/</span><br><span class="line">Sitemap: http://lansus.coding.me/sitemap.xml</span><br><span class="line">Sitemap: http://lansus.coding.me/baidusitemap.xml</span><br></pre></td></tr></tbody></table></figure>
+<p>Allow表示允许被访问的，Disallow是不允许的意思。注意后面两个Sitemap就是网站地图了。而网站地图前面说了是给爬虫用的。这里配置在robots中。把上面的代码保存为robots.txt放入theme/yourtheme/source 。在编译后这个文件会出现在blog/public中。后面会使用到</p>
 <p><a href="https://blog.csdn.net/lansus/article/details/89641760" target="_blank" rel="noopener">参考文章</a></p>
 
                 
@@ -1393,13 +1380,13 @@ Sitemap: http://lansus.coding.me/baidusitemap.xml</code></pre><p>Allow表示允�
             
             
             
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;本站总访问量:&nbsp;<span id="busuanzi_value_site_pv"
                     class="white-color"></span>&nbsp;次
             </span>
             
             
-            <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_container_site_uv" style='display:none'>
                 |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
                     class="white-color"></span>&nbsp;人
             </span>
@@ -1506,6 +1493,26 @@ Sitemap: http://lansus.coding.me/baidusitemap.xml</code></pre><p>Allow表示允�
 </footer>
 
 <div class="progress-bar"></div>
+
+<script>
+    $(document).ready(function () {
+
+        var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+        var pvcountOffset = 80000;  // 初始化首次数据
+        var uvcountOffset = 20000;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int); // 停止检测
+            }
+        }
+    });
+</script>
 
 
     <!-- 搜索遮罩框 -->

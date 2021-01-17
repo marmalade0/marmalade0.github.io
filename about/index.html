@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 4.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-
+<link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -717,7 +717,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["next主题","next主题美化","网站添加功能","github","shodan","seo","自定义域名","域名解析","博客文章","markdown"]
+                data: ["next主题","next主题美化","网站添加功能","github","shodan","seo","博客建立","hexo","自定义域名","域名解析"]
             }
         ],
         yAxis: [
@@ -900,36 +900,6 @@
         <div class="tag-chips center-align">
             
             
-            <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/">
-                <span class="chip center-align waves-effect waves-light chip-default">自定义域名</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/">
-                <span class="chip center-align waves-effect waves-light chip-default">域名解析</span>
-            </a>
-            
-            
-            
-            <a href="/tags/next%E4%B8%BB%E9%A2%98/">
-                <span class="chip center-align waves-effect waves-light chip-default">next主题</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">
-                <span class="chip center-align waves-effect waves-light chip-default">博客文章</span>
-            </a>
-            
-            
-            
-            <a href="/tags/markdown/">
-                <span class="chip center-align waves-effect waves-light chip-default">markdown</span>
-            </a>
-            
-            
-            
             <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/">
                 <span class="chip center-align waves-effect waves-light chip-default">博客建立</span>
             </a>
@@ -942,8 +912,26 @@
             
             
             
+            <a href="/tags/next%E4%B8%BB%E9%A2%98/">
+                <span class="chip center-align waves-effect waves-light chip-default">next主题</span>
+            </a>
+            
+            
+            
             <a href="/tags/github/">
                 <span class="chip center-align waves-effect waves-light chip-default">github</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/">
+                <span class="chip center-align waves-effect waves-light chip-default">自定义域名</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/">
+                <span class="chip center-align waves-effect waves-light chip-default">域名解析</span>
             </a>
             
             
@@ -972,6 +960,24 @@
             
             
             
+            <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">
+                <span class="chip center-align waves-effect waves-light chip-default">博客文章</span>
+            </a>
+            
+            
+            
+            <a href="/tags/markdown/">
+                <span class="chip center-align waves-effect waves-light chip-default">markdown</span>
+            </a>
+            
+            
+            
+            <a href="/tags/sqlmap-dvwa/">
+                <span class="chip center-align waves-effect waves-light chip-default">sqlmap,dvwa</span>
+            </a>
+            
+            
+            
             <a href="/tags/%E5%A4%87%E6%A1%88/">
                 <span class="chip center-align waves-effect waves-light chip-default">备案</span>
             </a>
@@ -980,12 +986,6 @@
             
             <a href="/tags/cmd/">
                 <span class="chip center-align waves-effect waves-light chip-default">cmd</span>
-            </a>
-            
-            
-            
-            <a href="/tags/sqlmap-dvwa/">
-                <span class="chip center-align waves-effect waves-light chip-default">sqlmap,dvwa</span>
             </a>
             
             
@@ -1122,13 +1122,13 @@
             
             
             
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;本站总访问量:&nbsp;<span id="busuanzi_value_site_pv"
                     class="white-color"></span>&nbsp;次
             </span>
             
             
-            <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_container_site_uv" style='display:none'>
                 |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
                     class="white-color"></span>&nbsp;人
             </span>
@@ -1235,6 +1235,26 @@
 </footer>
 
 <div class="progress-bar"></div>
+
+<script>
+    $(document).ready(function () {
+
+        var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+        var pvcountOffset = 80000;  // 初始化首次数据
+        var uvcountOffset = 20000;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int); // 停止检测
+            }
+        }
+    });
+</script>
 
 
     <!-- 搜索遮罩框 -->
