@@ -717,7 +717,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["next主题","next主题美化","网站添加功能","github","shodan","seo","博客建立","hexo","博客文章","markdown"]
+                data: ["next主题","next主题美化","网站添加功能","github","shodan","seo","博客文章","markdown","博客建立","hexo"]
             }
         ],
         yAxis: [
@@ -900,38 +900,14 @@
         <div class="tag-chips center-align">
             
             
-            <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/">
-                <span class="chip center-align waves-effect waves-light chip-default">博客建立</span>
-            </a>
-            
-            
-            
-            <a href="/tags/hexo/">
-                <span class="chip center-align waves-effect waves-light chip-default">hexo</span>
-            </a>
-            
-            
-            
-            <a href="/tags/next%E4%B8%BB%E9%A2%98/">
-                <span class="chip center-align waves-effect waves-light chip-default">next主题</span>
-            </a>
-            
-            
-            
             <a href="/tags/github/">
                 <span class="chip center-align waves-effect waves-light chip-default">github</span>
             </a>
             
             
             
-            <a href="/tags/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/">
-                <span class="chip center-align waves-effect waves-light chip-default">next主题美化</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD/">
-                <span class="chip center-align waves-effect waves-light chip-default">网站添加功能</span>
+            <a href="/tags/next%E4%B8%BB%E9%A2%98/">
+                <span class="chip center-align waves-effect waves-light chip-default">next主题</span>
             </a>
             
             
@@ -948,6 +924,18 @@
             
             
             
+            <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/">
+                <span class="chip center-align waves-effect waves-light chip-default">博客建立</span>
+            </a>
+            
+            
+            
+            <a href="/tags/hexo/">
+                <span class="chip center-align waves-effect waves-light chip-default">hexo</span>
+            </a>
+            
+            
+            
             <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/">
                 <span class="chip center-align waves-effect waves-light chip-default">自定义域名</span>
             </a>
@@ -960,20 +948,32 @@
             
             
             
+            <a href="/tags/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/">
+                <span class="chip center-align waves-effect waves-light chip-default">next主题美化</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD/">
+                <span class="chip center-align waves-effect waves-light chip-default">网站添加功能</span>
+            </a>
+            
+            
+            
             <a href="/tags/shodan/">
                 <span class="chip center-align waves-effect waves-light chip-default">shodan</span>
             </a>
             
             
             
-            <a href="/tags/%E5%A4%87%E6%A1%88/">
-                <span class="chip center-align waves-effect waves-light chip-default">备案</span>
+            <a href="/tags/seo/">
+                <span class="chip center-align waves-effect waves-light chip-default">seo</span>
             </a>
             
             
             
-            <a href="/tags/seo/">
-                <span class="chip center-align waves-effect waves-light chip-default">seo</span>
+            <a href="/tags/%E5%A4%87%E6%A1%88/">
+                <span class="chip center-align waves-effect waves-light chip-default">备案</span>
             </a>
             
             
@@ -1063,6 +1063,30 @@
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
+
+            {%- if config.symbols_count_time.total_symbols %}
+    
+            <span class="post-meta-item-icon">
+            <i class="fa fa-area-chart"></i>
+            </span>
+            {%- if theme.symbols_count_time.item_text_total %}
+            <span class="post-meta-item-text">{{ __('symbols_count_time.count_total') + __('symbol.colon') }}</span>
+            {%- endif %}
+            <span title="{{ __('symbols_count_time.count_total') }}">{{ symbolsCountTotal(site) }}</span>
+            {%- endif %}
+
+            {%- if config.symbols_count_time.total_time %}
+             <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+              <i class="fa fa-coffee"></i>
+             </span>
+            {%- if theme.symbols_count_time.item_text_total %}
+            <span class="post-meta-item-text">{{ __('symbols_count_time.time_total') }} &asymp;</span>
+            {%- endif %}
+            <span title="{{ __('symbols_count_time.time_total') }}">{{ symbolsTimeTotal(site, theme.symbols_count_time.awl, theme.symbols_count_time.wpm, __('symbols_count_time.time_minutes')) }}</span>
+            {%- endif %}
+            </div>
+            
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
                 class="white-color">13.9k</span>&nbsp;字
