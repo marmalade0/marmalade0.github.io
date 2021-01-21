@@ -369,6 +369,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -1113,48 +1126,45 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/sqlmapbasicuse.html">
+                <a href="/Materysettings1.html">
                     <div class="card-image">
                         
+                        <img src="https://gitee.com/marmalade0/images/raw/master/www.marmalade.vip/background/lake-696098_1280.png" class="responsive-img" alt="Hexo-Matery主题细致美化(上)">
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Sqlmap工具基础用法详解">
-                        
-                        <span class="card-title">Sqlmap工具基础用法详解</span>
+                        <span class="card-title">Hexo-Matery主题细致美化(上)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1.主要功能：一个用来做sql注入攻击的工具。扫描、发现、利用给定的url的sql注入漏洞，内置许多绕过插件。
-
-注意：需要python2才能运行，python3不可
-
-sqlmap工具压缩包官方下载地址
+                            在一番瞎改js代码后，终于无法忍受next主题，于是愤然投入Matery大家庭，下面是我记录的配置Matery主题的流程，仅供后来的师傅们参考。
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-07
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-21
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            lijunliang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/" class="post-category">
+                                    hexo+github博客建立与美化
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/sqlmap-dvwa/">
-                        <span class="chip bg-color">sqlmap,dvwa</span>
+                    <a href="/tags/Matery%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/">
+                        <span class="chip bg-color">Matery主题美化</span>
                     </a>
                     
                 </div>
@@ -1378,7 +1388,7 @@ sqlmap工具压缩包官方下载地址
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">13.9k</span>&nbsp;字
+                class="white-color">29.5k</span>&nbsp;字
             
             
             
