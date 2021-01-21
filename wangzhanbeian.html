@@ -31,8 +31,8 @@
 
 <meta name="generator" content="Hexo 4.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -545,7 +545,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    816
+                    773
                 </div>
                 
 
@@ -584,16 +584,45 @@
 <p>博客个人空间服务企业基础信息登记表.xls<br>和<br>交互式服务安全检查表.xls<br>然后等待通过即可</p>
 <h2 id="底部添加ICP备案和公安网备案"><a href="#底部添加ICP备案和公安网备案" class="headerlink" title="底部添加ICP备案和公安网备案"></a>底部添加ICP备案和公安网备案</h2><p><a href="https://www.chingow.cn/posts/c7372a12.html" target="_blank" rel="noopener">参考大佬文章</a><br>我们的网站已经有备案号了，但是应该如何添加备案号到博客最下面呢？</p>
 <p>首先，在 主题配置文件  _config.yml 中的配置添加备案配置：<br>位置：<br>themes/next/_config.yml</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 这里打开备案信息，填写ICP备案号   </span><br><span class="line">beian:   </span><br><span class="line">enable: true  </span><br><span class="line">icp: 鲁ICP备20005811号 </span><br><span class="line"># 这里是新加的内容，填写公安备案信息</span><br><span class="line">+  gongan:</span><br><span class="line">+    enable: true</span><br><span class="line">+    local: 鲁</span><br><span class="line">+    num: 3711022000277</span><br></pre></td></tr></tbody></table></figure>
-<p>将多余的注释掉，不然会报错<br><img src="/images/wangzhanbeian/5.png" alt="f260561f144f68fdcc2c91fbc46618a3.png"></p>
+<pre><code> # 这里打开备案信息，填写ICP备案号   
+ beian:   
+ enable: true  
+ icp: 鲁ICP备20005811号 
+ # 这里是新加的内容，填写公安备案信息
+ +  gongan:
+ +    enable: true
+ +    local: 鲁
+ +    num: 3711022000277</code></pre><p>将多余的注释掉，不然会报错<br><img src="/images/wangzhanbeian/5.png" alt="f260561f144f68fdcc2c91fbc46618a3.png"></p>
 <p>然后，在语言配置文件里，添加表述文案beian：<br>位置:<br>themes/next/languages/zh-CN.yml<br><img src="/images/wangzhanbeian/6.png" alt="eab3fca27ff1e7456241e58f76a3f5e4.png"></p>
 <p>接下来，删除原有的布局文件中备案样式的代码：(标注处全删)<br>位置:<br>themes/next/layout/_partials/footer.swig<br><img src="/images/wangzhanbeian/7.png" alt="5283d46f4a83dac14b69ea97c1f50d10.png"><br>找到如下位置插入一行代码：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;span class="author" itemprop="copyrightHolder"&gt;{{ theme.footer.copyright || author }}&lt;/span&gt;</span><br><span class="line">+  &lt;span class="post-meta-divider footer-ages-icon"&gt; | &lt;/span&gt;</span><br><span class="line">{% if config.symbols_count_time.total_symbols %}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code> &lt;span class="author" itemprop="copyrightHolder"&gt;{{ theme.footer.copyright || author }}&lt;/span&gt;
+ +  &lt;span class="post-meta-divider footer-ages-icon"&gt; | &lt;/span&gt;
+ {% if config.symbols_count_time.total_symbols %}
+ ```
+ 
+最后，在主题布局文件中添加我们自定义的备案样式：
+位置：
+themes/next/layout/_layout.swig
 
-<p>最后，在主题布局文件中添加我们自定义的备案样式：<br>位置：<br>themes/next/layout/_layout.swig</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="footer-inner"&gt;   </span><br><span class="line">{{ partial('_partials/footer.swig', {}, {cache: theme.cache.enable}) }}    </span><br><span class="line">{% include '_third-party/analytics/analytics-with-widget.swig' %}</span><br><span class="line">+        &lt;div class="footer-custom"&gt;</span><br><span class="line">+                    {% if theme.footer.beian.enable %}{#</span><br><span class="line">+                  #}{{ next_url('http://www.beian.miit.gov.cn', theme.footer.beian.icp + ' ') }}{#</span><br><span class="line">+                  #}{% endif %}</span><br><span class="line">+                  {% if theme.footer.beian.enable and theme.footer.gongan.enable %}</span><br><span class="line">+                    &lt;span class="post-meta-divider"&gt;|&lt;/span&gt;</span><br><span class="line">+                  {% endif %}</span><br><span class="line">+                  {% if theme.footer.gongan.enable %}{#</span><br><span class="line">+                  #} &lt;span style="padding-left:25px;background:url(/images/beian.png) no-repeat left center" rel="nofollow"&gt;{#</span><br><span class="line">+                  #} {{ theme.footer.gongan.local}}{{__('footer.beian.gongan', next_url('http://www.beian.gov.cn/portal/registerSystemInfo?recordcode='+theme.footer.gongan.num, theme.footer.gongan.num )) }}{#</span><br><span class="line">+                  #}{% endif %}</span><br><span class="line">+                 &lt;/div&gt;</span><br><span class="line">        </span><br><span class="line">  {% block footer %}{% endblock %} </span><br><span class="line">  &lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+```
+</code><div class="footer-inner"><code>   
+{{ partial('_partials/footer.swig', {}, {cache: theme.cache.enable}) }}    
+{% include '_third-party/analytics/analytics-with-widget.swig' %}
++        </code><div class="footer-custom"><code>
++                    {% if theme.footer.beian.enable %}{#
++                  #}{{ next_url('http://www.beian.miit.gov.cn', theme.footer.beian.icp + ' ') }}{#
++                  #}{% endif %}
++                  {% if theme.footer.beian.enable and theme.footer.gongan.enable %}
++                    <span class="post-meta-divider">|</span>
++                  {% endif %}
++                  {% if theme.footer.gongan.enable %}{#
++                  #} <span style="padding-left:25px;background:url(/images/beian.png) no-repeat left center" rel="nofollow">{#
++                  #} {{ theme.footer.gongan.local}}{{__('footer.beian.gongan', next_url('http://www.beian.gov.cn/portal/registerSystemInfo?recordcode='+theme.footer.gongan.num, theme.footer.gongan.num )) }}{#
++                  #}{% endif %}
++                 &lt;/div&gt;
 
-<blockquote>
+  {% block footer %}{% endblock %} 
+  &lt;/div&gt;</span></code></div></div></pre><blockquote>
 <p>注意将公安网图标保存并命名/images/beian.png</p>
 </blockquote>
 <p>成功<br><img src="/images/wangzhanbeian/8.png" alt="3b991c5458d20080e149701386acf7ea.png"></p>
@@ -1372,7 +1401,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">29.5k</span>&nbsp;字
+                class="white-color">28.6k</span>&nbsp;字
             
             
             

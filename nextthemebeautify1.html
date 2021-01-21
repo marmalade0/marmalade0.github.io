@@ -31,8 +31,8 @@
 
 <meta name="generator" content="Hexo 4.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -589,27 +589,23 @@
 <p>同理hexo new page “categories”<br><img src="/images/beautify1/3.png" alt="b0b1f3f16bafa03f1d188a0831acfb57.png"><br>在主题配置文件中找到menu，去掉对应井号即可<br><img src="/images/beautify1/4.png" alt="b0fcd6d7938cf576b9b8d75ac61e0ed0.png"><br>想要在某篇文章中添加标签或分类只需在文章前面加上下图效果<br><img src="/images/beautify1/5.png" alt="f289d5e5a2d86c422e255cd05d6b2aee.png"></p>
 <h3 id="2-标签美化"><a href="#2-标签美化" class="headerlink" title="(2)标签美化"></a>(2)标签美化</h3><p><img src="/images/beautify1/6.png" alt="b658164ad4ee428656cb8d6b0f11a74d.png"><br>井号样式不好看，改为图标</p>
 <p>在博客项目中找到<code>/themes/next/layout/_macro/post.swig</code>，搜索 rel=”tag”，将 #号 换成</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;i class="fa fa-tag"&gt;&lt;/i&gt;</span><br></pre></td></tr></tbody></table></figure>
-<p>完成样子：<br><img src="/images/beautify1/7.png" alt="7479a2848622b7cf6f36a56ac783cbdc.png"></p>
+<pre><code>&lt;i class="fa fa-tag"&gt;&lt;/i&gt;</code></pre><p>完成样子：<br><img src="/images/beautify1/7.png" alt="7479a2848622b7cf6f36a56ac783cbdc.png"></p>
 <h3 id="3-添加点击爱心效果"><a href="#3-添加点击爱心效果" class="headerlink" title="(3)添加点击爱心效果"></a>(3)添加点击爱心效果</h3><p>在页面中点击任意位置实现蹦出爱心效果<br>在 <code>/themes/next/source/js</code>下新建文件 clicklove.js，接着把如下代码复制粘贴到 clicklove.js 文件中，代码如下：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!function(e,t,a){function n(){c(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"),o(),r()}function r(){for(var e=0;e&lt;d.length;e++)d[e].alpha&lt;=0?(t.body.removeChild(d[e].el),d.splice(e,1)):(d[e].y--,d[e].scale+=.004,d[e].alpha-=.013,d[e].el.style.cssText="left:"+d[e].x+"px;top:"+d[e].y+"px;opacity:"+d[e].alpha+";transform:scale("+d[e].scale+","+d[e].scale+") rotate(45deg);background:"+d[e].color+";z-index:99999");requestAnimationFrame(r)}function o(){var t="function"==typeof e.onclick&amp;&amp;e.onclick;e.onclick=function(e){t&amp;&amp;t(),i(e)}}function i(e){var a=t.createElement("div");a.className="heart",d.push({el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:s()}),t.body.appendChild(a)}function c(e){var a=t.createElement("style");a.type="text/css";try{a.appendChild(t.createTextNode(e))}catch(t){a.styleSheet.cssText=e}t.getElementsByTagName("head")[0].appendChild(a)}function s(){return"rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"}var d=[];e.requestAnimationFrame=function(){return e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e){setTimeout(e,1e3/60)}}(),n()}(window,document);</span><br></pre></td></tr></tbody></table></figure>
-<p>在 <code>\themes\next\layout\_layout.swig</code> 文件末尾添加：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 页面点击小红心 --&gt; &lt;script type="text/javascript" src="/js/clicklove.js"&gt;&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="4-网站头像修改"><a href="#4-网站头像修改" class="headerlink" title="(4)网站头像修改"></a>(4)网站头像修改</h3><p>主题配置文件中找到avatar<br>全变成true，url里写自己图像的路径<br><img src="/images/beautify1/8.png" alt="4304959957ae1fde9391e0bde50f21af.png"></p>
+<pre><code>!function(e,t,a){function n(){c(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"),o(),r()}function r(){for(var e=0;e&lt;d.length;e++)d[e].alpha&lt;=0?(t.body.removeChild(d[e].el),d.splice(e,1)):(d[e].y--,d[e].scale+=.004,d[e].alpha-=.013,d[e].el.style.cssText="left:"+d[e].x+"px;top:"+d[e].y+"px;opacity:"+d[e].alpha+";transform:scale("+d[e].scale+","+d[e].scale+") rotate(45deg);background:"+d[e].color+";z-index:99999");requestAnimationFrame(r)}function o(){var t="function"==typeof e.onclick&amp;&amp;e.onclick;e.onclick=function(e){t&amp;&amp;t(),i(e)}}function i(e){var a=t.createElement("div");a.className="heart",d.push({el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:s()}),t.body.appendChild(a)}function c(e){var a=t.createElement("style");a.type="text/css";try{a.appendChild(t.createTextNode(e))}catch(t){a.styleSheet.cssText=e}t.getElementsByTagName("head")[0].appendChild(a)}function s(){return"rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"}var d=[];e.requestAnimationFrame=function(){return e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e){setTimeout(e,1e3/60)}}(),n()}(window,document);</code></pre><p>在 <code>\themes\next\layout\_layout.swig</code> 文件末尾添加：</p>
+<pre><code>&lt;!-- 页面点击小红心 --&gt; &lt;script type="text/javascript" src="/js/clicklove.js"&gt;&lt;/script&gt;</code></pre><h3 id="4-网站头像修改"><a href="#4-网站头像修改" class="headerlink" title="(4)网站头像修改"></a>(4)网站头像修改</h3><p>主题配置文件中找到avatar<br>全变成true，url里写自己图像的路径<br><img src="/images/beautify1/8.png" alt="4304959957ae1fde9391e0bde50f21af.png"></p>
 <h3 id="5-网站图标修改"><a href="#5-网站图标修改" class="headerlink" title="(5)网站图标修改"></a>(5)网站图标修改</h3><p>在next主题配置文件中找favicon:<br>路径改为自己的图标所在<br>最好路径形式为(/images/…)<br>然后将图标保存在根目录下的source/images文件夹里就可</p>
 <h3 id="6-添加站内搜索"><a href="#6-添加站内搜索" class="headerlink" title="(6)添加站内搜索"></a>(6)添加站内搜索</h3><p>由于可能我需要快速查找相关文章，那么就需要添加站内搜索。</p>
 <p>1.安装站内搜索插件<br>  npm install hexo-generator-searchdb –save<br>2.在根目录下的_config.yml添加</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#表示站内搜索search:  </span><br><span class="line">    path: search.xml</span><br><span class="line">    field: post</span><br><span class="line">    format: html</span><br><span class="line">    limit: 10000</span><br></pre></td></tr></tbody></table></figure>
-<p>3.在<code>themes/next/_config.yml</code>文件中搜索local_search,进行设置</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">local_search:  enable: true  #设置为true  </span><br><span class="line">trigger: auto  # auto /  manual，auto 自动搜索、manual：按回车[enter ]键手动搜索  </span><br><span class="line">top_n_per_article: 1  </span><br><span class="line">unescape: true</span><br></pre></td></tr></tbody></table></figure>
-
-
-
-
-<h3 id="7-设置背景动画样式"><a href="#7-设置背景动画样式" class="headerlink" title="(7)设置背景动画样式"></a>(7)设置背景动画样式</h3><p>NexT里面有几种动画背景样式canvas_nest、three_waves、canvas_lines、canvas_sphere等<br><strong>canvas_nest设置</strong><br>1.cd进入next文件夹下<br>2.下载安装 canvas_nest module 执行</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/theme-next/theme-next-canvas-nest source/lib/canvas-nest</span><br></pre></td></tr></tbody></table></figure>
-<p>3.在 <code>/themes/next/source/lib</code>查看会看到canvas_nest文件夹<br>4.在<code>/themes/next/_config.yml</code>设置canvas_nest: true<br>效果见主页背景</p>
+<pre><code>#表示站内搜索search:  
+    path: search.xml
+    field: post
+    format: html
+    limit: 10000</code></pre><p>3.在<code>themes/next/_config.yml</code>文件中搜索local_search,进行设置</p>
+<pre><code>local_search:  enable: true  #设置为true  
+trigger: auto  # auto /  manual，auto 自动搜索、manual：按回车[enter ]键手动搜索  
+top_n_per_article: 1  
+unescape: true</code></pre><h3 id="7-设置背景动画样式"><a href="#7-设置背景动画样式" class="headerlink" title="(7)设置背景动画样式"></a>(7)设置背景动画样式</h3><p>NexT里面有几种动画背景样式canvas_nest、three_waves、canvas_lines、canvas_sphere等<br><strong>canvas_nest设置</strong><br>1.cd进入next文件夹下<br>2.下载安装 canvas_nest module 执行</p>
+<pre><code>$ git clone https://github.com/theme-next/theme-next-canvas-nest source/lib/canvas-nest</code></pre><p>3.在 <code>/themes/next/source/lib</code>查看会看到canvas_nest文件夹<br>4.在<code>/themes/next/_config.yml</code>设置canvas_nest: true<br>效果见主页背景</p>
 
                 
             </div>
@@ -1410,7 +1406,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">29.5k</span>&nbsp;字
+                class="white-color">28.6k</span>&nbsp;字
             
             
             

@@ -31,8 +31,8 @@
 
 <meta name="generator" content="Hexo 4.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -553,14 +553,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    976
+                    971
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    3 分
                 </div>
                 
 
@@ -586,38 +586,49 @@
 <a id="more"></a>
 
 <h3 id="8-在网站底部添加访问量"><a href="#8-在网站底部添加访问量" class="headerlink" title="(8)在网站底部添加访问量"></a>(8)在网站底部添加访问量</h3><p>进入<code>\themes\next\layout\ _partials\footer.swig</code>文件顶部第一行添加</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"&gt;&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
-
-
-<p>2.搜索</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% if theme.footer.powered.enable %}</span><br></pre></td></tr></tbody></table></figure>
-<p>在这个位置上添加以下代码</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="powered-by"&gt;</span><br><span class="line">&lt;i class="fa fa-user-md"&gt;&lt;/i&gt;&lt;span id="busuanzi_container_site_pv"&gt;总访问量&lt;span id="busuanzi_value_site_pv"&gt;&lt;/span&gt;次&lt;/span&gt;</span><br><span class="line">    &lt;span class="post-meta-divider"&gt;,&lt;/span&gt;</span><br><span class="line">    &lt;span id="busuanzi_container_site_uv"&gt;我的第&lt;span id="busuanzi_value_site_uv"&gt;&lt;/span&gt;位朋友&lt;/span&gt;</span><br><span class="line">    &lt;span class="post-meta-divider"&gt;|&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
-
-<p>注：这里的id值可以选择两种</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># busuanzi_value_site_uv  表示用户连续点击n篇文章，只记录1次访客数# busuanzi_value_site_pv  表示用户连续点击n篇文章，记录+n次访问量</span><br><span class="line"># 这里对应的是2上的id值</span><br></pre></td></tr></tbody></table></figure>
-<p>效果如下：<br>本地访问会出现人数爆棚现象，正常，部署到github上会恢复正常<br><img src="/images/beautify2/1.png" alt="bc3439ac113ed8ca432e2b3ec0f6d5ca.png"></p>
+<pre><code>&lt;script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"&gt;&lt;/script&gt;</code></pre><p>2.搜索</p>
+<pre><code>{% if theme.footer.powered.enable %}</code></pre><p>在这个位置上添加以下代码</p>
+<pre><code>&lt;div class="powered-by"&gt;
+&lt;i class="fa fa-user-md"&gt;&lt;/i&gt;&lt;span id="busuanzi_container_site_pv"&gt;总访问量&lt;span id="busuanzi_value_site_pv"&gt;&lt;/span&gt;次&lt;/span&gt;
+    &lt;span class="post-meta-divider"&gt;,&lt;/span&gt;
+    &lt;span id="busuanzi_container_site_uv"&gt;我的第&lt;span id="busuanzi_value_site_uv"&gt;&lt;/span&gt;位朋友&lt;/span&gt;
+    &lt;span class="post-meta-divider"&gt;|&lt;/span&gt;
+&lt;/div&gt;</code></pre><p>注：这里的id值可以选择两种</p>
+<pre><code># busuanzi_value_site_uv  表示用户连续点击n篇文章，只记录1次访客数# busuanzi_value_site_pv  表示用户连续点击n篇文章，记录+n次访问量
+# 这里对应的是2上的id值</code></pre><p>效果如下：<br>本地访问会出现人数爆棚现象，正常，部署到github上会恢复正常<br><img src="/images/beautify2/1.png" alt="bc3439ac113ed8ca432e2b3ec0f6d5ca.png"></p>
 <h3 id="9-添加打赏功能"><a href="#9-添加打赏功能" class="headerlink" title="(9)添加打赏功能"></a>(9)添加打赏功能</h3><p>在主题配置文件中搜索Reward，改为如下形式<br><img src="/images/beautify2/2.png" alt="e3897be70d0db4287935e8a4489568de.png"><br>效果：<br><img src="/images/beautify2/3.png" alt="5f98934f4d64ccd9e1159d9ee4bbcc77.png"></p>
 <blockquote>
 <p><a href="https://segmentfault.com/a/1190000016527304?utm_source=tag-newest" target="_blank" rel="noopener">参考文章</a></p>
 </blockquote>
 <h3 id="10-添加阅读统计及评论"><a href="#10-添加阅读统计及评论" class="headerlink" title="(10)添加阅读统计及评论"></a>(10)添加阅读统计及评论</h3><p><a href="https://segmentfault.com/a/1190000016565949" target="_blank" rel="noopener">参考文章</a></p>
 <h5 id="添加阅读次数统计"><a href="#添加阅读次数统计" class="headerlink" title="添加阅读次数统计"></a>添加阅读次数统计</h5><p>需要用到leancloud网站，<br>1.注册一个账号<br>2.创建应用(开发版)<br>3.进入设置页面<br>4.应用key<br>将App ID、App Key 配置到next/_config.yml中leancloud_visitors</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">leancloud_visitors:</span><br><span class="line"> enable: true 设置为true 默认为false</span><br><span class="line"> app_id:  #你的App ID，注意冒号后面空格</span><br><span class="line"> app_key:  #你的App Key，注意冒号后面空格</span><br><span class="line"> Dependencies:  https://github.com/theme-next/hexo-leancloud-counter-security #设置依赖</span><br><span class="line"> security: true #如果您不关心lc计数器中的安全性并且只想直接使用它（没有hexo-leancloud-counter-security插件），请将`security`设置为`false`。  betterPerformance: true #更好的性能</span><br></pre></td></tr></tbody></table></figure>
-
-<p>5.在leancloud存储的位置创建Class,必须命名为Counter<br><img src="/images/beautify2/4.png" alt="a1021618af30065d9ef1cf3b5eb0ab48.png"><br>6.查看后台统计数据<br><img src="/images/beautify2/5.png" alt="542d40c0448b9bcbf050c9b5bd509508.png"></p>
+<pre><code>leancloud_visitors:
+ enable: true 设置为true 默认为false
+ app_id:  #你的App ID，注意冒号后面空格
+ app_key:  #你的App Key，注意冒号后面空格
+ Dependencies:  https://github.com/theme-next/hexo-leancloud-counter-security #设置依赖
+ security: true #如果您不关心lc计数器中的安全性并且只想直接使用它（没有hexo-leancloud-counter-security插件），请将`security`设置为`false`。  betterPerformance: true #更好的性能</code></pre><p>5.在leancloud存储的位置创建Class,必须命名为Counter<br><img src="/images/beautify2/4.png" alt="a1021618af30065d9ef1cf3b5eb0ab48.png"><br>6.查看后台统计数据<br><img src="/images/beautify2/5.png" alt="542d40c0448b9bcbf050c9b5bd509508.png"></p>
 <h5 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h5><p>选择的是Valine系统<br>进入leancloud<br>1.创建应用<br><img src="/images/beautify2/6.png" alt="f3cfd885cc0e436d58d6ac13ae2c7cef.png"><br>2.进入设置页面<br><img src="/images/beautify2/7.png" alt="4749312c24ca3633a258d13d15459ae9.png"><br>3.应用key<br><img src="/images/beautify2/8.png" alt="986351dd5c71bed5c9fefb54abf8737f.png"><br>4.在<code>next/_config.yml</code>进行一下配置</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">valine:</span><br><span class="line">  enable: true # 设置为true，默认为false</span><br><span class="line">  appid:  # 将应用key的App ID设置在这里</span><br><span class="line">  appkey: # 将应用key的App Key设置在这里</span><br><span class="line">  notify: true# 邮箱通知 , https://github.com/xCss/Valine/wiki，默认为false</span><br><span class="line">  verify: true# 验证码 默认为false </span><br><span class="line">  placeholder: Just go go ^_^ # 初始化评论显示，根据自己修改，这里默认， </span><br><span class="line">  avatar: wavatar # 头像风格，默认为mm，可进入网址：https://valine.js.org/visitor.html查看头像设置，这里有许多头像风格，进行设置  </span><br><span class="line">  guest_info: nick,mail,link # 自定义评论标题  </span><br><span class="line">  pageSize: 10 # 分页大小，10页就自动分页  </span><br><span class="line">  visitor: true # 是否允许游客评论 ，进入官网查看设置：https://valine.js.org/visitor.html</span><br></pre></td></tr></tbody></table></figure>
-
-<p>完成<br>6.在后台查看评论数据<br>在valine后台，存储位置中的数据里面创建Class，名称必须为命名为Comment<br><img src="/images/beautify2/9.png" alt="dba10b9c2f501621d0243fa4c0bedbbe.png"></p>
+<pre><code>valine:
+  enable: true # 设置为true，默认为false
+  appid:  # 将应用key的App ID设置在这里
+  appkey: # 将应用key的App Key设置在这里
+  notify: true# 邮箱通知 , https://github.com/xCss/Valine/wiki，默认为false
+  verify: true# 验证码 默认为false 
+  placeholder: Just go go ^_^ # 初始化评论显示，根据自己修改，这里默认， 
+  avatar: wavatar # 头像风格，默认为mm，可进入网址：https://valine.js.org/visitor.html查看头像设置，这里有许多头像风格，进行设置  
+  guest_info: nick,mail,link # 自定义评论标题  
+  pageSize: 10 # 分页大小，10页就自动分页  
+  visitor: true # 是否允许游客评论 ，进入官网查看设置：https://valine.js.org/visitor.html</code></pre><p>完成<br>6.在后台查看评论数据<br>在valine后台，存储位置中的数据里面创建Class，名称必须为命名为Comment<br><img src="/images/beautify2/9.png" alt="dba10b9c2f501621d0243fa4c0bedbbe.png"></p>
 <blockquote>
 <p>注：选择valine评论系统是因为支持国内网络，不需要连接外网（翻墙）就可以进行显示评论系统，而且很好管理，页面简单。</p>
 </blockquote>
-<h3 id="11-read-more以及压缩文章"><a href="#11-read-more以及压缩文章" class="headerlink" title="(11)read more以及压缩文章"></a>(11)read more以及压缩文章</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></tbody></table></figure>
-<p>指令加到文章哪个部分，就从哪部分向下不显示</p>
+<h3 id="11-read-more以及压缩文章"><a href="#11-read-more以及压缩文章" class="headerlink" title="(11)read more以及压缩文章"></a>(11)read more以及压缩文章</h3><pre><code>&lt;!-- more --&gt;</code></pre><p>指令加到文章哪个部分，就从哪部分向下不显示</p>
 <h3 id="12-网页底部的动态桃心图像"><a href="#12-网页底部的动态桃心图像" class="headerlink" title="(12)网页底部的动态桃心图像"></a>(12)网页底部的动态桃心图像</h3><p><strong>修改主题配置文件:</strong></p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">icon:</span><br><span class="line">	name: heart      #如果name的值为heart表示引用fontawesome网站上的心形图标</span><br><span class="line">	animated: true     #如果想用动态图标应该将animated的值设为true</span><br><span class="line">	color: "#ff0000"     #图标的色--用16进制数</span><br></pre></td></tr></tbody></table></figure>
-<p>效果如下：<br><img src="/images/beautify2/10.png" alt="c3704c2babdf19d93e17ddb1f04597c8.png"><br>（心还在跳）</p>
+<pre><code>icon:
+    name: heart      #如果name的值为heart表示引用fontawesome网站上的心形图标
+    animated: true     #如果想用动态图标应该将animated的值设为true
+    color: "#ff0000"     #图标的色--用16进制数  </code></pre><p>效果如下：<br><img src="/images/beautify2/10.png" alt="c3704c2babdf19d93e17ddb1f04597c8.png"><br>（心还在跳）</p>
 
                 
             </div>
@@ -1407,7 +1418,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">29.5k</span>&nbsp;字
+                class="white-color">28.6k</span>&nbsp;字
             
             
             

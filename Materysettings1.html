@@ -31,8 +31,8 @@
 
 <meta name="generator" content="Hexo 4.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -545,7 +545,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.7k
+                    5.5k
                 </div>
                 
 
@@ -581,81 +581,215 @@
 <h3 id="下载安装Matery主题"><a href="#下载安装Matery主题" class="headerlink" title="下载安装Matery主题"></a>下载安装Matery主题</h3><p>首先在<a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo官网主题</a>里面搜索<strong>Matery</strong>主题点击进入作者大大的<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank" rel="noopener">github</a>，然后下载 master 分支的最新稳定版的代码，解压缩后将 hexo-theme-matery 的文件夹重命名为matery，复制到Hexo 的 themes 文件夹中</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20200819224655.png" alt="img"></p>
 <p>可以在themes 文件夹下使用Git clone命令来下载：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/blinkfox/hexo-theme-matery.git</span><br></pre></td></tr></tbody></table></figure>
-
+<pre class=" language-git"><code class="language-git">git clone https://github.com/blinkfox/hexo-theme-matery.git</code></pre>
 <h4 id="切换主题"><a href="#切换主题" class="headerlink" title="切换主题"></a>切换主题</h4><p>下载完后，将站点配置文件中的 theme 值修改为你下载主题的文件名</p>
-<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">matery</span></span><br></pre></td></tr></tbody></table></figure>
-
+<pre class=" language-yml"><code class="language-yml"># Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: matery</code></pre>
 <p>一些其他在站点目录配置：</p>
 <p><code>language: zh-CN</code>网站的语言设置</p>
 <p><code>url: https://www.guixinchn.cn</code> 网站的网站（域名）</p>
 <p><code>per_page: 12</code>建议修改为 6 的倍数，主题排版比较好</p>
-<h3 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h3><h4 id="1、标签页"><a href="#1、标签页" class="headerlink" title="1、标签页"></a>1、标签页</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page "tags"</span><br></pre></td></tr></tbody></table></figure>
-
-<p>编辑新建的/source/tags/index.md文件</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2020-02-23 19:37:07</span><br><span class="line">type: "tags"</span><br><span class="line">layout: "tags"</span><br><span class="line">---</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="2、分类页"><a href="#2、分类页" class="headerlink" title="2、分类页"></a>2、分类页</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page "categories"</span><br></pre></td></tr></tbody></table></figure>
-
-<p>编辑新建的/source/categories/index.md文件</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2020-02-23 19:37:07</span><br><span class="line">type: "categories"</span><br><span class="line">layout: "categories"</span><br><span class="line">---</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="3、关于页面"><a href="#3、关于页面" class="headerlink" title="3、关于页面"></a>3、关于页面</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page "about"</span><br></pre></td></tr></tbody></table></figure>
-
-<p>编辑新建的/source/about/index.md文件</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: about</span><br><span class="line">date: 2020-02-23 19:37:07</span><br><span class="line">type: "about"</span><br><span class="line">layout: "about"</span><br><span class="line">---</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="4、留言板"><a href="#4、留言板" class="headerlink" title="4、留言板"></a>4、留言板</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page "contact"</span><br></pre></td></tr></tbody></table></figure>
-
-<p>编辑新建的/source/contact/index.md文件</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: contact</span><br><span class="line">date: 2020-02-23 19:37:07</span><br><span class="line">type: "contact"</span><br><span class="line">layout: "contact"</span><br><span class="line">---</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="5、友情链接"><a href="#5、友情链接" class="headerlink" title="5、友情链接"></a>5、友情链接</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page "friends"</span><br></pre></td></tr></tbody></table></figure>
-
-<p>编辑新建的/source/friends/index.md文件</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: friends</span><br><span class="line">date: 2020-02-23 19:37:07</span><br><span class="line">type: "friends"</span><br><span class="line">layout: "friends"</span><br><span class="line">---</span><br></pre></td></tr></tbody></table></figure>
-
-<p>然后在博客 source 目录下新建 _data 目录，在 _data 目录中新建 friends.json 文件，文件内容如下所示：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	{</span><br><span class="line">	    "avatar": "https://cdn.jsdelivr.net/gh/guixinchn/image/blog/csdn.png",</span><br><span class="line">	    "name": "Blog",</span><br><span class="line">	    "introduction": "CSDN社区",</span><br><span class="line">	    "url": "https://blog.csdn.net/guixinchn",</span><br><span class="line">	    "title": "CSDN"</span><br><span class="line">	}, </span><br><span class="line">	{</span><br><span class="line">        "avatar": "https://cdn.jsdelivr.net/gh/guixinchn/image/blog/bokeyuan.png",</span><br><span class="line">        "name": "Blog",</span><br><span class="line">        "introduction": "博客园",</span><br><span class="line">        "url": "https://www.cnblogs.com/guixinchn/",</span><br><span class="line">        "title": "博客园"</span><br><span class="line">	}, </span><br><span class="line">	{</span><br><span class="line">	    "avatar": "https://cdn.jsdelivr.net/gh/guixinchn/image/blog/github.png",</span><br><span class="line">	    "name": "github",</span><br><span class="line">	    "introduction": "github",</span><br><span class="line">	    "url": "https://github.com/guixinchn",</span><br><span class="line">	    "title": "github"</span><br><span class="line">	}, </span><br><span class="line">	{</span><br><span class="line">	    "avatar": "https://cdn.jsdelivr.net/gh/guixinchn/image/blog/touxiang.jpg",</span><br><span class="line">	    "name": "Blog",</span><br><span class="line">	    "introduction": "咕咕星",</span><br><span class="line">	    "url": "https://ythan.top",</span><br><span class="line">	    "title": "咕咕星"</span><br><span class="line">	}</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="6、添加-404-页面"><a href="#6、添加-404-页面" class="headerlink" title="6、添加 404 页面"></a>6、添加 404 页面</h4><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20200821174825.png" alt="img"></p>
+<h3 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h3><h4 id="1、标签页"><a href="#1、标签页" class="headerlink" title="1、标签页"></a>1、标签页</h4><pre><code>hexo new page "tags"</code></pre><p>编辑新建的/source/tags/index.md文件</p>
+<pre><code>---
+title: tags
+date: 2020-02-23 19:37:07
+type: "tags"
+layout: "tags"
+---</code></pre><h4 id="2、分类页"><a href="#2、分类页" class="headerlink" title="2、分类页"></a>2、分类页</h4><pre><code>hexo new page "categories"</code></pre><p>编辑新建的/source/categories/index.md文件</p>
+<pre><code>---
+title: categories
+date: 2020-02-23 19:37:07
+type: "categories"
+layout: "categories"
+---</code></pre><h4 id="3、关于页面"><a href="#3、关于页面" class="headerlink" title="3、关于页面"></a>3、关于页面</h4><pre><code>hexo new page "about"</code></pre><p>编辑新建的/source/about/index.md文件</p>
+<pre><code>---
+title: about
+date: 2020-02-23 19:37:07
+type: "about"
+layout: "about"
+---</code></pre><h4 id="4、留言板"><a href="#4、留言板" class="headerlink" title="4、留言板"></a>4、留言板</h4><pre><code>hexo new page "contact"</code></pre><p>编辑新建的/source/contact/index.md文件</p>
+<pre><code>---
+title: contact
+date: 2020-02-23 19:37:07
+type: "contact"
+layout: "contact"
+---</code></pre><h4 id="5、友情链接"><a href="#5、友情链接" class="headerlink" title="5、友情链接"></a>5、友情链接</h4><pre><code>hexo new page "friends"</code></pre><p>编辑新建的/source/friends/index.md文件</p>
+<pre><code>---
+title: friends
+date: 2020-02-23 19:37:07
+type: "friends"
+layout: "friends"
+---</code></pre><p>然后在博客 source 目录下新建 _data 目录，在 _data 目录中新建 friends.json 文件，文件内容如下所示：</p>
+<pre><code>[
+    {
+        "avatar": "https://cdn.jsdelivr.net/gh/guixinchn/image/blog/csdn.png",
+        "name": "Blog",
+        "introduction": "CSDN社区",
+        "url": "https://blog.csdn.net/guixinchn",
+        "title": "CSDN"
+    }, 
+    {
+        "avatar": "https://cdn.jsdelivr.net/gh/guixinchn/image/blog/bokeyuan.png",
+        "name": "Blog",
+        "introduction": "博客园",
+        "url": "https://www.cnblogs.com/guixinchn/",
+        "title": "博客园"
+    }, 
+    {
+        "avatar": "https://cdn.jsdelivr.net/gh/guixinchn/image/blog/github.png",
+        "name": "github",
+        "introduction": "github",
+        "url": "https://github.com/guixinchn",
+        "title": "github"
+    }, 
+    {
+        "avatar": "https://cdn.jsdelivr.net/gh/guixinchn/image/blog/touxiang.jpg",
+        "name": "Blog",
+        "introduction": "咕咕星",
+        "url": "https://ythan.top",
+        "title": "咕咕星"
+    }
+]</code></pre><h4 id="6、添加-404-页面"><a href="#6、添加-404-页面" class="headerlink" title="6、添加 404 页面"></a>6、添加 404 页面</h4><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20200821174825.png" alt="img"></p>
 <p>首先再站点根目录下的 source 文件夹下新建 404.md 文件，里面内容如下：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">date: 2020-02-23 19:37:07</span><br><span class="line">type: "404"</span><br><span class="line">layout: "404"</span><br><span class="line">description: "Oops～，我崩溃了！找不到你想要的页面了"</span><br><span class="line">---</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>---
+title: 404
+date: 2020-02-23 19:37:07
+type: "404"
+layout: "404"
+description: "Oops～，我崩溃了！找不到你想要的页面了"
+---</code></pre><p>紧接着再新建主题文件夹的 layout 目录下新建 404.ejs 文件，添加内容如下：</p>
+<pre><code>&lt;style type="text/css"&gt;
+    /* don't remove. */
+    .about-cover {
+        height: 90.2vh;
+    }
+&lt;/style&gt;
+&lt;div class="bg-cover pd-header about-cover"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2"&gt;
+                &lt;div class="brand"&gt;
+                    &lt;div class="title center-align"&gt;
+                        404
+                    &lt;/div&gt;
+                    &lt;div class="description center-align"&gt;
+                        &lt;%= page.description %&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 
-<p>紧接着再新建主题文件夹的 layout 目录下新建 404.ejs 文件，添加内容如下：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type="text/css"&gt;</span><br><span class="line">    /* don't remove. */</span><br><span class="line">    .about-cover {</span><br><span class="line">        height: 90.2vh;</span><br><span class="line">    }</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;div class="bg-cover pd-header about-cover"&gt;</span><br><span class="line">    &lt;div class="container"&gt;</span><br><span class="line">        &lt;div class="row"&gt;</span><br><span class="line">            &lt;div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2"&gt;</span><br><span class="line">                &lt;div class="brand"&gt;</span><br><span class="line">                    &lt;div class="title center-align"&gt;</span><br><span class="line">                        404</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                    &lt;div class="description center-align"&gt;</span><br><span class="line">                        &lt;%= page.description %&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    // 每天切换 banner 图.  Switch banner image every day.</span><br><span class="line">    $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="7、添加自定义页面"><a href="#7、添加自定义页面" class="headerlink" title="7、添加自定义页面"></a>7、添加自定义页面</h4><p>首先在站点目录下的 source 文件夹下新建 aboutme 文件，文件名可自定义，然后编写一个 index.html 放入 aboutme 文件夹下，然后在主题配置文件下的导航配置信息添加下面的配置：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">About:</span><br><span class="line">    url: /</span><br><span class="line">    icon: fas fa-address-card</span><br><span class="line">    children:</span><br><span class="line">      - name: 关于我</span><br><span class="line">        url: /about</span><br><span class="line">        icon: fas fa-user-circle</span><br><span class="line">      - name: Another    #这是新添加的，在原有配置基础上添加</span><br><span class="line">        url: /aboutme</span><br><span class="line">        icon: fa fa-user-secret</span><br></pre></td></tr></tbody></table></figure>
-
-<p>然后在站点配置文件下，找到 skip_render，在后面添加属性，如下：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 其意思为在对文件进行渲染时跳过aboutme文件下的所有文件</span><br><span class="line">skip_render: </span><br><span class="line">    - aboutme/** </span><br><span class="line">    - aaa/**</span><br><span class="line">    - bbb/**</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="配置菜单导航"><a href="#配置菜单导航" class="headerlink" title="配置菜单导航"></a>配置菜单导航</h4><p>配置基本菜单导航的名称、路径 url 和图标 icon.</p>
+&lt;script&gt;
+    // 每天切换 banner 图.  Switch banner image every day.
+    $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+&lt;/script&gt;</code></pre><h4 id="7、添加自定义页面"><a href="#7、添加自定义页面" class="headerlink" title="7、添加自定义页面"></a>7、添加自定义页面</h4><p>首先在站点目录下的 source 文件夹下新建 aboutme 文件，文件名可自定义，然后编写一个 index.html 放入 aboutme 文件夹下，然后在主题配置文件下的导航配置信息添加下面的配置：</p>
+<pre><code>About:
+    url: /
+    icon: fas fa-address-card
+    children:
+      - name: 关于我
+        url: /about
+        icon: fas fa-user-circle
+      - name: Another    #这是新添加的，在原有配置基础上添加
+        url: /aboutme
+        icon: fa fa-user-secret</code></pre><p>然后在站点配置文件下，找到 skip_render，在后面添加属性，如下：</p>
+<pre><code># 其意思为在对文件进行渲染时跳过aboutme文件下的所有文件
+skip_render: 
+    - aboutme/** 
+    - aaa/**
+    - bbb/**</code></pre><h4 id="配置菜单导航"><a href="#配置菜单导航" class="headerlink" title="配置菜单导航"></a>配置菜单导航</h4><p>配置基本菜单导航的名称、路径 url 和图标 icon.</p>
 <p>图标 icon 可以在 <a href="https://fontawesome.com/icons" target="_blank" rel="noopener">Font Awesome</a> 中查找</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># main menu navigation url and icon</span><br><span class="line"># 配置菜单导航的名称、路径和图标icon.</span><br><span class="line">menu:</span><br><span class="line">  Index:</span><br><span class="line">    url: /</span><br><span class="line">    icon: fas fa-home</span><br><span class="line">  Tags:</span><br><span class="line">    url: /tags</span><br><span class="line">    icon: fas fa-tags</span><br><span class="line">  Categories:</span><br><span class="line">    url: /categories</span><br><span class="line">    icon: fas fa-bookmark</span><br><span class="line">  Archives:</span><br><span class="line">    url: /archives</span><br><span class="line">    icon: fas fa-archive</span><br><span class="line">  About:</span><br><span class="line">    url: /about</span><br><span class="line">    icon: fas fa-user-circle</span><br><span class="line">  Contact:</span><br><span class="line">    url: /contact</span><br><span class="line">    icon: fas fa-comments</span><br><span class="line">  Friends:</span><br><span class="line">    url: /friends</span><br><span class="line">    icon: fas fa-address-book</span><br></pre></td></tr></tbody></table></figure>
-
-<h5 id="二级菜单配置方法"><a href="#二级菜单配置方法" class="headerlink" title="二级菜单配置方法"></a>二级菜单配置方法</h5><p>如果你需要二级菜单则可以在原基本菜单导航的基础上如下操作<br>1.在需要添加二级菜单的一级菜单下添加<code>children</code>关键字(如:<code>About</code>菜单下添加<code>children</code>)<br>2.在<code>children</code>下创建二级菜单的 名称name,路径url和图标icon.<br>3.注意每个二级菜单模块前要加 <code>-</code>.<br>4.注意缩进格式</p>
-<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">Index:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">/</span></span><br><span class="line">    <span class="attr">icon:</span> <span class="string">fas</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="attr">Tags:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">/tags</span></span><br><span class="line">    <span class="attr">icon:</span> <span class="string">fas</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="attr">Categories:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">/categories</span></span><br><span class="line">    <span class="attr">icon:</span> <span class="string">fas</span> <span class="string">fa-bookmark</span></span><br><span class="line">  <span class="attr">Archives:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">/archives</span></span><br><span class="line">    <span class="attr">icon:</span> <span class="string">fas</span> <span class="string">fa-archive</span></span><br><span class="line">  <span class="attr">About:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">/about</span></span><br><span class="line">    <span class="attr">icon:</span> <span class="string">fas</span> <span class="string">fa-user-circle-o</span></span><br><span class="line">  <span class="attr">Friends:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">/friends</span></span><br><span class="line">    <span class="attr">icon:</span> <span class="string">fas</span> <span class="string">fa-address-book</span></span><br><span class="line">  <span class="attr">Medias:</span></span><br><span class="line">    <span class="attr">icon:</span> <span class="string">fas</span> <span class="string">fa-list</span></span><br><span class="line">    <span class="attr">children:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Musics</span></span><br><span class="line">        <span class="attr">url:</span> <span class="string">/musics</span></span><br><span class="line">        <span class="attr">icon:</span> <span class="string">fas</span> <span class="string">fa-music</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Movies</span></span><br><span class="line">        <span class="attr">url:</span> <span class="string">/movies</span></span><br><span class="line">        <span class="attr">icon:</span> <span class="string">fas</span> <span class="string">fa-film</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Books</span></span><br><span class="line">        <span class="attr">url:</span> <span class="string">/books</span></span><br><span class="line">        <span class="attr">icon:</span> <span class="string">fas</span> <span class="string">fa-book</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Galleries</span></span><br><span class="line">        <span class="attr">url:</span> <span class="string">/galleries</span></span><br><span class="line">        <span class="attr">icon:</span> <span class="string">fas</span> <span class="string">fa-image</span></span><br></pre></td></tr></tbody></table></figure>
-
+<pre><code># main menu navigation url and icon
+# 配置菜单导航的名称、路径和图标icon.
+menu:
+  Index:
+    url: /
+    icon: fas fa-home
+  Tags:
+    url: /tags
+    icon: fas fa-tags
+  Categories:
+    url: /categories
+    icon: fas fa-bookmark
+  Archives:
+    url: /archives
+    icon: fas fa-archive
+  About:
+    url: /about
+    icon: fas fa-user-circle
+  Contact:
+    url: /contact
+    icon: fas fa-comments
+  Friends:
+    url: /friends
+    icon: fas fa-address-book</code></pre><h5 id="二级菜单配置方法"><a href="#二级菜单配置方法" class="headerlink" title="二级菜单配置方法"></a>二级菜单配置方法</h5><p>如果你需要二级菜单则可以在原基本菜单导航的基础上如下操作<br>1.在需要添加二级菜单的一级菜单下添加<code>children</code>关键字(如:<code>About</code>菜单下添加<code>children</code>)<br>2.在<code>children</code>下创建二级菜单的 名称name,路径url和图标icon.<br>3.注意每个二级菜单模块前要加 <code>-</code>.<br>4.注意缩进格式</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">menu</span><span class="token punctuation">:</span>
+  <span class="token key atrule">Index</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> /
+    <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>home
+  <span class="token key atrule">Tags</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> /tags
+    <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>tags
+  <span class="token key atrule">Categories</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> /categories
+    <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>bookmark
+  <span class="token key atrule">Archives</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> /archives
+    <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>archive
+  <span class="token key atrule">About</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> /about
+    <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>user<span class="token punctuation">-</span>circle<span class="token punctuation">-</span>o
+  <span class="token key atrule">Friends</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> /friends
+    <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>address<span class="token punctuation">-</span>book
+  <span class="token key atrule">Medias</span><span class="token punctuation">:</span>
+    <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>list
+    <span class="token key atrule">children</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Musics
+        <span class="token key atrule">url</span><span class="token punctuation">:</span> /musics
+        <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>music
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Movies
+        <span class="token key atrule">url</span><span class="token punctuation">:</span> /movies
+        <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>film
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Books
+        <span class="token key atrule">url</span><span class="token punctuation">:</span> /books
+        <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>book
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Galleries
+        <span class="token key atrule">url</span><span class="token punctuation">:</span> /galleries
+        <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>image</code></pre>
 <h3 id="添加-emoji-表情支持"><a href="#添加-emoji-表情支持" class="headerlink" title="添加 emoji 表情支持"></a>添加 emoji 表情支持</h3><p>需要安装插件 hexo-filter-github-emojis</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-filter-github-emojis --save</span><br></pre></td></tr></tbody></table></figure>
-
-<p><strong>没成功</strong></p>
+<pre><code>npm install hexo-filter-github-emojis --save</code></pre><p><strong>没成功</strong></p>
 <p>在 Hexo 根目录下的 _config.yml 文件中，新增以下的配置项：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">githubEmojis:</span><br><span class="line">  enable: true</span><br><span class="line">  className: github-emoji</span><br><span class="line">  inject: true</span><br><span class="line">  styles:</span><br><span class="line">  customEmojis:</span><br></pre></td></tr></tbody></table></figure>
-
-<p>😍 😄 😂 ✨ 🎵 👌 👍 💜<br>👫 💧 ☀ 🐼 🐦 🌚 🌏 📞 🔫 🔭 🚴 🍅 🚀 🇨🇳 🈚 🈳 🚯 ♎ ©。<strong>来一波表情支持</strong></p>
+<pre><code>githubEmojis:
+  enable: true
+  className: github-emoji
+  inject: true
+  styles:
+  customEmojis:</code></pre><p>😍 😄 😂 ✨ 🎵 👌 👍 💜<br>👫 💧 ☀ 🐼 🐦 🌚 🌏 📞 🔫 🔭 🚴 🍅 🚀 🇨🇳 🈚 🈳 🚯 ♎ ©。<strong>来一波表情支持</strong></p>
 <p>在网站<a href="https://www.webfx.com/tools/emoji-cheat-sheet/可以搜索常用表情对应代码" target="_blank" rel="noopener">https://www.webfx.com/tools/emoji-cheat-sheet/可以搜索常用表情对应代码</a></p>
 <p>在 <a href="https://www.webpagefx.com/tools/emoji-cheat-sheet/" target="_blank" rel="noopener">emoji-cheat-sheet</a> 中找到你想要的表情，然后点击即可复制。使用方法和 <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> 一样，比如你想发一个笑脸 😄 直接输入笑脸对应的 emoji 编码 <code>:smile：</code> 就可以。</p>
 <h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><p>原本的代码显示行号和内容分开了，不美观</p>
 <p>代码美化需要安装hexo-prism-plugin 插件</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -S hexo-prism-plugin</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>npm i -S hexo-prism-plugin</code></pre><p>修改 Hexo 根目录下 _config.yml 文件中 highlight.enable 的值为 false，并新增 prism 插件相关的配置，主要配置如下：</p>
+<pre><code>highlight:            #代码块的设置
+  enable: false            #开启代码块高亮
+  line_number: true        #如果未指定语言，则启用自动检测
+  auto_detect: false        #显示行数
+  tab_replace: ''        #用n个空格替换tabs；如果值为空，则不会替换tabs
+  wrap: true
+  hljs: false
 
-<p>修改 Hexo 根目录下 _config.yml 文件中 highlight.enable 的值为 false，并新增 prism 插件相关的配置，主要配置如下：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">highlight:			#代码块的设置</span><br><span class="line">  enable: false			#开启代码块高亮</span><br><span class="line">  line_number: true		#如果未指定语言，则启用自动检测</span><br><span class="line">  auto_detect: false		#显示行数</span><br><span class="line">  tab_replace: ''		#用n个空格替换tabs；如果值为空，则不会替换tabs</span><br><span class="line">  wrap: true</span><br><span class="line">  hljs: false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 关闭原有的代码高亮，使用自己的</span><br><span class="line">prism_plugin:</span><br><span class="line">  mode: 'preprocess'    # realtime/preprocess</span><br><span class="line">  theme: 'tomorrow'</span><br><span class="line">  line_number: false    # default false</span><br><span class="line">  custom_css:</span><br></pre></td></tr></tbody></table></figure>
 
-<table>
+# 关闭原有的代码高亮，使用自己的
+prism_plugin:
+  mode: 'preprocess'    # realtime/preprocess
+  theme: 'tomorrow'
+  line_number: false    # default false
+  custom_css:</code></pre><table>
 <thead>
 <tr>
 <th align="center"><strong>参数KEY</strong></th>
@@ -684,50 +818,67 @@
 <p>卸载hexo5.0<br><code>npm uninstall hexo --save</code></p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20200821010640.png" alt="img"></p>
 <p>安装4.2.0版本</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo@4.2.0 --save</span><br></pre></td></tr></tbody></table></figure>
-
-<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20200821010658.png" alt="img"></p>
+<pre><code>npm install hexo@4.2.0 --save</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20200821010658.png" alt="img"></p>
 <h3 id="主题的搜索功能"><a href="#主题的搜索功能" class="headerlink" title="主题的搜索功能"></a>主题的搜索功能</h3><p><img src="https://gitee.com/marmalade0/images/raw/master/img/image-20210119204534310.png" alt="image-20210119204534310"></p>
 <p>需要安装hexo-generator-search插件</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br></pre></td></tr></tbody></table></figure>
-
-<p>在Hexo 根目录下的 _config.yml 文件中，新增以下的配置项：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="文章字数统计插件"><a href="#文章字数统计插件" class="headerlink" title="文章字数统计插件"></a>文章字数统计插件</h3><p><img src="https://gitee.com/marmalade0/images/raw/master/img/image-20210119204355226.png" alt="image-20210119204355226"></p>
+<pre><code>npm install hexo-generator-search --save</code></pre><p>在Hexo 根目录下的 _config.yml 文件中，新增以下的配置项：</p>
+<pre><code>search:
+  path: search.xml
+  field: post</code></pre><h3 id="文章字数统计插件"><a href="#文章字数统计插件" class="headerlink" title="文章字数统计插件"></a>文章字数统计插件</h3><p><img src="https://gitee.com/marmalade0/images/raw/master/img/image-20210119204355226.png" alt="image-20210119204355226"></p>
 <p>需要安装 hexo-wordcount 插件</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save hexo-wordcount</span><br></pre></td></tr></tbody></table></figure>
-
-<p>主题下的 _config.yml 文件中，激活以下配置项即可：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wordCount:</span><br><span class="line">  enable: false # 将这个值设置为 true 即可.</span><br><span class="line">  postWordCount: true</span><br><span class="line">  min2read: true</span><br><span class="line">  totalCount: true</span><br></pre></td></tr></tbody></table></figure>
-
-<p>保存后报错</p>
+<pre><code>npm i --save hexo-wordcount</code></pre><p>主题下的 _config.yml 文件中，激活以下配置项即可：</p>
+<pre><code>wordCount:
+  enable: false # 将这个值设置为 true 即可.
+  postWordCount: true
+  min2read: true
+  totalCount: true</code></pre><p>保存后报错</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/image-20210117140326262.png" alt="image-20210117140326262"></p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls --depth 0</span><br></pre></td></tr></tbody></table></figure>
-
-<p>命令查看 npm 安装各 hexo 插件的情况</p>
+<pre><code>npm ls --depth 0</code></pre><p>命令查看 npm 安装各 hexo 插件的情况</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/image-20210117142653510.png" alt="image-20210117142653510"></p>
 <p>无问题，改为以下不报错</p>
 <p>一天后问题自动恢复</p>
 <h3 id="添加-RSS-订阅支持"><a href="#添加-RSS-订阅支持" class="headerlink" title="添加 RSS 订阅支持"></a>添加 RSS 订阅支持</h3><p><img src="https://gitee.com/marmalade0/images/raw/master/img/image-20210120134517461.png" alt="image-20210120134517461"></p>
 <p>需要安装hexo-generator-feed插件</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-feed --save</span><br></pre></td></tr></tbody></table></figure>
-
-<p>Hexo 根目录下的 _config.yml 文件中，新增以下的配置项：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">feed:</span><br><span class="line">  type: atom</span><br><span class="line">  path: atom.xml</span><br><span class="line">  limit: 20</span><br><span class="line">  hub:</span><br><span class="line">  content:</span><br><span class="line">  content_limit: 140</span><br><span class="line">  content_limit_delim: ' '</span><br><span class="line">  order_by: -date</span><br></pre></td></tr></tbody></table></figure>
-
-<p>在 public 文件夹中即可看到 atom.xml 文件，则已经安装成功</p>
+<pre><code>npm install hexo-generator-feed --save</code></pre><p>Hexo 根目录下的 _config.yml 文件中，新增以下的配置项：</p>
+<pre><code>feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date</code></pre><p>在 public 文件夹中即可看到 atom.xml 文件，则已经安装成功</p>
 <h3 id="修改页脚"><a href="#修改页脚" class="headerlink" title="修改页脚"></a>修改页脚</h3><p>页脚信息可能需要做定制化修改，而且它不便于做成配置信息，所以可能需要你自己去再修改和加工。修改的地方在主题文件的 /layout/_partial/footer.ejs 文件中，包括站点、使用的主题、访问量等。</p>
 <h3 id="修改社交链接"><a href="#修改社交链接" class="headerlink" title="修改社交链接"></a>修改社交链接</h3><p>在主题的 config.yml 文件中，默认支持 QQ、GitHub 和邮箱等的配置，你可以在主题文件的 /layout/_partial/social-link.ejs 文件中，新增、修改你需要的社交链接地址，增加链接可参考如下代码：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (theme.socialLink.github) { %&gt;</span><br><span class="line">    &lt;a href="&lt;%= theme.socialLink.github %&gt;" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50"&gt;</span><br><span class="line">        &lt;i class="fab fa-github"&gt;&lt;/i&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">&lt;% } %&gt;</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="修改打赏的二维码图片"><a href="#修改打赏的二维码图片" class="headerlink" title="修改打赏的二维码图片"></a>修改打赏的二维码图片</h3><p>在主题文件的 source/medias/reward 文件中修改</p>
+<pre><code>&lt;% if (theme.socialLink.github) { %&gt;
+    &lt;a href="&lt;%= theme.socialLink.github %&gt;" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50"&gt;
+        &lt;i class="fab fa-github"&gt;&lt;/i&gt;
+    &lt;/a&gt;
+&lt;% } %&gt;</code></pre><h3 id="修改打赏的二维码图片"><a href="#修改打赏的二维码图片" class="headerlink" title="修改打赏的二维码图片"></a>修改打赏的二维码图片</h3><p>在主题文件的 source/medias/reward 文件中修改</p>
 <h3 id="配置音乐播放器"><a href="#配置音乐播放器" class="headerlink" title="配置音乐播放器"></a>配置音乐播放器</h3><p><img src="https://gitee.com/marmalade0/images/raw/master/img/image-20210121162930869.png" alt="image-20210121162930869"></p>
 <p>支持接入第三方音乐，如 QQ 音乐，网易云音乐，酷狗音乐等等</p>
 <p>主题的 _config.yml 配置文件中激活 music 配置即可：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># Whether to display the musics.</span><br><span class="line"># 是否在首页显示音乐.</span><br><span class="line">music:</span><br><span class="line">  enable: true</span><br><span class="line">  title: #非吸底模式有效</span><br><span class="line">    enable: true</span><br><span class="line">    show: 咕咕星的歌单</span><br><span class="line">  autoHide: true    # hide automaticaly</span><br><span class="line">  server: netease   #require	music platform: netease, tencent, kugou, xiami, baidu</span><br><span class="line">  type: playlist    #require song, playlist, album, search, artist</span><br><span class="line">  id: 2888085740     #require	song id / playlist id / album id / search keyword</span><br><span class="line">  fixed: false       # 开启吸底模式</span><br><span class="line">  autoplay: false   # 是否自动播放</span><br><span class="line">  theme: '#42b983'</span><br><span class="line">  loop: 'all'       # 音频循环播放, 可选值: 'all', 'one', 'none'</span><br><span class="line">  order: 'random'   # 音频循环顺序, 可选值: 'list', 'random'</span><br><span class="line">  preload: 'auto'   # 预加载，可选值: 'none', 'metadata', 'auto'</span><br><span class="line">  volume: 0.7       # 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效</span><br><span class="line">  listFolded: true  # 列表默认折叠</span><br><span class="line">  hideLrc: true     # 隐藏歌词</span><br></pre></td></tr></tbody></table></figure>
-
-<blockquote>
+<pre><code># Whether to display the musics.
+# 是否在首页显示音乐.
+music:
+  enable: true
+  title: #非吸底模式有效
+    enable: true
+    show: 咕咕星的歌单
+  autoHide: true    # hide automaticaly
+  server: netease   #require    music platform: netease, tencent, kugou, xiami, baidu
+  type: playlist    #require song, playlist, album, search, artist
+  id: 2888085740     #require    song id / playlist id / album id / search keyword
+  fixed: false       # 开启吸底模式
+  autoplay: false   # 是否自动播放
+  theme: '#42b983'
+  loop: 'all'       # 音频循环播放, 可选值: 'all', 'one', 'none'
+  order: 'random'   # 音频循环顺序, 可选值: 'list', 'random'
+  preload: 'auto'   # 预加载，可选值: 'none', 'metadata', 'auto'
+  volume: 0.7       # 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效
+  listFolded: true  # 列表默认折叠
+  hideLrc: true     # 隐藏歌词</code></pre><blockquote>
 <p>server 可选 netease（网易云音乐），tencent（QQ 音乐），kugou（酷狗音乐），xiami（虾米音乐），</p>
 <p>baidu（百度音乐）。</p>
 <p>type 可选 song（歌曲），playlist（歌单），album（专辑），search（搜索关键字），artist（歌手）</p>
@@ -821,66 +972,242 @@
 <li>您可以在文章 md 文件的 front-matter 中指定 reprintPolicy 来给单个文章配置转载规则</li>
 </ol>
 </blockquote>
-<h4 id="最简示例"><a href="#最简示例" class="headerlink" title="最简示例"></a>最简示例</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: typora-vue-theme主题介绍</span><br><span class="line">date: 2018-09-07 09:25:00</span><br><span class="line">---</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="最全示例"><a href="#最全示例" class="headerlink" title="最全示例"></a>最全示例</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: typora-vue-theme主题介绍</span><br><span class="line">date: 2018-09-07 09:25:00</span><br><span class="line">author: 赵奇</span><br><span class="line">img: /source/images/xxx.jpg</span><br><span class="line">top: true</span><br><span class="line">cover: true</span><br><span class="line">coverImg: /images/1.jpg</span><br><span class="line">password: 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92</span><br><span class="line">toc: false</span><br><span class="line">mathjax: false</span><br><span class="line">summary: 这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要</span><br><span class="line">categories: Markdown</span><br><span class="line">tags:</span><br><span class="line">  - Typora</span><br><span class="line">  - Markdown</span><br><span class="line">---</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="自定制修改"><a href="#自定制修改" class="headerlink" title="自定制修改"></a>自定制修改</h3><h4 id="修改主题颜色"><a href="#修改主题颜色" class="headerlink" title="修改主题颜色"></a>修改主题颜色</h4><p>在主题文件的 /source/css/matery.css 文件中修改</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/* 整体背景颜色，包括导航、移动端的导航、页尾、标签页等的背景颜色. */</span><br><span class="line">.bg-color {</span><br><span class="line">    background-image: linear-gradient(to right, #2558FF 0%, #0f9d58 100%);</span><br><span class="line">}</span><br><span class="line">/*如果想去掉banner图的颜色渐变效果，请将以下的css属性注释掉或者删除掉即可*/</span><br><span class="line">@-webkit-keyframes rainbow {</span><br><span class="line">   /* 动态切换背景颜色. */</span><br><span class="line">}</span><br><span class="line">@keyframes rainbow {</span><br><span class="line">    /* 动态切换背景颜色. */</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="修改-banner-图和文章特色图"><a href="#修改-banner-图和文章特色图" class="headerlink" title="**修改 banner 图和文章特色图"></a>**修改 banner 图和文章特色图</h4><p>在 /source/medias/banner 文件夹中更换你喜欢的 banner 图片，主题代码中是每天动态切换一张，只需 7 张即可。如果你会 JavaScript 代码，可以修改成你自己喜欢切换逻辑，如：随机切换等，banner 切换的代码位置在 /layout/_partial/bg-cover-content.ejs 文件的 代码中：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');</span><br></pre></td></tr></tbody></table></figure>
-
-<p>在 /source/medias/featureimages 文件夹中默认有 24 张特色图片，你可以再增加或者减少，并需要在 _config.yml 做同步修改。</p>
+<h4 id="最简示例"><a href="#最简示例" class="headerlink" title="最简示例"></a>最简示例</h4><pre><code>---
+title: typora-vue-theme主题介绍
+date: 2018-09-07 09:25:00
+---</code></pre><h4 id="最全示例"><a href="#最全示例" class="headerlink" title="最全示例"></a>最全示例</h4><pre><code>---
+title: typora-vue-theme主题介绍
+date: 2018-09-07 09:25:00
+author: 赵奇
+img: /source/images/xxx.jpg
+top: true
+cover: true
+coverImg: /images/1.jpg
+password: 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92
+toc: false
+mathjax: false
+summary: 这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
+categories: Markdown
+tags:
+  - Typora
+  - Markdown
+---</code></pre><h3 id="自定制修改"><a href="#自定制修改" class="headerlink" title="自定制修改"></a>自定制修改</h3><h4 id="修改主题颜色"><a href="#修改主题颜色" class="headerlink" title="修改主题颜色"></a>修改主题颜色</h4><p>在主题文件的 /source/css/matery.css 文件中修改</p>
+<pre><code>/* 整体背景颜色，包括导航、移动端的导航、页尾、标签页等的背景颜色. */
+.bg-color {
+    background-image: linear-gradient(to right, #2558FF 0%, #0f9d58 100%);
+}
+/*如果想去掉banner图的颜色渐变效果，请将以下的css属性注释掉或者删除掉即可*/
+@-webkit-keyframes rainbow {
+   /* 动态切换背景颜色. */
+}
+@keyframes rainbow {
+    /* 动态切换背景颜色. */
+}</code></pre><h4 id="修改-banner-图和文章特色图"><a href="#修改-banner-图和文章特色图" class="headerlink" title="**修改 banner 图和文章特色图"></a>**修改 banner 图和文章特色图</h4><p>在 /source/medias/banner 文件夹中更换你喜欢的 banner 图片，主题代码中是每天动态切换一张，只需 7 张即可。如果你会 JavaScript 代码，可以修改成你自己喜欢切换逻辑，如：随机切换等，banner 切换的代码位置在 /layout/_partial/bg-cover-content.ejs 文件的 代码中：</p>
+<pre><code>$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');</code></pre><p>在 /source/medias/featureimages 文件夹中默认有 24 张特色图片，你可以再增加或者减少，并需要在 _config.yml 做同步修改。</p>
 <p>如果想改为每小时或者每分钟切换 banner 图的话，需要将 getDay() 改为 getHours() 或者 getMinutes() 即可。</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210121164729.png" alt="image-20210121164726675"></p>
 <p>修改文章特色图见front_matter</p>
 <h4 id="修改网站相关信息"><a href="#修改网站相关信息" class="headerlink" title="修改网站相关信息"></a>修改网站相关信息</h4><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210121164746.png" alt=""></p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#这是根目录下的配置文件信息</span><br><span class="line"># Site</span><br><span class="line">title: 咕咕星Blog		#网站标题</span><br><span class="line">subtitle: 世界很暗，但是你来了 #网站副标题</span><br><span class="line">description: 本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景。	#网站描述description 主要用于5E0，告诉搜索引擎一个关于您站点的简单描述</span><br><span class="line">keywords: [HTML, CSS, JavaScript, JQuery, java, linux等]		#网站的关键词。使用半角逗号“，”分隔多个关键词</span><br><span class="line">author: 咕咕星			#您的名字</span><br><span class="line">language: zh-CN			#网站使用的语言。建议修改为zh-CN</span><br><span class="line">timezone:			#网站时区。Hexo默认使用您电脑的时区。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 这是主题配置文件的相关信息</span><br><span class="line"># 配置网站favicon和网站LOGO</span><br><span class="line"># 此处我用的CDN，也可以使用本地文件</span><br><span class="line">favicon: https://cdn.jsdelivr.net/gh/guixinchn/image/blog/favicon.png</span><br><span class="line">logo: https://cdn.jsdelivr.net/gh/guixinchn/image/blog/logo.png</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 网站副标题，打字效果</span><br><span class="line"># 如果有符号 ‘ ，请在 ’ 前面加上 \</span><br><span class="line">subtitle:</span><br><span class="line">  enable: true</span><br><span class="line">  loop: true # 是否循环</span><br><span class="line">  showCursor: true # 是否显示光标</span><br><span class="line">  startDelay: 300 # 开始延迟</span><br><span class="line">  typeSpeed: 100 # 打字速度</span><br><span class="line">  backSpeed: 50 # 删除速度</span><br><span class="line">  sub1: 如果放弃太早，你永远都不知道自己会错过什么。</span><br><span class="line">  sub2: 没有伞的孩子必须努力奔跑！</span><br><span class="line">  sub3: 花开不是为了花落，而是为了开的更加灿烂。</span><br><span class="line">  sub4: 没有礁石，就没有美丽的浪花；没有挫折，就没有壮丽的人生。</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>#这是根目录下的配置文件信息
+# Site
+title: 咕咕星Blog        #网站标题
+subtitle: 世界很暗，但是你来了 #网站副标题
+description: 本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景。    #网站描述description 主要用于5E0，告诉搜索引擎一个关于您站点的简单描述
+keywords: [HTML, CSS, JavaScript, JQuery, java, linux等]        #网站的关键词。使用半角逗号“，”分隔多个关键词
+author: 咕咕星            #您的名字
+language: zh-CN            #网站使用的语言。建议修改为zh-CN
+timezone:            #网站时区。Hexo默认使用您电脑的时区。
 
-<p>注意：</p>
+
+# 这是主题配置文件的相关信息
+# 配置网站favicon和网站LOGO
+# 此处我用的CDN，也可以使用本地文件
+favicon: https://cdn.jsdelivr.net/gh/guixinchn/image/blog/favicon.png
+logo: https://cdn.jsdelivr.net/gh/guixinchn/image/blog/logo.png
+
+
+# 网站副标题，打字效果
+# 如果有符号 ‘ ，请在 ’ 前面加上 \
+subtitle:
+  enable: true
+  loop: true # 是否循环
+  showCursor: true # 是否显示光标
+  startDelay: 300 # 开始延迟
+  typeSpeed: 100 # 打字速度
+  backSpeed: 50 # 删除速度
+  sub1: 如果放弃太早，你永远都不知道自己会错过什么。
+  sub2: 没有伞的孩子必须努力奔跑！
+  sub3: 花开不是为了花落，而是为了开的更加灿烂。
+  sub4: 没有礁石，就没有美丽的浪花；没有挫折，就没有壮丽的人生。</code></pre><p>注意：</p>
 <p>网站打字效果副标题默认有两个，即 sub1 和 sub2，如果想写多个，则需要修改两处地方，首先修改配置文件，如上面所示，在 sub1 和 sub2 后面继续添加即可，然后在去主题目录下的 layout 文件夹下的_partial 文件夹，修改 bg-cover-content.ejs 文件，大约在 12 行左右，如下面所示：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="description center-align"&gt;</span><br><span class="line">                &lt;% if (theme.subtitle.enable) { %&gt;</span><br><span class="line">                &lt;span id="subtitle"&gt;&lt;/span&gt;</span><br><span class="line">                &lt;script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"&gt;&lt;/script&gt;</span><br><span class="line">                &lt;script&gt;</span><br><span class="line">                    var typed = new Typed("#subtitle", {</span><br><span class="line">                        strings: ['&lt;%= theme.subtitle.sub1 %&gt;',</span><br><span class="line">				 				  '&lt;%= theme.subtitle.sub2 %&gt;',</span><br><span class="line">								  '&lt;%= theme.subtitle.sub3 %&gt;',</span><br><span class="line">				 				  '&lt;%= theme.subtitle.sub4 %&gt;'],</span><br><span class="line">                        startDelay: &lt;%= theme.subtitle.startDelay %&gt;,</span><br><span class="line">                        typeSpeed: &lt;%= theme.subtitle.typeSpeed %&gt;,</span><br><span class="line">                        loop: &lt;%= theme.subtitle.loop %&gt;,</span><br><span class="line">                        backSpeed: &lt;%= theme.subtitle.backSpeed %&gt;,</span><br><span class="line">                        showCursor: &lt;%= theme.subtitle.showCursor %&gt;</span><br><span class="line">                    });</span><br><span class="line">                &lt;/script&gt;</span><br><span class="line">                &lt;% } else { %&gt;</span><br><span class="line">                    &lt;%= config.description %&gt;</span><br><span class="line">                &lt;% } %&gt;</span><br><span class="line">            &lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
-
-<p><strong>社交链接的修改</strong></p>
+<pre><code>&lt;div class="description center-align"&gt;
+                &lt;% if (theme.subtitle.enable) { %&gt;
+                &lt;span id="subtitle"&gt;&lt;/span&gt;
+                &lt;script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"&gt;&lt;/script&gt;
+                &lt;script&gt;
+                    var typed = new Typed("#subtitle", {
+                        strings: ['&lt;%= theme.subtitle.sub1 %&gt;',
+                                   '&lt;%= theme.subtitle.sub2 %&gt;',
+                                  '&lt;%= theme.subtitle.sub3 %&gt;',
+                                   '&lt;%= theme.subtitle.sub4 %&gt;'],
+                        startDelay: &lt;%= theme.subtitle.startDelay %&gt;,
+                        typeSpeed: &lt;%= theme.subtitle.typeSpeed %&gt;,
+                        loop: &lt;%= theme.subtitle.loop %&gt;,
+                        backSpeed: &lt;%= theme.subtitle.backSpeed %&gt;,
+                        showCursor: &lt;%= theme.subtitle.showCursor %&gt;
+                    });
+                &lt;/script&gt;
+                &lt;% } else { %&gt;
+                    &lt;%= config.description %&gt;
+                &lt;% } %&gt;
+            &lt;/div&gt;</code></pre><p><strong>社交链接的修改</strong></p>
 <p>在主题的配置文件中修改：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 首页 banner 中的第二行个人信息配置，留空即不启用</span><br><span class="line">socialLink:</span><br><span class="line">  qq: 1563972718</span><br><span class="line">  weixin: https://gitee.com/marmalade0/images/blob/master/www.marmalade.vip/wechat.jpg</span><br><span class="line">  github: #https://github.com/marmalade0</span><br><span class="line">  email: 1563972718@qq.com</span><br><span class="line">  facebook: # https://www.facebook.com/xxx</span><br><span class="line">  twitter: # https://twitter.com/xxx</span><br><span class="line">  weibo: # https://weibo.com/xxx</span><br><span class="line">  zhihu: # https://www.zhihu.com/xxx</span><br><span class="line">  csdn: https://blog.csdn.net/kuashijidexibao</span><br><span class="line">  cnblogs: https://www.cnblogs.com/kuashijidexibao</span><br><span class="line">  rss: true # true、false</span><br></pre></td></tr></tbody></table></figure>
+<pre><code># 首页 banner 中的第二行个人信息配置，留空即不启用
+socialLink:
+  qq: 1563972718
+  weixin: https://gitee.com/marmalade0/images/blob/master/www.marmalade.vip/wechat.jpg
+  github: #https://github.com/marmalade0
+  email: 1563972718@qq.com
+  facebook: # https://www.facebook.com/xxx
+  twitter: # https://twitter.com/xxx
+  weibo: # https://weibo.com/xxx
+  zhihu: # https://www.zhihu.com/xxx
+  csdn: https://blog.csdn.net/kuashijidexibao
+  cnblogs: https://www.cnblogs.com/kuashijidexibao
+  rss: true # true、false</code></pre><p>期中的 weixin 我是用的图片链接，会跳转到一个新的标签页，之后还需要修改 ejs 文件，文件在主题目录下的 layout 文件夹下的_partial 文件夹，修改 social-link.ejs，添加相关的配置，比如：</p>
+<pre><code>&lt;% if (theme.socialLink.github) { %&gt;
+    &lt;a href="&lt;%= theme.socialLink.github %&gt;" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50"&gt;
+        &lt;i class="fab fa-github"&gt;&lt;/i&gt;
+    &lt;/a&gt;
+&lt;% } %&gt;
 
-<p>期中的 weixin 我是用的图片链接，会跳转到一个新的标签页，之后还需要修改 ejs 文件，文件在主题目录下的 layout 文件夹下的_partial 文件夹，修改 social-link.ejs，添加相关的配置，比如：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (theme.socialLink.github) { %&gt;</span><br><span class="line">    &lt;a href="&lt;%= theme.socialLink.github %&gt;" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50"&gt;</span><br><span class="line">        &lt;i class="fab fa-github"&gt;&lt;/i&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">&lt;% } %&gt;</span><br><span class="line"></span><br><span class="line">&lt;% if (theme.socialLink.email) { %&gt;</span><br><span class="line">    &lt;a href="mailto:&lt;%= theme.socialLink.email %&gt;" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50"&gt;</span><br><span class="line">        &lt;i class="fas fa-envelope-open"&gt;&lt;/i&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">&lt;% } %&gt;</span><br><span class="line"></span><br><span class="line">&lt;% if (theme.socialLink.facebook) { %&gt;</span><br><span class="line">    &lt;a href="&lt;%= theme.socialLink.facebook %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的Facebook: &lt;%= theme.socialLink.facebook %&gt;" data-position="top" data-delay="50"&gt;</span><br><span class="line">        &lt;i class="fab fa-facebook-f"&gt;&lt;/i&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">&lt;% } %&gt;</span><br><span class="line"></span><br><span class="line">&lt;% if (theme.socialLink.twitter) { %&gt;</span><br><span class="line">    &lt;a href="&lt;%= theme.socialLink.twitter %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: &lt;%= theme.socialLink.twitter %&gt;" data-position="top" data-delay="50"&gt;</span><br><span class="line">        &lt;i class="fab fa-twitter"&gt;&lt;/i&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">&lt;% } %&gt;</span><br><span class="line"></span><br><span class="line">&lt;% if (theme.socialLink.qq) { %&gt;</span><br><span class="line">    &lt;a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=&lt;%= theme.socialLink.qq %&gt;" class="tooltipped" target="_blank" data-tooltip="QQ联系我: &lt;%= theme.socialLink.qq %&gt;" data-position="top" data-delay="50"&gt;</span><br><span class="line">        &lt;i class="fab fa-qq"&gt;&lt;/i&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">&lt;% } %&gt;</span><br><span class="line"></span><br><span class="line">&lt;% if (theme.socialLink.weibo) { %&gt;</span><br><span class="line">    &lt;a href="&lt;%= theme.socialLink.weibo %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的微博: &lt;%= theme.socialLink.weibo %&gt;" data-position="top" data-delay="50"&gt;</span><br><span class="line">        &lt;i class="fab fa-weibo"&gt;&lt;/i&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">&lt;% } %&gt;</span><br><span class="line"></span><br><span class="line">&lt;% if (theme.socialLink.zhihu) { %&gt;</span><br><span class="line">    &lt;a href="&lt;%= theme.socialLink.zhihu %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: &lt;%= theme.socialLink.zhihu %&gt;" data-position="top" data-delay="50"&gt;</span><br><span class="line">        &lt;i class="fab fa-zhihu1"&gt;知&lt;/i&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">&lt;% } %&gt;</span><br><span class="line"></span><br><span class="line">&lt;% if (theme.socialLink.rss) { %&gt;</span><br><span class="line">    &lt;a href="&lt;%- url_for('/atom.xml') %&gt;" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50"&gt;</span><br><span class="line">        &lt;i class="fas fa-rss"&gt;&lt;/i&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">&lt;% } %&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;% if (theme.socialLink.jianshu) { %&gt;</span><br><span class="line">    &lt;a href="&lt;%= theme.socialLink.jianshu %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的简书: &lt;%= theme.socialLink.jianshu %&gt;" data-position="top" data-delay="50"&gt;</span><br><span class="line">        &lt;i class="fab fa-jianshu"&gt;简&lt;/i&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">&lt;% } %&gt;</span><br><span class="line"></span><br><span class="line">&lt;% if (theme.socialLink.csdn) { %&gt;</span><br><span class="line">    &lt;a href="&lt;%= theme.socialLink.csdn %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN: &lt;%= theme.socialLink.csdn %&gt;" data-position="top" data-delay="50"&gt;</span><br><span class="line">        &lt;i class="fab fa-csdn"&gt;C&lt;/i&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">&lt;% } %&gt;</span><br><span class="line">&lt;% if (theme.socialLink.juejin) { %&gt;</span><br><span class="line">    &lt;a href="&lt;%= theme.socialLink.juejin %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的掘金: &lt;%= theme.socialLink.juejin %&gt;" data-position="top" data-delay="50"&gt;</span><br><span class="line">        &lt;i class="fab fa-juejin"&gt;掘&lt;/i&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">&lt;% } %&gt;</span><br><span class="line"></span><br><span class="line">&lt;% if (theme.socialLink.cnblogs) { %&gt;</span><br><span class="line">    &lt;a href="&lt;%= theme.socialLink.cnblogs %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的博客园: &lt;%= theme.socialLink.cnblogs %&gt;" data-position="top" data-delay="50"&gt;</span><br><span class="line">        &lt;i class="fab fa-juejin"&gt;博&lt;/i&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">&lt;% } %&gt;</span><br><span class="line">&lt;% if (theme.socialLink.weixin) { %&gt;</span><br><span class="line">    &lt;a href="&lt;%= theme.socialLink.weixin %&gt;" class="tooltipped" target="_blank" data-tooltip="微信联系我: &lt;%= theme.socialLink.weixin %&gt;" data-position="top" data-delay="50"&gt;</span><br><span class="line">        &lt;i class="fab fa-weixin"&gt;&lt;/i&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">&lt;% } %&gt;</span><br></pre></td></tr></tbody></table></figure>
+&lt;% if (theme.socialLink.email) { %&gt;
+    &lt;a href="mailto:&lt;%= theme.socialLink.email %&gt;" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50"&gt;
+        &lt;i class="fas fa-envelope-open"&gt;&lt;/i&gt;
+    &lt;/a&gt;
+&lt;% } %&gt;
 
-<h3 id="其他一些个性DIY"><a href="#其他一些个性DIY" class="headerlink" title="其他一些个性DIY"></a>其他一些个性DIY</h3><h4 id="动态标题"><a href="#动态标题" class="headerlink" title="动态标题"></a>动态标题</h4><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210121165222.png" alt="img"></p>
+&lt;% if (theme.socialLink.facebook) { %&gt;
+    &lt;a href="&lt;%= theme.socialLink.facebook %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的Facebook: &lt;%= theme.socialLink.facebook %&gt;" data-position="top" data-delay="50"&gt;
+        &lt;i class="fab fa-facebook-f"&gt;&lt;/i&gt;
+    &lt;/a&gt;
+&lt;% } %&gt;
+
+&lt;% if (theme.socialLink.twitter) { %&gt;
+    &lt;a href="&lt;%= theme.socialLink.twitter %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: &lt;%= theme.socialLink.twitter %&gt;" data-position="top" data-delay="50"&gt;
+        &lt;i class="fab fa-twitter"&gt;&lt;/i&gt;
+    &lt;/a&gt;
+&lt;% } %&gt;
+
+&lt;% if (theme.socialLink.qq) { %&gt;
+    &lt;a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=&lt;%= theme.socialLink.qq %&gt;" class="tooltipped" target="_blank" data-tooltip="QQ联系我: &lt;%= theme.socialLink.qq %&gt;" data-position="top" data-delay="50"&gt;
+        &lt;i class="fab fa-qq"&gt;&lt;/i&gt;
+    &lt;/a&gt;
+&lt;% } %&gt;
+
+&lt;% if (theme.socialLink.weibo) { %&gt;
+    &lt;a href="&lt;%= theme.socialLink.weibo %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的微博: &lt;%= theme.socialLink.weibo %&gt;" data-position="top" data-delay="50"&gt;
+        &lt;i class="fab fa-weibo"&gt;&lt;/i&gt;
+    &lt;/a&gt;
+&lt;% } %&gt;
+
+&lt;% if (theme.socialLink.zhihu) { %&gt;
+    &lt;a href="&lt;%= theme.socialLink.zhihu %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: &lt;%= theme.socialLink.zhihu %&gt;" data-position="top" data-delay="50"&gt;
+        &lt;i class="fab fa-zhihu1"&gt;知&lt;/i&gt;
+    &lt;/a&gt;
+&lt;% } %&gt;
+
+&lt;% if (theme.socialLink.rss) { %&gt;
+    &lt;a href="&lt;%- url_for('/atom.xml') %&gt;" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50"&gt;
+        &lt;i class="fas fa-rss"&gt;&lt;/i&gt;
+    &lt;/a&gt;
+&lt;% } %&gt;
+
+
+
+&lt;% if (theme.socialLink.jianshu) { %&gt;
+    &lt;a href="&lt;%= theme.socialLink.jianshu %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的简书: &lt;%= theme.socialLink.jianshu %&gt;" data-position="top" data-delay="50"&gt;
+        &lt;i class="fab fa-jianshu"&gt;简&lt;/i&gt;
+    &lt;/a&gt;
+&lt;% } %&gt;
+
+&lt;% if (theme.socialLink.csdn) { %&gt;
+    &lt;a href="&lt;%= theme.socialLink.csdn %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN: &lt;%= theme.socialLink.csdn %&gt;" data-position="top" data-delay="50"&gt;
+        &lt;i class="fab fa-csdn"&gt;C&lt;/i&gt;
+    &lt;/a&gt;
+&lt;% } %&gt;
+&lt;% if (theme.socialLink.juejin) { %&gt;
+    &lt;a href="&lt;%= theme.socialLink.juejin %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的掘金: &lt;%= theme.socialLink.juejin %&gt;" data-position="top" data-delay="50"&gt;
+        &lt;i class="fab fa-juejin"&gt;掘&lt;/i&gt;
+    &lt;/a&gt;
+&lt;% } %&gt;
+
+&lt;% if (theme.socialLink.cnblogs) { %&gt;
+    &lt;a href="&lt;%= theme.socialLink.cnblogs %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的博客园: &lt;%= theme.socialLink.cnblogs %&gt;" data-position="top" data-delay="50"&gt;
+        &lt;i class="fab fa-juejin"&gt;博&lt;/i&gt;
+    &lt;/a&gt;
+&lt;% } %&gt;
+&lt;% if (theme.socialLink.weixin) { %&gt;
+    &lt;a href="&lt;%= theme.socialLink.weixin %&gt;" class="tooltipped" target="_blank" data-tooltip="微信联系我: &lt;%= theme.socialLink.weixin %&gt;" data-position="top" data-delay="50"&gt;
+        &lt;i class="fab fa-weixin"&gt;&lt;/i&gt;
+    &lt;/a&gt;
+&lt;% } %&gt;</code></pre><h3 id="其他一些个性DIY"><a href="#其他一些个性DIY" class="headerlink" title="其他一些个性DIY"></a>其他一些个性DIY</h3><h4 id="动态标题"><a href="#动态标题" class="headerlink" title="动态标题"></a>动态标题</h4><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210121165222.png" alt="img"></p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210121165223.png" alt="img"></p>
 <p>实现方法，引入 js 文件，在主题文件下的 /source/js/ 下新建 FunnyTitle.js，增加以下代码：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var OriginTitle = document.title;</span><br><span class="line">var titleTime;</span><br><span class="line">document.addEventListener('visibilitychange', function () {</span><br><span class="line">    if (document.hidden) {</span><br><span class="line">        $('[rel="icon"]').attr('href', "https://cdn.jsdelivr.net/gh/guixinchn/image/blog/favicon.png");</span><br><span class="line">        document.title = '我相信你还会回来的！';</span><br><span class="line">        clearTimeout(titleTime);</span><br><span class="line">    }</span><br><span class="line">    else {</span><br><span class="line">        $('[rel="icon"]').attr('href', "https://cdn.jsdelivr.net/gh/guixinchn/image/blog/favicon.png");</span><br><span class="line">        document.title = '哈哈，我就知道！' + OriginTitle;</span><br><span class="line">        titleTime = setTimeout(function () {</span><br><span class="line">            document.title = OriginTitle;</span><br><span class="line">        }, 2000);</span><br><span class="line">    }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
-
-<p>然后在添加到 themes/matery/layout/layout.ejs 引入</p>
+<pre><code> var OriginTitle = document.title;
+ var titleTime;
+ document.addEventListener('visibilitychange', function () {
+     if (document.hidden) {
+         $('[rel="icon"]').attr('href', "https://cdn.jsdelivr.net/gh/guixinchn/image/blog/favicon.png");
+         document.title = '我相信你还会回来的！';
+         clearTimeout(titleTime);
+     }
+     else {
+         $('[rel="icon"]').attr('href', "https://cdn.jsdelivr.net/gh/guixinchn/image/blog/favicon.png");
+         document.title = '哈哈，我就知道！' + OriginTitle;
+         titleTime = setTimeout(function () {
+             document.title = OriginTitle;
+         }, 2000);
+     }
+ });</code></pre><p>然后在添加到 themes/matery/layout/layout.ejs 引入</p>
 <script src="<%- theme.jsDelivr.url %><%- url_for('/js/FunnyTitle.js') %>"></script>
 
 <h4 id="关于我页面添加个人简历"><a href="#关于我页面添加个人简历" class="headerlink" title="关于我页面添加个人简历"></a>关于我页面添加个人简历</h4><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210121165224.png" alt="img"></p>
 <p>打开 theme/matery/layout/about.ejs 文件，大约在 13 行。有一个 `` 标签，找出其对应结尾的标签，大约在 61 行左右，然后在新增如下代码：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="card"&gt;</span><br><span class="line">     &lt;div class="card-content"&gt;</span><br><span class="line">         &lt;div class="card-content article-card-content"&gt;</span><br><span class="line">             &lt;div class="title center-align" data-aos="zoom-in-up"&gt;</span><br><span class="line">                 &lt;i class="fa fa-address-book"&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;&lt;%- __('个人简历') %&gt;</span><br><span class="line">              &lt;/div&gt;</span><br><span class="line">                 &lt;div id="articleContent" data-aos="fade-up"&gt;</span><br><span class="line">                     &lt;%- page.content %&gt;</span><br><span class="line">                 &lt;/div&gt;</span><br><span class="line">           &lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
-
-<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210121165225.png" alt="img"></p>
+<pre><code>&lt;div class="card"&gt;
+     &lt;div class="card-content"&gt;
+         &lt;div class="card-content article-card-content"&gt;
+             &lt;div class="title center-align" data-aos="zoom-in-up"&gt;
+                 &lt;i class="fa fa-address-book"&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;&lt;%- __('个人简历') %&gt;
+              &lt;/div&gt;
+                 &lt;div id="articleContent" data-aos="fade-up"&gt;
+                     &lt;%- page.content %&gt;
+                 &lt;/div&gt;
+           &lt;/div&gt;
+      &lt;/div&gt;
+&lt;/div&gt;</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210121165225.png" alt="img"></p>
 <p>可以在about页面自定义内容</p>
 <h3 id="修改网站背景图"><a href="#修改网站背景图" class="headerlink" title="修改网站背景图"></a>修改网站背景图</h3><p>主题配置文件</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">background:</span><br><span class="line">  enable: true</span><br><span class="line">  url: "https://gitee.com/marmalade0/images/blob/master/www.marmalade.vip/24.jpg"</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="valine评论模块配置"><a href="#valine评论模块配置" class="headerlink" title="valine评论模块配置"></a>valine评论模块配置</h3><p>主题配置文件找到valine部分，按以下要求配置</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">valine:</span><br><span class="line">  enable: true</span><br><span class="line">  appId: xxxxxxxx # Your leancloud application appid# 将应用key的App ID设置在这里</span><br><span class="line">  appKey: xxxxxxx # Your leancloud application appkey# 将应用key的App Key设置在这里</span><br><span class="line">  notify: true # Mail notifier邮箱通知 , https://github.com/xCss/Valine/wiki，默认为false</span><br><span class="line">  verify: true # Verification code验证码 默认为false</span><br><span class="line">  avatar: 'mm' # Gravatar style : mm/identicon/monsterid/wavatar/retro/hide</span><br><span class="line">  placeholder: 想说点啥？Just go go ^_^ # Comment box placeholder# 初始化评论显示，根据自己修改，这里默认</span><br><span class="line">  background: /medias/comment_bg.png</span><br><span class="line">  guest_info: nick,mail,link # Custom comment header# 自定义评论标题</span><br><span class="line">  pageSize: 10 # Pagination size# 分页大小，10页就自动分页</span><br><span class="line">  language: zh-cn # Language, available values: en, zh-cn</span><br><span class="line">  visitor: true # Article reading statistic# 是否允许游客评论 ，进入官网查看设置：https://valine.js.org/visitor.html</span><br><span class="line">  comment_count: true # If false, comment count will only be displayed in post page, not in home page</span><br><span class="line">  recordIP: false # Whether to record the commenter IP</span><br><span class="line">  serverURLs: # When the custom domain name is enabled, fill it in here (it will be detected automatically by default, no need to fill in)</span><br><span class="line">  #post_meta_order: 0</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="看板娘模块的安装和使用"><a href="#看板娘模块的安装和使用" class="headerlink" title="看板娘模块的安装和使用"></a>看板娘模块的安装和使用</h3><p>模块安装：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-helper-live2d</span><br></pre></td></tr></tbody></table></figure>
-
-<p>下载完成后，可以在node_modules文件夹中找到自己安装的插件。</p>
-<p>然后下载你想要的看板娘模块（可以自己到网上找哪个合心意的），执行命令：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install {packagename}</span><br><span class="line"># 例如cnpm install live2d-widget-model-haru</span><br></pre></td></tr></tbody></table></figure>
-
-<p>下载完成后，回到blog根目录下配置_config.yml，添加以下代码（model要根据自己情况设置）：</p>
-<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">live2d:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">scriptFrom:</span> <span class="string">local</span></span><br><span class="line">  <span class="attr">pluginRootPath:</span> <span class="string">live2dw/</span></span><br><span class="line">  <span class="attr">pluginJsPath:</span> <span class="string">lib/</span></span><br><span class="line">  <span class="attr">pluginModelPath:</span> <span class="string">assets/</span></span><br><span class="line">  <span class="attr">tagMode:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">debug:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">model:</span></span><br><span class="line">    <span class="attr">use:</span> <span class="string">live2d-widget-model-z16</span></span><br><span class="line">  <span class="attr">display:</span></span><br><span class="line">    <span class="attr">position:</span> <span class="string">right</span></span><br><span class="line">    <span class="attr">width:</span> <span class="number">200</span></span><br><span class="line">    <span class="attr">height:</span> <span class="number">400</span></span><br><span class="line">  <span class="attr">mobile:</span></span><br><span class="line">    <span class="attr">show:</span> <span class="literal">false</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>这样在右下角有看板娘啦！</p>
-
+<pre><code>background:
+  enable: true
+  url: "https://gitee.com/marmalade0/images/blob/master/www.marmalade.vip/24.jpg"</code></pre><h3 id="valine评论模块配置"><a href="#valine评论模块配置" class="headerlink" title="valine评论模块配置"></a>valine评论模块配置</h3><p>主题配置文件找到valine部分，按以下要求配置</p>
+<pre><code>valine:
+  enable: true
+  appId: xxxxxxxx # Your leancloud application appid# 将应用key的App ID设置在这里
+  appKey: xxxxxxx # Your leancloud application appkey# 将应用key的App Key设置在这里
+  notify: true # Mail notifier邮箱通知 , https://github.com/xCss/Valine/wiki，默认为false
+  verify: true # Verification code验证码 默认为false
+  avatar: 'mm' # Gravatar style : mm/identicon/monsterid/wavatar/retro/hide
+  placeholder: 想说点啥？Just go go ^_^ # Comment box placeholder# 初始化评论显示，根据自己修改，这里默认
+  background: /medias/comment_bg.png
+  guest_info: nick,mail,link # Custom comment header# 自定义评论标题
+  pageSize: 10 # Pagination size# 分页大小，10页就自动分页
+  language: zh-cn # Language, available values: en, zh-cn
+  visitor: true # Article reading statistic# 是否允许游客评论 ，进入官网查看设置：https://valine.js.org/visitor.html
+  comment_count: true # If false, comment count will only be displayed in post page, not in home page
+  recordIP: false # Whether to record the commenter IP
+  serverURLs: # When the custom domain name is enabled, fill it in here (it will be detected automatically by default, no need to fill in)
+  #post_meta_order: 0</code></pre>
                 
             </div>
             <hr/>
@@ -1654,7 +1981,7 @@ sqlmap工具压缩包官方下载地址
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">29.5k</span>&nbsp;字
+                class="white-color">28.6k</span>&nbsp;字
             
             
             
