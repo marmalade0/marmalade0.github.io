@@ -6,7 +6,7 @@
   <link href="https://marmalade.vip/atom.xml" rel="self"/>
   
   <link href="https://marmalade.vip/"/>
-  <updated>2021-01-21T11:32:23.498Z</updated>
+  <updated>2021-01-24T14:21:45.727Z</updated>
   <id>https://marmalade.vip/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Hexo-Matery主题细致美化(下)</title>
-    <link href="https://marmalade.vip/Materysettings2.html"/>
-    <id>https://marmalade.vip/Materysettings2.html</id>
+    <link href="https://marmalade.vip/materysettings2.html"/>
+    <id>https://marmalade.vip/materysettings2.html</id>
     <published>2021-01-21T10:09:45.000Z</published>
-    <updated>2021-01-21T11:32:23.498Z</updated>
+    <updated>2021-01-24T14:21:45.727Z</updated>
     
     
       
@@ -43,13 +43,19 @@
   
   <entry>
     <title>Hexo-Matery主题细致美化(上)</title>
-    <link href="https://marmalade.vip/Materysettings1.html"/>
-    <id>https://marmalade.vip/Materysettings1.html</id>
+    <link href="https://marmalade.vip/materysettings1.html"/>
+    <id>https://marmalade.vip/materysettings1.html</id>
     <published>2021-01-21T08:59:17.000Z</published>
-    <updated>2021-01-21T11:32:29.671Z</updated>
+    <updated>2021-01-24T14:15:05.776Z</updated>
     
     
-    <summary type="html">&lt;h1 id=&quot;Hexo-Matery主题美化&quot;&gt;&lt;a href=&quot;#Hexo-Matery主题美化&quot; class=&quot;headerlink&quot; title=&quot;Hexo-Matery主题美化&quot;&gt;&lt;/a&gt;Hexo-Matery主题美化&lt;/h1&gt;&lt;p&gt;在一番瞎改js代码后，终于无法忍受next主题，于是愤然投入Matery大家庭，结果证明，&lt;strong&gt;香！&lt;/strong&gt;&lt;/p&gt;</summary>
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Hexo-Matery主题美化&quot;&gt;&lt;a href=&quot;#Hexo-Matery主题美化&quot; class=&quot;headerlink&quot;</summary>
+        
+      
     
     
     
@@ -65,7 +71,7 @@
     <link href="https://marmalade.vip/sqlmapbasicuse.html"/>
     <id>https://marmalade.vip/sqlmapbasicuse.html</id>
     <published>2020-06-07T00:05:16.000Z</published>
-    <updated>2020-06-07T12:29:39.137Z</updated>
+    <updated>2021-01-24T14:17:54.369Z</updated>
     
     
     <summary type="html">&lt;h6 id=&quot;1-主要功能：&quot;&gt;&lt;a href=&quot;#1-主要功能：&quot; class=&quot;headerlink&quot; title=&quot;1.主要功能：&quot;&gt;&lt;/a&gt;1.主要功能：&lt;/h6&gt;&lt;p&gt;一个用来做sql注入攻击的工具。&lt;br&gt;扫描、发现、利用给定的url的sql注入漏洞，内置许多绕过插件。&lt;/p&gt;
@@ -101,7 +107,7 @@
     <link href="https://marmalade.vip/cmdcaidan.html"/>
     <id>https://marmalade.vip/cmdcaidan.html</id>
     <published>2020-05-30T09:14:19.000Z</published>
-    <updated>2020-06-07T12:02:11.151Z</updated>
+    <updated>2021-01-24T14:16:33.649Z</updated>
     
     
     <summary type="html">&lt;p&gt;最近使用cmd比较多，就想在某个文件夹下右键打开cmd，这样不用每次都在默认情况下切换目录。无奈win10 1703版本下shift+右键不能打开cmd，只能打开powershell。&lt;br&gt;好，那就自己整一个吧。&lt;/p&gt;</summary>
@@ -118,7 +124,7 @@
     <link href="https://marmalade.vip/seoyouhua.html"/>
     <id>https://marmalade.vip/seoyouhua.html</id>
     <published>2020-04-27T07:02:39.000Z</published>
-    <updated>2020-04-27T07:25:40.159Z</updated>
+    <updated>2021-01-24T14:19:25.585Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;hexo个人博客SEO优化技巧&quot;&gt;&lt;a href=&quot;#hexo个人博客SEO优化技巧&quot; class=&quot;headerlink&quot; title=&quot;hexo个人博客SEO优化技巧&quot;&gt;&lt;/a&gt;hexo个人博客SEO优化技巧&lt;/h2&gt;&lt;p&gt;SEO定义:提高网站浏览量即更容易让百度推送到文章而做的优化手段。&lt;br&gt;&lt;a href=&quot;https://blog.csdn.net/yixu0534/article/details/92092386?depth_1-utm_source=distribute.pc_relevant.none-task&amp;amp;utm_source=distribute.pc_relevant.none-task&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;具体的SEO介绍&lt;/a&gt;&lt;/p&gt;</summary>
