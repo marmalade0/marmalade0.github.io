@@ -543,14 +543,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    12 分
                 </div>
                 
 
@@ -574,88 +574,64 @@
 <a id="more"></a>
 <h3 id="14-Hexo博客NexT主题美化之自定义文章底部版权声明"><a href="#14-Hexo博客NexT主题美化之自定义文章底部版权声明" class="headerlink" title="(14)Hexo博客NexT主题美化之自定义文章底部版权声明"></a>(14)Hexo博客NexT主题美化之自定义文章底部版权声明</h3><p><a href="https://blog.pangao.vip/Hexo%E5%8D%9A%E5%AE%A2NexT%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E/" target="_blank" rel="noopener">参考文章</a><br><strong>效果如下</strong><br><img src="/images/beautify4/1.png" alt="4ae7368fbd9bb2ab52f9f8d2eb35b508.png"></p>
 <p>1.在目录<code>themes/next/layout/_macro/</code>下添加<code>my-copyright.swig</code> ，内容如下：</p>
-<pre><code>{% if page.copyright %} <div class="my_post_copyright"> <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script> <!-- JS库 sweetalert 可修改路径 --> <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script> <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script> <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css"> <p><span>本文标题:</span>{{ page.title }}</p> <p><span>文章作者:</span>{{ theme.author }}</p> <p><span>发布时间:</span>{{ page.date.format("YYYY年MM月DD日 - HH:mm:ss") }}</p> <p><span>最后更新:</span>{{ page.updated.format("YYYY年MM月DD日 - HH:mm:ss") }}</p> <p><span>原始链接:</span><a href="{{ url_for(page.path) }}" title="{{ page.title }}">{{ page.permalink }}</a> <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="{{ page.permalink }}" aria-label="复制成功！"></i></span> </p> <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p> </div> <script> var clipboard = new Clipboard('.fa-clipboard'); clipboard.on('success', $(function(){ $(".fa-clipboard").click(function(){ swal({ title: "", text: '复制成功', html: false, timer: 500, showConfirmButton: false }); }); })); </script> {% endif %}
-```
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% if page.copyright %} &lt;div class="my_post_copyright"&gt; &lt;script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"&gt;&lt;/script&gt; &lt;!-- JS库 sweetalert 可修改路径 --&gt; &lt;script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"&gt;&lt;/script&gt; &lt;script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"&gt;&lt;/script&gt; &lt;link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css"&gt; &lt;p&gt;&lt;span&gt;本文标题:&lt;/span&gt;{{ page.title }}&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;span&gt;文章作者:&lt;/span&gt;{{ theme.author }}&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;span&gt;发布时间:&lt;/span&gt;{{ page.date.format("YYYY年MM月DD日 - HH:mm:ss") }}&lt;/p&gt; &lt;p&gt;&lt;span&gt;最后更新:&lt;/span&gt;{{ page.updated.format("YYYY年MM月DD日 - HH:mm:ss") }}&lt;/p&gt; &lt;p&gt;&lt;span&gt;原始链接:&lt;/span&gt;&lt;a href="{{ url_for(page.path) }}" title="{{ page.title }}"&gt;{{ page.permalink }}&lt;/a&gt; &lt;span class="copy-path" title="点击复制文章链接"&gt;&lt;i class="fa fa-clipboard" data-clipboard-text="{{ page.permalink }}" aria-label="复制成功！"&gt;&lt;/i&gt;&lt;/span&gt; &lt;/p&gt; &lt;p&gt;&lt;span&gt;许可协议:&lt;/span&gt;&lt;i class="fa fa-creative-commons"&gt;&lt;/i&gt; &lt;a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)"&gt;署名-非商业性使用-禁止演绎 4.0 国际&lt;/a&gt; 转载请保留原文链接及作者。&lt;/p&gt; &lt;/div&gt; &lt;script&gt; var clipboard = new Clipboard('.fa-clipboard'); clipboard.on('success', $(function(){ $(".fa-clipboard").click(function(){ swal({ title: "", text: '复制成功', html: false, timer: 500, showConfirmButton: false }); }); })); &lt;/script&gt; {% endif %}</span><br></pre></td></tr></tbody></table></figure>
 
 
-2.在目录&nbsp;`themes/next/source/css/_common/components/post/`&nbsp;下添加`&nbsp;my-post-copyright.styl`，内容如下:
-```
+<p>2.在目录 <code>themes/next/source/css/_common/components/post/</code> 下添加<code>my-post-copyright.styl</code>，内容如下:</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">.my_post_copyright { width: 85%; max-width: 45em; margin: 2.8em auto 0; padding: 0.5em 1.0em; border: 1px solid #d3d3d3; font-size: 0.93rem; line-height: 1.6em; word-break: break-all; background: rgba(255,255,255,0.4); } .my_post_copyright p{margin:0;} .my_post_copyright span { display: inline-block; width: 5.2em; color: #333333; // title color font-weight: bold; } .my_post_copyright .raw { margin-left: 1em; width: 5em; } .my_post_copyright a { color: #808080; border-bottom:0; } .my_post_copyright a:hover { color: #0593d3; // link color text-decoration: underline; } .my_post_copyright:hover .fa-clipboard { color: #000; } .my_post_copyright .post-url:hover { font-weight: normal; } .my_post_copyright .copy-path { margin-left: 1em; width: 1em; +mobile(){display:none;} } .my_post_copyright .copy-path:hover { color: #808080; cursor: pointer; }</span><br></pre></td></tr></tbody></table></figure>
 
-.my_post_copyright { width: 85%; max-width: 45em; margin: 2.8em auto 0; padding: 0.5em 1.0em; border: 1px solid #d3d3d3; font-size: 0.93rem; line-height: 1.6em; word-break: break-all; background: rgba(255,255,255,0.4); } .my_post_copyright p{margin:0;} .my_post_copyright span { display: inline-block; width: 5.2em; color: #333333; // title color font-weight: bold; } .my_post_copyright .raw { margin-left: 1em; width: 5em; } .my_post_copyright a { color: #808080; border-bottom:0; } .my_post_copyright a:hover { color: #0593d3; // link color text-decoration: underline; } .my_post_copyright:hover .fa-clipboard { color: #000; } .my_post_copyright .post-url:hover { font-weight: normal; } .my_post_copyright .copy-path { margin-left: 1em; width: 1em; +mobile(){display:none;} } .my_post_copyright .copy-path:hover { color: #808080; cursor: pointer; }
-```
+<p>3.修改<code>themes/next/layout/_macro/post.swig</code> ，如下：在代码</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">{%- if post.reward_settings.enable %}</span><br><span class="line">        {{ partial('_partials/post/post-reward.swig') }}</span><br><span class="line">      {%- endif %</span><br></pre></td></tr></tbody></table></figure>
+<p>之后，新增如下代码：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt; {% if not is_index %} {% include 'my-copyright.swig' %} {% endif %} &lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
 
-3.修改`&nbsp;themes/next/layout/_macro/post.swig`&nbsp;，如下：在代码
-```
-{%- if post.reward_settings.enable %}
-        {{ partial('_partials/post/post-reward.swig') }}
-      {%- endif %
-```
-之后，新增如下代码：
-```
-</code><div><code> {% if not is_index %} {% include 'my-copyright.swig' %} {% endif %} &lt;/div&gt;</code></div></pre><p>4.打开<code>themes/next/source/css/_common/components/post/post.styl</code> 文件，在最后一行增加代码：</p>
-<pre><code>@import "my-post-copyright"</code></pre><p>5.设置新建文章自动开启 copyright ，即新建文章自动显示自定义的版权声明，设置<code>～/scaffolds/post.md</code>文件，如下：</p>
-<pre><code>---
-title: {{ title }} 
-date: {{ date }} 
-copyright: true #新增,开启
----</code></pre><h3 id="15-在每篇文章末尾添加“本文结束”标记"><a href="#15-在每篇文章末尾添加“本文结束”标记" class="headerlink" title="(15)在每篇文章末尾添加“本文结束”标记"></a>(15)在每篇文章末尾添加“本文结束”标记</h3><p>在路径<code>/blog/themes/next/layout/_macro</code>中新建 passage-end-tag.swig 文件,并添加以下内容</p>
-<pre><code>&lt;div&gt;
-    {% if not is_index %}
-        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
-    {% endif %}
-&lt;/div&gt;</code></pre><p>接着打开<code>/blog/themes/next/layout/_macro/post.swig</code>文件，在post-body 之后， post-footer之前添加,代码如下：</p>
-<pre><code>&lt;div&gt;
-  {% if not is_index %}
-    {% include 'passage-end-tag.swig' %}
-  {% endif %}
-&lt;/div&gt;</code></pre><p>然后打开主题配置文件（_config.yml),在末尾添加：</p>
-<pre><code>#文章末尾添加“本文结束”标记
-passage_end_tag:
-  enabled: true</code></pre><p>效果：<br><img src="/images/beautify4/2.png" alt="0d1e0b70152f40ce40f33c5968a718df.png"></p>
+<p>4.打开<code>themes/next/source/css/_common/components/post/post.styl</code> 文件，在最后一行增加代码：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import "my-post-copyright"</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>5.设置新建文章自动开启 copyright ，即新建文章自动显示自定义的版权声明，设置<code>～/scaffolds/post.md</code>文件，如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: {{ title }} </span><br><span class="line">date: {{ date }} </span><br><span class="line">copyright: true #新增,开启</span><br><span class="line">---</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="15-在每篇文章末尾添加“本文结束”标记"><a href="#15-在每篇文章末尾添加“本文结束”标记" class="headerlink" title="(15)在每篇文章末尾添加“本文结束”标记"></a>(15)在每篇文章末尾添加“本文结束”标记</h3><p>在路径<code>/blog/themes/next/layout/_macro</code>中新建 passage-end-tag.swig 文件,并添加以下内容</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    {% if not is_index %}</span><br><span class="line">        &lt;div style="text-align:center;color: #ccc;font-size:14px;"&gt;-------------本文结束&lt;i class="fa fa-paw"&gt;&lt;/i&gt;感谢您的阅读-------------&lt;/div&gt;</span><br><span class="line">    {% endif %}</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>接着打开<code>/blog/themes/next/layout/_macro/post.swig</code>文件，在post-body 之后， post-footer之前添加,代码如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  {% if not is_index %}</span><br><span class="line">    {% include 'passage-end-tag.swig' %}</span><br><span class="line">  {% endif %}</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>然后打开主题配置文件（_config.yml),在末尾添加：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#文章末尾添加“本文结束”标记</span><br><span class="line">passage_end_tag:</span><br><span class="line">  enabled: true</span><br></pre></td></tr></tbody></table></figure>
+
+<p>效果：<br><img src="/images/beautify4/2.png" alt="0d1e0b70152f40ce40f33c5968a718df.png"></p>
 <h3 id="16-字数统计和阅读时长-网站底部-文章内"><a href="#16-字数统计和阅读时长-网站底部-文章内" class="headerlink" title="(16)字数统计和阅读时长(网站底部/文章内)"></a>(16)字数统计和阅读时长(网站底部/文章内)</h3><p>首先安装插件:</p>
-<pre><code>$ npm install hexo-symbols-count-time --save</code></pre><p>然后修改主题配置文件如下:</p>
-<pre><code>symbols_count_time:
-    separated_meta: true   ＃显示属性名称,设为false后只显示图标和统计数字,不显示属性的文字
-    item_text_post: true   ＃显示属性名称,设为false后只显示图标和统计数字,不显示属性的文字
-    item_text_total: true ＃底部footer是否显示字数统计属性文字(如站点总字数,站点阅读时长 ≈ 1 分钟)
-    awl: 4     ＃计算字数的一个设置,没设置过
-    wpm: 275  ＃一分钟阅读的字数    </code></pre><p>站点配置文件中添加：</p>
-<pre><code>symbols_count_time:
- #文章内是否显示
-  symbols: true
-  time: true
- # 网页底部是否显示
-  total_symbols: true
-  total_time: true</code></pre><p>完成后并不能显示，而是<br><img src="/images/beautify4/3.png" alt="f5c454b547469ca7b220fdb8f16fd6d2.png"><br>？？<br>后来文章统计正常，但网页下方未变<br>勿急，等一会（可能要一天）会显示出来</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-symbols-count-time --save</span><br></pre></td></tr></tbody></table></figure>
+<p>然后修改主题配置文件如下:</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">	separated_meta: true   ＃显示属性名称,设为false后只显示图标和统计数字,不显示属性的文字</span><br><span class="line">	item_text_post: true   ＃显示属性名称,设为false后只显示图标和统计数字,不显示属性的文字</span><br><span class="line">	item_text_total: true ＃底部footer是否显示字数统计属性文字(如站点总字数,站点阅读时长 ≈ 1 分钟)</span><br><span class="line">	awl: 4     ＃计算字数的一个设置,没设置过</span><br><span class="line">	wpm: 275  ＃一分钟阅读的字数</span><br></pre></td></tr></tbody></table></figure>
+
+<p>站点配置文件中添加：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line"> #文章内是否显示</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line"> # 网页底部是否显示</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br></pre></td></tr></tbody></table></figure>
+<p>完成后并不能显示，而是<br><img src="/images/beautify4/3.png" alt="f5c454b547469ca7b220fdb8f16fd6d2.png"><br>？？<br>后来文章统计正常，但网页下方未变<br>勿急，等一会（可能要一天）会显示出来</p>
 <h3 id="17-添加文章置顶功能"><a href="#17-添加文章置顶功能" class="headerlink" title="(17)添加文章置顶功能"></a>(17)添加文章置顶功能</h3><h5 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h5><p>卸载原来的插件，安装带置顶功能的插件 <a href="https://github.com/netcan/hexo-generator-index-pin-top" target="_blank" rel="noopener">netcan/hexo-generator-index-pin-top: Index generator plugin for Hexo. Pin top version</a></p>
-<pre><code>$ npm uninstall hexo-generator-index --save
-$ npm install hexo-generator-index-pin-top --save</code></pre><h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><p>在需要置顶的文章中的 Front-matter 加入 <strong>top: true</strong> 即可。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm uninstall hexo-generator-index --save</span><br><span class="line">$ npm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><p>在需要置顶的文章中的 Front-matter 加入 <strong>top: true</strong> 即可。</p>
 <h5 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h5><p>打开 <code>/themes/next/layout/_macro</code>下的 post.swig 文件，定位到 <code>&lt;div class="post-meta"&gt;</code> 下 (约 63 行)，插入如下代码：</p>
-<pre><code>{% if post.top %}   
-     <i class="fa fa-thumb-tack"></i>    
-     <font color="7D26CD">置顶</font>  
-     <span class="post-meta-divider">|</span>
- {% endif %}</code></pre><p>位置如图：<br><img src="/images/beautify4/4.png" alt="9101ecf89850afa2cb5138f2fd697b6f.png"><br>效果：<br><img src="/images/beautify4/5.png" alt="9f4becd2c4b3a1bfef7ec2719510407f.png"></p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">{% if post.top %}   </span><br><span class="line">     &lt;i class="fa fa-thumb-tack"&gt;&lt;/i&gt;    </span><br><span class="line">     &lt;font color=7D26CD&gt;置顶&lt;/font&gt;  </span><br><span class="line">     &lt;span class="post-meta-divider"&gt;|&lt;/span&gt;</span><br><span class="line"> {% endif %}</span><br></pre></td></tr></tbody></table></figure>
+<p>位置如图：<br><img src="/images/beautify4/4.png" alt="9101ecf89850afa2cb5138f2fd697b6f.png"><br>效果：<br><img src="/images/beautify4/5.png" alt="9f4becd2c4b3a1bfef7ec2719510407f.png"></p>
 <p><a href="https://www.zhyong.cn/posts/fc22/" target="_blank" rel="noopener">参考文章</a></p>
 <h3 id="18-添加阅读进度条"><a href="#18-添加阅读进度条" class="headerlink" title="(18)添加阅读进度条"></a>(18)添加阅读进度条</h3><p>主题配置文件中改为true即可<br><img src="/images/beautify4/6.png" alt="20b57e7540501ab8cc1449da87f9c51b.png"></p>
 <h3 id="19-添加代码复制块"><a href="#19-添加代码复制块" class="headerlink" title="(19)添加代码复制块"></a>(19)添加代码复制块</h3><p>代码块会展示出该效果<br><img src="/images/beautify4/7.png" alt="620e5f1673ab17d2566b090e6947d58e.png"><br>在之前创建的styles.styl末尾添加</p>
-<pre><code>// 复制按钮样式top调整
-.highlight-wrap .copy-btn {
-padding: 
-1px 6px;  
-top: 3px;
-}</code></pre><h3 id="20-全国哀悼日将网站变灰"><a href="#20-全国哀悼日将网站变灰" class="headerlink" title="(20)全国哀悼日将网站变灰"></a>(20)全国哀悼日将网站变灰</h3><p>方法：fn+f12打开调试面板，在body处添加<br>-webkit-filter: grayscale(100%)即可实现<br><img src="/images/beautify4/8.png" alt="30614fc0971e64f5feca869629564d09.png"></p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 复制按钮样式top调整</span><br><span class="line">.highlight-wrap .copy-btn {</span><br><span class="line">padding: </span><br><span class="line">1px 6px;  </span><br><span class="line">top: 3px;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="20-全国哀悼日将网站变灰"><a href="#20-全国哀悼日将网站变灰" class="headerlink" title="(20)全国哀悼日将网站变灰"></a>(20)全国哀悼日将网站变灰</h3><p>方法：fn+f12打开调试面板，在body处添加<br>-webkit-filter: grayscale(100%)即可实现<br><img src="/images/beautify4/8.png" alt="30614fc0971e64f5feca869629564d09.png"></p>
 <p><img src="/images/beautify4/9.png" alt="69a3a6e3bf2b81272782db4c086d12f4.png"></p>
 <h3 id="21-点击爆炸效果"><a href="#21-点击爆炸效果" class="headerlink" title="(21)点击爆炸效果"></a>(21)点击爆炸效果</h3><p>实现的效果图：<br><img src="/images/beautify4/10.png" alt="c4c7ed41469cc193303b9c53cad4a938.png"></p>
 <p>实现方法跟那个红心是差不多的，首先在<code>themes/next/source/js/src</code>里面建一个叫fireworks.js的文件，代码如下：</p>
-<pre><code>"use strict";function updateCoords(e){pointerX=(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top}function setParticuleDirection(e){var t=anime.random(0,360)*Math.PI/180,a=anime.random(50,180),n=[-1,1][anime.random(0,1)]*a;return{x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)}}function createParticule(e,t){var a={};return a.x=e,a.y=t,a.color=colors[anime.random(0,colors.length-1)],a.radius=anime.random(16,32),a.endPos=setParticuleDirection(a),a.draw=function(){ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle=a.color,ctx.fill()},a}function createCircle(e,t){var a={};return a.x=e,a.y=t,a.color="#F00",a.radius=0.1,a.alpha=0.5,a.lineWidth=6,a.draw=function(){ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=1},a}function renderParticule(e){for(var t=0;t&lt;e.animatables.length;t++){e.animatables[t].target.draw()}}function animateParticules(e,t){for(var a=createCircle(e,t),n=[],i=0;i&lt;numberOfParticules;i++){n.push(createParticule(e,t))}anime.timeline().add({targets:n,x:function(e){return e.endPos.x},y:function(e){return e.endPos.y},radius:0.1,duration:anime.random(1200,1800),easing:"easeOutExpo",update:renderParticule}).add({targets:a,radius:anime.random(80,160),lineWidth:0,alpha:{value:0,easing:"linear",duration:anime.random(600,800)},duration:anime.random(1200,1800),easing:"easeOutExpo",update:renderParticule,offset:0})}function debounce(e,t){var a;return function(){var n=this,i=arguments;clearTimeout(a),a=setTimeout(function(){e.apply(n,i)},t)}}var canvasEl=document.querySelector(".fireworks");if(canvasEl){var ctx=canvasEl.getContext("2d"),numberOfParticules=30,pointerX=0,pointerY=0,tap="mousedown",colors=["#FF1461","#18FF92","#5A87FF","#FBF38C"],setCanvasSize=debounce(function(){canvasEl.width=2*window.innerWidth,canvasEl.height=2*window.innerHeight,canvasEl.style.width=window.innerWidth+"px",canvasEl.style.height=window.innerHeight+"px",canvasEl.getContext("2d").scale(2,2)},500),render=anime({duration:1/0,update:function(){ctx.clearRect(0,0,canvasEl.width,canvasEl.height)}});document.addEventListener(tap,function(e){"sidebar"!==e.target.id&amp;&amp;"toggle-sidebar"!==e.target.id&amp;&amp;"A"!==e.target.nodeName&amp;&amp;"IMG"!==e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))},!1),setCanvasSize(),window.addEventListener("resize",setCanvasSize,!1)}"use strict";function updateCoords(e){pointerX=(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top}function setParticuleDirection(e){var t=anime.random(0,360)*Math.PI/180,a=anime.random(50,180),n=[-1,1][anime.random(0,1)]*a;return{x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)}}function createParticule(e,t){var a={};return a.x=e,a.y=t,a.color=colors[anime.random(0,colors.length-1)],a.radius=anime.random(16,32),a.endPos=setParticuleDirection(a),a.draw=function(){ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle=a.color,ctx.fill()},a}function createCircle(e,t){var a={};return a.x=e,a.y=t,a.color="#F00",a.radius=0.1,a.alpha=0.5,a.lineWidth=6,a.draw=function(){ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=1},a}function renderParticule(e){for(var t=0;t&lt;e.animatables.length;t++){e.animatables[t].target.draw()}}function animateParticules(e,t){for(var a=createCircle(e,t),n=[],i=0;i&lt;numberOfParticules;i++){n.push(createParticule(e,t))}anime.timeline().add({targets:n,x:function(e){return e.endPos.x},y:function(e){return e.endPos.y},radius:0.1,duration:anime.random(1200,1800),easing:"easeOutExpo",update:renderParticule}).add({targets:a,radius:anime.random(80,160),lineWidth:0,alpha:{value:0,easing:"linear",duration:anime.random(600,800)},duration:anime.random(1200,1800),easing:"easeOutExpo",update:renderParticule,offset:0})}function debounce(e,t){var a;return function(){var n=this,i=arguments;clearTimeout(a),a=setTimeout(function(){e.apply(n,i)},t)}}var canvasEl=document.querySelector(".fireworks");if(canvasEl){var ctx=canvasEl.getContext("2d"),numberOfParticules=30,pointerX=0,pointerY=0,tap="mousedown",colors=["#FF1461","#18FF92","#5A87FF","#FBF38C"],setCanvasSize=debounce(function(){canvasEl.width=2*window.innerWidth,canvasEl.height=2*window.innerHeight,canvasEl.style.width=window.innerWidth+"px",canvasEl.style.height=window.innerHeight+"px",canvasEl.getContext("2d").scale(2,2)},500),render=anime({duration:1/0,update:function(){ctx.clearRect(0,0,canvasEl.width,canvasEl.height)}});document.addEventListener(tap,function(e){"sidebar"!==e.target.id&amp;&amp;"toggle-sidebar"!==e.target.id&amp;&amp;"A"!==e.target.nodeName&amp;&amp;"IMG"!==e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))},!1),setCanvasSize(),window.addEventListener("resize",setCanvasSize,!1)};</code></pre><p>打开<code>themes/next/layout/_layout.swig</code>,在上面写下如下代码：</p>
-<pre><code>{% if theme.fireworks %}
-   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
-   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-   <script type="text/javascript" src="/js/src/fireworks.js"></script>
-{% endif %}</code></pre><p>打开主题配置文件，在里面最后写下：</p>
-<pre><code># Fireworks
-fireworks: true</code></pre>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"use strict";function updateCoords(e){pointerX=(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top}function setParticuleDirection(e){var t=anime.random(0,360)*Math.PI/180,a=anime.random(50,180),n=[-1,1][anime.random(0,1)]*a;return{x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)}}function createParticule(e,t){var a={};return a.x=e,a.y=t,a.color=colors[anime.random(0,colors.length-1)],a.radius=anime.random(16,32),a.endPos=setParticuleDirection(a),a.draw=function(){ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle=a.color,ctx.fill()},a}function createCircle(e,t){var a={};return a.x=e,a.y=t,a.color="#F00",a.radius=0.1,a.alpha=0.5,a.lineWidth=6,a.draw=function(){ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=1},a}function renderParticule(e){for(var t=0;t&lt;e.animatables.length;t++){e.animatables[t].target.draw()}}function animateParticules(e,t){for(var a=createCircle(e,t),n=[],i=0;i&lt;numberOfParticules;i++){n.push(createParticule(e,t))}anime.timeline().add({targets:n,x:function(e){return e.endPos.x},y:function(e){return e.endPos.y},radius:0.1,duration:anime.random(1200,1800),easing:"easeOutExpo",update:renderParticule}).add({targets:a,radius:anime.random(80,160),lineWidth:0,alpha:{value:0,easing:"linear",duration:anime.random(600,800)},duration:anime.random(1200,1800),easing:"easeOutExpo",update:renderParticule,offset:0})}function debounce(e,t){var a;return function(){var n=this,i=arguments;clearTimeout(a),a=setTimeout(function(){e.apply(n,i)},t)}}var canvasEl=document.querySelector(".fireworks");if(canvasEl){var ctx=canvasEl.getContext("2d"),numberOfParticules=30,pointerX=0,pointerY=0,tap="mousedown",colors=["#FF1461","#18FF92","#5A87FF","#FBF38C"],setCanvasSize=debounce(function(){canvasEl.width=2*window.innerWidth,canvasEl.height=2*window.innerHeight,canvasEl.style.width=window.innerWidth+"px",canvasEl.style.height=window.innerHeight+"px",canvasEl.getContext("2d").scale(2,2)},500),render=anime({duration:1/0,update:function(){ctx.clearRect(0,0,canvasEl.width,canvasEl.height)}});document.addEventListener(tap,function(e){"sidebar"!==e.target.id&amp;&amp;"toggle-sidebar"!==e.target.id&amp;&amp;"A"!==e.target.nodeName&amp;&amp;"IMG"!==e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))},!1),setCanvasSize(),window.addEventListener("resize",setCanvasSize,!1)}"use strict";function updateCoords(e){pointerX=(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top}function setParticuleDirection(e){var t=anime.random(0,360)*Math.PI/180,a=anime.random(50,180),n=[-1,1][anime.random(0,1)]*a;return{x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)}}function createParticule(e,t){var a={};return a.x=e,a.y=t,a.color=colors[anime.random(0,colors.length-1)],a.radius=anime.random(16,32),a.endPos=setParticuleDirection(a),a.draw=function(){ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle=a.color,ctx.fill()},a}function createCircle(e,t){var a={};return a.x=e,a.y=t,a.color="#F00",a.radius=0.1,a.alpha=0.5,a.lineWidth=6,a.draw=function(){ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=1},a}function renderParticule(e){for(var t=0;t&lt;e.animatables.length;t++){e.animatables[t].target.draw()}}function animateParticules(e,t){for(var a=createCircle(e,t),n=[],i=0;i&lt;numberOfParticules;i++){n.push(createParticule(e,t))}anime.timeline().add({targets:n,x:function(e){return e.endPos.x},y:function(e){return e.endPos.y},radius:0.1,duration:anime.random(1200,1800),easing:"easeOutExpo",update:renderParticule}).add({targets:a,radius:anime.random(80,160),lineWidth:0,alpha:{value:0,easing:"linear",duration:anime.random(600,800)},duration:anime.random(1200,1800),easing:"easeOutExpo",update:renderParticule,offset:0})}function debounce(e,t){var a;return function(){var n=this,i=arguments;clearTimeout(a),a=setTimeout(function(){e.apply(n,i)},t)}}var canvasEl=document.querySelector(".fireworks");if(canvasEl){var ctx=canvasEl.getContext("2d"),numberOfParticules=30,pointerX=0,pointerY=0,tap="mousedown",colors=["#FF1461","#18FF92","#5A87FF","#FBF38C"],setCanvasSize=debounce(function(){canvasEl.width=2*window.innerWidth,canvasEl.height=2*window.innerHeight,canvasEl.style.width=window.innerWidth+"px",canvasEl.style.height=window.innerHeight+"px",canvasEl.getContext("2d").scale(2,2)},500),render=anime({duration:1/0,update:function(){ctx.clearRect(0,0,canvasEl.width,canvasEl.height)}});document.addEventListener(tap,function(e){"sidebar"!==e.target.id&amp;&amp;"toggle-sidebar"!==e.target.id&amp;&amp;"A"!==e.target.nodeName&amp;&amp;"IMG"!==e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))},!1),setCanvasSize(),window.addEventListener("resize",setCanvasSize,!1)};</span><br></pre></td></tr></tbody></table></figure>
+
+<p>打开<code>themes/next/layout/_layout.swig</code>,在上面写下如下代码：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">{% if theme.fireworks %}</span><br><span class="line">   &lt;canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" &gt;&lt;/canvas&gt; </span><br><span class="line">   &lt;script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"&gt;&lt;/script&gt; </span><br><span class="line">   &lt;script type="text/javascript" src="/js/src/fireworks.js"&gt;&lt;/script&gt;</span><br><span class="line">{% endif %}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>打开主题配置文件，在里面最后写下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Fireworks</span><br><span class="line">fireworks: true</span><br></pre></td></tr></tbody></table></figure>
                 
             </div>
             <hr/>
@@ -1229,8 +1205,7 @@ fireworks: true</code></pre>
                     <div class="summary block-with-text">
                         
                             (13)文章样式美化大全大坑！！next新版(7.x)背景设置位置有变化，custom.styl没有！因此网上大部分教程都是无效的。正确设置方法：首先主题配置文件取消注释(去掉下方的#号)
-custom_file_path:
-  #styl
+12custom_file_path:  #sty
                         
                     </div>
                     <div class="publish-info">
@@ -1448,7 +1423,7 @@ custom_file_path:
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">29k</span>&nbsp;字
+                class="white-color">29.5k</span>&nbsp;字
             
             
             

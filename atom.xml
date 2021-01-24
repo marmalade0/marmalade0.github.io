@@ -208,8 +208,9 @@
     
     
     <summary type="html">&lt;h1 id=&quot;13-文章样式美化大全&quot;&gt;&lt;a href=&quot;#13-文章样式美化大全&quot; class=&quot;headerlink&quot; title=&quot;(13)文章样式美化大全&quot;&gt;&lt;/a&gt;(13)文章样式美化大全&lt;/h1&gt;&lt;h5 id=&quot;大坑！！next新版-7-x-背景设置位置有变化，custom-styl没有！&quot;&gt;&lt;a href=&quot;#大坑！！next新版-7-x-背景设置位置有变化，custom-styl没有！&quot; class=&quot;headerlink&quot; title=&quot;大坑！！next新版(7.x)背景设置位置有变化，custom.styl没有！&quot;&gt;&lt;/a&gt;大坑！！next新版(7.x)背景设置位置有变化，custom.styl没有！&lt;/h5&gt;&lt;p&gt;因此网上大部分教程都是无效的。&lt;br&gt;正确设置方法：&lt;br&gt;首先主题配置文件取消注释(去掉下方的#号)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;custom_file_path:
-  #style: source/_data/styles.styl&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在路径&lt;code&gt;~/hexo_blog/source&lt;/code&gt;创建_data文件夹并在里面创建styles.styl文件，并添加以下内容&lt;br&gt;实现背景图片颜色透明度等修改，让你的博客更具“自我”！&lt;br&gt;详情请点击：&lt;/p&gt;</summary>
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;custom_file_path:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  #style: source/_data/styles.styl&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;在路径&lt;code&gt;~/hexo_blog/source&lt;/code&gt;创建_data文件夹并在里面创建styles.styl文件，并添加以下内容&lt;br&gt;实现背景图片颜色透明度等修改，让你的博客更具“自我”！&lt;br&gt;详情请点击：&lt;/p&gt;</summary>
     
     
     
@@ -385,13 +386,13 @@
     <category term="hexo+github博客建立与美化" scheme="https://marmalade.vip/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/"/>
     
     
+    <category term="github" scheme="https://marmalade.vip/tags/github/"/>
+    
     <category term="博客建立" scheme="https://marmalade.vip/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/"/>
     
     <category term="hexo" scheme="https://marmalade.vip/tags/hexo/"/>
     
     <category term="next主题" scheme="https://marmalade.vip/tags/next%E4%B8%BB%E9%A2%98/"/>
-    
-    <category term="github" scheme="https://marmalade.vip/tags/github/"/>
     
   </entry>
   
