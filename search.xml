@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Hexo-Matery主题细致美化(下)</title>
-    <url>/materysettings2.html</url>
+    <url>/Materysettings2.html</url>
     <content><![CDATA[<h3 id="新建文章模板修改"><a href="#新建文章模板修改" class="headerlink" title="新建文章模板修改"></a>新建文章模板修改</h3><p>首先为了新建文章方便，我们可以修改一下文章模板，可以将<code>/scaffolds/post.md</code>修改为如下代码：</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: {{ title }}</span><br><span class="line">date: {{ date }}</span><br><span class="line">author: </span><br><span class="line">img: </span><br><span class="line">coverImg: </span><br><span class="line">top: false</span><br><span class="line">cover: false</span><br><span class="line">toc: true</span><br><span class="line">mathjax: false</span><br><span class="line">password:</span><br><span class="line">summary:</span><br><span class="line">keywords:</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br><span class="line">---</span><br></pre></td></tr></tbody></table></figure>
 
@@ -267,7 +267,7 @@
   </entry>
   <entry>
     <title>Hexo-Matery主题细致美化(上)</title>
-    <url>/materysettings1.html</url>
+    <url>/Materysettings1.html</url>
     <content><![CDATA[<h2 id="Hexo-Matery主题美化"><a href="#Hexo-Matery主题美化" class="headerlink" title="Hexo-Matery主题美化"></a>Hexo-Matery主题美化</h2><p>在一番瞎改js代码后，终于无法忍受next主题，于是愤然投入Matery大家庭，结果证明，<strong>香！</strong><br>下面是我记录的配置Matery主题的流程，仅供后来的师傅们参考。</p>
 <blockquote>
 <p>大家可以来我Hexo博客主页看看具体效果 <a href="https://marmalade.vip/">我的小站</a></p>
@@ -1146,10 +1146,10 @@
         <category>hexo+github博客建立与美化</category>
       </categories>
       <tags>
-        <tag>github</tag>
         <tag>博客建立</tag>
         <tag>hexo</tag>
         <tag>next主题</tag>
+        <tag>github</tag>
       </tags>
   </entry>
 </search>
