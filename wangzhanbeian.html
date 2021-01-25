@@ -528,14 +528,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-27
+                    2021-01-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    773
+                    775
                 </div>
                 
 
@@ -579,48 +579,46 @@
 <p>博客个人空间服务企业基础信息登记表.xls<br>和<br>交互式服务安全检查表.xls<br>然后等待通过即可</p>
 <h2 id="底部添加ICP备案和公安网备案"><a href="#底部添加ICP备案和公安网备案" class="headerlink" title="底部添加ICP备案和公安网备案"></a>底部添加ICP备案和公安网备案</h2><p><a href="https://www.chingow.cn/posts/c7372a12.html" target="_blank" rel="noopener">参考大佬文章</a><br>我们的网站已经有备案号了，但是应该如何添加备案号到博客最下面呢？</p>
 <p>首先，在 主题配置文件  _config.yml 中的配置添加备案配置：<br>位置：<br>themes/next/_config.yml</p>
-<pre><code> # 这里打开备案信息，填写ICP备案号   
- beian:   
- enable: true  
- icp: 鲁ICP备20005811号 
- # 这里是新加的内容，填写公安备案信息
- +  gongan:
- +    enable: true
- +    local: 鲁
- +    num: 3711022000277</code></pre><p>将多余的注释掉，不然会报错<br><img src="/images/wangzhanbeian/5.png" alt="f260561f144f68fdcc2c91fbc46618a3.png"></p>
-<p>然后，在语言配置文件里，添加表述文案beian：<br>位置:<br>themes/next/languages/zh-CN.yml<br><img src="/images/wangzhanbeian/6.png" alt="eab3fca27ff1e7456241e58f76a3f5e4.png"></p>
-<p>接下来，删除原有的布局文件中备案样式的代码：(标注处全删)<br>位置:<br>themes/next/layout/_partials/footer.swig<br><img src="/images/wangzhanbeian/7.png" alt="5283d46f4a83dac14b69ea97c1f50d10.png"><br>找到如下位置插入一行代码：</p>
+<pre class=" language-yaml"><code class="language-yaml"> <span class="token comment" spellcheck="true"># 这里打开备案信息，填写ICP备案号   </span>
+ <span class="token key atrule">beian</span><span class="token punctuation">:</span>   
+ <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true  </span>
+ <span class="token key atrule">icp</span><span class="token punctuation">:</span> 鲁ICP备20005811号 
+ <span class="token comment" spellcheck="true"># 这里是新加的内容，填写公安备案信息</span>
+ +  gongan<span class="token punctuation">:</span>
+ +    enable<span class="token punctuation">:</span> <span class="token boolean important">true</span>
+ +    local<span class="token punctuation">:</span> 鲁
+ +    num<span class="token punctuation">:</span> <span class="token number">3711022000277</span></code></pre>
+<p>将多余的注释掉，不然会报错<br><img src="/images/wangzhanbeian/5.png" alt="f260561f144f68fdcc2c91fbc46618a3.png"></p>
+<p>然后，在语言配置文件里，添加表述文案beian：<br>位置:<br><code>themes/next/languages/zh-CN.yml</code><br><img src="/images/wangzhanbeian/6.png" alt="eab3fca27ff1e7456241e58f76a3f5e4.png"></p>
+<p>接下来，删除原有的布局文件中备案样式的代码：(标注处全删)<br>位置:<br><code>themes/next/layout/_partials/footer.swig</code><br><img src="/images/wangzhanbeian/7.png" alt="5283d46f4a83dac14b69ea97c1f50d10.png"><br>找到如下位置插入一行代码：</p>
 <pre><code> &lt;span class="author" itemprop="copyrightHolder"&gt;{{ theme.footer.copyright || author }}&lt;/span&gt;
- +  &lt;span class="post-meta-divider footer-ages-icon"&gt; | &lt;/span&gt;
- {% if config.symbols_count_time.total_symbols %}
- ```
- 
+     +  &lt;span class="post-meta-divider footer-ages-icon"&gt; | &lt;/span&gt;
+     {% if config.symbols_count_time.total_symbols %}
+```
+
 最后，在主题布局文件中添加我们自定义的备案样式：
 位置：
-themes/next/layout/_layout.swig
+`themes/next/layout/_layout.swig`
 
-```
-</code><div class="footer-inner"><code>   
-{{ partial('_partials/footer.swig', {}, {cache: theme.cache.enable}) }}    
-{% include '_third-party/analytics/analytics-with-widget.swig' %}
-+        </code><div class="footer-custom"><code>
-+                    {% if theme.footer.beian.enable %}{#
-+                  #}{{ next_url('http://www.beian.miit.gov.cn', theme.footer.beian.icp + ' ') }}{#
-+                  #}{% endif %}
-+                  {% if theme.footer.beian.enable and theme.footer.gongan.enable %}
-+                    <span class="post-meta-divider">|</span>
-+                  {% endif %}
-+                  {% if theme.footer.gongan.enable %}{#
-+                  #} <span style="padding-left:25px;background:url(/images/beian.png) no-repeat left center" rel="nofollow">{#
-+                  #} {{ theme.footer.gongan.local}}{{__('footer.beian.gongan', next_url('http://www.beian.gov.cn/portal/registerSystemInfo?recordcode='+theme.footer.gongan.num, theme.footer.gongan.num )) }}{#
-+                  #}{% endif %}
-+                 &lt;/div&gt;
-
-  {% block footer %}{% endblock %} 
-  &lt;/div&gt;</span></code></div></div></pre><blockquote>
-<p>注意将公安网图标保存并命名/images/beian.png</p>
-</blockquote>
-<p>成功<br><img src="/images/wangzhanbeian/8.png" alt="3b991c5458d20080e149701386acf7ea.png"></p>
+&gt; 注意将公安网图标保存并命名/images/beian.png
+````html
+ </code><div class="footer-inner"><code>   
+ 	{{ partial('_partials/footer.swig', {}, {cache: theme.cache.enable}) }}    
+ 	{% include '_third-party/analytics/analytics-with-widget.swig' %}
+ 	+        </code><div class="footer-custom"><code>
+ 	+                    {% if theme.footer.beian.enable %}{#
+ 	+                  #}{{ next_url('http://www.beian.miit.gov.cn', theme.footer.beian.icp + ' ') }}{#
+ 	+                  #}{% endif %}
+     +                  {% if theme.footer.beian.enable and theme.footer.gongan.enable %}
+ 	+                    <span class="post-meta-divider">|</span>
+ 	+                  {% endif %}
+     +                  {% if theme.footer.gongan.enable %}{#
+ 	+                  #} <span style="padding-left:25px;background:url(/images/beian.png) no-repeat left center" rel="nofollow">{#
+ 	+                  #} {{ theme.footer.gongan.local}}{{__('footer.beian.gongan', next_url('http://www.beian.gov.cn/portal/registerSystemInfo?recordcode='+theme.footer.gongan.num, theme.footer.gongan.num )) }}{#
+ 	+                  #}{% endif %}
+                      &lt;/div&gt;   
+       {% block footer %}{% endblock %} 
+ &lt;/div&gt;</span></code></div></div></pre><p>成功<br><img src="/images/wangzhanbeian/8.png" alt="3b991c5458d20080e149701386acf7ea.png"></p>
 
                 
             </div>
@@ -1396,7 +1394,7 @@ themes/next/layout/_layout.swig
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">28.6k</span>&nbsp;字
+                class="white-color">28.5k</span>&nbsp;字
             
             
             

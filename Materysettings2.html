@@ -528,7 +528,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-01-24
+                    2021-01-25
                 </div>
                 
 
@@ -542,7 +542,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    51 分
+                    50 分
                 </div>
                 
 
@@ -568,7 +568,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h3 id="新建文章模板修改"><a href="#新建文章模板修改" class="headerlink" title="新建文章模板修改"></a>新建文章模板修改</h3><p>首先为了新建文章方便，我们可以修改一下文章模板，可以将<code>/scaffolds/post.md</code>修改为如下代码：</p>
-<pre><code>---
+<pre class=" language-front-matter"><code class="language-front-matter">---
 title: {{ title }}
 date: {{ date }}
 author: 
@@ -583,7 +583,8 @@ summary:
 keywords:
 tags:
 categories:
----</code></pre><p>这样新建文章后 一些<code>Front-matter</code>参数不用你自己补充了，修改对应信息就可以了。</p>
+---</code></pre>
+<p>这样新建文章后 一些<code>Front-matter</code>参数不用你自己补充了，修改对应信息就可以了。</p>
 <h4 id="Front-matter-选项详解"><a href="#Front-matter-选项详解" class="headerlink" title="Front-matter 选项详解"></a>Front-matter 选项详解</h4><p><code>Front-matter</code> 选项中的所有内容均为<strong>非必填</strong>的。但原作者建议至少填写 <code>title</code> 和 <code>date</code> 的值。</p>
 <table>
 <thead>
@@ -669,7 +670,7 @@ categories:
 <td align="left">文章转载规则， 可以是 cc_by, cc_by_nd, cc_by_sa, cc_by_nc, cc_by_nc_nd, cc_by_nc_sa, cc0, noreprint 或 pay 中的一个</td>
 </tr>
 </tbody></table>
-<h4 id="最全示例"><a href="#最全示例" class="headerlink" title="最全示例"></a>最全示例</h4><pre><code>---
+<h4 id="最全示例"><a href="#最全示例" class="headerlink" title="最全示例"></a>最全示例</h4><pre class=" language-front-matter"><code class="language-front-matter">---
 title: typora-vue-theme主题介绍
 date: 2018-09-07 09:25:00
 author: 赵奇
@@ -685,29 +686,30 @@ categories: Markdown
 tags:
   - Typora
   - Markdown
----</code></pre><h3 id="看板娘模块的安装和使用"><a href="#看板娘模块的安装和使用" class="headerlink" title="看板娘模块的安装和使用"></a>看板娘模块的安装和使用</h3><p>模块安装：</p>
+---</code></pre>
+<h3 id="看板娘模块的安装和使用"><a href="#看板娘模块的安装和使用" class="headerlink" title="看板娘模块的安装和使用"></a>看板娘模块的安装和使用</h3><p>模块安装：</p>
 <pre class=" language-git"><code class="language-git">cnpm install --save hexo-helper-live2d</code></pre>
 <p>下载完成后，可以在node_modules文件夹中找到自己安装的插件。</p>
 <p>然后下载你想要的看板娘模块（可以自己到网上找哪个合心意的），执行命令：</p>
 <pre class=" language-git"><code class="language-git">cnpm install {packagename}
 <span class="token comment" spellcheck="true"># 例如cnpm install live2d-widget-model-haru</span></code></pre>
 <p>下载完成后，回到blog根目录下配置_config.yml，添加以下代码（model要根据自己情况设置）：</p>
-<pre class=" language-yml"><code class="language-yml">live2d:
-  enable: true
-  scriptFrom: local
-  pluginRootPath: live2dw/
-  pluginJsPath: lib/
-  pluginModelPath: assets/
-  tagMode: false
-  debug: false
-  model:
-    use: live2d-widget-model-z16
-  display:
-    position: right
-    width: 200
-    height: 400
-  mobile:
-    show: false</code></pre>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">live2d</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">scriptFrom</span><span class="token punctuation">:</span> local
+  <span class="token key atrule">pluginRootPath</span><span class="token punctuation">:</span> live2dw/
+  <span class="token key atrule">pluginJsPath</span><span class="token punctuation">:</span> lib/
+  <span class="token key atrule">pluginModelPath</span><span class="token punctuation">:</span> assets/
+  <span class="token key atrule">tagMode</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">debug</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">model</span><span class="token punctuation">:</span>
+    <span class="token key atrule">use</span><span class="token punctuation">:</span> live2d<span class="token punctuation">-</span>widget<span class="token punctuation">-</span>model<span class="token punctuation">-</span>z16
+  <span class="token key atrule">display</span><span class="token punctuation">:</span>
+    <span class="token key atrule">position</span><span class="token punctuation">:</span> right
+    <span class="token key atrule">width</span><span class="token punctuation">:</span> <span class="token number">200</span>
+    <span class="token key atrule">height</span><span class="token punctuation">:</span> <span class="token number">400</span>
+  <span class="token key atrule">mobile</span><span class="token punctuation">:</span>
+    <span class="token key atrule">show</span><span class="token punctuation">:</span> <span class="token boolean important">false</span></code></pre>
 <p>这样在右下角有看板娘啦！</p>
 <h3 id="添加博客天气插件"><a href="#添加博客天气插件" class="headerlink" title="添加博客天气插件"></a>添加博客天气插件</h3><p>中国天气网：<a href="https://cj.weather.com.cn/" target="_blank" rel="noopener">https://cj.weather.com.cn/</a></p>
 <p>选择自定义插件—&gt;自定义样式——&gt;生成代码，然后会生成这样一段代码</p>
@@ -734,9 +736,9 @@ tags:
   <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'_widget/weather'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span> <span class="token operator">%</span><span class="token operator">></span></code></pre>
 <p>在主题配置文件 .yml中配置:</p>
-<pre class=" language-yml"><code class="language-yml"># 启用天气接口插件
-weather:
-  enable: true</code></pre>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># 启用天气接口插件</span>
+<span class="token key atrule">weather</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code></pre>
 <p><strong>当然,如果你不想搞这么复杂,可以直接将下面代码插入 /themes/matery/layout/_partial/layout.ejs 中即可使用:</strong></p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript">
     WIDGET <span class="token operator">=</span> <span class="token punctuation">{</span>FID<span class="token punctuation">:</span> <span class="token string">'1tFpFZ5Mtj'</span><span class="token punctuation">}</span>
@@ -906,9 +908,9 @@ img<span class="token punctuation">.</span>onload <span class="token operator">=
     <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span> <span class="token operator">%</span><span class="token operator">></span></code></pre>
 <p>在matery主题配置文件_config .yml中配置:</p>
-<pre class=" language-yml"><code class="language-yml"># 页面樱花飘落动效
-sakura:
-  enable: true</code></pre>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># 页面樱花飘落动效</span>
+<span class="token key atrule">sakura</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code></pre>
 <h3 id="关闭首页颜色变换"><a href="#关闭首页颜色变换" class="headerlink" title="关闭首页颜色变换"></a>关闭首页颜色变换</h3><p>进入主题文件的 <code>/source/css/matery.css</code>文件中，搜索 <code>rainbow</code>来关闭颜色变换：</p>
 <pre class=" language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@-webkit-keyframes</span> rainbow</span> <span class="token punctuation">{</span>
    <span class="token comment" spellcheck="true">/* 动态切换背景颜色.即滤镜颜色，不想要可以全部注释，或者换成你喜欢的颜色 */</span>
@@ -1093,8 +1095,8 @@ sakura:
 
     &lt;%- partial('_partial/header') %>
     ...</code></pre>
-<h5 id="3、在主题配置文件-config-yml添加开关配置"><a href="#3、在主题配置文件-config-yml添加开关配置" class="headerlink" title="3、在主题配置文件_config.yml添加开关配置"></a>3、在主题配置文件<code>_config.yml</code>添加开关配置</h5><pre class=" language-yml"><code class="language-yml">loadingPages:
-  enable: true  </code></pre>
+<h5 id="3、在主题配置文件-config-yml添加开关配置"><a href="#3、在主题配置文件-config-yml添加开关配置" class="headerlink" title="3、在主题配置文件_config.yml添加开关配置"></a>3、在主题配置文件<code>_config.yml</code>添加开关配置</h5><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">loadingPages</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true  </span></code></pre>
 <p><code>enable</code> 设置为 <code>true</code> 表示开启加载动画， <code>false</code> 表示关闭加载动画。</p>
 <h3 id="主页新增关注我的Bilibili"><a href="#主页新增关注我的Bilibili" class="headerlink" title="主页新增关注我的Bilibili"></a>主页新增关注我的Bilibili</h3><p>进入主题路径<code>\layout\_partial\social-link.ejs</code></p>
 <p>新增以下代码</p>
@@ -1108,16 +1110,16 @@ sakura:
 <h3 id="Hexo添加博客导航页"><a href="#Hexo添加博客导航页" class="headerlink" title="**Hexo添加博客导航页"></a>**Hexo添加博客导航页</h3><p>新建页面，执行下面的命令</p>
 <pre class=" language-bash"><code class="language-bash">hexo new page navigate</code></pre>
 <p>修改 <code>navigate</code> 目录下的 <code>index.md</code> 的格式</p>
-<pre class=" language-markdown"><code class="language-markdown"><span class="token hr punctuation">---</span>
+<pre class=" language-front-matter"><code class="language-front-matter">---
 title: 导航
 date: 2020-05-09 11:19:14
 type: "navigate"
-<span class="token title important">layout: "navigate"
-<span class="token punctuation">---</span></span></code></pre>
+layout: "navigate"
+---</code></pre>
 <p>在主题配置文件<code>_config.yml</code>中添加导航</p>
-<pre class=" language-yml"><code class="language-yml">  导航:
-    url: /navigate
-    icon: fas fa-location-arrow</code></pre>
+<pre class=" language-yaml"><code class="language-yaml">  <span class="token key atrule">导航</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> /navigate
+    <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>location<span class="token punctuation">-</span>arrow</code></pre>
 <p>在 <code>matery/layout</code> 下新建 <code>navigate.ejs</code></p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>navi-height bg-cover pd-header <span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span> link-box container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -1741,10 +1743,10 @@ gulp<span class="token punctuation">.</span><span class="token function">task</s
 <h3 id="Hexo-博客订阅文章通知功能"><a href="#Hexo-博客订阅文章通知功能" class="headerlink" title="Hexo 博客订阅文章通知功能"></a>Hexo 博客订阅文章通知功能</h3><p>进入站点根目录</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-web-push-notification --save</code></pre>
 <p>编辑站点配置文件<code>_config.yml</code></p>
-<pre class=" language-yml"><code class="language-yml">webPushNotification:
-  webpushrKey: "your webpushr rest api key"
-  webpushrAuthToken: "your webpushr authorize token"
-  trackingCode: "AEGlpbdgvBCWXqXI6PtsUzobY7TLV9gwJU8bzMktrwfrSERg_xnLVbjpCw8x2GmFmi1ZcLTz0ni6OnX5MAwoM88"</code></pre>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">webPushNotification</span><span class="token punctuation">:</span>
+  <span class="token key atrule">webpushrKey</span><span class="token punctuation">:</span> <span class="token string">"your webpushr rest api key"</span>
+  <span class="token key atrule">webpushrAuthToken</span><span class="token punctuation">:</span> <span class="token string">"your webpushr authorize token"</span>
+  <span class="token key atrule">trackingCode</span><span class="token punctuation">:</span> <span class="token string">"AEGlpbdgvBCWXqXI6PtsUzobY7TLV9gwJU8bzMktrwfrSERg_xnLVbjpCw8x2GmFmi1ZcLTz0ni6OnX5MAwoM88"</span></code></pre>
 <p>进入：<a href="https://app.webpushr.com/signup" target="_blank" rel="noopener">https://app.webpushr.com/signup</a> 注册账号</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210121164850.png" alt="按照步骤操作"></p>
 <p><strong>按照步骤操作</strong></p>
@@ -1752,48 +1754,50 @@ gulp<span class="token punctuation">.</span><span class="token function">task</s
 <p><strong>部署之后可能会遇到无法正常发送通知的情况.</strong></p>
 <p>进入目录 <code>node_modules/hexo-web-push-notification/index.js</code>文件中第22行<code>'summary': util.stripHTML(newPost.excerpt),</code>这里取值取的是<code>excerpt</code>，改成<code>summary</code>即可。</p>
 <p>修改前</p>
-<pre class=" language-json"><code class="language-json">var JSONFeed = <span class="token punctuation">{</span>
-        'title'<span class="token operator">:</span> newPost.title<span class="token punctuation">,</span>
-        'id'<span class="token operator">:</span> newPost.path<span class="token punctuation">,</span>
-        'date_published'<span class="token operator">:</span> newPost.date.format('L'<span class="token punctuation">)</span><span class="token punctuation">,</span>
-        'summary'<span class="token operator">:</span> util.stripHTML(newPost.excerpt<span class="token punctuation">)</span><span class="token punctuation">,</span>
-        'url'<span class="token operator">:</span> newPost.permalink<span class="token punctuation">,</span>
-        'tags'<span class="token operator">:</span> newPost.tags.data.map(function (v<span class="token punctuation">)</span> <span class="token punctuation">{</span> return v.name <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        'categories'<span class="token operator">:</span> newPost.categories.data.map(function (v<span class="token punctuation">)</span> <span class="token punctuation">{</span> return v.name <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> JSONFeed <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'title'</span><span class="token punctuation">:</span> newPost<span class="token punctuation">.</span>title<span class="token punctuation">,</span>
+        <span class="token string">'id'</span><span class="token punctuation">:</span> newPost<span class="token punctuation">.</span>path<span class="token punctuation">,</span>
+        <span class="token string">'date_published'</span><span class="token punctuation">:</span> newPost<span class="token punctuation">.</span>date<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'L'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">'summary'</span><span class="token punctuation">:</span> util<span class="token punctuation">.</span><span class="token function">stripHTML</span><span class="token punctuation">(</span>newPost<span class="token punctuation">.</span>excerpt<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">'url'</span><span class="token punctuation">:</span> newPost<span class="token punctuation">.</span>permalink<span class="token punctuation">,</span>
+        <span class="token string">'tags'</span><span class="token punctuation">:</span> newPost<span class="token punctuation">.</span>tags<span class="token punctuation">.</span>data<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> v<span class="token punctuation">.</span>name <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">'categories'</span><span class="token punctuation">:</span> newPost<span class="token punctuation">.</span>categories<span class="token punctuation">.</span>data<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> v<span class="token punctuation">.</span>name <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span></code></pre>
 <p>修改后</p>
-<pre class=" language-json"><code class="language-json">var JSONFeed = <span class="token punctuation">{</span>
-        'title'<span class="token operator">:</span> newPost.title<span class="token punctuation">,</span>
-        'id'<span class="token operator">:</span> newPost.path<span class="token punctuation">,</span>
-        'date_published'<span class="token operator">:</span> newPost.date.format('L'<span class="token punctuation">)</span><span class="token punctuation">,</span>
-        'summary'<span class="token operator">:</span> util.stripHTML(newPost.summary<span class="token punctuation">)</span><span class="token punctuation">,</span>
-        'url'<span class="token operator">:</span> newPost.permalink<span class="token punctuation">,</span>
-        'tags'<span class="token operator">:</span> newPost.tags.data.map(function (v<span class="token punctuation">)</span> <span class="token punctuation">{</span> return v.name <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        'categories'<span class="token operator">:</span> newPost.categories.data.map(function (v<span class="token punctuation">)</span> <span class="token punctuation">{</span> return v.name <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> JSONFeed <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'title'</span><span class="token punctuation">:</span> newPost<span class="token punctuation">.</span>title<span class="token punctuation">,</span>
+        <span class="token string">'id'</span><span class="token punctuation">:</span> newPost<span class="token punctuation">.</span>path<span class="token punctuation">,</span>
+        <span class="token string">'date_published'</span><span class="token punctuation">:</span> newPost<span class="token punctuation">.</span>date<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'L'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">'summary'</span><span class="token punctuation">:</span> util<span class="token punctuation">.</span><span class="token function">stripHTML</span><span class="token punctuation">(</span>newPost<span class="token punctuation">.</span>summary<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">'url'</span><span class="token punctuation">:</span> newPost<span class="token punctuation">.</span>permalink<span class="token punctuation">,</span>
+        <span class="token string">'tags'</span><span class="token punctuation">:</span> newPost<span class="token punctuation">.</span>tags<span class="token punctuation">.</span>data<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> v<span class="token punctuation">.</span>name <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">'categories'</span><span class="token punctuation">:</span> newPost<span class="token punctuation">.</span>categories<span class="token punctuation">.</span>data<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> v<span class="token punctuation">.</span>name <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span></code></pre>
 <h3 id="修改博客标题在手机端的字体大小"><a href="#修改博客标题在手机端的字体大小" class="headerlink" title="修改博客标题在手机端的字体大小"></a>修改博客标题在手机端的字体大小</h3><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210121165023.png" alt="image-20210121165018893"><br><a href="https://github.com/blinkfox/hexo-theme-matery/issues/147" target="_blank" rel="noopener">手机端，header不能自动适配屏幕大小，有错位</a></p>
 <p>在主题文件的<code>source/css/my.css</code>文件中，新增下面这样的 CSS 代码，然后设置成自己喜欢的字体大小即可</p>
-<pre><code>/* 修改首页轮播的标题大小 */
-@media only screen and (max-width: 601px) {
-    .bg-cover .title {
-        font-size: 2.5rem;
-    }
-}
+<pre class=" language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* 修改首页轮播的标题大小 */</span>
+<span class="token atrule"><span class="token rule">@media</span> only screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 601px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector"><span class="token class">.bg-cover</span> <span class="token class">.title</span> </span><span class="token punctuation">{</span>
+        <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">2.5</span>rem<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-/* 修改博客标题的字体大小 */
-@media only screen and (max-width: 601px) {
-    header .brand-logo .logo-span {
-        font-size: 1.5rem;
-    }
-}
-</code></pre><p>修改后</p>
+<span class="token comment" spellcheck="true">/* 修改博客标题的字体大小 */</span>
+<span class="token atrule"><span class="token rule">@media</span> only screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 601px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">header <span class="token class">.brand-logo</span> <span class="token class">.logo-span</span> </span><span class="token punctuation">{</span>
+        <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">1.5</span>rem<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>修改后</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210121165226.png" alt="image-20210121165130775"></p>
 <h3 id="阅读文章的密码验证功能-私密文章设置"><a href="#阅读文章的密码验证功能-私密文章设置" class="headerlink" title="阅读文章的密码验证功能 私密文章设置"></a>阅读文章的密码验证功能 私密文章设置</h3><p>在主题<code>_config.yml</code>文件下设置 enable: true<br>然后在md文章的开头写上<code>password: XXX</code><br><img src="https://gitee.com/marmalade0/images/raw/master/img/20210121165227.png" alt="image-20210119164647298"><br><img src="https://gitee.com/marmalade0/images/raw/master/img/20210121165228.png" alt="在这里插入图片描述"><br><img src="https://gitee.com/marmalade0/images/raw/master/img/20210121165229.png" alt="在这里插入图片描述"></p>
 <h3 id="添加ICP-公网安备案号"><a href="#添加ICP-公网安备案号" class="headerlink" title="添加ICP/公网安备案号"></a>添加ICP/公网安备案号</h3><p><strong>打开<code>hexo/themes/matery/layout/_partial</code>路径下的<code>footer.ejs</code>文件，在合适的未知插入如下代码：</strong></p>
-<pre><code>&lt;img src="https://gitee.com/marmalade0/images/blob/master/www.marmalade.vip/beian.png"&gt;
-&lt;a href="http://www.beian.miit.gov.cn/"  style="color:#f72b07" target="_blank"&gt;你自己的备案号，如鲁公网安备xxxxxx号&lt;/a&gt;
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://gitee.com/marmalade0/images/blob/master/www.marmalade.vip/beian.png<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.beian.miit.gov.cn/<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name">  <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">color</span><span class="token punctuation">:</span><span class="token hexcode">#f72b07</span></span><span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>你自己的备案号，如鲁公网安备xxxxxx号<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
 
-</code></pre><p><strong>添加后效果图：</strong></p>
+</code></pre>
+<p><strong>添加后效果图：</strong></p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210121165230.png" alt="image-20210120134936541"></p>
 <p>或者在<a href="marmalade.vip">我的小站</a>底部也能看见</p>
 <h3 id="自定义字体"><a href="#自定义字体" class="headerlink" title="自定义字体"></a>自定义字体</h3><h4 id="全局字体自定义"><a href="#全局字体自定义" class="headerlink" title="全局字体自定义"></a>全局字体自定义</h4><ol>
@@ -1801,15 +1805,16 @@ gulp<span class="token punctuation">.</span><span class="token function">task</s
 <li>将你要用到的字体放入上述创建的文件夹内，字体名称最好为英文，如 <code>/source/font/myFont.ttf</code></li>
 <li>找到主题文件夹下的 <code>my.css</code> 文件，路径为 <code>/themes/matery/source/css/my.css</code> ，填入下面的代码：</li>
 </ol>
-<pre><code>Css
-@font-face{
-    font-family: 'myFont';
-    src: url('../font/myFont.ttf');
-}
+<pre class=" language-css"><code class="language-css">
+<span class="token atrule"><span class="token rule">@font-face</span></span><span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'myFont'</span><span class="token punctuation">;</span>
+    <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url('../font/myFont.ttf')</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-body{
-    font-family: 'myFont';
-}</code></pre><blockquote>
+<span class="token selector">body</span><span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'myFont'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<blockquote>
 <p>将上面的 <code>myFont</code> 改成你自己的字体名称即可</p>
 </blockquote>
 <h4 id="局部字体自定义"><a href="#局部字体自定义" class="headerlink" title="局部字体自定义"></a>局部字体自定义</h4><blockquote>
@@ -1819,45 +1824,48 @@ body{
 <li>与全局字体自定义一样，我们需要创建 <code>font</code> 文件夹，将需要的字体放入，与上面的第 1、2 步一样，可以参考一下</li>
 <li>找到主题文件夹下的 <code>my.css</code> 文件，路径为 <code>/themes/matery/source/css/my.css</code> ，并将下面的代码填入文件中。</li>
 </ol>
-<pre><code>Css
-@font-face{
-    font-family: 'myFont';
-    src: url('../font/myFont.ttf');
-}
+<pre class=" language-css"><code class="language-css">
+<span class="token atrule"><span class="token rule">@font-face</span></span><span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'myFont'</span><span class="token punctuation">;</span>
+    <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url('../font/myFont.ttf')</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-.diyFont{
-    font-family: 'myFont';
-}</code></pre><blockquote>
+<span class="token selector"><span class="token class">.diyFont</span></span><span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'myFont'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<blockquote>
 <p><strong>注意：</strong>这里是创建了一个 <code>diyFont</code> 的类，注意与全局字体自定义相区别</p>
 </blockquote>
 <p>当想要指定某个地方的字体自定义时候，可以通过<strong>右键审查元素</strong>找到那个字体的类，给于<strong>类</strong>或者在原有的类下面给于属性即可。</p>
 <h4 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h4><p>找到你要自定义的区域，如我要自定义博客主页的标题字体，那么就要找到相应的文件，也就是 <code>/themes/matery/layout/_partial/bg-cover-content.ejs</code> ，在相应的地方加入我刚刚自定义的 <code>diyFont</code> 类。如将下面的：</p>
-<pre><code>Html
-&lt;div class="title center-align"&gt;
-      &lt;% if (config.subtitle &amp;&amp; config.subtitle.length &gt; 0) { %&gt;
-               &lt;%= config.subtitle %&gt;
-      &lt;% } else { %&gt;
+<pre class=" language-html"><code class="language-html">
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>title center-align<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">if</span> <span class="token attr-name">(config.subtitle</span> <span class="token attr-name">&amp;&amp;</span> <span class="token attr-name">config.subtitle.length</span> <span class="token punctuation">></span></span> 0) { %>
+               &lt;%= config.subtitle %>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">}</span> <span class="token attr-name">else</span> <span class="token attr-name">{</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
               subtitle
-      &lt;% } %&gt; 
-&lt;/div&gt;</code></pre><p>改为</p>
-<pre><code>Html
-&lt;div class="title center-align diy-font"&gt;
-    &lt;% if (config.subtitle &amp;&amp; config.subtitle.length &gt; 0) { %&gt;
-        &lt;%= config.subtitle %&gt;
-     &lt;% } else { %&gt;
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">}</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>改为</p>
+<pre class=" language-html"><code class="language-html">
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>title center-align diy-font<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">if</span> <span class="token attr-name">(config.subtitle</span> <span class="token attr-name">&amp;&amp;</span> <span class="token attr-name">config.subtitle.length</span> <span class="token punctuation">></span></span> 0) { %>
+        &lt;%= config.subtitle %>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">}</span> <span class="token attr-name">else</span> <span class="token attr-name">{</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
             subtitle
-     &lt;% } %&gt;
-&lt;/div&gt;</code></pre><p>修改方法也就是在 <code>&lt;div class="title center-align"&gt;</code> 中增加自己定义的 CSS 类名，什么是类名，有些小伙伴也许不知道其含义，自行百度吧<span class="github-emoji"><span>🤣</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f923.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，也就是在 <code>class=""</code> 中添加自己自定义的名称。</p>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">}</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>修改方法也就是在 <code>&lt;div class="title center-align"&gt;</code> 中增加自己定义的 CSS 类名，什么是类名，有些小伙伴也许不知道其含义，自行百度吧<span class="github-emoji"><span>🤣</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f923.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，也就是在 <code>class=""</code> 中添加自己自定义的名称。</p>
 <p>之后的方法跟全局自定义字体一样，只不过需要将原本直接给 body 的属性变成给你设置的类，比如</p>
-<pre><code>Css
-@font-face{
-    font-family: '字体名字';
-    src: url('../font/你的字体.ttf');
-}
+<pre class=" language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@font-face</span></span><span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'字体名字'</span><span class="token punctuation">;</span>
+    <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url('../font/你的字体.ttf')</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-.diy-font{
-    font-family: '字体名字';
-}</code></pre><p>然后执行命令，查看本地效果即可。</p>
+<span class="token selector"><span class="token class">.diy-font</span></span><span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'字体名字'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>然后执行命令，查看本地效果即可。</p>
 <blockquote>
 <p>我用的字体是汉仪行楷字体。</p>
 </blockquote>
@@ -2640,7 +2648,7 @@ body{
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">28.6k</span>&nbsp;字
+                class="white-color">28.5k</span>&nbsp;字
             
             
             

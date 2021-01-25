@@ -519,7 +519,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-01-24
+                    2021-01-25
                 </div>
                 
 
@@ -562,44 +562,44 @@
 <a id="more"></a>
 
 <p>首先，在桌面新建一个文本文档。</p>
-<pre class=" language-php"><code class="language-php">'Windows Registry Editor Version <span class="token number">5.00</span>
+<pre class=" language-txt"><code class="language-txt">'Windows Registry Editor Version 5.00
 
 
 
-<span class="token punctuation">[</span><span class="token constant">HKEY_LOCAL_MACHINE</span>\<span class="token package">SOFTWARE<span class="token punctuation">\</span>Classes<span class="token punctuation">\</span>Directory<span class="token punctuation">\</span>background<span class="token punctuation">\</span>shell<span class="token punctuation">\</span>cmd_here</span><span class="token punctuation">]</span>
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\cmd_here]
 
-@<span class="token operator">=</span><span class="token string">"在此处打开命令行"</span>
-<span class="token string">"Icon"</span><span class="token operator">=</span><span class="token string">"cmd.exe"</span>
-
-
-<span class="token punctuation">[</span><span class="token constant">HKEY_LOCAL_MACHINE</span>\<span class="token package">SOFTWARE<span class="token punctuation">\</span>Classes<span class="token punctuation">\</span>Directory<span class="token punctuation">\</span>background<span class="token punctuation">\</span>shell<span class="token punctuation">\</span>cmd_here<span class="token punctuation">\</span>command</span><span class="token punctuation">]</span>
-
-@<span class="token operator">=</span><span class="token string">"\"C:\\Windows\\System32\\cmd.exe\""</span>
+@="在此处打开命令行"
+"Icon"="cmd.exe"
 
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\cmd_here\command]
 
-<span class="token punctuation">[</span><span class="token constant">HKEY_LOCAL_MACHINE</span>\<span class="token package">SOFTWARE<span class="token punctuation">\</span>Classes<span class="token punctuation">\</span>Folder<span class="token punctuation">\</span>shell<span class="token punctuation">\</span>cmdPrompt</span><span class="token punctuation">]</span>
-
-@<span class="token operator">=</span><span class="token string">"在此处打开命令行"</span>
+@="\"C:\\Windows\\System32\\cmd.exe\""
 
 
 
-<span class="token punctuation">[</span><span class="token constant">HKEY_LOCAL_MACHINE</span>\<span class="token package">SOFTWARE<span class="token punctuation">\</span>Classes<span class="token punctuation">\</span>Folder<span class="token punctuation">\</span>shell<span class="token punctuation">\</span>cmdPrompt<span class="token punctuation">\</span>command</span><span class="token punctuation">]</span>
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\cmdPrompt]
 
-@<span class="token operator">=</span><span class="token string">"\"C:\\Windows\\System32\\cmd.exe\" \"cd %1\""</span>
-
-
-
-<span class="token punctuation">[</span><span class="token constant">HKEY_LOCAL_MACHINE</span>\<span class="token package">SOFTWARE<span class="token punctuation">\</span>Classes<span class="token punctuation">\</span>Directory<span class="token punctuation">\</span>shell<span class="token punctuation">\</span>cmd_here</span><span class="token punctuation">]</span>
-
-@<span class="token operator">=</span><span class="token string">"在此处打开命令行"</span>
-<span class="token string">"Icon"</span><span class="token operator">=</span><span class="token string">"cmd.exe"</span>
+@="在此处打开命令行"
 
 
 
-<span class="token punctuation">[</span><span class="token constant">HKEY_LOCAL_MACHINE</span>\<span class="token package">SOFTWARE<span class="token punctuation">\</span>Classes<span class="token punctuation">\</span>Directory<span class="token punctuation">\</span>shell<span class="token punctuation">\</span>cmd_here<span class="token punctuation">\</span>command</span><span class="token punctuation">]</span>
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\cmdPrompt\command]
 
-@<span class="token operator">=</span><span class="token string">"\"C:\\Windows\\System32\\cmd.exe\""</span></code></pre>
+@="\"C:\\Windows\\System32\\cmd.exe\" \"cd %1\""
+
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\cmd_here]
+
+@="在此处打开命令行"
+"Icon"="cmd.exe"
+
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\cmd_here\command]
+
+@="\"C:\\Windows\\System32\\cmd.exe\""</code></pre>
 <p>然后、将上面内容粘贴到该文本文档中，保存。并将该文本文档以.reg结尾即可，名字可以随意取。（PS：@=”此处打开命令行”  该引号内文字可以随意修改成你想要显示的文字）</p>
 <p>最后，双击注册一下就可以了，结果右键菜单中就有了。</p>
 
@@ -1365,7 +1365,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">28.6k</span>&nbsp;字
+                class="white-color">28.5k</span>&nbsp;字
             
             
             
