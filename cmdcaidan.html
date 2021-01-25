@@ -32,7 +32,7 @@
 <meta name="generator" content="Hexo 4.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
-
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -526,7 +526,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    264
+                    263
                 </div>
                 
 
@@ -562,8 +562,44 @@
 <a id="more"></a>
 
 <p>首先，在桌面新建一个文本文档。</p>
-<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Windows Registry Editor Version 5.00</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\cmd_here]</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">@="在此处打开命令行"</span></span><br><span class="line"><span class="string">"Icon"="cmd.exe"</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\cmd_here\command]</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">@="\"C:\\Windows\\System32\\cmd.exe\""</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\cmdPrompt]</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">@="在此处打开命令行"</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\cmdPrompt\command]</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">@="\"C:\\Windows\\System32\\cmd.exe\" \"cd %1\""</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\cmd_here]</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">@="在此处打开命令行"</span></span><br><span class="line"><span class="string">"Icon"="cmd.exe"</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\cmd_here\command]</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">@="\"C:\\Windows\\System32\\cmd.exe\""</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class=" language-php"><code class="language-php">'Windows Registry Editor Version <span class="token number">5.00</span>
 
+
+
+<span class="token punctuation">[</span><span class="token constant">HKEY_LOCAL_MACHINE</span>\<span class="token package">SOFTWARE<span class="token punctuation">\</span>Classes<span class="token punctuation">\</span>Directory<span class="token punctuation">\</span>background<span class="token punctuation">\</span>shell<span class="token punctuation">\</span>cmd_here</span><span class="token punctuation">]</span>
+
+@<span class="token operator">=</span><span class="token string">"在此处打开命令行"</span>
+<span class="token string">"Icon"</span><span class="token operator">=</span><span class="token string">"cmd.exe"</span>
+
+
+<span class="token punctuation">[</span><span class="token constant">HKEY_LOCAL_MACHINE</span>\<span class="token package">SOFTWARE<span class="token punctuation">\</span>Classes<span class="token punctuation">\</span>Directory<span class="token punctuation">\</span>background<span class="token punctuation">\</span>shell<span class="token punctuation">\</span>cmd_here<span class="token punctuation">\</span>command</span><span class="token punctuation">]</span>
+
+@<span class="token operator">=</span><span class="token string">"\"C:\\Windows\\System32\\cmd.exe\""</span>
+
+
+
+<span class="token punctuation">[</span><span class="token constant">HKEY_LOCAL_MACHINE</span>\<span class="token package">SOFTWARE<span class="token punctuation">\</span>Classes<span class="token punctuation">\</span>Folder<span class="token punctuation">\</span>shell<span class="token punctuation">\</span>cmdPrompt</span><span class="token punctuation">]</span>
+
+@<span class="token operator">=</span><span class="token string">"在此处打开命令行"</span>
+
+
+
+<span class="token punctuation">[</span><span class="token constant">HKEY_LOCAL_MACHINE</span>\<span class="token package">SOFTWARE<span class="token punctuation">\</span>Classes<span class="token punctuation">\</span>Folder<span class="token punctuation">\</span>shell<span class="token punctuation">\</span>cmdPrompt<span class="token punctuation">\</span>command</span><span class="token punctuation">]</span>
+
+@<span class="token operator">=</span><span class="token string">"\"C:\\Windows\\System32\\cmd.exe\" \"cd %1\""</span>
+
+
+
+<span class="token punctuation">[</span><span class="token constant">HKEY_LOCAL_MACHINE</span>\<span class="token package">SOFTWARE<span class="token punctuation">\</span>Classes<span class="token punctuation">\</span>Directory<span class="token punctuation">\</span>shell<span class="token punctuation">\</span>cmd_here</span><span class="token punctuation">]</span>
+
+@<span class="token operator">=</span><span class="token string">"在此处打开命令行"</span>
+<span class="token string">"Icon"</span><span class="token operator">=</span><span class="token string">"cmd.exe"</span>
+
+
+
+<span class="token punctuation">[</span><span class="token constant">HKEY_LOCAL_MACHINE</span>\<span class="token package">SOFTWARE<span class="token punctuation">\</span>Classes<span class="token punctuation">\</span>Directory<span class="token punctuation">\</span>shell<span class="token punctuation">\</span>cmd_here<span class="token punctuation">\</span>command</span><span class="token punctuation">]</span>
+
+@<span class="token operator">=</span><span class="token string">"\"C:\\Windows\\System32\\cmd.exe\""</span></code></pre>
 <p>然后、将上面内容粘贴到该文本文档中，保存。并将该文本文档以.reg结尾即可，名字可以随意取。（PS：@=”此处打开命令行”  该引号内文字可以随意修改成你想要显示的文字）</p>
 <p>最后，双击注册一下就可以了，结果右键菜单中就有了。</p>
 
@@ -1329,7 +1365,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">29.5k</span>&nbsp;字
+                class="white-color">28.6k</span>&nbsp;字
             
             
             
