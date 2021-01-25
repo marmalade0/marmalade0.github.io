@@ -124,10 +124,10 @@ tags:
   - Markdown
 ---</code></pre>
 <h3 id="看板娘模块的安装和使用"><a href="#看板娘模块的安装和使用" class="headerlink" title="看板娘模块的安装和使用"></a>看板娘模块的安装和使用</h3><p>模块安装：</p>
-<pre class=" language-git"><code class="language-git">cnpm install --save hexo-helper-live2d</code></pre>
+<pre class=" language-bash"><code class="language-bash">cnpm <span class="token function">install</span> --save hexo-helper-live2d</code></pre>
 <p>下载完成后，可以在node_modules文件夹中找到自己安装的插件。</p>
 <p>然后下载你想要的看板娘模块（可以自己到网上找哪个合心意的），执行命令：</p>
-<pre class=" language-git"><code class="language-git">cnpm install {packagename}
+<pre class=" language-bash"><code class="language-bash">cnpm <span class="token function">install</span> <span class="token punctuation">{</span>packagename<span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true"># 例如cnpm install live2d-widget-model-haru</span></code></pre>
 <p>下载完成后，回到blog根目录下配置_config.yml，添加以下代码（model要根据自己情况设置）：</p>
 <pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">live2d</span><span class="token punctuation">:</span>
@@ -2907,10 +2907,10 @@ scheme: Gemini</code></pre><p>然后网站根目录下运行<br>hexo clean<br>he
         <category>hexo+github博客建立与美化</category>
       </categories>
       <tags>
-        <tag>github</tag>
         <tag>博客建立</tag>
         <tag>hexo</tag>
         <tag>next主题</tag>
+        <tag>github</tag>
       </tags>
   </entry>
 </search>

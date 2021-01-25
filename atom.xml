@@ -6,7 +6,7 @@
   <link href="https://marmalade.vip/atom.xml" rel="self"/>
   
   <link href="https://marmalade.vip/"/>
-  <updated>2021-01-25T04:30:32.318Z</updated>
+  <updated>2021-01-25T05:57:17.474Z</updated>
   <id>https://marmalade.vip/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://marmalade.vip/Materysettings2.html"/>
     <id>https://marmalade.vip/Materysettings2.html</id>
     <published>2021-01-21T10:09:45.000Z</published>
-    <updated>2021-01-25T04:30:32.318Z</updated>
+    <updated>2021-01-25T05:57:17.474Z</updated>
     
     
       
@@ -385,13 +385,13 @@
     <category term="hexo+github博客建立与美化" scheme="https://marmalade.vip/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/"/>
     
     
-    <category term="github" scheme="https://marmalade.vip/tags/github/"/>
-    
     <category term="博客建立" scheme="https://marmalade.vip/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/"/>
     
     <category term="hexo" scheme="https://marmalade.vip/tags/hexo/"/>
     
     <category term="next主题" scheme="https://marmalade.vip/tags/next%E4%B8%BB%E9%A2%98/"/>
+    
+    <category term="github" scheme="https://marmalade.vip/tags/github/"/>
     
   </entry>
   
