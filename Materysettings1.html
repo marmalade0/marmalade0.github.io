@@ -29,10 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -574,12 +575,12 @@
 <h3 id="下载安装Matery主题"><a href="#下载安装Matery主题" class="headerlink" title="下载安装Matery主题"></a>下载安装Matery主题</h3><p>首先在<a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo官网主题</a>里面搜索<strong>Matery</strong>主题点击进入作者大大的<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank" rel="noopener">github</a>，然后下载 master 分支的最新稳定版的代码，解压缩后将 hexo-theme-matery 的文件夹重命名为matery，复制到Hexo 的 themes 文件夹中</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20200819224655.png" alt="img"></p>
 <p>可以在themes 文件夹下使用Git clone命令来下载：</p>
-<pre class=" language-git"><code class="language-git">git clone https://github.com/blinkfox/hexo-theme-matery.git</code></pre>
+<pre class="line-numbers language-git"><code class="language-git">git clone https://github.com/blinkfox/hexo-theme-matery.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="切换主题"><a href="#切换主题" class="headerlink" title="切换主题"></a>切换主题</h4><p>下载完后，将站点配置文件中的 theme 值修改为你下载主题的文件名</p>
-<pre class=" language-yml"><code class="language-yml"># Extensions
+<pre class="line-numbers language-yml"><code class="language-yml"># Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: matery</code></pre>
+theme: matery<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>一些其他在站点目录配置：</p>
 <p><code>language: zh-CN</code>网站的语言设置</p>
 <p><code>url: https://www.guixinchn.cn</code> 网站的网站（域名）</p>
@@ -720,7 +721,7 @@ menu:
   Friends:
     url: /friends
     icon: fas fa-address-book</code></pre><h5 id="二级菜单配置方法"><a href="#二级菜单配置方法" class="headerlink" title="二级菜单配置方法"></a>二级菜单配置方法</h5><p>如果你需要二级菜单则可以在原基本菜单导航的基础上如下操作<br>1.在需要添加二级菜单的一级菜单下添加<code>children</code>关键字(如:<code>About</code>菜单下添加<code>children</code>)<br>2.在<code>children</code>下创建二级菜单的 名称name,路径url和图标icon.<br>3.注意每个二级菜单模块前要加 <code>-</code>.<br>4.注意缩进格式</p>
-<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">menu</span><span class="token punctuation">:</span>
+<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">menu</span><span class="token punctuation">:</span>
   <span class="token key atrule">Index</span><span class="token punctuation">:</span>
     <span class="token key atrule">url</span><span class="token punctuation">:</span> /
     <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>home
@@ -753,7 +754,7 @@ menu:
         <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>book
       <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Galleries
         <span class="token key atrule">url</span><span class="token punctuation">:</span> /galleries
-        <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>image</code></pre>
+        <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>image<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="添加-emoji-表情支持"><a href="#添加-emoji-表情支持" class="headerlink" title="添加 emoji 表情支持"></a>添加 emoji 表情支持</h3><p>需要安装插件 hexo-filter-github-emojis</p>
 <pre><code>npm install hexo-filter-github-emojis --save</code></pre><p><strong>没成功</strong></p>
 <p>在 Hexo 根目录下的 _config.yml 文件中，新增以下的配置项：</p>

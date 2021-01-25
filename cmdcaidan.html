@@ -29,10 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -562,7 +563,7 @@
 <a id="more"></a>
 
 <p>首先，在桌面新建一个文本文档。</p>
-<pre class=" language-php"><code class="language-php">'Windows Registry Editor Version <span class="token number">5.00</span>
+<pre class="line-numbers language-php"><code class="language-php">'Windows Registry Editor Version <span class="token number">5.00</span>
 
 
 
@@ -599,7 +600,7 @@
 
 <span class="token punctuation">[</span><span class="token constant">HKEY_LOCAL_MACHINE</span>\<span class="token package">SOFTWARE<span class="token punctuation">\</span>Classes<span class="token punctuation">\</span>Directory<span class="token punctuation">\</span>shell<span class="token punctuation">\</span>cmd_here<span class="token punctuation">\</span>command</span><span class="token punctuation">]</span>
 
-@<span class="token operator">=</span><span class="token string">"\"C:\\Windows\\System32\\cmd.exe\""</span></code></pre>
+@<span class="token operator">=</span><span class="token string">"\"C:\\Windows\\System32\\cmd.exe\""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后、将上面内容粘贴到该文本文档中，保存。并将该文本文档以.reg结尾即可，名字可以随意取。（PS：@=”此处打开命令行”  该引号内文字可以随意修改成你想要显示的文字）</p>
 <p>最后，双击注册一下就可以了，结果右键菜单中就有了。</p>
 
