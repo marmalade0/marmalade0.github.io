@@ -33,6 +33,7 @@
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -574,7 +575,7 @@
 <p>博客个人空间服务企业基础信息登记表.xls<br>和<br>交互式服务安全检查表.xls<br>然后等待通过即可</p>
 <h2 id="底部添加ICP备案和公安网备案"><a href="#底部添加ICP备案和公安网备案" class="headerlink" title="底部添加ICP备案和公安网备案"></a>底部添加ICP备案和公安网备案</h2><p><a href="https://www.chingow.cn/posts/c7372a12.html" target="_blank" rel="noopener">参考大佬文章</a><br>我们的网站已经有备案号了，但是应该如何添加备案号到博客最下面呢？</p>
 <p>首先，在 主题配置文件  _config.yml 中的配置添加备案配置：<br>位置：<br>themes/next/_config.yml</p>
-<pre class=" language-yaml"><code class="language-yaml"> <span class="token comment" spellcheck="true"># 这里打开备案信息，填写ICP备案号   </span>
+<pre class="line-numbers language-yaml"><code class="language-yaml"> <span class="token comment" spellcheck="true"># 这里打开备案信息，填写ICP备案号   </span>
  <span class="token key atrule">beian</span><span class="token punctuation">:</span>   
  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true  </span>
  <span class="token key atrule">icp</span><span class="token punctuation">:</span> 鲁ICP备20005811号 
@@ -582,21 +583,21 @@
  +  gongan<span class="token punctuation">:</span>
  +    enable<span class="token punctuation">:</span> <span class="token boolean important">true</span>
  +    local<span class="token punctuation">:</span> 鲁
- +    num<span class="token punctuation">:</span> <span class="token number">3711022000277</span></code></pre>
+ +    num<span class="token punctuation">:</span> <span class="token number">3711022000277</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>将多余的注释掉，不然会报错<br><img src="/images/wangzhanbeian/5.png" alt="f260561f144f68fdcc2c91fbc46618a3.png"></p>
 <p>然后，在语言配置文件里，添加表述文案beian：<br>位置:<br><code>themes/next/languages/zh-CN.yml</code><br><img src="/images/wangzhanbeian/6.png" alt="eab3fca27ff1e7456241e58f76a3f5e4.png"></p>
 <p>接下来，删除原有的布局文件中备案样式的代码：(标注处全删)<br>位置:<br><code>themes/next/layout/_partials/footer.swig</code><br><img src="/images/wangzhanbeian/7.png" alt="5283d46f4a83dac14b69ea97c1f50d10.png"><br>找到如下位置插入一行代码：</p>
 <pre><code> &lt;span class="author" itemprop="copyrightHolder"&gt;{{ theme.footer.copyright || author }}&lt;/span&gt;
      +  &lt;span class="post-meta-divider footer-ages-icon"&gt; | &lt;/span&gt;
-     {% if config.symbols_count_time.total_symbols %}
-```
+    {% if config.symbols_count_time.total_symbols %}
+ ```
 
 最后，在主题布局文件中添加我们自定义的备案样式：
 位置：
 `themes/next/layout/_layout.swig`
 
 &gt; 注意将公安网图标保存并命名/images/beian.png
-````html
+```html
  </code><div class="footer-inner"><code>   
  	{{ partial('_partials/footer.swig', {}, {cache: theme.cache.enable}) }}    
  	{% include '_third-party/analytics/analytics-with-widget.swig' %}
@@ -1389,7 +1390,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">28.5k</span>&nbsp;字
+                class="white-color">28.8k</span>&nbsp;字
             
             
             

