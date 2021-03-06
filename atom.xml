@@ -6,7 +6,7 @@
   <link href="https://marmalade.vip/atom.xml" rel="self"/>
   
   <link href="https://marmalade.vip/"/>
-  <updated>2021-01-25T05:57:17.474Z</updated>
+  <updated>2021-03-06T13:34:47.002Z</updated>
   <id>https://marmalade.vip/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>零宽度字符加密</title>
+    <link href="https://marmalade.vip/zerokuanduzifujiami.html"/>
+    <id>https://marmalade.vip/zerokuanduzifujiami.html</id>
+    <published>2021-03-06T13:23:57.000Z</published>
+    <updated>2021-03-06T13:34:47.002Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;​​        简而言之，就是字节宽度为0的特殊字符&lt;/p&gt;
+&lt;p&gt;零宽度字符是一些不可见的，不可打印的字符。它们存在于页面中主要用于调整字符的显示格式，下面就是一些常见的零宽度字符及它们的unicode码和原本用途：&lt;/p&gt;
+&lt;p&gt;1.零宽度空格符</summary>
+        
+      
+    
+    
+    
+    <category term="crypto" scheme="https://marmalade.vip/categories/crypto/"/>
+    
+    
+    <category term="零宽度字符加密" scheme="https://marmalade.vip/tags/%E9%9B%B6%E5%AE%BD%E5%BA%A6%E5%AD%97%E7%AC%A6%E5%8A%A0%E5%AF%86/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo-Matery主题细致美化(下)</title>
