@@ -6,7 +6,7 @@
   <link href="https://marmalade.vip/atom.xml" rel="self"/>
   
   <link href="https://marmalade.vip/"/>
-  <updated>2021-03-06T13:06:06.537Z</updated>
+  <updated>2021-01-25T05:57:17.474Z</updated>
   <id>https://marmalade.vip/</id>
   
   <author>
@@ -15,31 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>win10下右键菜单添加“打开cmd”命令</title>
-    <link href="https://marmalade.vip/cmdyoujiancaidan.html"/>
-    <id>https://marmalade.vip/cmdyoujiancaidan.html</id>
-    <published>2021-03-06T12:54:24.000Z</published>
-    <updated>2021-03-06T13:06:06.537Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;最近使用cmd比较多，就想在某个文件夹下右键打开cmd，这样不用每次都在默认情况下切换目录。无奈win10</summary>
-        
-      
-    
-    
-    
-    <category term="杂" scheme="https://marmalade.vip/categories/%E6%9D%82/"/>
-    
-    
-    <category term="右键菜单" scheme="https://marmalade.vip/tags/%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/"/>
-    
-  </entry>
   
   <entry>
     <title>Hexo-Matery主题细致美化(下)</title>
@@ -410,13 +385,13 @@
     <category term="hexo+github博客建立与美化" scheme="https://marmalade.vip/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/"/>
     
     
-    <category term="next主题" scheme="https://marmalade.vip/tags/next%E4%B8%BB%E9%A2%98/"/>
-    
     <category term="github" scheme="https://marmalade.vip/tags/github/"/>
     
     <category term="博客建立" scheme="https://marmalade.vip/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/"/>
     
     <category term="hexo" scheme="https://marmalade.vip/tags/hexo/"/>
+    
+    <category term="next主题" scheme="https://marmalade.vip/tags/next%E4%B8%BB%E9%A2%98/"/>
     
   </entry>
   

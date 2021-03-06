@@ -1,58 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>win10下右键菜单添加“打开cmd”命令</title>
-    <url>/cmdyoujiancaidan.html</url>
-    <content><![CDATA[<p>最近使用cmd比较多，就想在某个文件夹下右键打开cmd，这样不用每次都在默认情况下切换目录。无奈win10 1703版本下shift+右键不能打开cmd<br>那就只好自己整一个吧。</p>
-<p>首先，在桌面新建一个文本文档。</p>
-<pre><code>'Windows Registry Editor Version 5.00
-
-
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\cmd_here]
-
-@="在此处打开命令行"
-"Icon"="cmd.exe"
-
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\cmd_here\command]
-
-@="\"C:\\Windows\\System32\\cmd.exe\""
-
-
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\cmdPrompt]
-
-@="在此处打开命令行"
-
-
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\cmdPrompt\command]
-
-@="\"C:\\Windows\\System32\\cmd.exe\" \"cd %1\""
-
-
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\cmd_here]
-
-@="在此处打开命令行"
-"Icon"="cmd.exe"
-
-
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\cmd_here\command]
-
-@="\"C:\\Windows\\System32\\cmd.exe\""</code></pre><p>然后、将上面内容粘贴到该文本文档中，保存。并将该文本文档以.reg结尾即可，名字可以随意取。（PS：@=”此处打开命令行”  该引号内文字可以随意修改成你想要显示的文字）</p>
-<p>最后，双击注册一下就可以了，结果右键菜单中就有了。<br><img src="https://img-blog.csdnimg.cn/20210306205512613.png" alt="右键菜单"></p>
-]]></content>
-      <categories>
-        <category>杂</category>
-      </categories>
-      <tags>
-        <tag>右键菜单</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo-Matery主题细致美化(下)</title>
     <url>/Materysettings2.html</url>
     <content><![CDATA[<h3 id="新建文章模板修改"><a href="#新建文章模板修改" class="headerlink" title="新建文章模板修改"></a>新建文章模板修改</h3><p>首先为了新建文章方便，我们可以修改一下文章模板，可以将<code>/scaffolds/post.md</code>修改为如下代码：</p>
@@ -2959,10 +2907,10 @@ scheme: Gemini</code></pre><p>然后网站根目录下运行<br>hexo clean<br>he
         <category>hexo+github博客建立与美化</category>
       </categories>
       <tags>
-        <tag>next主题</tag>
         <tag>github</tag>
         <tag>博客建立</tag>
         <tag>hexo</tag>
+        <tag>next主题</tag>
       </tags>
   </entry>
 </search>
