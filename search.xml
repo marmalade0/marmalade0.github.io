@@ -3,8 +3,9 @@
   <entry>
     <title>零宽度字符加密</title>
     <url>/zerokuanduzifujiami.html</url>
-    <content><![CDATA[<p>​​        简而言之，就是字节宽度为0的特殊字符</p>
-<p>零宽度字符是一些不可见的，不可打印的字符。它们存在于页面中主要用于调整字符的显示格式，下面就是一些常见的零宽度字符及它们的unicode码和原本用途：</p>
+    <content><![CDATA[<p>​​        简而言之，就是字节宽度为0的特殊字符.<br>零宽度字符是一些不可见的，不可打印的字符。它们存在于页面中主要用于调整字符的显示格式。</p>
+<a id="more"></a>
+<p>下面就是一些常见的零宽度字符及它们的unicode码和原本用途：</p>
 <p>1.零宽度空格符 (zero-width space) U+200B : 用于较长单词的换行分隔<br>2.零宽度非断空格符 (zero width no-break space) U+FEFF : 用于阻止特定位置的换行分隔<br>3.零宽度连字符 (zero-width joiner) U+200D : 用于阿拉伯文与印度语系等文字中，使不会发生连字的字符间产生连字效果<br>4.零宽度断字符 (zero-width non-joiner) U+200C : 用于阿拉伯文，德文，印度语系等文字中，阻止会发生连字的字符间的连字效果<br>5.左至右符 (left-to-right mark) U+200E : 用于在混合文字方向的多种语言文本中（例：混合左至右书写的英语与右至左书写的希伯来语），规定排版文字书写方向为左至右<br>6.右至左符 (right-to-left mark) U+200F : 用于在混合文字方向的多种语言文本中，规定排版文字书写方向为右至左</p>
 <h5 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h5><p>首先，输入需要被加密的内容将被转换为其二进制形式，然后该二进制将被转换为一系列表示每个二进制数字的零宽度字符。然后可以将零宽度的字符串不可见地插入正常文本中。如果将文本粘贴在其他地方，则可以提取零宽度的字符串，然后反向进行操作以找出被加密的内容<br><a href="https://blog.csdn.net/qq_38805084/article/details/102682864" target="_blank" rel="noopener">具体解释</a></p>
 <h5 id="具体加密过程："><a href="#具体加密过程：" class="headerlink" title="具体加密过程："></a>具体加密过程：</h5><p>1.将需加密的内容转换为二进制<br>只是将每个字符转换为其等效的二进制</p>
@@ -2941,10 +2942,10 @@ scheme: Gemini</code></pre><p>然后网站根目录下运行<br>hexo clean<br>he
         <category>hexo+github博客建立与美化</category>
       </categories>
       <tags>
+        <tag>github</tag>
         <tag>博客建立</tag>
         <tag>hexo</tag>
         <tag>next主题</tag>
-        <tag>github</tag>
       </tags>
   </entry>
 </search>
