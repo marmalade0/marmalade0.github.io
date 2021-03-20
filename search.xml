@@ -2717,7 +2717,6 @@ python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vu
       <tags>
         <tag>sqlmap</tag>
         <tag>dvwa</tag>
-        <tag>web</tag>
       </tags>
   </entry>
   <entry>
@@ -3560,10 +3559,10 @@ scheme: Gemini</code></pre><p>然后网站根目录下运行<br>hexo clean<br>he
         <category>hexo+github博客建立与美化</category>
       </categories>
       <tags>
-        <tag>github</tag>
         <tag>博客建立</tag>
         <tag>hexo</tag>
         <tag>next主题</tag>
+        <tag>github</tag>
       </tags>
   </entry>
 </search>
