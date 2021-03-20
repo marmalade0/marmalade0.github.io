@@ -6,7 +6,7 @@
   <link href="https://marmalade.vip/atom.xml" rel="self"/>
   
   <link href="https://marmalade.vip/"/>
-  <updated>2021-03-13T06:42:53.067Z</updated>
+  <updated>2021-03-20T12:06:25.479Z</updated>
   <id>https://marmalade.vip/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Playfair密码及其加密解密规则介绍</title>
+    <link href="https://marmalade.vip/playfaircrypto.html"/>
+    <id>https://marmalade.vip/playfaircrypto.html</id>
+    <published>2021-03-20T11:53:06.000Z</published>
+    <updated>2021-03-20T12:06:25.479Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Playfair密码&quot;&gt;&lt;a href=&quot;#Playfair密码&quot; class=&quot;headerlink&quot; title=&quot;Playfair密码&quot;&gt;&lt;/a&gt;Playfair密码&lt;/h2&gt;&lt;p&gt; Playfair密码（Playfair cipher 或</summary>
+        
+      
+    
+    
+    
+    <category term="crypto" scheme="https://marmalade.vip/categories/crypto/"/>
+    
+    
+    <category term="crypto" scheme="https://marmalade.vip/tags/crypto/"/>
+    
+    <category term="playfair" scheme="https://marmalade.vip/tags/playfair/"/>
+    
+  </entry>
   
   <entry>
     <title>从0到1：web入门（一）信息搜集</title>
@@ -145,7 +172,7 @@
     <link href="https://marmalade.vip/sqlmapbasicuse.html"/>
     <id>https://marmalade.vip/sqlmapbasicuse.html</id>
     <published>2020-06-07T00:05:16.000Z</published>
-    <updated>2021-01-25T04:37:41.110Z</updated>
+    <updated>2021-03-18T09:12:02.133Z</updated>
     
     
     <summary type="html">&lt;h6 id=&quot;1-主要功能：&quot;&gt;&lt;a href=&quot;#1-主要功能：&quot; class=&quot;headerlink&quot; title=&quot;1.主要功能：&quot;&gt;&lt;/a&gt;1.主要功能：&lt;/h6&gt;&lt;p&gt;一个用来做sql注入攻击的工具。&lt;br&gt;扫描、发现、利用给定的url的sql注入漏洞，内置许多绕过插件。&lt;/p&gt;
@@ -426,23 +453,6 @@
     <category term="自定义域名" scheme="https://marmalade.vip/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/"/>
     
     <category term="域名解析" scheme="https://marmalade.vip/tags/%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决github下载慢加载慢的问题</title>
-    <link href="https://marmalade.vip/jiejuegithubman.html"/>
-    <id>https://marmalade.vip/jiejuegithubman.html</id>
-    <published>2020-02-17T04:24:53.000Z</published>
-    <updated>2020-04-26T16:22:16.840Z</updated>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;解决github下载慢加载慢的问题&quot;&gt;&lt;a href=&quot;#解决github下载慢加载慢的问题&quot; class=&quot;headerlink&quot; title=&quot;解决github下载慢加载慢的问题&quot;&gt;&lt;/a&gt;解决github下载慢加载慢的问题&lt;/h3&gt;&lt;p&gt;github是国外网站，因此我们在访问的时候总会感觉加载非常的慢，要等好长时间&lt;br&gt;而且要是需要下载一些大的压缩包要等很长时间，于是我从网上各种方法里亲测出几个使用有效简便的方法来大幅提升github的速度。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="github" scheme="https://marmalade.vip/tags/github/"/>
     
   </entry>
   

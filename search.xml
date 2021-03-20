@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Playfair密码及其加密解密规则介绍</title>
+    <url>/playfaircrypto.html</url>
+    <content><![CDATA[<h2 id="Playfair密码"><a href="#Playfair密码" class="headerlink" title="Playfair密码"></a>Playfair密码</h2><p> Playfair密码（Playfair cipher 或 Playfair square）一种替换密码，1854年由查尔斯·惠斯通（Charles Wheatstone）的英国人发明。</p>
+<p>编写分三步：1.编制密码表 2.整理明文 3.编写密文<br>构成部分：1.密钥 2.明文3.密文4.注明的某个字母代替的另一个字母</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><blockquote>
+<p>百度百科：它依据一个5*5的正方形组成的密码表来编写，密码表里排列有25个字母。如果一种语言字母超过25个，可以去掉使用频率最少的一个。<br>如，法语一般去掉w或k，德语则是把i和j合起来当成一个字母看待。英语中z使用最少，可以去掉它。</p>
+</blockquote>
+<blockquote>
+<p>搜狗百科：由于是5×5的矩阵，而英文字母共26个，通常有两种处理方法：<br>①若密钥和明文中均不含字母Q则填入矩阵时不包括Q                           &gt;②若密钥或明文中均含有字母Q则填入矩阵时字母I和J捆绑在一起<code>I ( J )</code>看做一个字母，占一个格子。</p>
+</blockquote>
+<h4 id="例"><a href="#例" class="headerlink" title="例:"></a><strong>例:</strong></h4><p>某种加密方式，玩一玩吧 密钥：shiyanb 密文：KQSAMFPAOPMFPA hint：一律采用横向Hint: key小写</p>
+<p>1、编制密码表        编一个5<em>5的密码表，共有5行5列字母。第一列（或第一行）是密钥,其余按照字母顺序，如果密钥过长可占用第二列或行。密钥是一个单词或词组，若有重复字母，可将后面重复的字母去掉。当然也要把使用频率最少的字母去掉（它依据一个5</em>5的正方形组成的密码表来编写，密码表里排列有25个字母。如果一种语言字母超过25个，可以去掉使用频率最少的一个。如，法语一般去掉w或k，德语则是把i和j合起来当成一个字母看待，英语中z使用最少，可以去掉它）。        例：密钥是Live and learn,去掉后则为liveandr</p>
+<p>密钥：shiyanb 可编成<br>s    h     i      y     a<br>n    b     c     d     e<br>f     g     j      k      l<br>m   o     p     q      r<br>t     u     v     w      x</p>
+<p>2、整理明文/密文，将明文/密文每两个字母组成一对。如果成对后有两个相同字母紧挨或最后一个字母是单个的，就插入一个字母X（或者Q）。<br>密文： KQSAMFPAOPMFPA<br>KQ  SA  MF  PA  OP  MF  PA</p>
+<h3 id="解密规则"><a href="#解密规则" class="headerlink" title="解密规则"></a>解密规则</h3><p>（1） 若c1 c2在同一行，对应明文p1 p2分别是紧靠c1 c2 左端的字母。其中最后一列被看做是第一列的左方。<br>  （2） 若c1 c2在同一列，对应明文p1 p2分别是紧靠c1 c2 上方的字母。其中最后一行被看做是第一行的上方。<br>  （3）若c1 c2不在同一行，不在同一列，则p1 p2是由c1 c2确定的矩形的其他两角的字母。</p>
+<pre><code> 密文：KQ   SA    MF    PA    OP    MF    PA
+ 明文：dk    ay     fn       ir     mo     fn       ir</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210318205844.png" alt="2067beeac983984f98166d15082755c8.png"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210318205845.png" alt="ca89ed76f8170a0e321fa382cf2e1942.png"></p>
+<h3 id="加密规则"><a href="#加密规则" class="headerlink" title="加密规则"></a>加密规则</h3><p>  （1）若p1 p2在同一行，对应密文c1 c2分别是紧靠p1 p2 右端的字母。其中第一列被看做是最后一列的右方。如，按照前表，fg对应gj，mr对应om<br>  （2） 若p1 p2在同一列，对应密文c1 c2分别是紧靠p1 p2 下方的字母。其中第一行被看做是最后一行的下方。<br>  （3）若p1 p2不在同一行，不在同一列，则c1 c2是由p1 p2确定的矩形的其他两角的字母（至于横向替换还是纵向替换要事先约好，或自行尝试）。如，按照前表，ir对应pa或ap。</p>
+<p>参考文章：<code>https://www.cnblogs.com/xdjun/p/7469841.html</code></p>
+]]></content>
+      <categories>
+        <category>crypto</category>
+      </categories>
+      <tags>
+        <tag>crypto</tag>
+        <tag>playfair</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>从0到1：web入门（一）信息搜集</title>
     <url>/from0to1webrumenxinxisouji.html</url>
     <content><![CDATA[<p>参考书籍：《从0到1：ctfer成长之路》<br>对相应实战案例进行复现总结</p>
