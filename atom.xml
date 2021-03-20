@@ -48,7 +48,7 @@
     <link href="https://marmalade.vip/from0to1webrumenxinxisouji.html"/>
     <id>https://marmalade.vip/from0to1webrumenxinxisouji.html</id>
     <published>2021-03-13T06:23:48.000Z</published>
-    <updated>2021-03-13T06:42:53.067Z</updated>
+    <updated>2021-03-20T12:13:25.301Z</updated>
     
     
       
@@ -63,6 +63,8 @@
     
     
     <category term="从0到1：ctfer成长之路" scheme="https://marmalade.vip/categories/%E4%BB%8E0%E5%88%B01%EF%BC%9Actfer%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/"/>
+    
+    <category term="web" scheme="https://marmalade.vip/categories/%E4%BB%8E0%E5%88%B01%EF%BC%9Actfer%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/web/"/>
     
     
     <category term="web" scheme="https://marmalade.vip/tags/web/"/>
@@ -172,7 +174,7 @@
     <link href="https://marmalade.vip/sqlmapbasicuse.html"/>
     <id>https://marmalade.vip/sqlmapbasicuse.html</id>
     <published>2020-06-07T00:05:16.000Z</published>
-    <updated>2021-03-20T12:09:37.427Z</updated>
+    <updated>2021-03-20T12:13:17.704Z</updated>
     
     
     <summary type="html">&lt;h6 id=&quot;1-主要功能：&quot;&gt;&lt;a href=&quot;#1-主要功能：&quot; class=&quot;headerlink&quot; title=&quot;1.主要功能：&quot;&gt;&lt;/a&gt;1.主要功能：&lt;/h6&gt;&lt;p&gt;一个用来做sql注入攻击的工具。&lt;br&gt;扫描、发现、利用给定的url的sql注入漏洞，内置许多绕过插件。&lt;/p&gt;
@@ -187,6 +189,8 @@
     <category term="sqlmap" scheme="https://marmalade.vip/tags/sqlmap/"/>
     
     <category term="dvwa" scheme="https://marmalade.vip/tags/dvwa/"/>
+    
+    <category term="web" scheme="https://marmalade.vip/tags/web/"/>
     
   </entry>
   
