@@ -172,7 +172,7 @@
     <link href="https://marmalade.vip/sqlmapbasicuse.html"/>
     <id>https://marmalade.vip/sqlmapbasicuse.html</id>
     <published>2020-06-07T00:05:16.000Z</published>
-    <updated>2021-03-18T09:12:02.133Z</updated>
+    <updated>2021-03-20T12:09:37.427Z</updated>
     
     
     <summary type="html">&lt;h6 id=&quot;1-主要功能：&quot;&gt;&lt;a href=&quot;#1-主要功能：&quot; class=&quot;headerlink&quot; title=&quot;1.主要功能：&quot;&gt;&lt;/a&gt;1.主要功能：&lt;/h6&gt;&lt;p&gt;一个用来做sql注入攻击的工具。&lt;br&gt;扫描、发现、利用给定的url的sql注入漏洞，内置许多绕过插件。&lt;/p&gt;
@@ -184,7 +184,9 @@
     
     
     
-    <category term="sqlmap,dvwa" scheme="https://marmalade.vip/tags/sqlmap-dvwa/"/>
+    <category term="sqlmap" scheme="https://marmalade.vip/tags/sqlmap/"/>
+    
+    <category term="dvwa" scheme="https://marmalade.vip/tags/dvwa/"/>
     
   </entry>
   
@@ -193,7 +195,7 @@
     <link href="https://marmalade.vip/aliyunbeianjinggao.html"/>
     <id>https://marmalade.vip/aliyunbeianjinggao.html</id>
     <published>2020-05-30T09:25:11.000Z</published>
-    <updated>2020-06-07T12:02:01.898Z</updated>
+    <updated>2021-03-20T12:10:59.519Z</updated>
     
     
     <summary type="html">&lt;p&gt;工信部备案后一段时间会发来&lt;br&gt; &lt;code&gt;Hexo博客：您备案的网站未指向阿里云国内节点（不含香港）服务器，备案号可能被取消接入&lt;/code&gt;&lt;br&gt; 的短信警告，&lt;br&gt;&lt;img src=&quot;/images/aliyunbeianjinggao/1.jpg&quot; alt=&quot;碰到问题不要慌&quot;&gt;&lt;br&gt;下面讲述该问题的原因及解决方法。&lt;/p&gt;</summary>

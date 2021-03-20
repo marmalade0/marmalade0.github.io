@@ -2714,7 +2714,8 @@ python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vu
 <p><img src="/images/sqlmapbasicuse/10.png" alt="984c2a56621209c4e9284cd63103991b.png"></p>
 ]]></content>
       <tags>
-        <tag>sqlmap,dvwa</tag>
+        <tag>sqlmap</tag>
+        <tag>dvwa</tag>
       </tags>
   </entry>
   <entry>
