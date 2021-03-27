@@ -6,7 +6,7 @@
   <link href="https://marmalade.vip/atom.xml" rel="self"/>
   
   <link href="https://marmalade.vip/"/>
-  <updated>2021-03-20T12:06:25.479Z</updated>
+  <updated>2021-03-27T05:08:34.222Z</updated>
   <id>https://marmalade.vip/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spyse:一个网络安全从业者的专业搜索引擎</title>
+    <link href="https://marmalade.vip/Spysesearch.html"/>
+    <id>https://marmalade.vip/Spysesearch.html</id>
+    <published>2021-03-27T04:54:26.000Z</published>
+    <updated>2021-03-27T05:08:34.222Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Spyse-一个网络安全从业者的专业搜索引擎&quot;&gt;&lt;a href=&quot;#Spyse-一个网络安全从业者的专业搜索引擎&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="网络安全类网站" scheme="https://marmalade.vip/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%B1%BB%E7%BD%91%E7%AB%99/"/>
+    
+    
+    <category term="Spyse" scheme="https://marmalade.vip/tags/Spyse/"/>
+    
+  </entry>
   
   <entry>
     <title>Playfair密码及其加密解密规则介绍</title>
@@ -48,7 +73,7 @@
     <link href="https://marmalade.vip/from0to1webrumenxinxisouji.html"/>
     <id>https://marmalade.vip/from0to1webrumenxinxisouji.html</id>
     <published>2021-03-13T06:23:48.000Z</published>
-    <updated>2021-03-20T12:13:25.301Z</updated>
+    <updated>2021-03-27T05:07:43.810Z</updated>
     
     
       
@@ -436,27 +461,6 @@
     <category term="博客文章" scheme="https://marmalade.vip/tags/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/"/>
     
     <category term="markdown" scheme="https://marmalade.vip/tags/markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用阿里云建造一个属于自己的域名</title>
-    <link href="https://marmalade.vip/zidingyiyuming.html"/>
-    <id>https://marmalade.vip/zidingyiyuming.html</id>
-    <published>2020-02-19T08:36:44.000Z</published>
-    <updated>2020-04-26T16:22:23.912Z</updated>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;自定义域名&quot;&gt;&lt;a href=&quot;#自定义域名&quot; class=&quot;headerlink&quot; title=&quot;自定义域名&quot;&gt;&lt;/a&gt;自定义域名&lt;/h3&gt;&lt;p&gt;依托github搭建起来的博客域名格式一般是固定的（尾端.github.io），无法做到自己自定义那种常见的baidu.com那种简洁好记的域名&lt;br&gt;网上自定义域名方法有些描述的模糊不清，让我进了不少坑，于是便记录下自己详细的自定义域名的过程&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="hexo+github博客建立与美化" scheme="https://marmalade.vip/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/"/>
-    
-    
-    <category term="自定义域名" scheme="https://marmalade.vip/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/"/>
-    
-    <category term="域名解析" scheme="https://marmalade.vip/tags/%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/"/>
     
   </entry>
   
