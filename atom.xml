@@ -6,7 +6,7 @@
   <link href="https://marmalade.vip/atom.xml" rel="self"/>
   
   <link href="https://marmalade.vip/"/>
-  <updated>2021-03-28T12:03:14.177Z</updated>
+  <updated>2021-04-05T11:57:09.169Z</updated>
   <id>https://marmalade.vip/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>XSS漏洞介绍及靶场实战</title>
+    <link href="https://marmalade.vip/xsshaozishootingrange.html"/>
+    <id>https://marmalade.vip/xsshaozishootingrange.html</id>
+    <published>2021-04-05T11:34:29.000Z</published>
+    <updated>2021-04-05T11:57:09.169Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;什么是XSS攻击&quot;&gt;&lt;a href=&quot;#什么是XSS攻击&quot; class=&quot;headerlink&quot; title=&quot;什么是XSS攻击&quot;&gt;&lt;/a&gt;&lt;strong&gt;什么是XSS攻击&lt;/strong&gt;&lt;/h4&gt;&lt;p&gt;Cross-Site</summary>
+        
+      
+    
+    
+    
+    <category term="web" scheme="https://marmalade.vip/categories/web/"/>
+    
+    
+    <category term="xss" scheme="https://marmalade.vip/tags/xss/"/>
+    
+  </entry>
   
   <entry>
     <title>Spyse:一个网络安全从业者的专业搜索引擎</title>
@@ -438,29 +463,6 @@
     <category term="next主题美化" scheme="https://marmalade.vip/tags/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
     
     <category term="网站添加功能" scheme="https://marmalade.vip/tags/%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>next主题安装配置与文章上传</title>
-    <link href="https://marmalade.vip/nextthemesetup.html"/>
-    <id>https://marmalade.vip/nextthemesetup.html</id>
-    <published>2020-03-31T08:20:06.000Z</published>
-    <updated>2020-04-26T16:22:32.250Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;安装NexT主题&quot;&gt;&lt;a href=&quot;#安装NexT主题&quot; class=&quot;headerlink&quot; title=&quot;安装NexT主题&quot;&gt;&lt;/a&gt;安装NexT主题&lt;/h2&gt;&lt;p&gt;介绍一个公认最常用的next最新版主题以及安装使用方法。&lt;br&gt;&lt;a href=&quot;http://theme-next.iissnan.com/getting-started.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;参考next官网教程&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="hexo+github博客建立与美化" scheme="https://marmalade.vip/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/"/>
-    
-    
-    <category term="next主题" scheme="https://marmalade.vip/tags/next%E4%B8%BB%E9%A2%98/"/>
-    
-    <category term="博客文章" scheme="https://marmalade.vip/tags/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/"/>
-    
-    <category term="markdown" scheme="https://marmalade.vip/tags/markdown/"/>
     
   </entry>
   
