@@ -6,7 +6,7 @@
   <link href="https://marmalade.vip/atom.xml" rel="self"/>
   
   <link href="https://marmalade.vip/"/>
-  <updated>2021-04-05T11:57:09.169Z</updated>
+  <updated>2021-04-09T10:22:43.064Z</updated>
   <id>https://marmalade.vip/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PHP伪协议总结</title>
+    <link href="https://marmalade.vip/phpweixieyizongjie.html"/>
+    <id>https://marmalade.vip/phpweixieyizongjie.html</id>
+    <published>2021-04-09T10:13:31.000Z</published>
+    <updated>2021-04-09T10:22:43.064Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;PHP伪协议总结&quot;&gt;&lt;a href=&quot;#PHP伪协议总结&quot; class=&quot;headerlink&quot; title=&quot;PHP伪协议总结&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000018991087&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="web" scheme="https://marmalade.vip/categories/web/"/>
+    
+    
+    <category term="php伪协议" scheme="https://marmalade.vip/tags/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>XSS漏洞介绍及靶场实战</title>
@@ -426,32 +451,6 @@
     <summary type="html">&lt;p&gt;先分享一点小经验&lt;/p&gt;
 &lt;h5 id=&quot;修改了模板，但是没有生效？&quot;&gt;&lt;a href=&quot;#修改了模板，但是没有生效？&quot; class=&quot;headerlink&quot; title=&quot;修改了模板，但是没有生效？&quot;&gt;&lt;/a&gt;修改了模板，但是没有生效？&lt;/h5&gt;&lt;p&gt;修改了模板以后不生效，建议先&lt;strong&gt;hexo clean&lt;/strong&gt;，然后再hexo generate。只执行hexo generate，可能模板后者静态文件不会被替换。&lt;br&gt;知道晚了，以为设置错误，两天后hexo clean，然后奇迹出现了！！！&lt;/p&gt;
 &lt;h6 id=&quot;本地和网站不同步？hexo-clean&quot;&gt;&lt;a href=&quot;#本地和网站不同步？hexo-clean&quot; class=&quot;headerlink&quot; title=&quot;本地和网站不同步？hexo clean!&quot;&gt;&lt;/a&gt;本地和网站不同步？hexo clean!&lt;/h6&gt;&lt;p&gt;下面是接上一篇的更多网站美化功能&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="hexo+github博客建立与美化" scheme="https://marmalade.vip/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/"/>
-    
-    
-    <category term="next主题" scheme="https://marmalade.vip/tags/next%E4%B8%BB%E9%A2%98/"/>
-    
-    <category term="next主题美化" scheme="https://marmalade.vip/tags/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
-    
-    <category term="网站添加功能" scheme="https://marmalade.vip/tags/%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（一）</title>
-    <link href="https://marmalade.vip/nextthemebeautify1.html"/>
-    <id>https://marmalade.vip/nextthemebeautify1.html</id>
-    <published>2020-04-13T16:00:32.000Z</published>
-    <updated>2020-06-07T12:02:24.779Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;安装好一个基本的next主题框架显然是有点简陋，许多普通网站的功能基本没有&lt;br&gt;于是我亲试了一些常见美化博客的方法，让你的博客变得更“炫”！&lt;br&gt;&lt;strong&gt;以下效果均在我的博客&lt;code&gt;marmalade.vip&lt;/code&gt;中能够呈现出来&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;在开始“大展身手”前，要注意一点：&lt;br&gt;每添加了一项新代码或功能后不要着急部署到github里，&lt;br&gt;健康的方式是用&lt;br&gt;hexo s -p 5555&lt;br&gt;指令开启5555端口，然后浏览器输入127.0.0.1:5555或localhost:5555便可浏览网站，保存之后再刷新本地浏览的页面会相应修改，&lt;br&gt;等调试无误后才可用&lt;br&gt;hexo clean&lt;br&gt;hexo g -d&lt;br&gt;指令部署，这样能够防止出错时及时检查并修改，而不至于网站崩溃。&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
     
     
     
