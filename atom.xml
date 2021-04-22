@@ -6,7 +6,7 @@
   <link href="https://marmalade.vip/atom.xml" rel="self"/>
   
   <link href="https://marmalade.vip/"/>
-  <updated>2021-04-22T11:37:17.428Z</updated>
+  <updated>2021-04-22T12:09:26.142Z</updated>
   <id>https://marmalade.vip/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://marmalade.vip/phpexecbypass.html"/>
     <id>https://marmalade.vip/phpexecbypass.html</id>
     <published>2021-04-22T11:29:00.000Z</published>
-    <updated>2021-04-22T11:37:17.428Z</updated>
+    <updated>2021-04-22T12:09:26.142Z</updated>
     
     
       
@@ -34,6 +34,10 @@
     
     
     
+    <category term="web" scheme="https://marmalade.vip/categories/web/"/>
+    
+    
+    <category term="php代码执行" scheme="https://marmalade.vip/tags/php%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/"/>
     
   </entry>
   
