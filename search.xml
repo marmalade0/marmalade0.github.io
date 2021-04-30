@@ -4097,7 +4097,7 @@ python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vu
 <a id="more"></a>
 
 <p>首先，在桌面新建一个文本文档。</p>
-<pre class="line-numbers language-txt"><code class="language-txt">'Windows Registry Editor Version 5.00
+<pre class="line-numbers language-txt"><code class="language-txt">Windows Registry Editor Version 5.00
 
 
 

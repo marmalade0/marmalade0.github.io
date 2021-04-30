@@ -362,7 +362,7 @@
     <link href="https://marmalade.vip/cmdcaidan.html"/>
     <id>https://marmalade.vip/cmdcaidan.html</id>
     <published>2020-05-30T09:14:19.000Z</published>
-    <updated>2021-03-07T09:57:04.216Z</updated>
+    <updated>2021-04-27T12:22:39.281Z</updated>
     
     
     <summary type="html">&lt;p&gt;最近使用cmd比较多，就想在某个文件夹下右键打开cmd，这样不用每次都在默认情况下切换目录。无奈win10 1703版本下shift+右键不能打开cmd，只能打开powershell。&lt;br&gt;好，那就自己整一个吧。&lt;/p&gt;</summary>
