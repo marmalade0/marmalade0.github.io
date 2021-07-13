@@ -29,13 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
@@ -591,7 +589,7 @@
 <p>下图为跨站脚本攻击流程图（Cookies）</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210405195622.png" alt="图片"></p>
 <p>从图中可以看出：用户访问存在XSS漏洞的站点后触发脚本，漏洞站点给用户返回带有恶意js的页面;用户设备执行该恶意脚本后，攻击者即可窃取用户的数据（cookies），并伪装成用户对漏洞站点进行攻击。</p>
-<h4 id="XSS靶场通关实践（xss-haozi靶场练习）"><a href="#XSS靶场通关实践（xss-haozi靶场练习）" class="headerlink" title="XSS靶场通关实践（xss.haozi靶场练习）"></a><strong>XSS靶场通关实践</strong>（xss.haozi靶场练习）</h4><p>了解完XSS的概念，XSS攻击的主要途径、测试流程及攻击流程后，接下来，就是本文的关键内容了，那就是XSS漏洞的发现以及常见的几种绕过方式，笔者无意间找到了一个可用来练习XSS漏洞绕过的靶场（靶场地址：<a href="https://xss.haozi.me/）且看我操作一番……" target="_blank" rel="noopener">https://xss.haozi.me/）且看我操作一番……</a></p>
+<h4 id="XSS靶场通关实践（xss-haozi靶场练习）"><a href="#XSS靶场通关实践（xss-haozi靶场练习）" class="headerlink" title="XSS靶场通关实践（xss.haozi靶场练习）"></a><strong>XSS靶场通关实践</strong>（xss.haozi靶场练习）</h4><p>了解完XSS的概念，XSS攻击的主要途径、测试流程及攻击流程后，接下来，就是本文的关键内容了，那就是XSS漏洞的发现以及常见的几种绕过方式，笔者无意间找到了一个可用来练习XSS漏洞绕过的靶场（靶场地址：<a target="_blank" rel="noopener" href="https://xss.haozi.me/）且看我操作一番……">https://xss.haozi.me/）且看我操作一番……</a></p>
 <p>首先，我们看看靶场布局：左上方为XSS注入点，也就是用户输入的位置，左下方是成功注入后的HTML代码，右边为了方便进行学习绕过，所以就是每一关的主要网页源码了。</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210405195623.png" alt="图片"></p>
 <p>熟悉了靶场的环境，接下来就是每一关的绕过了，共计19关，具体如下：</p>
@@ -633,7 +631,7 @@
 <p>源码要求以<code>http://www.segmentfault.com</code>开头但是并没有限制结尾，所以闭合掉<code>&lt;script&gt;</code>标签</p>
 <pre><code>http://www.segmentfault.com"&gt;&lt;/script&gt;&lt;img src=# onerror="alert(1)</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210405195634.png" alt="图片"></p>
 <p>从源码可知过滤了<code>&amp;</code>不能实体编码绕过，过滤了<code>&lt;</code>,<code>&gt;</code>，不能闭合标签</p>
-<p>这又用到一个知识点，就是@，如果你访问 <a href="http://www.baidu.com@www.google.com，那么你最后进入的是谷歌的界面，所以这一关，就在自己的服务器上放一个js文件，写上“alert（1）”。但不知道我的不行。就先给出别人的payload吧。xss.haozi.me/j.js" target="_blank" rel="noopener">www.baidu.com@www.google.com，那么你最后进入的是谷歌的界面，所以这一关，就在自己的服务器上放一个js文件，写上“alert（1）”。但不知道我的不行。就先给出别人的payload吧。xss.haozi.me/j.js</a> 这是题目作者自己写的js文件。</p>
+<p>这又用到一个知识点，就是@，如果你访问 <a target="_blank" rel="noopener" href="http://www.baidu.com@www.google.com，那么你最后进入的是谷歌的界面，所以这一关，就在自己的服务器上放一个js文件，写上“alert（1）”。但不知道我的不行。就先给出别人的payload吧。xss.haozi.me/j.js">www.baidu.com@www.google.com，那么你最后进入的是谷歌的界面，所以这一关，就在自己的服务器上放一个js文件，写上“alert（1）”。但不知道我的不行。就先给出别人的payload吧。xss.haozi.me/j.js</a> 这是题目作者自己写的js文件。</p>
 <p>这里利用url的@特性，引入外部js,假设我们访问<code>http://example.com@10.10.10.10</code>，实际上是<code>http://10.10.10.10</code>,这里的``会被过滤，过滤后的HTML实体编码在HTML标签属性值中无影响，可以直接解析，所以payload：</p>
 <pre><code>https://www.segmentfault.com@xss.haozi.me/j.js</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210405195635.png" alt="图片"></p>
 <h6 id="toUpperCase"><a href="#toUpperCase" class="headerlink" title="toUpperCase()"></a>toUpperCase()</h6><p>函数将字符转换成大写，这里两种方法</p>
@@ -1356,8 +1354,8 @@ alert(1)</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
         });
 
         // modify the toc link href to support Chinese.
@@ -1369,7 +1367,7 @@ alert(1)</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -1435,6 +1433,56 @@ alert(1)</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <footer class="page-footer bg-color">
     
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2182100384"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
     <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1448,7 +1496,7 @@ alert(1)</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">70k</span>&nbsp;字
+                class="white-color">70.1k</span>&nbsp;字
             
             
             

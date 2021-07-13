@@ -29,13 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
@@ -572,8 +570,8 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h3 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h3><p>依托github搭建起来的博客域名格式一般是固定的（尾端.github.io），无法做到自己自定义那种常见的baidu.com那种简洁好记的域名<br>网上自定义域名方法有些描述的模糊不清，让我进了不少坑，于是便记录下自己详细的自定义域名的过程</p>
-<a id="more"></a>
-<p>先在根目录/source文件夹下新建一个CNAME文件，存域名<br>（尽量不加www，这样以后访问加不加www.都可以访问）<br>cmd博客目录下执行hexo g -d<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image1.png" alt="32e66fc5fd4da0624c29aef589c095a5.png"><br><a href="https://www.zhihu.com/question/31377141" target="_blank" rel="noopener">借鉴知乎问题</a><br>阿里云实名注册域名后ping一下marmalad0.github.io<br>得到一个IP地址<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image2.png" alt="84d76b43931c1c3fa11cd48212aa163d.png"><br>点击阿里云域名解析，添加两条记录<br>格式如下：<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image3.png" alt="dcc3ad3502c4fbdbe08f89e8e11272b0.png"><br>然后在自己的github上打开建的仓库（用户名.github.io）<br>点击settings找到<br>Custom domain写上自己自定义的域名（一般自动就有），再在https上打一个勾<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image4.png" alt="a11d7497d345e1f008deca099dcaa1de.png"><br>成功</p>
+<span id="more"></span>
+<p>先在根目录/source文件夹下新建一个CNAME文件，存域名<br>（尽量不加www，这样以后访问加不加www.都可以访问）<br>cmd博客目录下执行hexo g -d<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image1.png" alt="32e66fc5fd4da0624c29aef589c095a5.png"><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/31377141">借鉴知乎问题</a><br>阿里云实名注册域名后ping一下marmalad0.github.io<br>得到一个IP地址<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image2.png" alt="84d76b43931c1c3fa11cd48212aa163d.png"><br>点击阿里云域名解析，添加两条记录<br>格式如下：<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image3.png" alt="dcc3ad3502c4fbdbe08f89e8e11272b0.png"><br>然后在自己的github上打开建的仓库（用户名.github.io）<br>点击settings找到<br>Custom domain写上自己自定义的域名（一般自动就有），再在https上打一个勾<br><img src="/images/2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/Image4.png" alt="a11d7497d345e1f008deca099dcaa1de.png"><br>成功</p>
 
                 
             </div>
@@ -1265,8 +1263,8 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
         });
 
         // modify the toc link href to support Chinese.
@@ -1278,7 +1276,7 @@
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -1344,6 +1342,56 @@
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <footer class="page-footer bg-color">
     
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2182100384"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
     <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1357,7 +1405,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">70k</span>&nbsp;字
+                class="white-color">70.1k</span>&nbsp;字
             
             
             

@@ -29,13 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
@@ -568,10 +566,10 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>​​        简而言之，就是字节宽度为0的特殊字符.<br>零宽度字符是一些不可见的，不可打印的字符。它们存在于页面中主要用于调整字符的显示格式。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>下面就是一些常见的零宽度字符及它们的unicode码和原本用途：</p>
 <p>1.零宽度空格符 (zero-width space) U+200B : 用于较长单词的换行分隔<br>2.零宽度非断空格符 (zero width no-break space) U+FEFF : 用于阻止特定位置的换行分隔<br>3.零宽度连字符 (zero-width joiner) U+200D : 用于阿拉伯文与印度语系等文字中，使不会发生连字的字符间产生连字效果<br>4.零宽度断字符 (zero-width non-joiner) U+200C : 用于阿拉伯文，德文，印度语系等文字中，阻止会发生连字的字符间的连字效果<br>5.左至右符 (left-to-right mark) U+200E : 用于在混合文字方向的多种语言文本中（例：混合左至右书写的英语与右至左书写的希伯来语），规定排版文字书写方向为左至右<br>6.右至左符 (right-to-left mark) U+200F : 用于在混合文字方向的多种语言文本中，规定排版文字书写方向为右至左</p>
-<h5 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h5><p>首先，输入需要被加密的内容将被转换为其二进制形式，然后该二进制将被转换为一系列表示每个二进制数字的零宽度字符。然后可以将零宽度的字符串不可见地插入正常文本中。如果将文本粘贴在其他地方，则可以提取零宽度的字符串，然后反向进行操作以找出被加密的内容<br><a href="https://blog.csdn.net/qq_38805084/article/details/102682864" target="_blank" rel="noopener">具体解释</a></p>
+<h5 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h5><p>首先，输入需要被加密的内容将被转换为其二进制形式，然后该二进制将被转换为一系列表示每个二进制数字的零宽度字符。然后可以将零宽度的字符串不可见地插入正常文本中。如果将文本粘贴在其他地方，则可以提取零宽度的字符串，然后反向进行操作以找出被加密的内容<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38805084/article/details/102682864">具体解释</a></p>
 <h5 id="具体加密过程："><a href="#具体加密过程：" class="headerlink" title="具体加密过程："></a>具体加密过程：</h5><p>1.将需加密的内容转换为二进制<br>只是将每个字符转换为其等效的二进制</p>
 <pre><code>const zeroPad = num =&gt; ‘00000000’.slice(String(num).length) + num;
 const textToBinary = username =&gt; (
@@ -590,7 +588,7 @@ const textToBinary = username =&gt; (
   }).join('') // zero-width no-break space
 );
 </code></pre><p>3.插入正常文本中<br>需要注意的是加密与解密所使用的字典必须一致，也就是说，在哪儿进行加密的，就要在哪儿解密。<br>解密过程就是加密过程的反逻辑<br><img src="https://gitee.com/marmalade0/images/raw/master/img/20210306213038.png" alt="75afb321ef37e106885294380f81a016.png"><br>零宽度字节在网页中不会被显示</p>
-<h5 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h5><p>[UTCTF2020]zero<br>题目zero暗示了零宽度字符加密<br>网上寻找在线解密网站<a href="http://330k.github.io/misc_tools/unicode_steganography.html" target="_blank" rel="noopener">零宽度字符加密解密网站</a></p>
+<h5 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h5><p>[UTCTF2020]zero<br>题目zero暗示了零宽度字符加密<br>网上寻找在线解密网站<a target="_blank" rel="noopener" href="http://330k.github.io/misc_tools/unicode_steganography.html">零宽度字符加密解密网站</a></p>
 
                 
             </div>
@@ -1272,8 +1270,8 @@ const textToBinary = username =&gt; (
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
         });
 
         // modify the toc link href to support Chinese.
@@ -1285,7 +1283,7 @@ const textToBinary = username =&gt; (
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -1351,6 +1349,56 @@ const textToBinary = username =&gt; (
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <footer class="page-footer bg-color">
     
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2182100384"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
     <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1364,7 +1412,7 @@ const textToBinary = username =&gt; (
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">70k</span>&nbsp;字
+                class="white-color">70.1k</span>&nbsp;字
             
             
             

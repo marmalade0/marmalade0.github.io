@@ -29,13 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
@@ -585,7 +583,7 @@
 <h4 id="1-1-2-1-敏感目录泄露"><a href="#1-1-2-1-敏感目录泄露" class="headerlink" title="1.1.2.1 敏感目录泄露"></a>1.1.2.1 敏感目录泄露</h4><p>通过敏感目录泄露，我们往往能获取网站的源代码和敏感的URL地址，如网站的后台地址等。</p>
 <h5 id="1．git泄露"><a href="#1．git泄露" class="headerlink" title="1．git泄露"></a>1．git泄露</h5><p>【漏洞简介】</p>
 <p>git是一个主流的分布式版本控制系统，开发人员在开发过程中经常会遗忘.git文件夹，导致攻击者可以通过.git文件夹中的信息获取开发人员提交过的所有源码，进而可能导致服务器被攻击而沦陷。</p>
-<h6 id="（1）常规git泄露"><a href="#（1）常规git泄露" class="headerlink" title="（1）常规git泄露"></a>（1）常规git泄露</h6><p>常规git泄露：即没有任何其他操作，参赛者通过运用现成的工具或自己编写的脚本即可获取网站源码或者flag。这里推荐一个工具：<a href="https://github.com/denny0223/scrabble，使用方法也很简单：" target="_blank" rel="noopener">https://github.com/denny0223/scrabble，使用方法也很简单：</a></p>
+<h6 id="（1）常规git泄露"><a href="#（1）常规git泄露" class="headerlink" title="（1）常规git泄露"></a>（1）常规git泄露</h6><p>常规git泄露：即没有任何其他操作，参赛者通过运用现成的工具或自己编写的脚本即可获取网站源码或者flag。这里推荐一个工具：<a target="_blank" rel="noopener" href="https://github.com/denny0223/scrabble，使用方法也很简单：">https://github.com/denny0223/scrabble，使用方法也很简单：</a></p>
 <pre><code>./scrabble http://example.com/</code></pre><p>本地自行搭建Web环境</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210313142154.png" alt="image-20210201215236121"></p>
 <p>初始化git（在内部会生成隐藏的.git文件夹）</p>
@@ -607,16 +605,16 @@
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210313142159.png" alt="image-20210209151955012"></p>
 <p>除了使用“git reset”，更简单的方式是通过“git log-stat”命令查看每个commit修改了哪些文件，再用“git diff HEAD commit-id”比较在当前版本与想查看的commit之间的变化。</p>
 <h6 id="（3）git分支"><a href="#（3）git分支" class="headerlink" title="（3）git分支"></a>（3）git分支</h6><p>在每次提交时，git都会自动把它们串成一条时间线，这条时间线就是一个分支。而git允许使用多个分支，从而让用户可以把工作从开发主线上分离出来，以免影响开发主线。如果没有新建分支，那么只有一条时间线，即只有一个分支，git中默认为master分支。因此，我们要找的flag或敏感文件可能不会藏在当前分支中，这时使用“git log”命令只能找到在当前分支上的修改，并不能看到我们想要的信息，因此需要切换分支来找到想要的文件。</p>
-<p>现在大多数现成的git泄露工具都不支持分支，如果需要还原其他分支的代码，往往需要手工进行文件的提取，这里以功能较强的GitHacker（<a href="https://github.com/WangYihang/GitHacker）工具为例。GitHacker的使用十分简单，只需执行命令“python" target="_blank" rel="noopener">https://github.com/WangYihang/GitHacker）工具为例。GitHacker的使用十分简单，只需执行命令“python</a> GitHacker.py <a href="http://127.0.0.1:8000/.git/”。运行后，我们会在本地看到生成的文件夹，进入后执行“git" target="_blank" rel="noopener">http://127.0.0.1:8000/.git/”。运行后，我们会在本地看到生成的文件夹，进入后执行“git</a> log–all”或“git branch-v”命令，只能看到master分支的信息。如果执行“git reflog”命令，就可以看到一些checkout的记录，见图1-1-5。</p>
+<p>现在大多数现成的git泄露工具都不支持分支，如果需要还原其他分支的代码，往往需要手工进行文件的提取，这里以功能较强的GitHacker（<a target="_blank" rel="noopener" href="https://github.com/WangYihang/GitHacker）工具为例。GitHacker的使用十分简单，只需执行命令“python">https://github.com/WangYihang/GitHacker）工具为例。GitHacker的使用十分简单，只需执行命令“python</a> GitHacker.py <a target="_blank" rel="noopener" href="http://127.0.0.1:8000/.git/”。运行后，我们会在本地看到生成的文件夹，进入后执行“git">http://127.0.0.1:8000/.git/”。运行后，我们会在本地看到生成的文件夹，进入后执行“git</a> log–all”或“git branch-v”命令，只能看到master分支的信息。如果执行“git reflog”命令，就可以看到一些checkout的记录，见图1-1-5。</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210313142200.png" alt="image-20210209152715027"></p>
-<p>可以看到，除了master还有一个secret分支，但自动化工具只还原了master分支的信息，因此需要手动下载secret分支的head信息，保存到.git/refs/heads/secret中（执行命令“wget <a href="http://127.0.0.1:8000/.git/refs/heads/secret”）。恢复head信息后，我们可以复用GitHacker的部分代码，以实现自动恢复分支的效果。在GitHacker的代码中可以看到，他是先下载object文件，再使用git" target="_blank" rel="noopener">http://127.0.0.1:8000/.git/refs/heads/secret”）。恢复head信息后，我们可以复用GitHacker的部分代码，以实现自动恢复分支的效果。在GitHacker的代码中可以看到，他是先下载object文件，再使用git</a> fsck检测，并继续下载缺失的文件。此处可以直接复用检测缺失文件并恢复的fixmissing函数。我们注释掉程序最后调用main的部分，修改为如下代码：</p>
+<p>可以看到，除了master还有一个secret分支，但自动化工具只还原了master分支的信息，因此需要手动下载secret分支的head信息，保存到.git/refs/heads/secret中（执行命令“wget <a target="_blank" rel="noopener" href="http://127.0.0.1:8000/.git/refs/heads/secret”）。恢复head信息后，我们可以复用GitHacker的部分代码，以实现自动恢复分支的效果。在GitHacker的代码中可以看到，他是先下载object文件，再使用git">http://127.0.0.1:8000/.git/refs/heads/secret”）。恢复head信息后，我们可以复用GitHacker的部分代码，以实现自动恢复分支的效果。在GitHacker的代码中可以看到，他是先下载object文件，再使用git</a> fsck检测，并继续下载缺失的文件。此处可以直接复用检测缺失文件并恢复的fixmissing函数。我们注释掉程序最后调用main的部分，修改为如下代码：</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210313142201.png" alt="image-20210209152744662"></p>
 <p>修改后重新执行“python GitHacker.py”命令，运行该脚本，再次进入生成的文件夹，执行“git log–all”或“git branch-v”命令，则secret分支的信息就可以恢复了，从git log中找到对应提交的hash，执行“git diff HEAD b94c”（b94c为hash的前4位）命令，即可得到flag，见图1-1-6。</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210313142202.png" alt="image-20210209152819543"></p>
 <h6 id="（4）git泄露的其他利用"><a href="#（4）git泄露的其他利用" class="headerlink" title="（4）git泄露的其他利用"></a>（4）git泄露的其他利用</h6><p>除了查看源码的常见利用方式，泄露的git中也可能有其他有用的信息，如.git/config文件夹中可能含有access_token信息，从而可以访问这个用户的其他仓库。</p>
-<h5 id="2．SVN泄露"><a href="#2．SVN泄露" class="headerlink" title="2．SVN泄露"></a>2．SVN泄露</h5><p>SVN（subversion）是源代码版本管理软件，造成SVN源代码漏洞的主要原因是管理员操作不规范将SVN隐藏文件夹暴露于外网环境，可以利用.svn/entries或wc.db文件获取服务器源码等信息。这里推荐两个工具：<a href="https://github.com/kost/dvcs-ripper，Seay-svn（Windows下的源代码备份漏洞利用工具）。" target="_blank" rel="noopener">https://github.com/kost/dvcs-ripper，Seay-svn（Windows下的源代码备份漏洞利用工具）。</a></p>
-<h5 id="3．HG泄露"><a href="#3．HG泄露" class="headerlink" title="3．HG泄露"></a>3．HG泄露</h5><p>在初始化项目时，HG会在当前文件夹下创建一个.hg隐藏文件夹，其中包含代码和分支修改记录等信息。这里推荐工具：<a href="https://github.com/kost/dvcs-ripper。" target="_blank" rel="noopener">https://github.com/kost/dvcs-ripper。</a></p>
-<h5 id="4．总结经验"><a href="#4．总结经验" class="headerlink" title="4．总结经验"></a>4．总结经验</h5><p>不论是.git这些隐藏文件，还是实战中的admin之类的敏感后台文件夹，其关键在于字典的强大，读者可以在某些工具的基础上进行二次开发，以满足自己需要。这里推荐一个开源的目录扫描工具：<a href="https://github.com/maurosoria/dirsearch。CTF线上比赛往往会有重定向一类问题。例如，只要访问.git，便会返回403，此时**试探着访问.git/config**，如果有文件内容返回，就说明存在git泄露，反之，一般不存在。" target="_blank" rel="noopener">https://github.com/maurosoria/dirsearch。CTF线上比赛往往会有重定向一类问题。例如，只要访问.git，便会返回403，此时**试探着访问.git/config**，如果有文件内容返回，就说明存在git泄露，反之，一般不存在。</a></p>
+<h5 id="2．SVN泄露"><a href="#2．SVN泄露" class="headerlink" title="2．SVN泄露"></a>2．SVN泄露</h5><p>SVN（subversion）是源代码版本管理软件，造成SVN源代码漏洞的主要原因是管理员操作不规范将SVN隐藏文件夹暴露于外网环境，可以利用.svn/entries或wc.db文件获取服务器源码等信息。这里推荐两个工具：<a target="_blank" rel="noopener" href="https://github.com/kost/dvcs-ripper，Seay-svn（Windows下的源代码备份漏洞利用工具）。">https://github.com/kost/dvcs-ripper，Seay-svn（Windows下的源代码备份漏洞利用工具）。</a></p>
+<h5 id="3．HG泄露"><a href="#3．HG泄露" class="headerlink" title="3．HG泄露"></a>3．HG泄露</h5><p>在初始化项目时，HG会在当前文件夹下创建一个.hg隐藏文件夹，其中包含代码和分支修改记录等信息。这里推荐工具：<a target="_blank" rel="noopener" href="https://github.com/kost/dvcs-ripper。">https://github.com/kost/dvcs-ripper。</a></p>
+<h5 id="4．总结经验"><a href="#4．总结经验" class="headerlink" title="4．总结经验"></a>4．总结经验</h5><p>不论是.git这些隐藏文件，还是实战中的admin之类的敏感后台文件夹，其关键在于字典的强大，读者可以在某些工具的基础上进行二次开发，以满足自己需要。这里推荐一个开源的目录扫描工具：<a target="_blank" rel="noopener" href="https://github.com/maurosoria/dirsearch。CTF线上比赛往往会有重定向一类问题。例如，只要访问.git，便会返回403，此时**试探着访问.git/config**，如果有文件内容返回，就说明存在git泄露，反之，一般不存在。">https://github.com/maurosoria/dirsearch。CTF线上比赛往往会有重定向一类问题。例如，只要访问.git，便会返回403，此时**试探着访问.git/config**，如果有文件内容返回，就说明存在git泄露，反之，一般不存在。</a></p>
 <p>而在SVN泄露中，一般是在entries中爬取源代码，但有时会出现entries为空的情况，这时注意wc.db文件存在与否，便可通过其中的checksum在pristine文件夹中获取源代码。</p>
 <h4 id="1-1-2-2-敏感备份文件"><a href="#1-1-2-2-敏感备份文件" class="headerlink" title="1.1.2.2 敏感备份文件"></a>1.1.2.2 敏感备份文件</h4><p>通过一些敏感的备份文件，我们往往能获得某一文件的源码，亦或网站的整体目录等。</p>
 <h5 id="1．gedit备份文件"><a href="#1．gedit备份文件" class="headerlink" title="1．gedit备份文件"></a>1．gedit备份文件</h5><p>在Linux下，用gedit编辑器保存后，当前目录下会生成一个后缀为“～”的文件，其文件内容就是刚编辑的内容。假设刚才保存的文件名为flag，则该文件名为flag～，见图1-1-7。通过浏览器访问这个带有“～”的文件，便可以得到源代码。</p>
@@ -632,7 +630,7 @@
 <h5 id="3．常规文件"><a href="#3．常规文件" class="headerlink" title="3．常规文件"></a>3．常规文件</h5><p>常规文件所依靠的无非就是字典的饱和性，不论是CTF比赛中还是现实世界中，我们都会碰到一些经典的有辨识的文件，从而让我们更好地了解网站。这里只是简单举一些例子，具体还需要读者用心搜集记录。</p>
 <p>❖ robots.txt：记录一些目录和CMS版本信息。</p>
 <p>❖ readme.md：记录CMS版本信息，有的甚至有Github地址。</p>
-<p>❖ <a href="http://www.zip/rar/tar.gz：往往是网站的源码备份。" target="_blank" rel="noopener">www.zip/rar/tar.gz：往往是网站的源码备份。</a></p>
+<p>❖ <a target="_blank" rel="noopener" href="http://www.zip/rar/tar.gz：往往是网站的源码备份。">www.zip/rar/tar.gz：往往是网站的源码备份。</a></p>
 <h5 id="4．总结经验-1"><a href="#4．总结经验-1" class="headerlink" title="4．总结经验"></a>4．总结经验</h5><p>在CTF线上比赛的过程中，出题人往往会在线运维题目，有时会因为各种情况导致SWP备份文件的生成，所以读者在比赛过程中可以编写实时监控脚本，对题目服务进行监控。vim在第一次意外退出时生成的备份文件为<em>.swp，第二次意外退出时的为</em>.swo，第三次退出时的为<em>.swn，以此类推。vim的官方手册中还有</em>.un.文件名.swp类型的备份文件。另外，在实际环境中，网站的备份往往可能是网站域名的压缩包。</p>
 <h4 id="1-1-2-3-Banner识别"><a href="#1-1-2-3-Banner识别" class="headerlink" title="1.1.2.3 Banner识别"></a>1.1.2.3 Banner识别</h4><p>在CTF线上比赛中，一个网站的Banner信息（服务器对外显示的一些基础信息）对解题有着十分重要的作用，选手往往可以通过Banner信息来获得解题思路，如得知网站是用ThinkPHP的Web框架编写时，我们可以尝试ThinkPHP框架的相关历史漏洞。或者得知这个网站是Windows服务器，那么我们在测试上传漏洞时可以根据Windows的特性进行尝试。这里介绍最常用的两种Banner识别方式。</p>
 <h5 id="1．自行搜集指纹库"><a href="#1．自行搜集指纹库" class="headerlink" title="1．自行搜集指纹库"></a>1．自行搜集指纹库</h5><p>Github上有大量成型且公开的CMS指纹库，读者可以自行查找，同时可以借鉴一些成型扫描器对网站进行识别。</p>
@@ -1348,8 +1346,8 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
         });
 
         // modify the toc link href to support Chinese.
@@ -1361,7 +1359,7 @@
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -1427,6 +1425,56 @@
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <footer class="page-footer bg-color">
     
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2182100384"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
     <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1440,7 +1488,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">70k</span>&nbsp;字
+                class="white-color">70.1k</span>&nbsp;字
             
             
             

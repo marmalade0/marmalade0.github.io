@@ -29,13 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
@@ -570,7 +568,7 @@
                 <p>参考书籍《python编程：从入门到实践》十八章，十九章，二十章内容</p>
 <p>该书籍Django使用1.11版本，而如今Django已经更新到3.0+，</p>
 <p>因此本文将进行两种版本的对比并且匹配版本更迭导致的代码报错问题，一步一步带你实现适用Django3.0版本的web框架。</p>
-<h2 id="Django入门"><a href="#Django入门" class="headerlink" title="Django入门"></a>Django入门</h2><p>当今的网站实际上都是富应用程序（rich application），就像成熟的桌面应用程序一样。Python提供了一组开发Web应用程序的卓越工具。在本文章中，你将学习如何使用Django（<a href="http://djangoproject.com/）来开发一个名为“学习笔记”（Learning" target="_blank" rel="noopener">http://djangoproject.com/）来开发一个名为“学习笔记”（Learning</a> Log）的项目，这是一个在线日志系统，让你能够记录所学习的有关特定主题的知识。</p>
+<h2 id="Django入门"><a href="#Django入门" class="headerlink" title="Django入门"></a>Django入门</h2><p>当今的网站实际上都是富应用程序（rich application），就像成熟的桌面应用程序一样。Python提供了一组开发Web应用程序的卓越工具。在本文章中，你将学习如何使用Django（<a target="_blank" rel="noopener" href="http://djangoproject.com/）来开发一个名为“学习笔记”（Learning">http://djangoproject.com/）来开发一个名为“学习笔记”（Learning</a> Log）的项目，这是一个在线日志系统，让你能够记录所学习的有关特定主题的知识。</p>
 <p>我们将为这个项目制定规范，然后为应用程序使用的数据定义模型。我们将使用Django的管理系统来输入一些初始数据，再学习编写视图和模板，让Django能够为我们的网站创建网页。Django是一个Web框架——一套用于帮助开发交互式网站的工具。Django能够响应网页请求，还能让你更轻松地读写数据库、管理用户等。在第19章和第20章，我们将改进“学习笔记”项目，再将其部署到活动的服务器，让你和你的朋友能够使用它。</p>
 <h3 id="一、建立项目"><a href="#一、建立项目" class="headerlink" title="一、建立项目"></a>一、建立项目</h3><p>建立项目时，首先需要以规范的方式对项目进行描述，再建立虚拟环境，以便在其中创建项目。</p>
 <h4 id="（一）制定规范"><a href="#（一）制定规范" class="headerlink" title="（一）制定规范"></a>（一）制定规范</h4><p>完整的规范详细说明了项目的目标，阐述了项目的功能，并讨论了项目的外观和用户界面。与任何良好的项目规划和商业计划书一样，规范应突出重点，帮助避免项目偏离轨道。这里不会制定完整的项目规划，而只列出一些明确的目标，以突出开发的重点。我们制定的规范如下：</p>
@@ -627,8 +625,8 @@
 <h4 id="（八）查看项目"><a href="#（八）查看项目" class="headerlink" title="（八）查看项目"></a>（八）查看项目</h4><p>下面来核实Django是否正确地创建了项目。为此，可执行命令runserver，如下所示：</p>
 <pre><code>python3 manage.py runserver</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210312202314.png" alt="image-20210307143629157"></p>
 <p>Django启动一个服务器，让你能够查看系统中的项目，了解它们的工作情况。当你在浏览器中输入URL以请求网页时，该Django服务器将进行响应：生成合适的网页，并将其发送给浏览器。</p>
-<p>在❶处，Django通过检查确认正确地创建了项目；在❷处，它指出了使用的Django版本以及当前使用的设置文件的名称；在❸处，它指出了项目的URL。URL <a href="http://127.0.0.1:8000/表明项目将在你的计算机（即localhost）的端口8000上侦听请求。localhost是一种只处理当前系统发出的请求，而不允许其他任何人查看你正在开发的网页的服务器。" target="_blank" rel="noopener">http://127.0.0.1:8000/表明项目将在你的计算机（即localhost）的端口8000上侦听请求。localhost是一种只处理当前系统发出的请求，而不允许其他任何人查看你正在开发的网页的服务器。</a></p>
-<p>现在打开一款Web浏览器，并输入URL：<a href="http://localhost:8000/；如果这不管用，请输入http://127.0.0.1:8000/。你将看到类似于下图所示的页面，这个页面是Django创建的，让你知道到目前为止一切正常。现在暂时不要关闭这个服务器。若要关闭这个服务器，按Ctrl+C即可。" target="_blank" rel="noopener">http://localhost:8000/；如果这不管用，请输入http://127.0.0.1:8000/。你将看到类似于下图所示的页面，这个页面是Django创建的，让你知道到目前为止一切正常。现在暂时不要关闭这个服务器。若要关闭这个服务器，按Ctrl+C即可。</a></p>
+<p>在❶处，Django通过检查确认正确地创建了项目；在❷处，它指出了使用的Django版本以及当前使用的设置文件的名称；在❸处，它指出了项目的URL。URL <a target="_blank" rel="noopener" href="http://127.0.0.1:8000/表明项目将在你的计算机（即localhost）的端口8000上侦听请求。localhost是一种只处理当前系统发出的请求，而不允许其他任何人查看你正在开发的网页的服务器。">http://127.0.0.1:8000/表明项目将在你的计算机（即localhost）的端口8000上侦听请求。localhost是一种只处理当前系统发出的请求，而不允许其他任何人查看你正在开发的网页的服务器。</a></p>
+<p>现在打开一款Web浏览器，并输入URL：<a target="_blank" rel="noopener" href="http://localhost:8000/；如果这不管用，请输入http://127.0.0.1:8000/。你将看到类似于下图所示的页面，这个页面是Django创建的，让你知道到目前为止一切正常。现在暂时不要关闭这个服务器。若要关闭这个服务器，按Ctrl+C即可。">http://localhost:8000/；如果这不管用，请输入http://127.0.0.1:8000/。你将看到类似于下图所示的页面，这个页面是Django创建的，让你知道到目前为止一切正常。现在暂时不要关闭这个服务器。若要关闭这个服务器，按Ctrl+C即可。</a></p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210312202315.png" alt="image-20210307144232873"></p>
 <blockquote>
 <p>注意　如果出现错误消息“That port is already in use”（指定端口已被占用），请执行命令python manage.pyrunserver 8001，让Diango使用另一个端口；如果这个端口也不可用，请不断执行上述命令，并逐渐增大其中的端口号，直到找到可用的端口。</p>
@@ -660,7 +658,7 @@
 <p>我们创建了一个名为Topic的类，它继承了Model——Django中一个定义了模型基本功能的类。Topic类只有两个属性：text和date_added。属性text是一个CharField——由字符或文本组成的数据（见❶）。需要存储少量的文本，如名称、标题或城市时，可使用CharField。定义CharField属性时，必须告诉Django该在数据库中预留多少空间。在这里，我们将max_length设置成了200（即200个字符），这对存储大多数主题名来说足够了。</p>
 <p>属性date_added是一个DateTimeField——记录日期和时间的数据（见❷）。我们传递了实参auto_now_add=True，每当用户创建新主题时，这都让Django将这个属性自动设置成当前日期和时间。</p>
 <blockquote>
-<p>注意　要获悉可在模型中使用的各种字段，请参阅DjangoModel Field Reference（Django模型字段参考），其网址为<a href="https://docs.djangoproject.com/en/1.8/ref/models/fields/。就当前而言，你无需全面了解其中的所有内容，但自己开发应用程序时，这些内容会提供极大的帮助。" target="_blank" rel="noopener">https://docs.djangoproject.com/en/1.8/ref/models/fields/。就当前而言，你无需全面了解其中的所有内容，但自己开发应用程序时，这些内容会提供极大的帮助。</a></p>
+<p>注意　要获悉可在模型中使用的各种字段，请参阅DjangoModel Field Reference（Django模型字段参考），其网址为<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/1.8/ref/models/fields/。就当前而言，你无需全面了解其中的所有内容，但自己开发应用程序时，这些内容会提供极大的帮助。">https://docs.djangoproject.com/en/1.8/ref/models/fields/。就当前而言，你无需全面了解其中的所有内容，但自己开发应用程序时，这些内容会提供极大的帮助。</a></p>
 </blockquote>
 <p>我们需要告诉Django，默认应使用哪个属性来显示有关主题的信息。Django调用方法<strong>str</strong>()来显示模型的简单表示。在这里，我们编写了方法<strong>str</strong>()，它返回存储在属性text中的字符串（见❸）。</p>
 <blockquote>
@@ -715,7 +713,7 @@
 admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>register<span class="token punctuation">(</span>Topic<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210312202324.png" alt="image-20210307203319723"></p>
 <p>这些代码导入我们要注册的模型Topic（见❶），再使用admin.site.register()（见❷）让Django通过管理网站管理我们的模型。</p>
-<p>现在，使用超级用户账户访问管理网站：访问<a href="http://localhost:8000/admin/，并输入你刚创建的超级用户的用户名和密码，你将看到类似于下图所示的屏幕。这个网页让你能够添加和修改用户和用户组，还可以管理与刚才定义的模型Topic相关的数据。" target="_blank" rel="noopener">http://localhost:8000/admin/，并输入你刚创建的超级用户的用户名和密码，你将看到类似于下图所示的屏幕。这个网页让你能够添加和修改用户和用户组，还可以管理与刚才定义的模型Topic相关的数据。</a></p>
+<p>现在，使用超级用户账户访问管理网站：访问<a target="_blank" rel="noopener" href="http://localhost:8000/admin/，并输入你刚创建的超级用户的用户名和密码，你将看到类似于下图所示的屏幕。这个网页让你能够添加和修改用户和用户组，还可以管理与刚才定义的模型Topic相关的数据。">http://localhost:8000/admin/，并输入你刚创建的超级用户的用户名和密码，你将看到类似于下图所示的屏幕。这个网页让你能够添加和修改用户和用户组，还可以管理与刚才定义的模型Topic相关的数据。</a></p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210312202325.png" alt="包含模型Topic的管理网站"></p>
 <blockquote>
 <p>注意　如果你在浏览器中看到一条消息，指出访问的网页不可用，请确认你在终端窗口中运行着Django服务器。如果没有，请激活虚拟环境，并执行命令python manage.py runserver。</p>
@@ -759,7 +757,7 @@ admin<span class="token punctuation">.</span>site<span class="token punctuation"
 <pre><code>from django.contrib import admin
 from learning_logs.models import Topic,Entry
 admin.site.register(Topic)
-admin.site.register(Entry)</code></pre><p>返回到<a href="http://localhost:8000/admin/，你将看到learning_logs下列出了Entries。单击Entries的Add链接，或者单击Entries再选择Add" target="_blank" rel="noopener">http://localhost:8000/admin/，你将看到learning_logs下列出了Entries。单击Entries的Add链接，或者单击Entries再选择Add</a> entry。你将看到一个下拉列表，让你能够选择要为哪个主题创建条目，还有一个用于输入条目的文本框。从下拉列表中选择Chess，并添加一个条目。下面是我添加的第一个条目。</p>
+admin.site.register(Entry)</code></pre><p>返回到<a target="_blank" rel="noopener" href="http://localhost:8000/admin/，你将看到learning_logs下列出了Entries。单击Entries的Add链接，或者单击Entries再选择Add">http://localhost:8000/admin/，你将看到learning_logs下列出了Entries。单击Entries的Add链接，或者单击Entries再选择Add</a> entry。你将看到一个下拉列表，让你能够选择要为哪个主题创建条目，还有一个用于输入条目的文本框。从下拉列表中选择Chess，并添加一个条目。下面是我添加的第一个条目。</p>
 <blockquote>
 <p>The opening is the first part of the game, roughly thefirst ten moves or so. In the opening, it’s a good ideato do three things— bring out your bishops andknights, try to control the center of the board, andcastle your king.（国际象棋的第一个阶段是开局，大致是前10步左右。在开局阶段，最好做三件事情：将象和马调出来；努力控制棋盘的中间区域；用车将王护住。）Of course, these are just guidelines. It will beimportant to learn when to follow these guidelinesand when to disregard these suggestions.（当然，这些只是指导原则。学习什么情况下遵守这些原则、什么情况下不用遵守很重要。）</p>
 </blockquote>
@@ -796,13 +794,13 @@ t.date_added</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/ma
 <p>注意　每次修改模型后，你都需要重启shell，这样才能看到修改的效果。要退出shell会话，可按Ctr+D；如果你使用的是Windows系统，应按Ctr+Z，再按回车键。</p>
 </blockquote>
 <h4 id="动手试一试-1"><a href="#动手试一试-1" class="headerlink" title="动手试一试"></a>动手试一试</h4><h5 id="18-2-简短的条目："><a href="#18-2-简短的条目：" class="headerlink" title="18-2 简短的条目："></a>18-2 简短的条目：</h5><p>当前，Django在管理网站或shell中显示Entry实例时，模型Entry的方法<strong>str</strong>()都在它的末尾加上省略号。请在方法<strong>str</strong>()中添加一条if语句，以便仅在条目长度超过50字符时才添加省略号。使用管理网站来添加一个长度少于50字符的条目，并核实显示它时没有省略号。</p>
-<h5 id="18-3-Django-API："><a href="#18-3-Django-API：" class="headerlink" title="18-3 Django API："></a>18-3 Django API：</h5><p>编写访问项目中的数据的代码时，你编写的是查询。请浏览有关如何查询数据的文档，其网址为<a href="https://docs.djangoproject.com/en/7.8/topics/db/queries/。其中大部分内容都是你不熟悉的，但等你自己开发项目时，这些内容会很有用。" target="_blank" rel="noopener">https://docs.djangoproject.com/en/7.8/topics/db/queries/。其中大部分内容都是你不熟悉的，但等你自己开发项目时，这些内容会很有用。</a></p>
+<h5 id="18-3-Django-API："><a href="#18-3-Django-API：" class="headerlink" title="18-3 Django API："></a>18-3 Django API：</h5><p>编写访问项目中的数据的代码时，你编写的是查询。请浏览有关如何查询数据的文档，其网址为<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/7.8/topics/db/queries/。其中大部分内容都是你不熟悉的，但等你自己开发项目时，这些内容会很有用。">https://docs.djangoproject.com/en/7.8/topics/db/queries/。其中大部分内容都是你不熟悉的，但等你自己开发项目时，这些内容会很有用。</a></p>
 <h5 id="18-4-比萨店："><a href="#18-4-比萨店：" class="headerlink" title="18-4 比萨店："></a>18-4 比萨店：</h5><p>新建一个名为pizzeria的项目，并在其中添加一个名为pizzas的应用程序。定义一个名为Pizza的模型，它包含字段name，用于存储比萨名称，如Hawaiian和Meat Lovers。定义一个名为Topping的模型，它包含字段pizza和name，其中字段pizza是一个关联到Pizza的外键，而字段name用于存储配料，如pineapple、Canadianbacon和sausage。</p>
 <p>向管理网站注册这两个模型，并使用管理网站输入一些比萨名和配料。使用shell来查看你输入的数据。</p>
 <h3 id="三、创建网页："><a href="#三、创建网页：" class="headerlink" title="三、创建网页："></a>三、创建网页：</h3><p>学习笔记主页使用Django创建网页的过程通常分三个阶段：定义URL、编写视图和编写模板。首先，你必须定义URL模式。URL模式描述了URL是如何设计的，让Django知道如何将浏览器请求与网站URL匹配，以确定返回哪个网页。</p>
 <p>每个URL都被映射到特定的视图——视图函数获取并处理网页所需的数据。视图函数通常调用一个模板，后者生成浏览器能够理解的网页。为明白其中的工作原理，我们来创建学习笔记的主页。我们将定义该主页的URL、编写其视图函数并创建一个简单的模板。</p>
 <p>鉴于我们只是要确保“学习笔记”按要求的那样工作，我们将暂时让这个网页尽可能简单。Web应用程序能够正常运行后，设置样式可使其更有趣，但中看不中用的应用程序毫无意义。就目前而言，主页只显示标题和简单的描述。</p>
-<h4 id="（一）映射URL"><a href="#（一）映射URL" class="headerlink" title="（一）映射URL"></a>（一）映射URL</h4><p>用户通过在浏览器中输入URL以及单击链接来请求网页，因此我们需要确定项目需要哪些URL。主页的URL最重要，它是用户用来访问项目的基础URL。当前，基础URL（<a href="http://localhost:8000/）返回默认的Django网站，让我们知道正确地建立了项目。我们将修改这一点，将这个基础URL映射到“学习笔记”的主页。" target="_blank" rel="noopener">http://localhost:8000/）返回默认的Django网站，让我们知道正确地建立了项目。我们将修改这一点，将这个基础URL映射到“学习笔记”的主页。</a></p>
+<h4 id="（一）映射URL"><a href="#（一）映射URL" class="headerlink" title="（一）映射URL"></a>（一）映射URL</h4><p>用户通过在浏览器中输入URL以及单击链接来请求网页，因此我们需要确定项目需要哪些URL。主页的URL最重要，它是用户用来访问项目的基础URL。当前，基础URL（<a target="_blank" rel="noopener" href="http://localhost:8000/）返回默认的Django网站，让我们知道正确地建立了项目。我们将修改这一点，将这个基础URL映射到“学习笔记”的主页。">http://localhost:8000/）返回默认的Django网站，让我们知道正确地建立了项目。我们将修改这一点，将这个基础URL映射到“学习笔记”的主页。</a></p>
 <p>打开项目主文件夹learning_log中的文件urls.py，你将看到如下代码：</p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin❶
 <span class="token keyword">from</span> django<span class="token punctuation">.</span>urls <span class="token keyword">import</span> path
@@ -838,7 +836,7 @@ urlpatterns <span class="token operator">=</span> <span class="token punctuation
 <span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>为弄清楚当前位于哪个urls.py文件中，我们在这个文件开头添加了一个文档字符串（见❶）。接下来，我们导入了函数url，因为我们需要使用它来将URL映射到视图（见❷）。我们还导入了模块views（见❸），其中的句点让Python从当前的urls.py模块所在的文件夹中导入视图。在这个模块中，变量urlpatterns是一个列表，包含可在应用程序learning_logs中请求的网页（见❹）。</p>
 <p>实际的URL模式是一个对函数url()的调用，这个函数接受三个实参（见❺）。第一个是一个正则表达式。Django在urlpatterns中查找与请求的URL字符串匹配的正则表达式，因此正则表达式定义了Django可查找的模式。</p>
-<p>我们来看看正则表达式<code>r'^$'</code>。其中的r让Python将接下来的字符串视为原始字符串，而引号告诉Python正则表达式始于和终于何处。脱字符（<code>^</code>）让Python查看字符串的开头，而美元符号让Python查看字符串的末尾。总体而言，这个正则表达式让Python查找开头和末尾之间没有任何东西的URL。Python忽略项目的基础URL（<a href="http://localhost:8000/），因此这个正则表达式与基础URL匹配。其他URL都与这个正则表达式不匹配。如果请求的URL不与任何URL模式匹配，Django将返回一个错误页面。" target="_blank" rel="noopener">http://localhost:8000/），因此这个正则表达式与基础URL匹配。其他URL都与这个正则表达式不匹配。如果请求的URL不与任何URL模式匹配，Django将返回一个错误页面。</a></p>
+<p>我们来看看正则表达式<code>r'^$'</code>。其中的r让Python将接下来的字符串视为原始字符串，而引号告诉Python正则表达式始于和终于何处。脱字符（<code>^</code>）让Python查看字符串的开头，而美元符号让Python查看字符串的末尾。总体而言，这个正则表达式让Python查找开头和末尾之间没有任何东西的URL。Python忽略项目的基础URL（<a target="_blank" rel="noopener" href="http://localhost:8000/），因此这个正则表达式与基础URL匹配。其他URL都与这个正则表达式不匹配。如果请求的URL不与任何URL模式匹配，Django将返回一个错误页面。">http://localhost:8000/），因此这个正则表达式与基础URL匹配。其他URL都与这个正则表达式不匹配。如果请求的URL不与任何URL模式匹配，Django将返回一个错误页面。</a></p>
 <p>url()的第二个实参（见❺）指定了要调用的视图函数。请求的URL与前述正则表达式匹配时，Django将调用views.index（这个视图函数将在下一节编写）。第三个实参将这个URL模式的名称指定为index，让我们能够在代码的其他地方引用它。每当需要提供到这个主页的链接时，我们都将使用这个名称，而不编写URL。</p>
 <h6 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h6><p>以上教程为Django1.11</p>
 <p>在django2.0后不支持使用在urls.py中写</p>
@@ -894,7 +892,7 @@ app_name <span class="token operator">=</span> <span class="token string">'learn
 <blockquote>
 <p>标签<code>&lt;p&gt;&lt;/p&gt;</code>标识段落；标签<code>&lt;p&gt;</code>指出了段落的开头位置，而标签<code>&lt;/p&gt;</code>指出了段落的结束位置。这里定义了两个段落：第一个充当标题，第二个阐述了用户可使用“学习笔记”来做什么。</p>
 </blockquote>
-<p>现在，如果你请求这个项目的基础URL——<a href="http://localhost:8000/，将看到刚才创建的网页，而不是默认的Django网页。Django接受请求的URL，发现该URL与模式`r'^href=" http:="" localhost:8000="" ，将看到刚才创建的网页，而不是默认的django网页。django接受请求的url，发现该url与模式`r&#39;^$&#39;`匹配，因此调用函数views.index()，这将使用index.html包含的模板来渲染网页，结果如下图所示。"#39;`匹配，因此调用函数views.index()，这将使用index.html包含的模板来渲染网页，结果如下图所示。"="" target="_blank" rel="noopener">http://localhost:8000/，将看到刚才创建的网页，而不是默认的Django网页。Django接受请求的URL，发现该URL与模式`r'^$'`匹配，因此调用函数views.index()，这将使用index.html包含的模板来渲染网页，结果如下图所示。</a></p>
+<p>现在，如果你请求这个项目的基础URL——<a target="_blank" rel="noopener" href="http://localhost:8000/，将看到刚才创建的网页，而不是默认的Django网页。Django接受请求的URL，发现该URL与模式`r'^$'`匹配，因此调用函数views.index()，这将使用index.html包含的模板来渲染网页，结果如下图所示。">http://localhost:8000/，将看到刚才创建的网页，而不是默认的Django网页。Django接受请求的URL，发现该URL与模式`r'^$'`匹配，因此调用函数views.index()，这将使用index.html包含的模板来渲染网页，结果如下图所示。</a></p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210312202334.png" alt="image-20210309210605104"></p>
 <p>创建网页的过程看起来可能很复杂，但将URL、视图和模板分离的效果实际上很好。这让我们能够分别考虑项目的不同方面，且在项目很大时，让各个参与者可专注于其最擅长的方面。例如，数据库专家可专注于模型，程序员可专注于视图代码，而Web设计人员可专注于模板。</p>
 <h4 id="动手试一试-2"><a href="#动手试一试-2" class="headerlink" title="动手试一试"></a>动手试一试</h4><h5 id="18-5-膳食规划程序："><a href="#18-5-膳食规划程序：" class="headerlink" title="18-5 膳食规划程序："></a>18-5 膳食规划程序：</h5><p>假设你要创建一个应用程序，帮助用户规划一周的膳食。为此，新建一个文件夹，并将其命名为meal_planner，再在这个文件夹中新建一个Django项目。接下来，新建一个名为meal_plans的应用程序，并为这个项目创建一个简单的主页。</p>
@@ -928,7 +926,7 @@ app_name <span class="token operator">=</span> <span class="token string">'learn
 <p>注意　在大型项目中，通常有一个用于整个网站的父模板——base.html，且网站的每个主要部分都有一个父模板。每个部分的父模板都继承base.html，而网站的每个网页都继承相应部分的父模板。这让你能够轻松地修改整个网站的外观、网站任何一部分的外观以及任何一个网页的外观。这种配置提供了一种效率极高的工作方式，让你乐意不断地去改进网站。</p>
 </blockquote>
 <h4 id="（二）显示所有主题的页面"><a href="#（二）显示所有主题的页面" class="headerlink" title="（二）显示所有主题的页面"></a>（二）显示所有主题的页面</h4><p>有了高效的网页创建方法，就能专注于另外两个网页了：显示全部主题的网页以及显示特定主题中条目的网页。所有主题页面显示用户创建的所有主题，它是第一个需要使用数据的网页。</p>
-<h5 id="1．URL模式"><a href="#1．URL模式" class="headerlink" title="1．URL模式"></a>1．URL模式</h5><p>首先，我们来定义显示所有主题的页面的URL。通常，使用一个简单的URL片段来指出网页显示的信息；我们将使用单词topics，因此URL<a href="http://localhost:8000/topics/将返回显示所有主题的页面。下面演示了该如何修改learning_logs/urls.py：" target="_blank" rel="noopener">http://localhost:8000/topics/将返回显示所有主题的页面。下面演示了该如何修改learning_logs/urls.py：</a></p>
+<h5 id="1．URL模式"><a href="#1．URL模式" class="headerlink" title="1．URL模式"></a>1．URL模式</h5><p>首先，我们来定义显示所有主题的页面的URL。通常，使用一个简单的URL片段来指出网页显示的信息；我们将使用单词topics，因此URL<a target="_blank" rel="noopener" href="http://localhost:8000/topics/将返回显示所有主题的页面。下面演示了该如何修改learning_logs/urls.py：">http://localhost:8000/topics/将返回显示所有主题的页面。下面演示了该如何修改learning_logs/urls.py：</a></p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token triple-quoted-string string">"""定义learning_ logs的URL模式"""</span>
 <span class="token keyword">from</span> django<span class="token punctuation">.</span>urls <span class="token keyword">import</span> path<span class="token punctuation">,</span> include<span class="token punctuation">,</span> re_path
 <span class="token keyword">from</span> <span class="token punctuation">.</span> <span class="token keyword">import</span> views
@@ -966,17 +964,17 @@ app_name <span class="token operator">=</span> <span class="token string">'learn
 {% for topic in topics %}❷
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>{{ topic }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>❸
 {% empty %}❹
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>No topics have been added yet. <span class="token comment" spellcheck="true">&lt;!--1i--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>html<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>No topics have been added yet. <span class="token comment" spellcheck="true">&lt;!--1i--></span>
 {% endfor %}❺
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>❻
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>❻
 {% endblock content %}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>就像模板index.html一样，我们首先使用标签<code>{ % extends % }</code>来继承base.html，再开始定义content块。这个网页的主体是一个项目列表，其中列出了用户输入的主题。在标准HTML中，项目列表被称为无序列表，用标签<code>&lt;ul&gt;&lt;/ul&gt;</code>表示。包含所有主题的项目列表始于❶处。</p>
-<p>在❷处，我们使用了一个相当于for循环的模板标签，它遍历字典context中的列表topics。模板中使用的代码与Python代码存在一些重要差别：Python使用缩进来指出哪些代码行是for循环的组成部分，而在模板中，每个for循环都必须使用<code>{ % endfor %}</code>标签来显式地指出其结束位置。因此在模板中，循环类似于下面这样：</p>
-<pre><code>{% foritem in list %}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>就像模板index.html一样，我们首先使用标签<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">></span></span>{ % extends % }<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">></span></span>来继承base.html，再开始定义content块。这个网页的主体是一个项目列表，其中列出了用户输入的主题。在标准HTML中，项目列表被称为无序列表，用标签<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">></span></span>表示。包含所有主题的项目列表始于❶处。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>在❷处，我们使用了一个相当于for循环的模板标签，它遍历字典context中的列表topics。模板中使用的代码与Python代码存在一些重要差别：Python使用缩进来指出哪些代码行是for循环的组成部分，而在模板中，每个for循环都必须使用<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">></span></span>{ % endfor %}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">></span></span>标签来显式地指出其结束位置。因此在模板中，循环类似于下面这样：<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">></span></span>{% foritem in list %}
 do something with each item
 {% endfor %}
-</code></pre><p>在循环中，我们要将每个主题转换为一个项目列表项。要在模板中打印变量，需要将变量名用双花括号括起来。每次循环时，❸处的代码<code>{ { topic } }</code>都被替换为topic的当前值。这些花括号不会出现在网页中，它们只是用于告诉Django我们使用了一个模板变量。HTML标签<code>&lt;li&gt;&lt;/li&gt;</code>表示一个项目列表项，在标签对<code>&lt;ul&gt;&lt;/ul&gt;</code>内部，位于标签<code>&lt;li&gt;</code>和<code>&lt;/li&gt;</code>之间的内容都是一个项目列表项。</p>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在循环中，我们要将每个主题转换为一个项目列表项。要在模板中打印变量，需要将变量名用双花括号括起来。每次循环时，❸处的代码<code>{ { topic } }</code>都被替换为topic的当前值。这些花括号不会出现在网页中，它们只是用于告诉Django我们使用了一个模板变量。HTML标签<code>&lt;li&gt;&lt;/li&gt;</code>表示一个项目列表项，在标签对<code>&lt;ul&gt;&lt;/ul&gt;</code>内部，位于标签<code>&lt;li&gt;</code>和<code>&lt;/li&gt;</code>之间的内容都是一个项目列表项。</p>
 <p>在❹处，我们使用了模板标签<code>{ % empty % }</code>，它告诉Django在列表topics为空时该怎么办：这里是打印一条消息，告诉用户还没有添加任何主题。最后两行分别结束for循环（见❺）和项目列表（见❻）。</p>
 <p>现在需要修改父模板，使其包含到显示所有主题的页面的链接：</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210312202335.png" alt="image-20210311162123896"></p>
@@ -984,7 +982,7 @@ do something with each item
 <p>现在如果你刷新浏览器中的主页，将看到链接Topics。单击这个链接，将看到类似于图18-4所示的网页。</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210312202336.png" alt="image-20210311162244598"></p>
 <h4 id="（三）显示特定主题的页面"><a href="#（三）显示特定主题的页面" class="headerlink" title="（三）显示特定主题的页面"></a>（三）显示特定主题的页面</h4><p>接下来，我们需要创建一个专注于特定主题的页面——显示该主题的名称及该主题的所有条目。同样，我们将定义一个新的URL模式，编写一个视图并创建一个模板。我们还将修改显示所有主题的网页，让每个项目列表项都是一个链接，单击它将显示相应主题的所有条目。</p>
-<h5 id="1．URL模式-1"><a href="#1．URL模式-1" class="headerlink" title="1．URL模式"></a>1．URL模式</h5><p>显示特定主题的页面的URL模式与前面的所有URL模式都稍有不同，因为它将使用主题的id属性来指出请求的是哪个主题。例如，如果用户要查看主题Chess（其id为1）的详细页面，URL将为<a href="http://localhost:8000/topics/1/。下面是与这个URL匹配的模式，它包含在learning_logs/urls.py中：" target="_blank" rel="noopener">http://localhost:8000/topics/1/。下面是与这个URL匹配的模式，它包含在learning_logs/urls.py中：</a></p>
+<h5 id="1．URL模式-1"><a href="#1．URL模式-1" class="headerlink" title="1．URL模式"></a>1．URL模式</h5><p>显示特定主题的页面的URL模式与前面的所有URL模式都稍有不同，因为它将使用主题的id属性来指出请求的是哪个主题。例如，如果用户要查看主题Chess（其id为1）的详细页面，URL将为<a target="_blank" rel="noopener" href="http://localhost:8000/topics/1/。下面是与这个URL匹配的模式，它包含在learning_logs/urls.py中：">http://localhost:8000/topics/1/。下面是与这个URL匹配的模式，它包含在learning_logs/urls.py中：</a></p>
 <p>django1.11改法</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210312202337.png" alt="image-20210311163054782"></p>
 <p>Django2.0改法：</p>
@@ -1008,9 +1006,9 @@ context <span class="token operator">=</span> <span class="token punctuation">{<
 <p>topic.html</p>
 <pre><code>{% extends 'learning_logs/base.html' %}
 {% block content %}
-  <p>Topic: {{ topic }}</p> ➊
-  <p>Entries:</p>
-  <ul>❷
+  &lt;p&gt;Topic: {{ topic }}&lt;/p&gt; ➊
+  &lt;p&gt;Entries:&lt;/p&gt;
+  &lt;ul&gt;❷
   {% for entry in entries %}❸
     <li>
 	  <p>{{ entry.date_added|date:'M d, Y H:i'}}</p>❹
@@ -1019,13 +1017,13 @@ context <span class="token operator">=</span> <span class="token punctuation">{<
 	  <!--过滤器linebreaks将包含换行符的长条目转换成浏览器能识别的格式-->
     </li>
   {% empty %}❻
-	<li>
+	</code><li><code>
 	  There are no entries for this topic yet.
 	<!--1i-->
   {% endfor %}
-  </li></ul>
+  &lt;/ul&gt;
 {% endblock content %}
-</code></pre><p>像这个项目的其他页面一样，这里也继承了base.html。接下来，我们显示当前的主题（见❶），它存储在模板变量<code>{ { topic } }</code>中。为什么可以使用变量topic呢？因为它包含在字典context中。接下来，我们开始定义一个显示每个条目的项目列表（见❷），并像前面显示所有主题一样遍历条目（见❸）。</p>
+</code></li></pre><p>像这个项目的其他页面一样，这里也继承了base.html。接下来，我们显示当前的主题（见❶），它存储在模板变量<code>{ { topic } }</code>中。为什么可以使用变量topic呢？因为它包含在字典context中。接下来，我们开始定义一个显示每个条目的项目列表（见❷），并像前面显示所有主题一样遍历条目（见❸）。</p>
 <p>每个项目列表项都将列出两项信息：条目的时间戳和完整的文本。为列出时间戳（见❹），我们显示属性date_added的值。在Django模板中，竖线（|）表示模板过滤器——对模板变量的值进行修改的函数。过滤器<code>date: 'M d, Y H:i'</code>以这样的格式显示时间戳：January 1, 2015 23:00。接下来的一行显示text的完整值，而不仅仅是entry的前50个字符。过滤器linebreaks（见❺）将包含换行符的长条目转换为浏览器能够理解的格式，以免显示为一个不间断的文本块。在❻处，我们使用模板标签<code>{ % empty % }</code>打印一条消息，告诉用户当前主题还没有条目。</p>
 <h5 id="4．将显示所有主题的页面中的每个主题都设置为链接"><a href="#4．将显示所有主题的页面中的每个主题都设置为链接" class="headerlink" title="4．将显示所有主题的页面中的每个主题都设置为链接"></a>4．将显示所有主题的页面中的每个主题都设置为链接</h5><p>在浏览器中查看显示特定主题的页面前，我们需要修改模板topics.html，让每个主题都链接到相应的网页，如下所示：</p>
 <pre><code>--snip--
@@ -1034,10 +1032,10 @@ context <span class="token operator">=</span> <span class="token punctuation">{<
         &lt;a href=" {% url 'learning_logs:topic' topic.id %}"&gt;{{ topic }} &lt;/a&gt;
       &lt;/1i&gt;
     {% empty %}
---snip--</code></pre><p>我们使用模板标签url根据learning_logs中名为topic的URL模式来生成合适的链接。这个URL模式要求提供实参topic_id，因此我们在模板标签url中添加了属性topic.id。现在，主题列表中的每个主题都是一个链接，链接到显示相应主题的页面，如<a href="http://localhost:8000/topics/1/。" target="_blank" rel="noopener">http://localhost:8000/topics/1/。</a></p>
+--snip--</code></pre><p>我们使用模板标签url根据learning_logs中名为topic的URL模式来生成合适的链接。这个URL模式要求提供实参topic_id，因此我们在模板标签url中添加了属性topic.id。现在，主题列表中的每个主题都是一个链接，链接到显示相应主题的页面，如<a target="_blank" rel="noopener" href="http://localhost:8000/topics/1/。">http://localhost:8000/topics/1/。</a></p>
 <p>如果你刷新显示所有主题的页面，再单击其中的一个主题，将看到类似于下图所示的页面。</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210312202338.png" alt="特定主题的详细页面，其中显示了该主题的所有条目"></p>
-<h4 id="动手试一试-3"><a href="#动手试一试-3" class="headerlink" title="动手试一试"></a>动手试一试</h4><h5 id="18-7-模板文档："><a href="#18-7-模板文档：" class="headerlink" title="18-7 模板文档："></a>18-7 模板文档：</h5><p>请浏览Django模板文档，其网址为<a href="https://docs.djangoproject.com/en/1.8/ref/templates/。自己开发项目时，可再回过头来参考该文档。" target="_blank" rel="noopener">https://docs.djangoproject.com/en/1.8/ref/templates/。自己开发项目时，可再回过头来参考该文档。</a></p>
+<h4 id="动手试一试-3"><a href="#动手试一试-3" class="headerlink" title="动手试一试"></a>动手试一试</h4><h5 id="18-7-模板文档："><a href="#18-7-模板文档：" class="headerlink" title="18-7 模板文档："></a>18-7 模板文档：</h5><p>请浏览Django模板文档，其网址为<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/1.8/ref/templates/。自己开发项目时，可再回过头来参考该文档。">https://docs.djangoproject.com/en/1.8/ref/templates/。自己开发项目时，可再回过头来参考该文档。</a></p>
 <h5 id="18-8-比萨店页面："><a href="#18-8-比萨店页面：" class="headerlink" title="18-8 比萨店页面："></a>18-8 比萨店页面：</h5><p>在练习18-6中开发的项目Pizzeria中添加一个页面，它显示供应的比萨的名称。然后，将每个比萨名称都设置成一个链接，单击这种链接将显示一个页面，其中列出了相应比萨的配料。请务必使用模板继承来高效地创建页面。</p>
 <h3 id="五、小结"><a href="#五、小结" class="headerlink" title="五、小结"></a>五、小结</h3><p>在本章中，你首先学习了如何使用Django框架来创建Web应用程序。你制定了简要的项目规范，在虚拟环境中安装了Django，创建了一个项目，并核实该项目已正确地创建。你学习了如何创建应用程序，以及如何定义表示应用程序数据的模型。你学习了数据库，以及在你修改模型后，Django可为你迁移数据库提供什么样的帮助。你学习了如何创建可访问管理网站的超级用户，并使用管理网站输入了一些初始数据。</p>
 <p>你还探索了Django shell，它让你能够在终端会话中处理项目的数据。你学习了如何定义URL、创建视图函数以及编写为网站创建网页的模板。最后，你使用了模板继承，它可简化各个模板的结构，并使得修改网站更容易。</p>
@@ -1731,8 +1729,8 @@ context <span class="token operator">=</span> <span class="token punctuation">{<
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
         });
 
         // modify the toc link href to support Chinese.
@@ -1744,7 +1742,7 @@ context <span class="token operator">=</span> <span class="token punctuation">{<
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -1810,6 +1808,56 @@ context <span class="token operator">=</span> <span class="token punctuation">{<
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <footer class="page-footer bg-color">
     
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2182100384"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
     <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1823,7 +1871,7 @@ context <span class="token operator">=</span> <span class="token punctuation">{<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">70k</span>&nbsp;字
+                class="white-color">70.1k</span>&nbsp;字
             
             
             

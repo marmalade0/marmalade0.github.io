@@ -29,13 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
@@ -578,7 +576,7 @@
                 <p>先分享一点小经验</p>
 <h5 id="修改了模板，但是没有生效？"><a href="#修改了模板，但是没有生效？" class="headerlink" title="修改了模板，但是没有生效？"></a>修改了模板，但是没有生效？</h5><p>修改了模板以后不生效，建议先<strong>hexo clean</strong>，然后再hexo generate。只执行hexo generate，可能模板后者静态文件不会被替换。<br>知道晚了，以为设置错误，两天后hexo clean，然后奇迹出现了！！！</p>
 <h6 id="本地和网站不同步？hexo-clean"><a href="#本地和网站不同步？hexo-clean" class="headerlink" title="本地和网站不同步？hexo clean!"></a>本地和网站不同步？hexo clean!</h6><p>下面是接上一篇的更多网站美化功能</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h3 id="8-在网站底部添加访问量"><a href="#8-在网站底部添加访问量" class="headerlink" title="(8)在网站底部添加访问量"></a>(8)在网站底部添加访问量</h3><p>进入<code>\themes\next\layout\ _partials\footer.swig</code>文件顶部第一行添加</p>
 <pre><code>&lt;script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"&gt;&lt;/script&gt;</code></pre><p>2.搜索</p>
@@ -593,9 +591,9 @@
 # 这里对应的是2上的id值</code></pre><p>效果如下：<br>本地访问会出现人数爆棚现象，正常，部署到github上会恢复正常<br><img src="/images/beautify2/1.png" alt="bc3439ac113ed8ca432e2b3ec0f6d5ca.png"></p>
 <h3 id="9-添加打赏功能"><a href="#9-添加打赏功能" class="headerlink" title="(9)添加打赏功能"></a>(9)添加打赏功能</h3><p>在主题配置文件中搜索Reward，改为如下形式<br><img src="/images/beautify2/2.png" alt="e3897be70d0db4287935e8a4489568de.png"><br>效果：<br><img src="/images/beautify2/3.png" alt="5f98934f4d64ccd9e1159d9ee4bbcc77.png"></p>
 <blockquote>
-<p><a href="https://segmentfault.com/a/1190000016527304?utm_source=tag-newest" target="_blank" rel="noopener">参考文章</a></p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000016527304?utm_source=tag-newest">参考文章</a></p>
 </blockquote>
-<h3 id="10-添加阅读统计及评论"><a href="#10-添加阅读统计及评论" class="headerlink" title="(10)添加阅读统计及评论"></a>(10)添加阅读统计及评论</h3><p><a href="https://segmentfault.com/a/1190000016565949" target="_blank" rel="noopener">参考文章</a></p>
+<h3 id="10-添加阅读统计及评论"><a href="#10-添加阅读统计及评论" class="headerlink" title="(10)添加阅读统计及评论"></a>(10)添加阅读统计及评论</h3><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000016565949">参考文章</a></p>
 <h5 id="添加阅读次数统计"><a href="#添加阅读次数统计" class="headerlink" title="添加阅读次数统计"></a>添加阅读次数统计</h5><p>需要用到leancloud网站，<br>1.注册一个账号<br>2.创建应用(开发版)<br>3.进入设置页面<br>4.应用key<br>将App ID、App Key 配置到next/_config.yml中leancloud_visitors</p>
 <pre><code>leancloud_visitors:
  enable: true 设置为true 默认为false
@@ -1321,8 +1319,8 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
         });
 
         // modify the toc link href to support Chinese.
@@ -1334,7 +1332,7 @@
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -1400,6 +1398,56 @@
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <footer class="page-footer bg-color">
     
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2182100384"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
     <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1413,7 +1461,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">70k</span>&nbsp;字
+                class="white-color">70.1k</span>&nbsp;字
             
             
             

@@ -29,13 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
@@ -579,20 +577,20 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong><em>小白的一个不断碰坑填坑的过程</em></strong><br>过程确实很复杂，但是一步一步来，一个问题一个问题解决，成功只在朝夕！<br>参考<br><a href="https://zhuanlan.zhihu.com/p/26625249" target="_blank" rel="noopener">GitHub+Hexo 搭建个人网站详细教程</a></p>
-<a id="more"></a>
+                <p><strong><em>小白的一个不断碰坑填坑的过程</em></strong><br>过程确实很复杂，但是一步一步来，一个问题一个问题解决，成功只在朝夕！<br>参考<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26625249">GitHub+Hexo 搭建个人网站详细教程</a></p>
+<span id="more"></span>
 <h4 id="1、获得个人网站域名"><a href="#1、获得个人网站域名" class="headerlink" title="1、获得个人网站域名"></a>1、获得个人网站域名</h4><blockquote>
 <blockquote>
 <p>注册阿里云，买一个域名marmalade.vip（英文意思为橘子酱）</p>
 </blockquote>
 </blockquote>
 <h4 id="2、GitHub创建个人仓库"><a href="#2、GitHub创建个人仓库" class="headerlink" title="2、GitHub创建个人仓库"></a>2、GitHub创建个人仓库</h4><p>用邮箱注册一GitHub账号 username：marmalade0<br>开始用qq邮箱不行，一直提醒验证邮箱，转用163邮箱注册成功<br> 点击GitHub中的New repository创建新仓库，<br> 仓库名：marmalade0.github.io</p>
-<h4 id="3、安装Git"><a href="#3、安装Git" class="headerlink" title="3、安装Git"></a>3、安装Git</h4><p> <a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">实用Git教程</a><br> 下载64位Git，全默认安装<br> <img src="/images/1/ScreenClip.png" alt=""></p>
+<h4 id="3、安装Git"><a href="#3、安装Git" class="headerlink" title="3、安装Git"></a>3、安装Git</h4><p> <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600">实用Git教程</a><br> 下载64位Git，全默认安装<br> <img src="/images/1/ScreenClip.png" alt=""></p>
 <h6 id="将git与github绑定"><a href="#将git与github绑定" class="headerlink" title="将git与github绑定"></a>将git与github绑定</h6><p> ssh-keygen -t rsa -C “<a href="mailto:1563972718@qq.com">1563972718@qq.com</a>“<br>然后找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容全部复制<br>打开GitHub_Settings_keys 页面，新建new SSH Key<br><img src="/images/1/01.png" alt="42d793f5e11a63d85152788039686570.png"></p>
 <p>Title为标题，任意填即可，将刚刚复制的id_rsa.pub内容粘贴进去，最后点击Add SSH key。<br>在Git Bash中检测GitHub公钥设置是否成功，输入 ssh <a href="mailto:git@github.com">git@github.com</a> 检验<br><img src="/images/1/02.png" alt="00f7e12cc75aa22957e6f8b72187f128.png"></p>
 <p>设置GitHub密钥原因是，通过非对称加密的公钥与私钥来完成加密，公钥放置在GitHub上，私钥放置在自己的电脑里。GitHub要求每次推送代码都是合法用户，所以每次推送都需要输入账号密码验证推送用户是否是合法用户，为了省去每次输入密码的步骤，采用了ssh，当你推送的时候，git就会匹配你的私钥跟GitHub上面的公钥是否是配对的，若是匹配就认为你是合法用户，则允许推送。这样可以保证每次的推送都是正确合法的。</p>
-<h4 id="4、安装Node-js"><a href="#4、安装Node-js" class="headerlink" title="4、安装Node.js"></a>4、安装Node.js</h4><p><a href="https://nodejs.org/dist/v4.4.3/node-v4.4.3-x64.msi" target="_blank" rel="noopener">64位安装地址</a><br>安装成功后检验环境变量中是否有<br><img src="/images/1/3.png" alt="06bea625b17581dd388ca0386f702221.png"><br>在系统环境变量添加NODE_PATH<br>值为F:\nodejs\node_global\node_modules<br>安装一个express<br>npm install express -g<br>cmd中输入node，然后输入require(‘express’)<br>出现<br><img src="/images/1/4.png" alt="52657a6521fa92244759f23d5c1f2e36.png"><br>即成功正常加载模块</p>
-<h6 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h6><p>（阿里开发，国内速度快）<br>输入<br>npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br>输入cnpm -v ，检测是否正常，但是这里会报错<br>添加环境变量后再输<br><img src="/images/1/5.png" alt="21d0163dea46a40305b99c02ee485d28.png"><br>安装成功</p>
+<h4 id="4、安装Node-js"><a href="#4、安装Node-js" class="headerlink" title="4、安装Node.js"></a>4、安装Node.js</h4><p><a target="_blank" rel="noopener" href="https://nodejs.org/dist/v4.4.3/node-v4.4.3-x64.msi">64位安装地址</a><br>安装成功后检验环境变量中是否有<br><img src="/images/1/3.png" alt="06bea625b17581dd388ca0386f702221.png"><br>在系统环境变量添加NODE_PATH<br>值为F:\nodejs\node_global\node_modules<br>安装一个express<br>npm install express -g<br>cmd中输入node，然后输入require(‘express’)<br>出现<br><img src="/images/1/4.png" alt="52657a6521fa92244759f23d5c1f2e36.png"><br>即成功正常加载模块</p>
+<h6 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h6><p>（阿里开发，国内速度快）<br>输入<br>npm install -g cnpm –registry=<a target="_blank" rel="noopener" href="https://registry.npm.taobao.org">https://registry.npm.taobao.org</a><br>输入cnpm -v ，检测是否正常，但是这里会报错<br>添加环境变量后再输<br><img src="/images/1/5.png" alt="21d0163dea46a40305b99c02ee485d28.png"><br>安装成功</p>
 <h3 id="5、hexo安装"><a href="#5、hexo安装" class="headerlink" title="5、hexo安装"></a>5、hexo安装</h3><p>百度hexo<br>选择文档|hexo，按照教程安装<br>新建一个blog文件夹，cmd切换到该目录下，<br>npm install -g hexo-cli安装<br>等较长时间后<br>hexo init 博客名<br>cd 博客名<br>npm install<br><img src="/images/1/6.png" alt="093d34b7b0923d359032f28b3b625004.png"><br>完成<br><img src="/images/1/7.png" alt="d765e4114126706e112277382f345bb7.png"></p>
 <p>hexo s -p 5555选择5555端口，浏览器搜localhost:5555即可进入博客（为安全起见，开一个端口来本地预览，无误后再部署到GitHub上）</p>
 <p>看一下是什么样子的！</p>
@@ -601,7 +599,7 @@
 </blockquote>
 <h3 id="6、hexo发布至github"><a href="#6、hexo发布至github" class="headerlink" title="6、hexo发布至github"></a>6、hexo发布至github</h3><p>把博客文件夹拖入sublime里<br>Source里面的_posts为内容</p>
 <h6 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h6><p>打开_config.yml改最后的为<br><img src="/images/1/8.png" alt="2418aff8ccf1a0e2ae46bdc2fa467e45.png"></p>
-<p>前面的改为url: <a href="https://marmalade0.github.io" target="_blank" rel="noopener">https://marmalade0.github.io</a><br>autnor：lijunliang<br><img src="/images/1/9.png" alt="395d5f727e5461bca6a37ae7d673df55.png"></p>
+<p>前面的改为url: <a target="_blank" rel="noopener" href="https://marmalade0.github.io">https://marmalade0.github.io</a><br>autnor：lijunliang<br><img src="/images/1/9.png" alt="395d5f727e5461bca6a37ae7d673df55.png"></p>
 <p>hexo clean （清除缓存，即删除public文件夹，在部署博客时最好先用一下此命令来清理缓存）<br>cmd中hexo g(生成静态文件)(即同步到博客中)<br>hexo d（部署到github）<strong>两者可以连起来写为hexo g -d</strong><br>以上几个命令用来部署博客内容到网站中，以后会经常用到。<br><img src="/images/1/10.png" alt="bde9280975c1018708585ddb8e40ab3f.png"><br>报错<br>装一个插件<br>npm install hexo-deployer-git –save<br>末尾加分支branch: master<br>然后hexo d同步到github上<br><strong>后来再hexo d的时候出现错误</strong><br><img src="/images/1/11.png" alt="28e7647f32d5c36e3bd3eeaf6594ac62.png"><br>，上网搜Error: Spawn failed，见有相同问题的<br>解决方法：把F:\Git\Git\bin添加到系统变量的path中<br>再运行，成功<br><img src="/images/1/12.png" alt=""></p>
 
                 
@@ -1307,8 +1305,8 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
         });
 
         // modify the toc link href to support Chinese.
@@ -1320,7 +1318,7 @@
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -1386,6 +1384,56 @@
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <footer class="page-footer bg-color">
     
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2182100384"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
     <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1399,7 +1447,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">70k</span>&nbsp;字
+                class="white-color">70.1k</span>&nbsp;字
             
             
             

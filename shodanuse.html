@@ -29,13 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
@@ -559,10 +557,10 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="互联网上最可怕的搜索引擎-Shodan-介绍及简单使用"><a href="#互联网上最可怕的搜索引擎-Shodan-介绍及简单使用" class="headerlink" title="互联网上最可怕的搜索引擎(Shodan)介绍及简单使用"></a><strong>互联网上最可怕的搜索引擎(Shodan)介绍及简单使用</strong></h2><h4 id="Shodan简介"><a href="#Shodan简介" class="headerlink" title="Shodan简介"></a>Shodan简介</h4><p>CNNMoney的一篇文章写道，虽然目前人们都认为谷歌是最强劲的搜索引擎，但Shodan才是互联网上最可怕的搜索引擎。下面简单介绍一下shodan和它的极其强大乃至恐怖的搜索能力。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>与谷歌不同的是，Shodan不是在网上搜索网址，而是直接进入互联网的背后通道。Shodan可以说是一款“黑暗”谷歌，一刻不停的在寻找着所有和互联网关联的服务器、摄像头、打印机、路由器等等。每个月Shodan都会在大约5亿个服务器上日夜不停地搜集信息。<br>Shodan所搜集到的信息是极其惊人的。凡是链接到互联网的红绿灯、安全摄像头、家庭自动化设备以及加热系统等等都会被轻易的搜索到。Shodan的使用者曾发现过一个水上公园的控制系统，一个加油站，甚至一个酒店的葡萄酒冷却器。而网站的研究者也曾使用Shodan定位到了核电站的指挥和控制系统及一个粒子回旋加速器。<br>Shodan真正值得注意的能力就是能找到几乎所有和互联网相关联的东西。而Shodan真正的可怕之处就是这些设备几乎都没有安装安全防御措施，其可以随意进入。<br>Rapid 7 的首席安全官HD Moore,表示：你可以用一个默认密码登陆几乎一半的互联网。就安全而言，这是一个巨大的失误。<br>如果你搜索“默认密码”的话，你会发现无数的打印机，服务器及系统的用户名都是“admin”，密码全都是“1234”。还有很多系统根本不需要认证，你所需要做的就是用浏览器进行链接。所以如果你在使用默认密码的话，请现在就改换新的密码。</p>
-<h3 id="Shodan简单使用"><a href="#Shodan简单使用" class="headerlink" title="Shodan简单使用"></a>Shodan简单使用</h3><p><a href="https://www.cnblogs.com/student-programmer/p/6732873.html" target="_blank" rel="noopener">参考网址</a><br>在主页的搜索框中输入想要搜索的内容即可，例如下面我搜索 “SSH”：<img src="/images/shodanuse/1.png" alt="75338c870de76be92b48ef4b0acc1f31.png"><br>上图的搜索结果包含两个部分，左侧是大量的汇总数据包括：<br>Results map – 搜索结果展示地图<br>Top services (Ports) – 使用最多的服务/端口<br>Top organizations (ISPs) – 使用最多的组织/ISP<br>Top operating systems – 使用最多的操作系统<br>Top products (Software name) – 使用最多的产品/软件名称<br>随后，在中间的主页面我们可以看到包含如下的搜索结果：<br>IP 地址<br>主机名<br>ISP<br>该条目的收录收录时间<br>该主机位于的国家<br>Banner 信息</p>
-<p>想要了解每个条目的具体信息，只需要点击每个条目下方的 details 按钮即可。此时，URL 会变成这种格式 <a href="https://www.shodan.io/host/[IP]，所以我们也可以通过直接访问指定的" target="_blank" rel="noopener">https://www.shodan.io/host/[IP]，所以我们也可以通过直接访问指定的</a> IP 来查看详细信息。<br><img src="/images/shodanuse/2.png" alt="8851d535ee54b6ec7be7606a8d974de9.png"></p>
+<h3 id="Shodan简单使用"><a href="#Shodan简单使用" class="headerlink" title="Shodan简单使用"></a>Shodan简单使用</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/student-programmer/p/6732873.html">参考网址</a><br>在主页的搜索框中输入想要搜索的内容即可，例如下面我搜索 “SSH”：<img src="/images/shodanuse/1.png" alt="75338c870de76be92b48ef4b0acc1f31.png"><br>上图的搜索结果包含两个部分，左侧是大量的汇总数据包括：<br>Results map – 搜索结果展示地图<br>Top services (Ports) – 使用最多的服务/端口<br>Top organizations (ISPs) – 使用最多的组织/ISP<br>Top operating systems – 使用最多的操作系统<br>Top products (Software name) – 使用最多的产品/软件名称<br>随后，在中间的主页面我们可以看到包含如下的搜索结果：<br>IP 地址<br>主机名<br>ISP<br>该条目的收录收录时间<br>该主机位于的国家<br>Banner 信息</p>
+<p>想要了解每个条目的具体信息，只需要点击每个条目下方的 details 按钮即可。此时，URL 会变成这种格式 <a target="_blank" rel="noopener" href="https://www.shodan.io/host/[IP]，所以我们也可以通过直接访问指定的">https://www.shodan.io/host/[IP]，所以我们也可以通过直接访问指定的</a> IP 来查看详细信息。<br><img src="/images/shodanuse/2.png" alt="8851d535ee54b6ec7be7606a8d974de9.png"></p>
 <p>上图中我们可以从顶部在地图中看到主机的物理地址，从左侧了解到主机的相关信息，右侧则包含目标主机的端口列表及其详细信息。</p>
 <p>使用搜索过滤如果像前面单纯只使用关键字直接进行搜索，搜索结果可能不尽人意，那么此时我们就需要使用一些特定的命令对搜索结果进行过滤，常见用的过滤命令如下所示：</p>
 <blockquote>
@@ -570,7 +568,7 @@
 </blockquote>
 <h6 id="搜索实例"><a href="#搜索实例" class="headerlink" title="搜索实例"></a>搜索实例</h6><p>查找位于山东的 Apache 服务器：<br>apache city:”Shandon”<br>查找位于国内的 Nginx 服务器：<br>nginx country:”CN”<br>查找 GWS(Google Web Server) 服务器：<br>“Server: gws” hostname:”google”<br>查找指定网段的华为设备：<br>huawei net:”61.191.146.0/24”<br>如上通过在基本关键字后增加指定的过滤关键字，能快速的帮助发现我们感兴趣的内容。<br>当然，还有更快速更有意思的方法，那就是点击 Shodan 搜索栏右侧的 “Explore” 按钮，就会得到很多别人分享的搜索语法，你问我别人分享的语法有什么好玩的？那咱们就随便来看看吧：<br><img src="/images/shodanuse/3.png" alt="0d746d90d70bf51005aafc89c9005b5f.png"><br><strong>高能！</strong><br>随便选取一个名为“NetSureveillance Web”的用户分享语法，从下面的描述信息我们基本就能得知这就是一个弱密码的漏洞，为了方便测试让我们把语法在增加一个国家的过滤信息，最终语法如下：<br>Server: uc-httpd 1.0.0 200 OK Country:”CN”<br><img src="/images/shodanuse/4.png" alt="5d371cabf338d0bc48b34d30d2612715.png"><br>随便选取一个页面进去输入，使用admin账号和空密码就能顺利进入了!<br><img src="/images/shodanuse/5.png" alt="f0f300cb8583697bdb625bd3ebaa57e0.png"></p>
 <p>某马来西亚一家公寓的监控，admin+123456进入<br>60.50.115.98:60001<br><img src="/images/shodanuse/6.png" alt="c7f36cc5b5a67cf58ecdd7c96b996e49.png"></p>
-<p>泰国一家商店监控，admin+空<br><a href="http://124.121.168.78:60001" target="_blank" rel="noopener">http://124.121.168.78:60001</a><br><img src="/images/shodanuse/7.png" alt="983cf49b5a01ce2ce676aeb5ef23ab81.png"></p>
+<p>泰国一家商店监控，admin+空<br><a target="_blank" rel="noopener" href="http://124.121.168.78:60001">http://124.121.168.78:60001</a><br><img src="/images/shodanuse/7.png" alt="983cf49b5a01ce2ce676aeb5ef23ab81.png"></p>
 <h6 id="在shodan中搜索JAWS-1-0，会查到一批admin-空密码（或123456等弱密码）即可进入的监控"><a href="#在shodan中搜索JAWS-1-0，会查到一批admin-空密码（或123456等弱密码）即可进入的监控" class="headerlink" title="在shodan中搜索JAWS/1.0，会查到一批admin+空密码（或123456等弱密码）即可进入的监控"></a>在shodan中搜索JAWS/1.0，会查到一批admin+空密码（或123456等弱密码）即可进入的监控</h6><p>慎用！！！</p>
 
                 
@@ -1260,8 +1258,8 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
         });
 
         // modify the toc link href to support Chinese.
@@ -1273,7 +1271,7 @@
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -1339,6 +1337,56 @@
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <footer class="page-footer bg-color">
     
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2182100384"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
     <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1352,7 +1400,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">70k</span>&nbsp;字
+                class="white-color">70.1k</span>&nbsp;字
             
             
             

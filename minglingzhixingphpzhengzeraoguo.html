@@ -29,13 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
@@ -567,8 +565,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="命令执行中关于PHP正则表达式的一些绕过方法"><a href="#命令执行中关于PHP正则表达式的一些绕过方法" class="headerlink" title="命令执行中关于PHP正则表达式的一些绕过方法"></a>命令执行中关于PHP正则表达式的一些绕过方法</h1><p>最近做了buuctf上的[极客大挑战 2019]RCE ME，PHP正则的一些绕过方法也终于要用上了，原文地址：<a href="https://blog.csdn.net/mochu7777777/article/details/104631142" target="_blank" rel="noopener">https://blog.csdn.net/mochu7777777/article/details/104631142</a></p>
-<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p><a href="https://www.leavesongs.com/PENETRATION/webshell-without-alphanum.html" target="_blank" rel="noopener">https://www.leavesongs.com/PENETRATION/webshell-without-alphanum.html</a><br><a href="https://www.leavesongs.com/PENETRATION/webshell-without-alphanum-advanced.html" target="_blank" rel="noopener">https://www.leavesongs.com/PENETRATION/webshell-without-alphanum-advanced.html</a><br><a href="https://mp.weixin.qq.com/s/fCxs4hAVpa-sF4tdT_W8-w" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/fCxs4hAVpa-sF4tdT_W8-w</a><br><a href="https://www.cnblogs.com/ECJTUACM-873284962/p/9433641.html" target="_blank" rel="noopener">https://www.cnblogs.com/ECJTUACM-873284962/p/9433641.html</a><br><a href="https://www.cnblogs.com/cimuhuashuimu/p/11546422.html" target="_blank" rel="noopener">https://www.cnblogs.com/cimuhuashuimu/p/11546422.html</a></p>
+                <h1 id="命令执行中关于PHP正则表达式的一些绕过方法"><a href="#命令执行中关于PHP正则表达式的一些绕过方法" class="headerlink" title="命令执行中关于PHP正则表达式的一些绕过方法"></a>命令执行中关于PHP正则表达式的一些绕过方法</h1><p>最近做了buuctf上的[极客大挑战 2019]RCE ME，PHP正则的一些绕过方法也终于要用上了，原文地址：<a target="_blank" rel="noopener" href="https://blog.csdn.net/mochu7777777/article/details/104631142">https://blog.csdn.net/mochu7777777/article/details/104631142</a></p>
+<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/webshell-without-alphanum.html">https://www.leavesongs.com/PENETRATION/webshell-without-alphanum.html</a><br><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/webshell-without-alphanum-advanced.html">https://www.leavesongs.com/PENETRATION/webshell-without-alphanum-advanced.html</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/fCxs4hAVpa-sF4tdT_W8-w">https://mp.weixin.qq.com/s/fCxs4hAVpa-sF4tdT_W8-w</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ECJTUACM-873284962/p/9433641.html">https://www.cnblogs.com/ECJTUACM-873284962/p/9433641.html</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cimuhuashuimu/p/11546422.html">https://www.cnblogs.com/cimuhuashuimu/p/11546422.html</a></p>
 <h1 id="异或绕过"><a href="#异或绕过" class="headerlink" title="异或绕过"></a>异或绕过</h1><p><strong>在PHP中两个字符串异或之后，得到的还是一个字符串。如果正则过滤了一些字符串，那就可以使用两个不在正则匹配范围内的字符串进行异或得到我们想要的字符串。</strong><br>例如：我们异或 ‘?’ 和 ‘~’ 之后得到的是 ‘A’<br><img src="https://gitee.com/marmalade0/images/raw/master/img/20210425201030.png" alt="在这里插入图片描述"><br>原理：</p>
 <pre class="line-numbers language-php"><code class="language-php">字符：<span class="token operator">?</span>         <span class="token constant">ASCII</span>码：<span class="token number">63</span>           二进制：  <span class="token number">00</span>‭<span class="token number">11</span> <span class="token number">1111</span>‬
 字符：<span class="token operator">~</span>         <span class="token constant">ASCII</span>码：<span class="token number">126</span>          二进制：  <span class="token number">0111</span> <span class="token number">1110</span>‬
@@ -1362,8 +1360,8 @@ $arr_str<span class="token operator">=</span>str_split_unicode<span class="token
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
         });
 
         // modify the toc link href to support Chinese.
@@ -1375,7 +1373,7 @@ $arr_str<span class="token operator">=</span>str_split_unicode<span class="token
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -1441,6 +1439,56 @@ $arr_str<span class="token operator">=</span>str_split_unicode<span class="token
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <footer class="page-footer bg-color">
     
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2182100384"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
     <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1454,7 +1502,7 @@ $arr_str<span class="token operator">=</span>str_split_unicode<span class="token
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">70k</span>&nbsp;字
+                class="white-color">70.1k</span>&nbsp;字
             
             
             

@@ -29,13 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
@@ -568,7 +566,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h3 id="Hexo博客百度收录（SEO）"><a href="#Hexo博客百度收录（SEO）" class="headerlink" title="Hexo博客百度收录（SEO）"></a>Hexo博客百度收录（SEO）</h3><p>曾迫不及待地想在百度上找到我的博文，可是找不到<br>后发现还要有百度收录操作才可显示<br>那就开始吧！</p>
-<a id="more"></a>
+<span id="more"></span>
 <p><strong>1.</strong> 百度搜索自己的域名，会发现找不到，显示<br><img src="/images/HexoSEO/1.png" alt="ec4ca260ed1644a3e0c5133e2fd88cf4.png"><br>点击提交网址，并登录<br>提交好网站后没有下文……<br><strong>2.</strong> 验证网站的所有权<br>登录百度站长平台 ,<br>登录成功之后在站点管理中点击添加网站然后输入你的站点地址，建议输入的网站为www开头的，</p>
 <blockquote>
 <p>注意：不要输入github.io的，因为github是不允许百度的spider爬取github上的内容的，所以如果想让你的站点被百度收录，只能使用自己购买的域名</p>
@@ -576,7 +574,7 @@
 <p>在选择完网站的类型后需要验证网站的所有权，验证网站所有权的方式有三种：文件验证,html标签验证和cname解析验证，使用哪一种方式都可以。</p>
 <blockquote>
 <p>坑：我用的是文件验证</p>
-<p><strong><em>将验证文件放置于您所配置域名&gt;(<a href="http://www.marmalade.vip)的根目录下" target="_blank" rel="noopener">www.marmalade.vip)的根目录下</a></em></strong><br>根目录是网站的source文件夹<br>但是<br><img src="/images/HexoSEO/2.png" alt="a2cf1b8aa1e383d1972f556175d0970a.png"><br>验证失败？<br>果断放弃!</p>
+<p><strong><em>将验证文件放置于您所配置域名&gt;(<a target="_blank" rel="noopener" href="http://www.marmalade.vip)的根目录下">www.marmalade.vip)的根目录下</a></em></strong><br>根目录是网站的source文件夹<br>但是<br><img src="/images/HexoSEO/2.png" alt="a2cf1b8aa1e383d1972f556175d0970a.png"><br>验证失败？<br>果断放弃!</p>
 </blockquote>
 <p>采用第三种cname方法<br>域名解析增加一条<br><img src="/images/HexoSEO/3.png" alt="1ba07eae2c660763c8d19364d515b14d.png"><br>成功！<br><img src="/images/HexoSEO/4.png" alt="66a9ea7ee351dc7b8666285c533052dc.png"></p>
 <p><strong>3.</strong> 生成网站地图<br>先安装sitemap插件<br>cmd添加两个插件</p>
@@ -599,7 +597,7 @@ npm install hexo-generator-baidu-sitemap --save12</code></pre><p>修改博客路
  branch: master 
  message: blog update 
  - type: baidu_url_submitter # 注意，这个为新增的</code></pre><p><strong>结果报错：？？？</strong></p>
-<p><img src="/images/HexoSEO/5.png" alt="44b0cd11f2f4cb20745d82a709148306.png"><br>百度这个错误<br><a href="https://blog.csdn.net/elgong/article/details/97839395" target="_blank" rel="noopener">hexo错误 TypeError: Cannot read property ‘count’ of undefined</a></p>
+<p><img src="/images/HexoSEO/5.png" alt="44b0cd11f2f4cb20745d82a709148306.png"><br>百度这个错误<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/elgong/article/details/97839395">hexo错误 TypeError: Cannot read property ‘count’ of undefined</a></p>
 <blockquote>
 <p>解决方案：</p>
 <p>npm remove hexo-baidu-url-submit<br>hexo clean<br>hexo g</p>
@@ -609,24 +607,24 @@ npm install hexo-generator-baidu-sitemap --save12</code></pre><p>修改博客路
 <p><strong><em>过了很久以后</em></strong><br>忍不住又使用了一遍指令<br>npm install hexo-baidu-url-submit –save</p>
 <h6 id="结果这次hexo-g-d不报错了！？？"><a href="#结果这次hexo-g-d不报错了！？？" class="headerlink" title="结果这次hexo g -d不报错了！？？"></a><strong><em>结果这次hexo g -d不报错了！？？</em></strong></h6><p>所以成功！</p>
 <blockquote>
-<p>参考文章：<br><a href="https://blog.csdn.net/Ivan_zcy/article/details/82938260" target="_blank" rel="noopener">如何让hexo博文被百度收录</a></p>
+<p>参考文章：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Ivan_zcy/article/details/82938260">如何让hexo博文被百度收录</a></p>
 </blockquote>
 <h3 id="链接提交：自动推送"><a href="#链接提交：自动推送" class="headerlink" title="链接提交：自动推送"></a>链接提交：自动推送</h3><p>进入主题配置文件，开启baidu_push(fause变为true)<br><img src="/images/HexoSEO/7.png" alt="3f2a9dae745aaf66fa957dde3e8c8fe0.png"></p>
 <p>站点根目录\themes\next\layout_scripts目录，修改baidu_push.swig文件为以下内容，若无该文件直接创建一个</p>
 <pre><code>{% if theme.baidu_push %}
 <script>
-(function(){
+(function()&#123;
     var bp = document.createElement('script');
     var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
+    if (curProtocol === 'https') &#123;
         bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    }
-    else {
+    &#125;
+    else &#123;
         bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
+    &#125;
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(bp, s);
-})();
+&#125;)();
 </script>
 {% endif %}</code></pre><p>重新编译生成部署即可，这样每次访问一个页面都会主动把这个页面的地址提交给百度<br>访问博客任一页面，然后按F12，切换到Elements，如果看到如下代码说明以上js代码插入成功<br><img src="/images/HexoSEO/8.png" alt="6146748ff883ba414b1e01d641d475be.png"></p>
 <h3 id="sitemap提交"><a href="#sitemap提交" class="headerlink" title="sitemap提交"></a>sitemap提交</h3><p>在百度站长平台找到链接提交，自动提交中找到sitemap<br>将以下两行（域名写自己的）提交，然后等待回复就可以啦<br><a href="https://marmalade.vip/baidusitemap.xml">https://marmalade.vip/baidusitemap.xml</a><br><a href="https://marmalade.vip/sitemap.xml">https://marmalade.vip/sitemap.xml</a><br><img src="/images/HexoSEO/9.png" alt="893dc490024a13ce5c879d7b5ec42925.png"></p>
@@ -1351,8 +1349,8 @@ Sitemap: 刚刚sitemap的地址</code></pre><p>在百度站长平台，左侧，
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
         });
 
         // modify the toc link href to support Chinese.
@@ -1364,7 +1362,7 @@ Sitemap: 刚刚sitemap的地址</code></pre><p>在百度站长平台，左侧，
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -1430,6 +1428,56 @@ Sitemap: 刚刚sitemap的地址</code></pre><p>在百度站长平台，左侧，
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <footer class="page-footer bg-color">
     
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2182100384"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
     <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1443,7 +1491,7 @@ Sitemap: 刚刚sitemap的地址</code></pre><p>在百度站长平台，左侧，
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">70k</span>&nbsp;字
+                class="white-color">70.1k</span>&nbsp;字
             
             
             

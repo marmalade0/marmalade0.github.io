@@ -29,13 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
@@ -579,7 +577,7 @@
 <blockquote>
 <p>在开始“大展身手”前，要注意一点：<br>每添加了一项新代码或功能后不要着急部署到github里，<br>健康的方式是用<br>hexo s -p 5555<br>指令开启5555端口，然后浏览器输入127.0.0.1:5555或localhost:5555便可浏览网站，保存之后再刷新本地浏览的页面会相应修改，<br>等调试无误后才可用<br>hexo clean<br>hexo g -d<br>指令部署，这样能够防止出错时及时检查并修改，而不至于网站崩溃。</p>
 </blockquote>
-<a id="more"></a>
+<span id="more"></span>
 <h3 id="1-目录中创建标签和分类菜单及应用"><a href="#1-目录中创建标签和分类菜单及应用" class="headerlink" title="(1)目录中创建标签和分类菜单及应用"></a>(1)目录中创建标签和分类菜单及应用</h3><p>博客目录下hexo new page “tags”<br>然后在source文件夹下出现tags<br><img src="/images/beautify1/1.png" alt="d8a4349c886b117733dce99910a5a540.png"><br>打开对应的index，改为<br><img src="/images/beautify1/2.png" alt="b60a2cc94f7f85a30a8725f88622557c.png"></p>
 <p>同理hexo new page “categories”<br><img src="/images/beautify1/3.png" alt="b0b1f3f16bafa03f1d188a0831acfb57.png"><br>在主题配置文件中找到menu，去掉对应井号即可<br><img src="/images/beautify1/4.png" alt="b0fcd6d7938cf576b9b8d75ac61e0ed0.png"><br>想要在某篇文章中添加标签或分类只需在文章前面加上下图效果<br><img src="/images/beautify1/5.png" alt="f289d5e5a2d86c422e255cd05d6b2aee.png"></p>
 <h3 id="2-标签美化"><a href="#2-标签美化" class="headerlink" title="(2)标签美化"></a>(2)标签美化</h3><p><img src="/images/beautify1/6.png" alt="b658164ad4ee428656cb8d6b0f11a74d.png"><br>井号样式不好看，改为图标</p>
@@ -1309,8 +1307,8 @@ unescape: true</code></pre><h3 id="7-设置背景动画样式"><a href="#7-设�
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
         });
 
         // modify the toc link href to support Chinese.
@@ -1322,7 +1320,7 @@ unescape: true</code></pre><h3 id="7-设置背景动画样式"><a href="#7-设�
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -1388,6 +1386,56 @@ unescape: true</code></pre><h3 id="7-设置背景动画样式"><a href="#7-设�
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <footer class="page-footer bg-color">
     
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2182100384"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
     <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1401,7 +1449,7 @@ unescape: true</code></pre><h3 id="7-设置背景动画样式"><a href="#7-设�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">70k</span>&nbsp;字
+                class="white-color">70.1k</span>&nbsp;字
             
             
             

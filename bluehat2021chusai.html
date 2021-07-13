@@ -29,13 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
@@ -569,7 +567,7 @@
             <div id="articleContent">
                 <h1 id="Pwn"><a href="#Pwn" class="headerlink" title="Pwn"></a>Pwn</h1><h2 id="slient"><a href="#slient" class="headerlink" title="slient"></a>slient</h2><p>存在shellcode执行</p>
 <p>去年蓝帽决赛原题：附带解题链接</p>
-<p><a href="https://www.cnblogs.com/p201821440039/p/14219506.html" target="_blank" rel="noopener">https://www.cnblogs.com/p201821440039/p/14219506.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/p201821440039/p/14219506.html">https://www.cnblogs.com/p201821440039/p/14219506.html</a></p>
 <p>脚本如下：</p>
 <pre><code>from pwn import *
 elf=ELF('./chall')
@@ -623,9 +621,9 @@ print("".join([chr(i) for i in var_list]))</code></pre><h1 id="Web"><a href="#We
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514093434.jpg" alt="web1"></p>
 <h2 id="one-Pointer-php"><a href="#one-Pointer-php" class="headerlink" title="one_Pointer_php"></a>one_Pointer_php</h2><p>感谢buuctf，蓝帽复现环境提供的太及时了，太强了</p>
 <p>参考链接：</p>
-<p><a href="https://ha1c9on.top/2021/04/29/lmb_one_pointer_php/#i-6" target="_blank" rel="noopener">https://ha1c9on.top/2021/04/29/lmb_one_pointer_php/#i-6</a></p>
-<p><a href="https://rmb122.com/2020/12/30/hxp-CTF-resonator-Writeup-SSRF-via-file-put-contents/" target="_blank" rel="noopener">https://rmb122.com/2020/12/30/hxp-CTF-resonator-Writeup-SSRF-via-file-put-contents/</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/343918026" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/343918026</a></p>
+<p><a target="_blank" rel="noopener" href="https://ha1c9on.top/2021/04/29/lmb_one_pointer_php/#i-6">https://ha1c9on.top/2021/04/29/lmb_one_pointer_php/#i-6</a></p>
+<p><a target="_blank" rel="noopener" href="https://rmb122.com/2020/12/30/hxp-CTF-resonator-Writeup-SSRF-via-file-put-contents/">https://rmb122.com/2020/12/30/hxp-CTF-resonator-Writeup-SSRF-via-file-put-contents/</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/343918026">https://zhuanlan.zhihu.com/p/343918026</a></p>
 <p>源码就俩文件：</p>
 <pre><code>add_api.php
 &lt;?php
@@ -673,7 +671,7 @@ disable_classes = Exception,SplDoublyLinkedList,Error,ErrorException,ArgumentCou
 <p>考虑到可以通过攻击<code>FPM</code>来bypass</p>
 <p>因为禁用了许多函数和类，普通的ssrf无法使用，但是ftp协议未被禁用</p>
 <p>这篇文章讲的挺清楚：</p>
-<p><a href="https://rmb122.com/2020/12/30/hxp-CTF-resonator-Writeup-SSRF-via-file-put-contents/" target="_blank" rel="noopener">https://rmb122.com/2020/12/30/hxp-CTF-resonator-Writeup-SSRF-via-file-put-contents/</a></p>
+<p><a target="_blank" rel="noopener" href="https://rmb122.com/2020/12/30/hxp-CTF-resonator-Writeup-SSRF-via-file-put-contents/">https://rmb122.com/2020/12/30/hxp-CTF-resonator-Writeup-SSRF-via-file-put-contents/</a></p>
 <p>ftp 协议相对比较复杂, 其中存在一个特性, 相信大家都听说过, 就是 ftp 的数据端口和指令端口是分开的, 我们平时所说的 21 号端口其实是 ftp 的指令端口, 用于发送指令, 比如认证用户和指定读取的文件. 但是如果是传输文件的内容, ftp 实际上会重新打开一个链接, 同时还分为两种模式, 被动模式和主动模式.</p>
 <p>这里 wikipedia 讲的比较清楚, 我直接复制一段过来</p>
 <pre><code>FTP有两种使用模式：主动和被动。主动模式要求客户端和服务器端同时打开并且监听一个端口以创建连接。在这种情况下，客户端由于安装了防火墙会产生一些问题。所以，创立了被动模式。被动模式只要求服务器端产生一个监听相应端口的进程，这样就可以绕过客户端安装了防火墙的问题。</code></pre><p>注意 <code>被动模式只要求服务器端产生一个监听相应端口的进程</code>, 这里有非常重要的一点, 这个被动模式的端口是服务器指定的, 而且还有一点是很多地方没有提到的, 实际上除了端口, 服务器的地址也是可以被指定的. 由于 ftp 和 http 类似, 协议内容全是纯文本, 我们可以很清晰的看到它是如何指定地址和端口的</p>
@@ -1087,7 +1085,7 @@ file_put_contents($file,$data);
 <pre><code>find / -perm -u=s -type f 2&gt;/dev/null</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094943.png" alt="image-20210502155438554"></p>
 <p><code>php -a</code>进入交互模式，进行绕过open_basedir并getflag</p>
 <pre><code>chdir('css');ini_set('open_basedir','..');chdir('..');chdir('..');chdir('..');chdir('..');ini_set('open_basedir','/');echo file_get_contents('/flag');</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094718.png" alt="image-20210502155624776"></p>
-<h3 id="更骚的办法"><a href="#更骚的办法" class="headerlink" title="更骚的办法"></a>更骚的办法</h3><p><a href="http://bubb1e.com/2021/04/29/蓝帽杯2021WP_WEB/#0x02-one-Pointer-php" target="_blank" rel="noopener">http://bubb1e.com/2021/04/29/%E8%93%9D%E5%B8%BD%E6%9D%AF2021WP_WEB/#0x02-one-Pointer-php</a></p>
+<h3 id="更骚的办法"><a href="#更骚的办法" class="headerlink" title="更骚的办法"></a>更骚的办法</h3><p><a target="_blank" rel="noopener" href="http://bubb1e.com/2021/04/29/蓝帽杯2021WP_WEB/#0x02-one-Pointer-php">http://bubb1e.com/2021/04/29/%E8%93%9D%E5%B8%BD%E6%9D%AF2021WP_WEB/#0x02-one-Pointer-php</a></p>
 <p>除了<code>fsockopen</code>这个函数外，还有一个<code>pfsockopen</code></p>
 <p>这俩函数没啥区别</p>
 <p>这里只ban了<code>fsockopen</code></p>
@@ -1122,17 +1120,17 @@ file_put_contents($file,$data);
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094805.png" alt="image-20210429120549345"></p>
 <p>Google一搜，发现编码类型</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094808.png" alt="image-20210429120712293"></p>
-<p><a href="https://www.dcode.fr/wingdings-font" target="_blank" rel="noopener">https://www.dcode.fr/wingdings-font</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.dcode.fr/wingdings-font">https://www.dcode.fr/wingdings-font</a></p>
 <p>解出来这个</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094812.png" alt="image-20210429120908642"></p>
 <p>去github找相应的仓库<code>1cePeak</code></p>
-<p><a href="https://github.com/Tr0jAnV1rU4/1cePeak" target="_blank" rel="noopener">https://github.com/Tr0jAnV1rU4/1cePeak</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Tr0jAnV1rU4/1cePeak">https://github.com/Tr0jAnV1rU4/1cePeak</a></p>
 <p>git clone下来，发现有被删除的文件，<code>checkout</code>一下</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094814.png" alt="image-20210429121142295"></p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094816.png" alt="image-20210429121201233"></p>
 <p>怀疑这是个key，想到第一步从mp3尾部解出的emoji，在线搜一下</p>
-<p><a href="https://miaotony.xyz/2021/02/11/CTF_2021NewsCTF/#toc-heading-5" target="_blank" rel="noopener">https://miaotony.xyz/2021/02/11/CTF_2021NewsCTF/#toc-heading-5</a></p>
-<p><a href="https://aghorler.github.io/emoji-aes/" target="_blank" rel="noopener">https://aghorler.github.io/emoji-aes/</a></p>
+<p><a target="_blank" rel="noopener" href="https://miaotony.xyz/2021/02/11/CTF_2021NewsCTF/#toc-heading-5">https://miaotony.xyz/2021/02/11/CTF_2021NewsCTF/#toc-heading-5</a></p>
+<p><a target="_blank" rel="noopener" href="https://aghorler.github.io/emoji-aes/">https://aghorler.github.io/emoji-aes/</a></p>
 <p>直接解出flag</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094818.png" alt="image-20210429121259016"></p>
 <h2 id="I-will-but-not-quite"><a href="#I-will-but-not-quite" class="headerlink" title="I_will_but_not_quite"></a>I_will_but_not_quite</h2><p>题目给了文件</p>
@@ -1182,7 +1180,7 @@ print "secret =", encrypt(flag)
 <p>暂时不知道啥意思，直接工具全试一遍，发现是outguess+弱口令</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094840.png" alt="image-20210503105146827"></p>
 <p>双十六进制编码，解出来既是密文</p>
-<p><a href="https://www.calcresult.com/misc/cyphers/twin-hex.html" target="_blank" rel="noopener">https://www.calcresult.com/misc/cyphers/twin-hex.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.calcresult.com/misc/cyphers/twin-hex.html">https://www.calcresult.com/misc/cyphers/twin-hex.html</a></p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094842.png" alt="image-20210503105940728"></p>
 <p>逆加密脚本，得解密脚本</p>
 <pre><code>secret = "Vnw3HC07BDgbBWNRGTx2fSckf399V1Z9CxIvHVd6fHsaEnR8fX40NyQ7JhM8CWV5fgMNN24="
@@ -1219,7 +1217,7 @@ for i in range(97,123):
 <p>找出来俩文件</p>
 <p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094450.png" alt="image-20210503234027021"></p>
 <p>逆向不会了</p>
-<p>[参考链接](<a href="http://www.rayi.vip/2021/05/02/第五届&quot;蓝帽杯&quot;" target="_blank" rel="noopener">http://www.rayi.vip/2021/05/02/第五届"蓝帽杯"</a> WriteUp/)</p>
+<p>[参考链接](<a target="_blank" rel="noopener" href="http://www.rayi.vip/2021/05/02/第五届&quot;蓝帽杯&quot;">http://www.rayi.vip/2021/05/02/第五届"蓝帽杯"</a> WriteUp/)</p>
 
                 
             </div>
@@ -1903,8 +1901,8 @@ for i in range(97,123):
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
         });
 
         // modify the toc link href to support Chinese.
@@ -1916,7 +1914,7 @@ for i in range(97,123):
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -1982,6 +1980,56 @@ for i in range(97,123):
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <footer class="page-footer bg-color">
     
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2182100384"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
     <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1995,7 +2043,7 @@ for i in range(97,123):
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">70k</span>&nbsp;字
+                class="white-color">70.1k</span>&nbsp;字
             
             
             
