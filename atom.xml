@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Marmalade&#39;s Blog</title>
+  
+  <subtitle>Marmalade</subtitle>
+  <link href="https://marmalade.vip/atom.xml" rel="self"/>
+  
+  <link href="https://marmalade.vip/"/>
+  <updated>2021-05-14T02:01:16.648Z</updated>
+  <id>https://marmalade.vip/</id>
+  
+  <author>
+    <name>lijunliang</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第五届“蓝帽杯” 初赛WriteUp</title>
+    <link href="https://marmalade.vip/bluehat2021chusai.html"/>
+    <id>https://marmalade.vip/bluehat2021chusai.html</id>
+    <published>2021-05-14T01:30:17.000Z</published>
+    <updated>2021-05-14T02:01:16.648Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Pwn&quot;&gt;&lt;a href=&quot;#Pwn&quot; class=&quot;headerlink&quot; title=&quot;Pwn&quot;&gt;&lt;/a&gt;Pwn&lt;/h1&gt;&lt;h2 id=&quot;slient&quot;&gt;&lt;a href=&quot;#slient&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="writeup" scheme="https://marmalade.vip/categories/writeup/"/>
+    
+    
+    <category term="蓝帽杯" scheme="https://marmalade.vip/tags/%E8%93%9D%E5%B8%BD%E6%9D%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>命令执行中关于PHP正则表达式的一些绕过方法</title>
+    <link href="https://marmalade.vip/minglingzhixingphpzhengzeraoguo.html"/>
+    <id>https://marmalade.vip/minglingzhixingphpzhengzeraoguo.html</id>
+    <published>2021-04-25T12:16:42.000Z</published>
+    <updated>2021-04-25T12:27:06.535Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;命令执行中关于PHP正则表达式的一些绕过方法&quot;&gt;&lt;a href=&quot;#命令执行中关于PHP正则表达式的一些绕过方法&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="web" scheme="https://marmalade.vip/categories/web/"/>
+    
+    
+    <category term="正则绕过" scheme="https://marmalade.vip/tags/%E6%AD%A3%E5%88%99%E7%BB%95%E8%BF%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈PHP代码执行中出现过滤限制的绕过执行方法</title>
+    <link href="https://marmalade.vip/phpexecbypass.html"/>
+    <id>https://marmalade.vip/phpexecbypass.html</id>
+    <published>2021-04-22T11:29:00.000Z</published>
+    <updated>2021-04-22T12:09:26.142Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;浅谈PHP代码执行中出现过滤限制的绕过执行方法&quot;&gt;&lt;a href=&quot;#浅谈PHP代码执行中出现过滤限制的绕过执行方法&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="web" scheme="https://marmalade.vip/categories/web/"/>
+    
+    
+    <category term="php代码执行" scheme="https://marmalade.vip/tags/php%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP序列化反序列化漏洞总结（一篇懂）</title>
+    <link href="https://marmalade.vip/phpserializezongjie.html"/>
+    <id>https://marmalade.vip/phpserializezongjie.html</id>
+    <published>2021-04-10T14:30:09.000Z</published>
+    <updated>2021-04-22T11:27:37.957Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;转自whoami大佬的文章&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="web" scheme="https://marmalade.vip/categories/web/"/>
+    
+    
+    <category term="php反序列化" scheme="https://marmalade.vip/tags/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP伪协议总结</title>
+    <link href="https://marmalade.vip/phpweixieyizongjie.html"/>
+    <id>https://marmalade.vip/phpweixieyizongjie.html</id>
+    <published>2021-04-09T10:13:31.000Z</published>
+    <updated>2021-04-22T11:17:18.694Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;PHP伪协议总结&quot;&gt;&lt;a href=&quot;#PHP伪协议总结&quot; class=&quot;headerlink&quot; title=&quot;PHP伪协议总结&quot;&gt;&lt;/a&gt;PHP伪协议总结&lt;/h1&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="web" scheme="https://marmalade.vip/categories/web/"/>
+    
+    
+    <category term="php伪协议" scheme="https://marmalade.vip/tags/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>XSS漏洞介绍及靶场实战</title>
+    <link href="https://marmalade.vip/xsshaozishootingrange.html"/>
+    <id>https://marmalade.vip/xsshaozishootingrange.html</id>
+    <published>2021-04-05T11:34:29.000Z</published>
+    <updated>2021-04-05T11:57:09.169Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;什么是XSS攻击&quot;&gt;&lt;a href=&quot;#什么是XSS攻击&quot; class=&quot;headerlink&quot; title=&quot;什么是XSS攻击&quot;&gt;&lt;/a&gt;&lt;strong&gt;什么是XSS攻击&lt;/strong&gt;&lt;/h4&gt;&lt;p&gt;Cross-Site</summary>
+        
+      
+    
+    
+    
+    <category term="web" scheme="https://marmalade.vip/categories/web/"/>
+    
+    
+    <category term="xss" scheme="https://marmalade.vip/tags/xss/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spyse:一个网络安全从业者的专业搜索引擎</title>
+    <link href="https://marmalade.vip/Spysesearch.html"/>
+    <id>https://marmalade.vip/Spysesearch.html</id>
+    <published>2021-03-27T04:54:26.000Z</published>
+    <updated>2021-03-28T12:03:14.177Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Spyse-一个网络安全从业者的专业搜索引擎&quot;&gt;&lt;a href=&quot;#Spyse-一个网络安全从业者的专业搜索引擎&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="网络安全类网站" scheme="https://marmalade.vip/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%B1%BB%E7%BD%91%E7%AB%99/"/>
+    
+    
+    <category term="Spyse" scheme="https://marmalade.vip/tags/Spyse/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Playfair密码及其加密解密规则介绍</title>
+    <link href="https://marmalade.vip/playfaircrypto.html"/>
+    <id>https://marmalade.vip/playfaircrypto.html</id>
+    <published>2021-03-20T11:53:06.000Z</published>
+    <updated>2021-03-20T12:06:25.479Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Playfair密码&quot;&gt;&lt;a href=&quot;#Playfair密码&quot; class=&quot;headerlink&quot; title=&quot;Playfair密码&quot;&gt;&lt;/a&gt;Playfair密码&lt;/h2&gt;&lt;p&gt; Playfair密码（Playfair cipher 或</summary>
+        
+      
+    
+    
+    
+    <category term="crypto" scheme="https://marmalade.vip/categories/crypto/"/>
+    
+    
+    <category term="crypto" scheme="https://marmalade.vip/tags/crypto/"/>
+    
+    <category term="playfair" scheme="https://marmalade.vip/tags/playfair/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从0到1：web入门（一）信息搜集</title>
+    <link href="https://marmalade.vip/from0to1webrumenxinxisouji.html"/>
+    <id>https://marmalade.vip/from0to1webrumenxinxisouji.html</id>
+    <published>2021-03-13T06:23:48.000Z</published>
+    <updated>2021-03-27T05:07:43.810Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;参考书籍：《从0到1：ctfer成长之路》&lt;br&gt;对相应实战案例进行复现总结&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;​   </summary>
+        
+      
+    
+    
+    
+    <category term="从0到1：ctfer成长之路" scheme="https://marmalade.vip/categories/%E4%BB%8E0%E5%88%B01%EF%BC%9Actfer%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/"/>
+    
+    <category term="web" scheme="https://marmalade.vip/categories/%E4%BB%8E0%E5%88%B01%EF%BC%9Actfer%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/web/"/>
+    
+    
+    <category term="web" scheme="https://marmalade.vip/tags/web/"/>
+    
+    <category term="从0到1" scheme="https://marmalade.vip/tags/%E4%BB%8E0%E5%88%B01/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于Django3.0的web框架详细架构过程（一）</title>
+    <link href="https://marmalade.vip/djangorumen1.html"/>
+    <id>https://marmalade.vip/djangorumen1.html</id>
+    <published>2021-03-12T13:12:54.000Z</published>
+    <updated>2021-04-25T12:25:21.289Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;参考书籍《python编程：从入门到实践》十八章，十九章，二十章内容&lt;/p&gt;
+&lt;p&gt;该书籍Django使用1.11版本，而如今Django已经更新到3.0+，&lt;/p&gt;
+&lt;p&gt;因此本文将进行两种版本的对比并且匹配版本更迭导致的代码报错问题，一步一步带你实现适用Django3.</summary>
+        
+      
+    
+    
+    
+    <category term="django框架" scheme="https://marmalade.vip/categories/django%E6%A1%86%E6%9E%B6/"/>
+    
+    
+    <category term="django入门" scheme="https://marmalade.vip/tags/django%E5%85%A5%E9%97%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>零宽度字符加密</title>
+    <link href="https://marmalade.vip/zerokuanduzifujiami.html"/>
+    <id>https://marmalade.vip/zerokuanduzifujiami.html</id>
+    <published>2021-03-06T13:23:57.000Z</published>
+    <updated>2021-03-06T13:39:32.554Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;​​        简而言之，就是字节宽度为0的特殊字符.&lt;br&gt;零宽度字符是一些不可见的，不可打印的字符。它们存在于页面中主要用于调整字符的显示格式。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="crypto" scheme="https://marmalade.vip/categories/crypto/"/>
+    
+    
+    <category term="零宽度字符加密" scheme="https://marmalade.vip/tags/%E9%9B%B6%E5%AE%BD%E5%BA%A6%E5%AD%97%E7%AC%A6%E5%8A%A0%E5%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo-Matery主题细致美化(下)</title>
+    <link href="https://marmalade.vip/Materysettings2.html"/>
+    <id>https://marmalade.vip/Materysettings2.html</id>
+    <published>2021-01-21T10:09:45.000Z</published>
+    <updated>2021-01-25T05:57:17.474Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;新建文章模板修改&quot;&gt;&lt;a href=&quot;#新建文章模板修改&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="hexo+github博客建立与美化" scheme="https://marmalade.vip/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/"/>
+    
+    
+    <category term="Matery主题美化" scheme="https://marmalade.vip/tags/Matery%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo-Matery主题细致美化(上)</title>
+    <link href="https://marmalade.vip/Materysettings1.html"/>
+    <id>https://marmalade.vip/Materysettings1.html</id>
+    <published>2021-01-21T08:59:17.000Z</published>
+    <updated>2021-01-25T04:35:14.782Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Hexo-Matery主题美化&quot;&gt;&lt;a href=&quot;#Hexo-Matery主题美化&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="hexo+github博客建立与美化" scheme="https://marmalade.vip/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/"/>
+    
+    
+    <category term="Matery主题美化" scheme="https://marmalade.vip/tags/Matery%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sqlmap工具基础用法详解</title>
+    <link href="https://marmalade.vip/sqlmapbasicuse.html"/>
+    <id>https://marmalade.vip/sqlmapbasicuse.html</id>
+    <published>2020-06-07T00:05:16.000Z</published>
+    <updated>2021-03-20T12:18:33.160Z</updated>
+    
+    
+    <summary type="html">&lt;h6 id=&quot;1-主要功能：&quot;&gt;&lt;a href=&quot;#1-主要功能：&quot; class=&quot;headerlink&quot; title=&quot;1.主要功能：&quot;&gt;&lt;/a&gt;1.主要功能：&lt;/h6&gt;&lt;p&gt;一个用来做sql注入攻击的工具。&lt;br&gt;扫描、发现、利用给定的url的sql注入漏洞，内置许多绕过插件。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：需要python2才能运行，python3不可&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://sqlmap.org/&quot;&gt;sqlmap工具压缩包官方下载地址&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="sqlmap" scheme="https://marmalade.vip/tags/sqlmap/"/>
+    
+    <category term="dvwa" scheme="https://marmalade.vip/tags/dvwa/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客：您备案的网站未指向阿里云国内节点（不含香港）服务器，备案号可能被取消接入</title>
+    <link href="https://marmalade.vip/aliyunbeianjinggao.html"/>
+    <id>https://marmalade.vip/aliyunbeianjinggao.html</id>
+    <published>2020-05-30T09:25:11.000Z</published>
+    <updated>2021-03-20T12:10:59.519Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;工信部备案后一段时间会发来&lt;br&gt; &lt;code&gt;Hexo博客：您备案的网站未指向阿里云国内节点（不含香港）服务器，备案号可能被取消接入&lt;/code&gt;&lt;br&gt; 的短信警告，&lt;br&gt;&lt;img src=&quot;/images/aliyunbeianjinggao/1.jpg&quot; alt=&quot;碰到问题不要慌&quot;&gt;&lt;br&gt;下面讲述该问题的原因及解决方法。&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>win10下右键菜单添加“打开cmd”</title>
+    <link href="https://marmalade.vip/cmdcaidan.html"/>
+    <id>https://marmalade.vip/cmdcaidan.html</id>
+    <published>2020-05-30T09:14:19.000Z</published>
+    <updated>2021-04-27T12:22:39.281Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;最近使用cmd比较多，就想在某个文件夹下右键打开cmd，这样不用每次都在默认情况下切换目录。无奈win10 1703版本下shift+右键不能打开cmd，只能打开powershell。&lt;br&gt;好，那就自己整一个吧。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="杂" scheme="https://marmalade.vip/categories/%E6%9D%82/"/>
+    
+    
+    <category term="cmd" scheme="https://marmalade.vip/tags/cmd/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo个人博客SEO优化技巧</title>
+    <link href="https://marmalade.vip/seoyouhua.html"/>
+    <id>https://marmalade.vip/seoyouhua.html</id>
+    <published>2020-04-27T07:02:39.000Z</published>
+    <updated>2021-01-25T05:36:04.995Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;hexo个人博客SEO优化技巧&quot;&gt;&lt;a href=&quot;#hexo个人博客SEO优化技巧&quot; class=&quot;headerlink&quot; title=&quot;hexo个人博客SEO优化技巧&quot;&gt;&lt;/a&gt;hexo个人博客SEO优化技巧&lt;/h2&gt;&lt;p&gt;SEO定义:提高网站浏览量即更容易让百度推送到文章而做的优化手段。&lt;br&gt;&lt;a href=&quot;https://blog.csdn.net/yixu0534/article/details/92092386?depth_1-utm_source=distribute.pc_relevant.none-task&amp;amp;utm_source=distribute.pc_relevant.none-task&quot;&gt;具体的SEO介绍&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="hexoSEO" scheme="https://marmalade.vip/categories/hexoSEO/"/>
+    
+    
+    <category term="seo" scheme="https://marmalade.vip/tags/seo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ICP和公安网备案以及网站底部添加相应备案号</title>
+    <link href="https://marmalade.vip/wangzhanbeian.html"/>
+    <id>https://marmalade.vip/wangzhanbeian.html</id>
+    <published>2020-04-27T04:54:13.000Z</published>
+    <updated>2021-01-25T06:41:42.328Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;网站备案&quot;&gt;&lt;a href=&quot;#网站备案&quot; class=&quot;headerlink&quot; title=&quot;网站备案&quot;&gt;&lt;/a&gt;网站备案&lt;/h2&gt;&lt;p&gt;要分别进行公信网备案和公安备案然后部署在网站底部&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="hexoSEO" scheme="https://marmalade.vip/categories/hexoSEO/"/>
+    
+    
+    <category term="备案" scheme="https://marmalade.vip/tags/%E5%A4%87%E6%A1%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客百度谷歌收录</title>
+    <link href="https://marmalade.vip/baidugoogleseo.html"/>
+    <id>https://marmalade.vip/baidugoogleseo.html</id>
+    <published>2020-04-26T15:30:01.000Z</published>
+    <updated>2020-05-08T09:42:27.815Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;Hexo博客百度收录（SEO）&quot;&gt;&lt;a href=&quot;#Hexo博客百度收录（SEO）&quot; class=&quot;headerlink&quot; title=&quot;Hexo博客百度收录（SEO）&quot;&gt;&lt;/a&gt;Hexo博客百度收录（SEO）&lt;/h3&gt;&lt;p&gt;曾迫不及待地想在百度上找到我的博文，可是找不到&lt;br&gt;后发现还要有百度收录操作才可显示&lt;br&gt;那就开始吧！&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="hexoSEO" scheme="https://marmalade.vip/categories/hexoSEO/"/>
+    
+    
+    <category term="seo" scheme="https://marmalade.vip/tags/seo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（四）</title>
+    <link href="https://marmalade.vip/hexothemebeautify4.html"/>
+    <id>https://marmalade.vip/hexothemebeautify4.html</id>
+    <published>2020-04-26T14:55:28.000Z</published>
+    <updated>2021-01-25T05:54:50.922Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;自定义文章底部版权声明&lt;br&gt;在每篇文章末尾添加“本文结束”标记&lt;br&gt;字数统计和阅读时长(网站底部/文章内)&lt;br&gt;添加文章置顶功能&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="hexo+github博客建立与美化" scheme="https://marmalade.vip/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/"/>
+    
+    
+    <category term="next主题" scheme="https://marmalade.vip/tags/next%E4%B8%BB%E9%A2%98/"/>
+    
+    <category term="next主题美化" scheme="https://marmalade.vip/tags/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
+    
+    <category term="网站添加功能" scheme="https://marmalade.vip/tags/%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD/"/>
+    
+  </entry>
+  
+</feed>
