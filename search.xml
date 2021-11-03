@@ -1,6 +1,3353 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2020年“美亚杯”第六届中国电子数据取证大赛团队赛全解析</title>
+    <url>/20meiyacupgroup.html</url>
+    <content><![CDATA[<p>美亚杯2020 - 团体赛 Zello&amp;Xeno服务器部分 Write Up<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#2020-zelloxeno-write-up">¶</a></p>
+<h1 id="Zello服务器镜像模拟¶"><a href="#Zello服务器镜像模拟¶" class="headerlink" title="Zello服务器镜像模拟¶"></a>Zello服务器镜像模拟<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#zello">¶</a></h1><p>Zello服务器使用了LVM2硬盘，因此导致了火眼仿真程序生成的虚拟机文件无法直接启动，需要手动在配置中将“EFI引导”更改为“BOIS（Legacy）引导”。</p>
+<p>在镜像文件的GPT分区类型也指出该分区为BOIS引导分区。参见<a href="https://blog.csdn.net/humanof/article/details/88644691">GPT 分区详解</a>。</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026240.png" alt="image-20201121201412956"></p>
+<p>此外，还可以将LVM2分区直接挂载在物理机上，再用火眼对LVM2分区进行仿真操作。</p>
+<p>不过我正常使用火眼仿真没有问题</p>
+<hr>
+<h2 id="01-Zello服务器的哈希值（SHA256）是甚么？¶"><a href="#01-Zello服务器的哈希值（SHA256）是甚么？¶" class="headerlink" title="01 Zello服务器的哈希值（SHA256）是甚么？¶"></a>01 Zello服务器的哈希值（SHA256）是甚么？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#01-zellosha256">¶</a></h2><p>在取证大师中对整个镜像进行SHA256计算即可。</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111021854884.png" alt="image-20211020103354697"></p>
+<hr>
+<h2 id="02-卷组是何时创建的？¶"><a href="#02-卷组是何时创建的？¶" class="headerlink" title="02 卷组是何时创建的？¶"></a>02 卷组是何时创建的？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#02">¶</a></h2><p>LVM在每个物理卷头部都维护了一个metadata，其中包含有关于分区的基本信息。参见<a href="https://blog.csdn.net/weixin_41843699/article/details/106467864">LVM2—Logical Volume Manager</a>。</p>
+<p>通过对LVM2分区进行16进制查看即可得到相关信息，其中包含有分区名称、分区创建时间、物理卷的PV UUID、物理卷的VG UUID等信息。同样的信息可以在</p>
+<p><code>/etc/lvm/backup/</code></p>
+<p>目录下找到，这样在Ubuntu-vg中可以看到<strong>2/3/4/5题答案</strong>。可能会用到时间戳转换</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026241.png" alt="image-20211020104609263"></p>
+<hr>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026242.png" alt="image-20211020104931674"></p>
+<p>或，取证大师自动识别到卷组</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026243.png" alt="image-20211020103456658"></p>
+<h2 id="03-卷组的名称是甚么？¶"><a href="#03-卷组的名称是甚么？¶" class="headerlink" title="03 卷组的名称是甚么？¶"></a>03 卷组的名称是甚么？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#03">¶</a></h2><p>除了在02题中所述的metadata中以外，还可以通过使用火眼证据分析软件自动识别出LVM2分区的名称（该软件也可以直接读取LVM2分区中的文件）。</p>
+<p><img src="https://forensics.xidian.edu.cn/wiki/img/03-hlyyds.png" alt="image-20201121203321975"></p>
+<hr>
+<h2 id="04-物理卷的PV-UUID是多少？¶"><a href="#04-物理卷的PV-UUID是多少？¶" class="headerlink" title="04 物理卷的PV UUID是多少？¶"></a>04 物理卷的PV UUID是多少？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#04-pv-uuid">¶</a></h2><p>仿真后使用命令：</p>
+<pre><code>sudo pvdisplay</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026244.png" alt="image-20211020104241631"></p>
+<h2 id="05-卷组的VG-UUID是甚么？¶"><a href="#05-卷组的VG-UUID是甚么？¶" class="headerlink" title="05 卷组的VG UUID是甚么？¶"></a>05 卷组的VG UUID是甚么？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#05-vg-uuid">¶</a></h2><p>除了在02题中所述的metadata中以外，通过火眼仿真后还可以使用lvm命令进行查看：</p>
+<pre><code>sudo lvdisplay -a
+sudo pvdisplay
+sudo vgdisplay</code></pre><p><img src="https://forensics.xidian.edu.cn/wiki/img/04-lvm.png" alt="image-20201121204553414"></p>
+<p>取证大师查看也可</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026245.png" alt="image-20211020103904116"></p>
+<h2 id="06-Zello服务器的Linux内核版本是甚么？¶"><a href="#06-Zello服务器的Linux内核版本是甚么？¶" class="headerlink" title="06 Zello服务器的Linux内核版本是甚么？¶"></a>06 Zello服务器的Linux内核版本是甚么？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#06-zellolinux">¶</a></h2><h2 id="07-Zello服务器的操作系统版本是甚么？¶"><a href="#07-Zello服务器的操作系统版本是甚么？¶" class="headerlink" title="07 Zello服务器的操作系统版本是甚么？¶"></a>07 Zello服务器的操作系统版本是甚么？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#07-zello">¶</a></h2><p>06通过<code>uname -a</code>显示全部信息或<code>uname -r</code>查看内核版本； 查看<code>/proc/version</code>文件；</p>
+<p>07 查看<code>/etc/lsb-release</code>文件；或者使用命令</p>
+<pre><code>lsb-release -a</code></pre><p><img src="https://forensics.xidian.edu.cn/wiki/img/06-LinuxCore.png" alt="image-20201121205654186"></p>
+<hr>
+<h2 id="08-Zello服务器的主机名是甚么？¶"><a href="#08-Zello服务器的主机名是甚么？¶" class="headerlink" title="08 Zello服务器的主机名是甚么？¶"></a>08 Zello服务器的主机名是甚么？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#08-zello">¶</a></h2><p>通过<code>uname -a</code>或<code>uname -n</code>查看主机名； 查看<code>/etc/hostname</code>文件。</p>
+<p><img src="https://forensics.xidian.edu.cn/wiki/img/08-ZelloCore.png" alt="image-20201121210208273"></p>
+<hr>
+<h2 id="09-Zello服务器的机器ID是甚么？¶"><a href="#09-Zello服务器的机器ID是甚么？¶" class="headerlink" title="09 Zello服务器的机器ID是甚么？¶"></a>09 Zello服务器的机器ID是甚么？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#09-zelloid">¶</a></h2><blockquote>
+<p>“计算器ID”其实就是“计算机ID”，大概是香港那边独特的表达方式吧。</p>
+</blockquote>
+<p>查看<code>/etc/machine-id</code>文件。</p>
+<p> <img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026246.png" alt="image-20211020105423650"></p>
+<hr>
+<h2 id="10-Zello服务器中使用的wordpress版本是甚么？¶"><a href="#10-Zello服务器中使用的wordpress版本是甚么？¶" class="headerlink" title="10 Zello服务器中使用的wordpress版本是甚么？¶"></a>10 Zello服务器中使用的wordpress版本是甚么？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#10-zellowordpress">¶</a></h2><p>仿真之后访问网站后台即可在右下角看到版本号。而火狐浏览器的历史记录中就包含了网站的后台地址，甚至打开浏览器之后恢复的上一次异常关闭页面中就有后台页面。</p>
+<p><img src="https://forensics.xidian.edu.cn/wiki/img/10-Lwordpressversion.png" alt="image-20201121211444808"></p>
+<p>或者在/etc/apache2/apache2.conf中查看源码存放路径</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026247.png" alt="image-20211030142954066"></p>
+<p>在<code>/var/www/html/wordpress/wp-include/version.php</code>中查看。</p>
+<p><img src="https://forensics.xidian.edu.cn/wiki/img/10-wordpressversion.png" alt="image-20201121211745288"></p>
+<hr>
+<h2 id="11-Zello服务器与之同步的主机名是甚么？¶"><a href="#11-Zello服务器与之同步的主机名是甚么？¶" class="headerlink" title="11 Zello服务器与之同步的主机名是甚么？¶"></a>11 Zello服务器与之同步的主机名是甚么？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#11-zello">¶</a></h2><p>查看hosts <code>cat /etc/hosts</code> 或<code>/etc/ntp.conf</code>文件,或者找root文件夹下的.bash_history中的历史命令</p>
+<p>关于<code>ntp.conf</code>文件的作用，详见<a href="https://blog.csdn.net/qq_35663625/article/details/103064495">ntp.conf配置文件详解</a>。</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026248.png" alt="image-20211020105908561"></p>
+<hr>
+<h2 id="12-Zello服务器的时区是甚么？¶"><a href="#12-Zello服务器的时区是甚么？¶" class="headerlink" title="12 Zello服务器的时区是甚么？¶"></a>12 Zello服务器的时区是甚么？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#12-zello">¶</a></h2><p>方法一：通过<code>date</code>命令</p>
+<p><img src="https://forensics.xidian.edu.cn/wiki/img/12-timezone.png" alt="image-20201121212853024"></p>
+<p>方法二：使用 timedatectl 命令查看</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026249.png" alt="image-20211021094712236"></p>
+<p>方法三：去/etc 下查看 timezone</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026250.png" alt="image-20211021094732384"></p>
+<p>方法四： 没仿真起来可以查看/etc/localtime link 到哪个文件</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026251.png" alt="image-20211021094752948"></p>
+<p>方法五： 导出或者查看 localtime 文件最后一行</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026252.png" alt="image-20211021094820401"></p>
+<hr>
+<p>小tips：用户痕迹能查看终端的可以看看终端配置命令</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026253.png" alt="image-20211020110225906"></p>
+<h2 id="13-有多少个本地用户已登录到Zello服务器？¶"><a href="#13-有多少个本地用户已登录到Zello服务器？¶" class="headerlink" title="13 有多少个本地用户已登录到Zello服务器？¶"></a>13 有多少个本地用户已登录到Zello服务器？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#13-zello">¶</a></h2><p>查看<code>/etc/passwd</code>文件。</p>
+<p>查看用户命令</p>
+<pre><code>cat /etc/passwd | grep /bin/bash</code></pre><p>其中每行各个字段含义如下：</p>
+<p><img src="https://forensics.xidian.edu.cn/wiki/img/13-section.jpeg" alt="image"></p>
+<p>普通用户有两个特征：一是UID介于500~65535之间；二是shell的起始位置为<code>/bin/bash</code>。</p>
+<p><img src="https://forensics.xidian.edu.cn/wiki/img/13-users.png" alt="image-20201121214137347"></p>
+<p>方法二：、</p>
+<p>使用 last 命令可以查看， 只用 zadmin 登录</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026255.png" alt="image-20211021094921237"></p>
+<p>lastb查看登录失败用户，也是zadmin</p>
+<p>没仿真起来后可以导出/var/log/wtmp 文件，放到自己的 linux 环境中使用命令</p>
+<p>last –f 文件 查看</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026256.png" alt="image-20211021094959357"></p>
+<hr>
+<h2 id="14-植入网络目录（Webdirectory）的网页壳层（Web-Shell）的哈希值（MD5）是甚么？¶"><a href="#14-植入网络目录（Webdirectory）的网页壳层（Web-Shell）的哈希值（MD5）是甚么？¶" class="headerlink" title="14 植入网络目录（Webdirectory）的网页壳层（Web Shell）的哈希值（MD5）是甚么？¶"></a>14 植入网络目录（Webdirectory）的网页壳层（Web Shell）的哈希值（MD5）是甚么？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#14-webdirectoryweb-shellmd5">¶</a></h2><p>将<code>/var/www/html/wordpress/</code>目录下的全部文件，导出，使用杀毒软件查杀（windows defender在导出时就会报毒）。</p>
+<p><img src="https://forensics.xidian.edu.cn/wiki/img/14-hryyds.png" alt="image-20201121214538928"></p>
+<p>或者以<code>eval(</code>为关键词检索导出文件中的php文件。（使用的搜索工具为FileLocatorPro）</p>
+<p><img src="https://forensics.xidian.edu.cn/wiki/img/14-searcheval.png" alt="image-20201121214932752"></p>
+<p>使用命令certutil -hashfile 123.php md5<img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026257.png" alt="image-20211020134717941"></p>
+<p>方法二：查看 web 日志 </p>
+<p>cd /var/log/apache2 </p>
+<p>gunzip –d access.log.2.gz </p>
+<p>vi access.log.2.gz</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026258.png" alt="image-20211021095133425"></p>
+<p>发现可疑文件 123.php </p>
+<p>路径 /var/www/html/wordpress/wp-includes/sales/info/123.php 查看内容</p>
+<p>或者访问 <a href="http://zello-onlineshop.sytes.net/wp-includes/sales/info/123.php">http://zello-onlineshop.sytes.net/wp-includes/sales/info/123.php</a></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026259.png" alt="image-20211021095227142"></p>
+<hr>
+<h2 id="15-var-www-html-wordpress-net-2020-Login-index-php有甚么作用？¶"><a href="#15-var-www-html-wordpress-net-2020-Login-index-php有甚么作用？¶" class="headerlink" title="15 \var\www\html\wordpress\net\2020\Login index.php有甚么作用？¶"></a>15 \var\www\html\wordpress\net\2020\Login index.php有甚么作用？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#15-varwwwhtmlwordpressnet2020login32indexphp">¶</a></h2><p>盗取资料</p>
+<h2 id="16-钓鱼网站伪装成甚么网站？¶"><a href="#16-钓鱼网站伪装成甚么网站？¶" class="headerlink" title="16 钓鱼网站伪装成甚么网站？¶"></a>16 钓鱼网站伪装成甚么网站？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#16">¶</a></h2><p>查看<code>index.php</code>可以发现这个页面是<strong>伪造的Netflix的登录页面</strong>，其中第一行包含了<code>crypt.php</code>，结合上一题杀毒软件对<code>crypt.php</code>的报毒，应该是钓鱼网页，网站长这样。</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026260.png" alt="image-20211021095258914"></p>
+<hr>
+<h2 id="17-下列哪个IP对Zello服务器进行了蛮力攻击？¶"><a href="#17-下列哪个IP对Zello服务器进行了蛮力攻击？¶" class="headerlink" title="17 下列哪个IP对Zello服务器进行了蛮力攻击？¶"></a>17 下列哪个IP对Zello服务器进行了蛮力攻击？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#17-ipzello">¶</a></h2><p>查看<code>/var/log/apache2/</code>目录下的<code>access.log.x</code>文件，全部导出来。其中有几个被压缩，需要解包。</p>
+<p>可用notepad++的文件夹搜索功能</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026261.png" alt="image-20211030144109741">可以在<code>access.log.3</code>文件中发现</p>
+<p>能看到出现次数</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026262.png" alt="image-20211030144219144"></p>
+<p><code>203.186.94.68</code>对服务器进行了1432次请求。  </p>
+<p><img src="https://forensics.xidian.edu.cn/wiki/img/17-searchip.png" alt="image-20201121221501272"></p>
+<hr>
+<p>蛮力攻击应该指的是爆破，对日志进行审计，搜索爆破工具关键字 Hydra 得到。</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026263.png" alt="image-20211021095355276"></p>
+<p>或者在 linux 下使用命令行查看</p>
+<p> cd /var/log/apache2 </p>
+<p>gunzip –d access.log.4.gz</p>
+<p> vi access.log.4</p>
+<h2 id="18-Zello-Web服务器的URL是甚么？¶"><a href="#18-Zello-Web服务器的URL是甚么？¶" class="headerlink" title="18 Zello Web服务器的URL是甚么？¶"></a>18 Zello Web服务器的URL是甚么？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#18-zello-weburl">¶</a></h2><p>参见第10、11题。</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026264.png" alt="image-20211020143050865"></p>
+<p>导出来用 notepad++查看</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026265.png" alt="image-20211021095508043"></p>
+<p>或者使用 Linux 命令行查看 </p>
+<p>查看 web 日志 </p>
+<p>vi /var/log/apache2/access.log.2</p>
+<hr>
+<h2 id="19-LVM2容器的第一个扇区是什么？¶"><a href="#19-LVM2容器的第一个扇区是什么？¶" class="headerlink" title="19 LVM2容器的第一个扇区是什么？¶"></a>19 LVM2容器的第一个扇区是什么？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#19-lvm2">¶</a></h2><h2 id="20-Zello服务器中LVM2容器的大小（以字节为单位）是甚么？¶"><a href="#20-Zello服务器中LVM2容器的大小（以字节为单位）是甚么？¶" class="headerlink" title="20 Zello服务器中LVM2容器的大小（以字节为单位）是甚么？¶"></a>20 Zello服务器中LVM2容器的大小（以字节为单位）是甚么？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#20-zellolvm2">¶</a></h2><p>在取证大师中查看没有识别出来的LVM2分区（显示为“未分配簇”）的相关信息。<del>辣鸡取证大师终于派上用场了</del></p>
+<p><img src="https://forensics.xidian.edu.cn/wiki/img/19-LVM2.png" alt="image-20201121221958633"></p>
+<p>用 xways 直接看到</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026266.png" alt="image-20211021095612707"></p>
+<p>或者使用取证大师小程序</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026267.png" alt="image-20211021095700985"></p>
+<hr>
+<h2 id="21-在Zello服务器以及Alice的装置中可以找到甚么共同文件？¶"><a href="#21-在Zello服务器以及Alice的装置中可以找到甚么共同文件？¶" class="headerlink" title="21 在Zello服务器以及Alice的装置中可以找到甚么共同文件？¶"></a>21 在Zello服务器以及Alice的装置中可以找到甚么共同文件？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#21-zelloalice">¶</a></h2><p>可以在Zello镜像的<code>/var/www/html/wordpress/net/2020/login/</code>目录下找到<code>R3ZZ.txt</code>。</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026268.png" alt="image-20211020143729796"></p>
+<p>或者查看 History</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026269.png" alt="image-20211021095742728"></p>
+<hr>
+<h2 id="22-2020年8月29日在Xeno服务器中发现的攻击类型是甚么？¶"><a href="#22-2020年8月29日在Xeno服务器中发现的攻击类型是甚么？¶" class="headerlink" title="22 2020年8月29日在Xeno服务器中发现的攻击类型是甚么？¶"></a>22 2020年8月29日在Xeno服务器中发现的攻击类型是甚么？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#22-2020829xeno">¶</a></h2><table>
+<thead>
+<tr>
+<th>2020年8月29日在Xeno服务器中发现的攻击类型是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:HTTP GET/POST Flood;B:NTP  Amplification;C:Ping of Death;D:SYN Flood;E:SNMP Flood</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>实际上应该是9月29日</p>
+<p>查看日志可以发现当天服务器收到了大量的GET/POST请求，并且请求的为某几个特定页面，攻击方式应为HTTP GET/POST Flood。</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026270.png" alt="image-20211021095828478"></p>
+<hr>
+<h2 id="23-哪个IP地址在日志中条目数量最多？¶"><a href="#23-哪个IP地址在日志中条目数量最多？¶" class="headerlink" title="23 哪个IP地址在日志中条目数量最多？¶"></a>23 哪个IP地址在日志中条目数量最多？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#23-ip">¶</a></h2><p>方法一：挨个用 notepad++搜索计数</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026271.png" alt="image-20211021095858458"></p>
+<p>方法二： 使用 Log Parser </p>
+<p>选择 NCSA Log 格式 </p>
+<p>SELECT remotehostname,count(1) FROM ‘Z:\Meiya Cup 2020\Image\xeno access.log_20200929-20201006\access.log’ group by remotehostname order by count(1) desc</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026272.png" alt="image-20211021095937371"></p>
+<p>方法三：</p>
+<p> linux 使用命令 </p>
+<p>awk ‘{print $1}’ access.log | sort | uniq -c | sort -nr -k1 | head -n 20</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026273.png" alt="image-20211021100014912"></p>
+<p>方法四：</p>
+<p>先去除日志中所有损坏的行，然后写一个简单的python脚本对出现的IP的次数进行统计即可。 也可以使用搜索工具对每个选项中的IP进行搜索。<del>不懂取证警告</del></p>
+<pre><code>dic = {}
+with open("1.txt", "r", encoding='utf-8') as f:
+    for i in f:
+        ip = i.split(' ')[0]
+        if ip in dic:
+            dic[ip] += 1
+        else:
+            dic[ip] = 1
+print(dic)</code></pre><hr>
+<h2 id="24-这个登录次数最多的IP地址，它访问最多的是哪个页面？¶"><a href="#24-这个登录次数最多的IP地址，它访问最多的是哪个页面？¶" class="headerlink" title="24 这个登录次数最多的IP地址，它访问最多的是哪个页面？¶"></a>24 这个登录次数最多的IP地址，它访问最多的是哪个页面？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#24-ip">¶</a></h2><p>notepad方便一些，就是可能会比较卡。或者logparser</p>
+<p>SELECT request,count(1) FROM ‘Z:\Meiya Cup 2020\Image\xeno access.log_20200929- 20201006\access.log’ where remotehostname=’14.102.184.0’ group by request order by count(1) desc</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026274.png" alt="image-20211021100133777"></p>
+<p>方法二：继续写python脚本。 也可以使用搜索工具进行正则匹配，对每个选项中的页面进行搜索。<del>不懂取证警告+1</del></p>
+<pre><code>times = {
+    'A': 0,
+    'B': 0,
+    'C': 0,
+    'D': 0,
+    'E': 0,
+}
+with open("1.txt", "r", encoding='utf-8') as f:
+    for i in f:
+        if "14.102.184.0" in i:
+            if "/listen.icepush.xml HTTP/1.1\" 200" in i:
+                times['A'] += 1
+            elif "/risk.xhtml HTTP/1.1\" 200" in i:
+                times['B'] += 1
+            elif "/explorer.xhtml HTTP/1.1\" 200" in i:
+                times['C'] += 1
+            elif "/login.jsp HTTP/1.1\" 200" in i:
+                times['D'] += 1
+            elif "/listViewRisjs.xhtml HTTP/1.1\" 200 " in i:
+                times['E'] += 1
+print(times)</code></pre><hr>
+<h2 id="25-这个登录次数最多的IP地址来自哪个国家或地区？¶"><a href="#25-这个登录次数最多的IP地址来自哪个国家或地区？¶" class="headerlink" title="25 这个登录次数最多的IP地址来自哪个国家或地区？¶"></a>25 这个登录次数最多的IP地址来自哪个国家或地区？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#25-ip">¶</a></h2><p>使用离线IP查询工具进行查询，得知是香港的IP。</p>
+<p>实际上，这个IP地址就是Daniel的家庭IP地址……</p>
+<p><img src="https://forensics.xidian.edu.cn/wiki/img/26-danielyyds.png" alt="image-20201121230407289"></p>
+<hr>
+<h2 id="26-这个登录次数最多的IP地址，合共有多少次成功登录-¶"><a href="#26-这个登录次数最多的IP地址，合共有多少次成功登录-¶" class="headerlink" title="26 这个登录次数最多的IP地址，合共有多少次成功登录?¶"></a>26 这个登录次数最多的IP地址，合共有多少次成功登录?<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#26-ip">¶</a></h2><p>18次</p>
+<p>python脚本：</p>
+<pre><code>time = 0
+with open("1.txt", "r", encoding='utf-8') as f:
+    for i in f:
+        if "14.102.184.0" in i and "login" in i:
+            dd = i.split(' ')
+            if '200' in dd:
+                time += 1
+print(time)</code></pre><p>但因为损坏部分中也可能存在登陆成功的日志，所以实际登录成功次数会略高一些。</p>
+<p>过滤出现200的条数</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026275.png" alt="image-20211030145648050"></p>
+<p>有以下信息可看做成功登陆</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026277.png" alt="image-20211021100240866"></p>
+<hr>
+<h2 id="27-除DDoS之外，还可能涉及其他攻击吗？¶"><a href="#27-除DDoS之外，还可能涉及其他攻击吗？¶" class="headerlink" title="27 除DDoS之外，还可能涉及其他攻击吗？¶"></a>27 除DDoS之外，还可能涉及其他攻击吗？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#27-ddos">¶</a></h2><hr>
+<h2 id="28-从该网站下载了多少数据？¶"><a href="#28-从该网站下载了多少数据？¶" class="headerlink" title="28 从该网站下载了多少数据？¶"></a>28 从该网站下载了多少数据？<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#28">¶</a></h2><table>
+<thead>
+<tr>
+<th>除DDoS之外，还可能涉及其他攻击吗？</th>
+<th>E</th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th align="left">电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:SQL注入;B:命令注入;C:系统漏洞攻击;D:跨站脚本攻击;E:暴力破解攻击</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>从该网站下载了多少数据？</td>
+<td>E</td>
+<td>2</td>
+<td>第六届美亚杯</td>
+<td align="left">电子数据取证</td>
+<td>单选</td>
+<td>中级</td>
+<td>A:大概 20 MB;B:大概 200 MB;C:大概 1  GB;D:大概 5 GB;E:现有资料不足以作推断</td>
+</tr>
+</tbody></table>
+<p>python脚本：</p>
+<pre><code>data = 0
+with open("1.txt", "r", encoding='utf-8') as f:
+    for i in f:
+        if "14.102.184.0" in i:
+            dd = i.split(' ')[-2]
+            if dd.isdigit():
+                data += int(dd)    
+print(data)</code></pre><h1 id="团体赛-Bob部分"><a href="#团体赛-Bob部分" class="headerlink" title="团体赛 Bob部分"></a>团体赛 Bob部分</h1><h2 id="29-Bob路由器的型号是甚么？"><a href="#29-Bob路由器的型号是甚么？" class="headerlink" title="29 Bob路由器的型号是甚么？"></a>29 Bob路由器的型号是甚么？</h2><table>
+<thead>
+<tr>
+<th>Bob路由器的型号是甚么？</th>
+<th>B</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:BL - WR740N;B:TL -  WR740N;C:Archer c 1200;D:archer c7;E:TP - WRB41N</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>可以考虑调查报告和图片中可能有线索</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026278.png" alt="image-20211030150741484"></p>
+<p>路由器日志也可以看到</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026279.png" alt="image-20211020155529865"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026280.png" alt="image-20211020170408777"></p>
+<h2 id="30-Bob-家的-IP-地址是甚么？-1-分"><a href="#30-Bob-家的-IP-地址是甚么？-1-分" class="headerlink" title="30 Bob 家的 IP 地址是甚么？ (1 分)"></a>30 Bob 家的 IP 地址是甚么？ (1 分)</h2><p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026281.png" alt="image-20211020170714534"></p>
+<h2 id="31-使用路由器的装置的Mac地址是甚么-Alice？"><a href="#31-使用路由器的装置的Mac地址是甚么-Alice？" class="headerlink" title="31 使用路由器的装置的Mac地址是甚么-  Alice？"></a>31 使用路由器的装置的Mac地址是甚么-  Alice？</h2><table>
+<thead>
+<tr>
+<th>使用路由器的装置的Mac地址是甚么-  Alice？</th>
+<th>D</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:00:BA:F5:89:89:FE;B:A4:4E:31:EC:24:00;C:60:67:20:3D:3B:OC;D:00:0A:F5:89:89:FF;E:00AA:F5:82:89:FD</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>之前Alice的手机中考题涉及到，对Alice手机镜像进行取证，根据选项和34题推断可以推出</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026282.png" alt="image-20211020171229625"></p>
+<h2 id="32-使用路由器的装置的Mac地址是甚么-Cole？"><a href="#32-使用路由器的装置的Mac地址是甚么-Cole？" class="headerlink" title="32 使用路由器的装置的Mac地址是甚么-  Cole？"></a>32 使用路由器的装置的Mac地址是甚么-  Cole？</h2><table>
+<thead>
+<tr>
+<th>使用路由器的装置的Mac地址是甚么-  Cole？</th>
+<th>*</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:8C:3A:E3:93:80:09;B:00:0A:F5:89:89:FF;C:3C:BA:E3:93:80:09;D:00:0A:F5:89:89:FC;E:38:48:4C:17:9A:OC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p> 在 bob iphone 上出现和 cole 的桌面计算机 都出现 bigboss 地址 legman 和 technical guy 没找到 同上题图</p>
+<h2 id="33-谁到访过Bob的家？"><a href="#33-谁到访过Bob的家？" class="headerlink" title="33* 谁到访过Bob的家？"></a>33* 谁到访过Bob的家？</h2><table>
+<thead>
+<tr>
+<th>谁到访过Bob的家？</th>
+<th>A</th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:Alice 及  Cole;B:只有Alice;C:只有Cole;D:只有David;E:Alice, Cole 及David</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p> 看路由器日志 Bob 家的路由器日志中出现 Cole 的台式机 Mac 地址，证明 Cole 曾经拜访过 Bob</p>
+<h2 id="34-他们甚么时候去过Bob的家？"><a href="#34-他们甚么时候去过Bob的家？" class="headerlink" title="34* 他们甚么时候去过Bob的家？"></a>34* 他们甚么时候去过Bob的家？</h2><table>
+<thead>
+<tr>
+<th>他们甚么时候去过Bob的家？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:2020/9/16;B:2020/8/18;C:2020/9/25;D:2020/9/30;E:2020/9/28</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>根据问法可以看出上面的题是多个人，而28号是两个人</p>
+<p>根据路由器最后连接日期</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026283.png" alt="image-20211020171740475"></p>
+<h2 id="35-Bob的笔记本计算机的哈希值（SHA-1）是甚么？"><a href="#35-Bob的笔记本计算机的哈希值（SHA-1）是甚么？" class="headerlink" title="35 Bob的笔记本计算机的哈希值（SHA-1）是甚么？"></a>35 Bob的笔记本计算机的哈希值（SHA-1）是甚么？</h2><table>
+<thead>
+<tr>
+<th>Bob的笔记本计算机的哈希值（SHA-1）是甚么？</th>
+<th>D</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:57701AC2194A74804DEB0F7332532D39711C5DF0;B:57705DF01AC2194A74804DEB0F7332532D39711C;C:1AC2194A74804DEB0F7332532D39711C57705DF0;D:5DF01AC2194A74804DEB0F7332532D39711C5770;E:6DF01AC2194A74804DEB0F7332532D39711C5778</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026284.png" alt="image-20211020162250013"></p>
+<p>不用计算，打开 xways 直接看也能得到</p>
+<h2 id="36"><a href="#36" class="headerlink" title="36"></a>36</h2><table>
+<thead>
+<tr>
+<th>笔记本计算机中安装了甚么电子邮件程序？</th>
+<th>B</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:Big Email Sender;B:Super  Email Sender;C:Bulk Email Sender;D:Super Email Sent;E:Super Email Send</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>方法一：仿真查看其桌面</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026285.png" alt="image-20211020163015430"></p>
+<p>仿真可找到</p>
+<p>方法二：使用 xways 查看其桌面文件可得到</p>
+<h2 id="37-网络钓鱼电子邮件的接收者是储存在甚么文件？"><a href="#37-网络钓鱼电子邮件的接收者是储存在甚么文件？" class="headerlink" title="37* 网络钓鱼电子邮件的接收者是储存在甚么文件？"></a>37* 网络钓鱼电子邮件的接收者是储存在甚么文件？</h2><table>
+<thead>
+<tr>
+<th>网络钓鱼电子邮件的接收者是储存在甚么文件？</th>
+<th>A</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:NETFLIX.htm.dump;B:NETFLIX.dump;C:NETFLIXS.dump;D:NETFLIX.htm.bak;E:NETFLIX.CONTAINER</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>通过取证大师全文搜索关键词搜索可以搜到</p>
+<h2 id="38"><a href="#38" class="headerlink" title="38"></a>38</h2><table>
+<thead>
+<tr>
+<th>在Bob的笔记本,  有什么可疑APK及其功能？</th>
+<th>A</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:检查虚拟货币的价格;B:虚拟专用网络;C:盗取登入名称及密码;D:储存私人资料;E:作为一个洋葱浏览器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026286.png" alt="image-20211020190851964"></p>
+<p>关键词搜apk，发现一个com_bitcoin_poolmonitoring,翻译过来就是A的意思，</p>
+<p>发现找错了，</p>
+<p>mytracker.apk是可疑apk，安卓虚拟机运行一下看看</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026287.png" alt="image-20211020193123963"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026288.png" alt="image-20211020193056744"></p>
+<h2 id="39"><a href="#39" class="headerlink" title="39"></a>39</h2><table>
+<thead>
+<tr>
+<th>该可疑APK  从什么网站获取资料?</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:<a href="https://coinapk.io/v1/exchangerate;B:https://bit.coinapi.io/v1/exchange_rate;C:https://rest.coinapi.io/v1/exchangerate;D:https://rest.net/v1/exchangerates;E:https://online.coinapi.io/v/exchangerate">https://coinapk.io/v1/exchangerate;B:https://bit.coinapi.io/v1/exchange_rate;C:https://rest.coinapi.io/v1/exchangerate;D:https://rest.net/v1/exchangerates;E:https://online.coinapi.io/v/exchangerate</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>使用雷电app智能分析进行分析，</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026289.png" alt="image-20211020194754639"></p>
+<p>按下面按钮</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026290.png" alt="image-20211020194708311"></p>
+<p>使用雷电抓包没抓到东西，只好手搜了，解压apk后直接搜https://可找到</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026291.png" alt="image-20211020195946045"></p>
+<h2 id="40"><a href="#40" class="headerlink" title="40"></a>40</h2><table>
+<thead>
+<tr>
+<th>上述APK中发现的Bitlocker密钥是甚么？</th>
+<th>B</th>
+<th>3</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>高级</th>
+<th>A:74785aaaa;B:741852963;C:72564529633;D:bob052963;E:522852693</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>见上图，找到后成功解密 Bob Dektop 计算机的 Bitlocker 加密磁盘。</p>
+<p>使用app中的恢复密钥串即可成功解密</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026292.png" alt="image-20211020200637219"></p>
+<h2 id="41"><a href="#41" class="headerlink" title="41"></a>41</h2><table>
+<thead>
+<tr>
+<th>网络钓鱼网站的网页寄存的网站地址是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:<a href="http://zeta-onlineshop.sytes.net/wordpress/net/2019/Login;B:http://zello-onlineshop.sytes.net/wordpress/net/2020/Login;C:http://zello-onlineshop.sytes.net/nets/2020/Login;D:http://zello-easyshop.sytes.net/wordpresss/net/2020/Login;E:http://zello-onlinemet.sytes.net/wordpres/net/2020">http://zeta-onlineshop.sytes.net/wordpress/net/2019/Login;B:http://zello-onlineshop.sytes.net/wordpress/net/2020/Login;C:http://zello-onlineshop.sytes.net/nets/2020/Login;D:http://zello-easyshop.sytes.net/wordpresss/net/2020/Login;E:http://zello-onlinemet.sytes.net/wordpres/net/2020</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026293.png" alt="image-20211020201027427"></p>
+<p>仿真这里的历史记录里可找到，看选项算送分题了</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026294.png" alt="image-20211020201107104"></p>
+<h2 id="42-Bob的桌上计算机的哈希值（SHA-256）是甚么？"><a href="#42-Bob的桌上计算机的哈希值（SHA-256）是甚么？" class="headerlink" title="42 Bob的桌上计算机的哈希值（SHA-256）是甚么？"></a>42 Bob的桌上计算机的哈希值（SHA-256）是甚么？</h2><table>
+<thead>
+<tr>
+<th>Bob的桌上计算机的哈希值（SHA-256）是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:86C740D5FB096A18CC419AF74D7A55389F28D7F8E1CE6FABD17371E66E1C2673;B:267340D5FB096A18CC419AF74D7A55389F28D7F8E1CE6FABD17371E66E1C86C7;C:267386C740D5FB096A18CC419AF74D7A55389F28D7F8E1CE6FABD17371E66E1C;D:40D5FB096A18CC419AF74D7A55389F28D7F8E1CE6FABD17371E66E1C267386C7;E:B6C740D5F8096A18CC419AF74D7A55389F28D7F8E1CE6FABD17371E66E1C2673</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>不用计算，直接xways右键属性里就有</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026295.png" alt="image-20211020202850726"></p>
+<h2 id="43-更多操作Bob的桌上计算机的安装时间是几点？-本地时间"><a href="#43-更多操作Bob的桌上计算机的安装时间是几点？-本地时间" class="headerlink" title="43 更多操作Bob的桌上计算机的安装时间是几点？(本地时间)"></a>43 更多操作Bob的桌上计算机的安装时间是几点？(本地时间)</h2><table>
+<thead>
+<tr>
+<th>Bob的桌上计算机的安装时间是几点？(本地时间)</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:2020/9/13 1:40:00;B:2020/9/15 3:40:00;C:2020/9/17 2:40:00;D:2020/9/15 5:40:00;E:2020/9/15 18:40:00</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026296.png" alt="image-20211020203655796"></p>
+<h2 id="44-Bob桌上计算机内发现的网络钓鱼脚本是甚么？-某些字符被刻意用-遮盖"><a href="#44-Bob桌上计算机内发现的网络钓鱼脚本是甚么？-某些字符被刻意用-遮盖" class="headerlink" title="44 Bob桌上计算机内发现的网络钓鱼脚本是甚么？(某些字符被刻意用*遮盖)"></a>44 Bob桌上计算机内发现的网络钓鱼脚本是甚么？(某些字符被刻意用*遮盖)</h2><table>
+<thead>
+<tr>
+<th>Bob桌上计算机内发现的网络钓鱼脚本是甚么？(某些字符被刻意用*遮盖)</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:d<strong>nload.zip;B:</strong>ternal.zip;C:i<em>t</em>r.zip;D:out<strong>.zip;E:ex</strong>rnal.zip</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>根据文件分类，zip 后缀就 4 个，对比之前 Zello-onlineshop webserver 上的文件，可 以确认就是钓鱼程序，之前做 Zello 部分题目的时候 inter.zip 比较可疑，它是钓鱼站的 备份文件。</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026297.png" alt="image-20211020204605568"></p>
+<h2 id="45-该网络钓鱼脚本的功能是甚么？"><a href="#45-该网络钓鱼脚本的功能是甚么？" class="headerlink" title="45 该网络钓鱼脚本的功能是甚么？"></a>45 该网络钓鱼脚本的功能是甚么？</h2><table>
+<thead>
+<tr>
+<th>该网络钓鱼脚本的功能是甚么？</th>
+<th>C</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:摧毁目标电脑;B:传播电脑病毒;C:收集个人数据;D:发送勒索信息;E:自动化进行分布式拒绝服务攻击</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026298.png" alt="image-20211020205000913">扫一下，前面题目也有所涉及</p>
+<h2 id="46-在Bob-iphone-与Alice和Cole通讯记录的完整路径是甚么？"><a href="#46-在Bob-iphone-与Alice和Cole通讯记录的完整路径是甚么？" class="headerlink" title="46 在Bob iphone, 与Alice和Cole通讯记录的完整路径是甚么？"></a>46 在Bob iphone, 与Alice和Cole通讯记录的完整路径是甚么？</h2><table>
+<thead>
+<tr>
+<th>在Bob iphone, 与Alice和Cole通讯记录的完整路径是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:File List\User App  List\Application/ChatStorage.sqlite     Table:ZWAMESSAGE(ZCHATSESSION:4);B:File List\Download File  List\Temp/group.net.WhatsApp.shared/ChatStorage.sqlite     Table:ZWAMESSAGE(ZCHATSESSION:3);C:File List\User File List/group.net.WhatsApps.shared/ChatStorage.sqlite     Table:MESSAGE(ZCHATSESSION:4);D:File List\User File  List\Applications/Group/group.net.WhatsApp.shared/ChatStorage.sqlite     Table:ZWAMESSAGE(ZCHATSESSION:4);E: List\Temp File  List\Applications/Chat/group.net.WhatsApp.share/ChatStorage.sqlite     Table:SESSION:4)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>涉及到iPhone，将iPhone导入火眼</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026299.png" alt="image-20211020205501072"></p>
+<p>需要一个备份密码</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026300.png" alt="image-20211020205550987"></p>
+<p>iPhone备份文件ufd这里可以找到备份文件的密码</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026301.png" alt="image-20211020205807405"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026302.png" alt="image-20211021093315607"></p>
+<h2 id="47"><a href="#47" class="headerlink" title="47"></a>47</h2><table>
+<thead>
+<tr>
+<th>Bob的iPhone的苹果ID是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:<a href="mailto:bobcheung123@gmail.com">bobcheung123@gmail.com</a>;B:<a href="mailto:bobcheung@yahoo.com">bobcheung@yahoo.com</a>;C:<a href="mailto:bobcheung@gmail.com">bobcheung@gmail.com</a>;D:<a href="mailto:bob23@gmail.com">bob23@gmail.com</a>;E:bobcheung123@hotmaillcom</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026303.png" alt="image-20211021083545205"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026303.png" alt="image-20211021083545205"></p>
+<h2 id="48"><a href="#48" class="headerlink" title="48"></a>48</h2><table>
+<thead>
+<tr>
+<th>Bob的iPhone的IMEI是甚么？</th>
+<th>*</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:13421004458835;B:23421224458835;C:144410044508835;D:934218004458888;E:23421084450035</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026304.png" alt="image-20211021093429008"></p>
+<p>或者火眼直接也能取到</p>
+<h2 id="49"><a href="#49" class="headerlink" title="49"></a>49</h2><table>
+<thead>
+<tr>
+<th>Bob  iPhone的时区设置是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:UTC +8;B:UTC +0;C:UTC  -8;D:UTC -10;E:UTC + 6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://forensics.xidian.edu.cn/wiki/imgbc/image-20201126180435037.png" alt="image-20201126180435037"></p>
+<p>在这个device_values.plist能看到iPhone的时区信息</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026305.png" alt="image-20211021110729592"></p>
+<h2 id="50"><a href="#50" class="headerlink" title="50"></a>50</h2><table>
+<thead>
+<tr>
+<th>文件“  VIP.txt”的完整路径是甚么？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:Bob/mobile/DCIM/Shared/AppGroup/group.whatsapp.WhatsApp.shared      /Message/Media//5/c56255d0-a407-4341-afef-7bf5accc52f0.txt;B:Bob/Phone/Containers/Shared/AppGroup/group.net.whatsapps.WhatsApp.shared     /Message/Media/85262547937-1600392878@g.us/c/5/1230.txt;C:Bob/Data/Containers/Shared/AppGroup/group.net.whatsapp.WhatsApps.shared      /Message/Media/85262547937-1600392878@g.us/c/5/c56255d0-a407-4341-afef-7bf5accc52f0.txt;D:Bob/Text/Containers/Shared/AppGroup/group.net.whatsapp.WhatsApp.shared      /Messages/Media/85262547937-1600392878@g.us/c/5/c56255d0-a407-4341-afef-7bf5accc5000.txt;E:Bob/mobile/Containers/Shared/AppGroup/group.net.whatsapp.WhatsApp.shared     /Message/Media/85262547937-1600392878@g.us/c/5/c56255d0-a407-4341-afef-7bf5accc52f0.txt</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>3个txt都看一下</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026306.png" alt="image-20211021140322747"></p>
+<h2 id="51"><a href="#51" class="headerlink" title="51"></a>51</h2><table>
+<thead>
+<tr>
+<th>在Bob iphone, 谁是“ <a href="mailto:85262547937-1600392878@g.us">85262547937-1600392878@g.us</a>”的聊天群组中的管理员？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:Bob;B:Cole;C:Alice;D:Alice 及  Bob;E:Bob 及 Cole</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026307.png" alt="image-20211021140738388"></p>
+<p>从资格赛 Alice 的手机记录中分析得到，这个群聊的创建者（即管理员）为 Alice</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026308.png" alt="image-20211021141007233"></p>
+<h2 id="52-“-85262547937-1600392878-g-us”聊天群组中有多少个附件？"><a href="#52-“-85262547937-1600392878-g-us”聊天群组中有多少个附件？" class="headerlink" title="52 *“  85262547937-1600392878@g.us”聊天群组中有多少个附件？"></a>52 *“  <a href="mailto:85262547937-1600392878@g.us">85262547937-1600392878@g.us</a>”聊天群组中有多少个附件？</h2><table>
+<thead>
+<tr>
+<th>“  <a href="mailto:85262547937-1600392878@g.us">85262547937-1600392878@g.us</a>”聊天群组中有多少个附件？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:6;B:4;C:2;D:3;E:6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>2，一个图片一个txt文件</p>
+<p>软件只看到两个，在路径下发现有 4 个，一个图片，一个文件，2 个.thumb</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026309.png" alt="image-20211021141556413"></p>
+<p>用手机大师看，内容类型进行排序，发现有三个文件一张图片</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026310.png" alt="image-20211031162214620"></p>
+<h2 id="53-Bob-iPhone的Airdrop-ID是甚么？"><a href="#53-Bob-iPhone的Airdrop-ID是甚么？" class="headerlink" title="53* Bob  iPhone的Airdrop ID是甚么？"></a>53* Bob  iPhone的Airdrop ID是甚么？</h2><table>
+<thead>
+<tr>
+<th>Bob  iPhone的Airdrop ID是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:66E7BBDE9F69;B:Bob-airdrop-28455;C:67E7BBDE9F69-BOB;D:Air-Bob-66E7BBDE9F69;E:Bob-iP-66E7BBDE9F69</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>手机大师文件导入选择iTunes备份文件，找到Snapchat文件夹可取证</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026311.png" alt="image-20211030173151194"></p>
+<h2 id="54"><a href="#54" class="headerlink" title="54"></a>54</h2><table>
+<thead>
+<tr>
+<th>Bob的iPhone的操作系统版本是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:10.3.3;B:10.2.1;C:12.3.1;D:13.3.2;E:10.3.5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026312.png" alt="image-20211021142124772"></p>
+<h2 id="55"><a href="#55" class="headerlink" title="55"></a>55</h2><table>
+<thead>
+<tr>
+<th>Bob在2020-09-17的1451时访问的连结是甚么？(UTC + 0)</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:<a href="https://www.apple.com;B:https://www.hackertestinghelp.com/ddos-attack-tools/">https://www.apple.com;B:https://www.hackertestinghelp.com/ddos-attack-tools/</a>  (Title:8 Best DDoS Attack Tools (Free DDoS Tool Of The Year  2020));C:<a href="https://www.textttestinghelp.com/ddos-attack-tool/amp/">https://www.textttestinghelp.com/ddos-attack-tool/amp/</a> (Title:8 Best  DDoS Attack Tools (Free DDoS Tool Of The Year  2020));D:<a href="https://www.softwaretestinghelp.com/bruteforce-attack-tools/amp/">https://www.softwaretestinghelp.com/bruteforce-attack-tools/amp/</a>  (Title:8 Best DDoS Attack Tools (Free DDoS Tool Of The Year  2019));E:<a href="https://www.softwaretestinghelp.com/ddos-attack-tools/amp/">https://www.softwaretestinghelp.com/ddos-attack-tools/amp/</a> (Title:8  Best DDoS Attack Tools (Free DDoS Tool Of The Year 2020))</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026314.png" alt="image-20211021144647134"></p>
+<p>或者手机大师里的搜索证据，按时间范围搜索</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026315.png" alt="image-20211031162512387"></p>
+<h2 id="56-Bob的Samsung-S2的Android-ID是甚么？"><a href="#56-Bob的Samsung-S2的Android-ID是甚么？" class="headerlink" title="56 Bob的Samsung  S2的Android ID是甚么？"></a>56 Bob的Samsung  S2的Android ID是甚么？</h2><table>
+<thead>
+<tr>
+<th>Bob的Samsung  S2的Android ID是甚么？</th>
+<th>E</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:072af229d1da3b3cd;B:71af229d1da3b3cdd;C:Bob72af229d1da3b3cd;D:72af229d1da3b3cd;E:Bob-72af229d1da3b3cd</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026316.png" alt="image-20211021150052092"></p>
+<h2 id="57"><a href="#57" class="headerlink" title="57"></a>57</h2><table>
+<thead>
+<tr>
+<th>Bob的Samsung  S2的操作系统版本是甚么？</th>
+<th>E</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:4.1.5;B:4.0.1;C:4.0.2;D:4.2.3;E:4.1.2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026317.png" alt="image-20211021145158512"></p>
+<h2 id="58"><a href="#58" class="headerlink" title="58"></a>58</h2><table>
+<thead>
+<tr>
+<th>Bob  Samsung S2的时区设置是甚么？</th>
+<th>A</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:Asia/Hong_Kong;B:Asia/Damascus;C:Asia/Baku;D:Asia/Bangkok;E:Asia/Tokyo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026318.png" alt="image-20211021145208972"></p>
+<p>手机大师搜索关键字timezone</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026319.png" alt="image-20211031162801124"></p>
+<h2 id="59"><a href="#59" class="headerlink" title="59"></a>59</h2><table>
+<thead>
+<tr>
+<th>“  bitcoin.PNG”的储存位置是甚么？</th>
+<th>C</th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:data  (ExtX)/Root/media/DCIM/;B:userdata (Ext)/Root/Download/;C:userdata  (ExtX)/Root/media/D                                                                                                                                                                                                                                                                              CIM/;D:userdata/Root//DCIM/;E:userdata (ExtX)/Root/APK/</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>搜一下图片名</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026320.png" alt="image-20211021150128956"></p>
+<h2 id="60"><a href="#60" class="headerlink" title="60"></a>60</h2><table>
+<thead>
+<tr>
+<th>bitcoin.PNG的哈希值（SHA-256）是甚么？</th>
+<th>D</th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:b0d5adba030b9f1b0165760881eaeed48330cb3dccc807fe482985a8370b479a;B:0d5b479aadba030b9f1b0165760881eaeed48330cb3dccc807fe482985a8370b;C:adba030b9f1b0165760881eaeed48330cb3dccc807fe482985a8370b0d5b479a;D:479aadba030b9f1b0165760881eaeed48330cb3dccc807fe482985a8370b0d5b;E:450aadba030b9f1b0165760881eaeed48330cb3dccc807fe482985a8370b</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>算就完事了</p>
+<h2 id="61"><a href="#61" class="headerlink" title="61"></a>61</h2><table>
+<thead>
+<tr>
+<th>Bob的Samsung  S2的wifi mac地址是甚么？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:21:60:C0:4B:75:11;B:61:21:4B:C0:75:11;C:60:21:C0:BB:11:75;D:60:21:C0:4B:75:11;E:DD:60:21:4B:75:11</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026321.png" alt="image-20211021150240724"></p>
+<h2 id="62"><a href="#62" class="headerlink" title="62"></a>62</h2><table>
+<thead>
+<tr>
+<th>“  userdata（ExtX）/ Root / media / Download / APK Testing”中的有多少APK檔？</th>
+<th>B</th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:7;B:10;C:8;D:9;E:6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026322.png" alt="image-20211021150410235"></p>
+<p>2个zip，另外10个apk</p>
+<h2 id="63"><a href="#63" class="headerlink" title="63"></a>63</h2><table>
+<thead>
+<tr>
+<th>Messagesecure.apk的哈希值（SHA-256）是甚么？</th>
+<th>B</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:b4bf2eb1a59e9a8dc25ad02c15761532658747979e63ad356ec5b9c1f623ae57;B:ae572eb1a59e9a8dc25ad02c15761532658747979e63ad356ec5b9c1f623b4bf;C:de57ae572eb1a59e9a8dc25ad02c15761532658747979e63ad356ec5b9c1f623b4bf;D:bd572eb1a59e9a8dc25ad02c15761532658747979e63ad356ec5b9c1f623b4bfb4bf;E:ae025eb1a59e9a8dc25ad02c15761532658747979e63ad356ec5b9c1f623b4bfae57</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>算</p>
+<h2 id="64-私钥已在bitcoin-PNG中加密。私钥是甚么？"><a href="#64-私钥已在bitcoin-PNG中加密。私钥是甚么？" class="headerlink" title="64 私钥已在bitcoin.PNG中加密。私钥是甚么？"></a>64 私钥已在bitcoin.PNG中加密。私钥是甚么？</h2><table>
+<thead>
+<tr>
+<th>私钥已在bitcoin.PNG中加密。私钥是甚么？</th>
+<th>B</th>
+<th>3</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>高级</th>
+<th>A:NpqGc6yaEjPd7NgBBRz9yUAf447Ei74K8rwuxoia8paBjzDNKzZU;B:KzZUc6yaEjPd7NgBBRz9yUAf447Ei74K8rwuxoia8paBjzDNNpqG;C:NpqGKzZUc6yaEjPd7NgBBRz9yUAf447Ei74K8rwuxoia8paBjzDN;D:c6yaEjPd7NgBBRz9yUAf447Ei74K8rwuxoia8paBjzDNNpqGKzZU;E:c6yaEjPd7NgBBRz9yUAf447Ei74K8rwuxoia8paBjzDNNpqG</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>在笔记本上有一个纸写着密码 Aa654321，再用 apk 对图片进行解密，原理同个人资 格赛。最好准备个图片编辑工具，比如美图秀秀，强曝光的密码，可以降低亮度和对比 度后看的更清晰。</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026323.png" alt="image-20211021151013261"></p>
+<h2 id="65-apk文件“-flash-chat”的哈希值（SHA-256）是甚么？"><a href="#65-apk文件“-flash-chat”的哈希值（SHA-256）是甚么？" class="headerlink" title="65 *apk文件“  flash_chat”的哈希值（SHA-256）是甚么？"></a>65 *apk文件“  flash_chat”的哈希值（SHA-256）是甚么？</h2><table>
+<thead>
+<tr>
+<th>apk文件“  flash_chat”的哈希值（SHA-256）是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:479aadba030b9f1b0165760881eaeed48330cb3dccc807fe482985a8370b0d5b;B:041a731249fa7bbaebd88651e0f5d2c4c3069c6ff8924b80579a2b160e387340;C:ae572eb1a59e9a8dc25ad02c15761532658747979e63ad356ec5b9c1f623b4bf;D:9eccf8ab9bf99a73df864c42ba813973d802c242a74cafeafac946ed43433d62;E:fea06d7dc08152c8153c99ef4e654b683ba02f3679193ff1fd991625cabab10f</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026324.png" alt="image-20211021153237363"></p>
+<p>在Alice手机上找到了</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026325.png" alt="image-20211021153528031"></p>
+<p>很多安装包的名字都是base.apk</p>
+<h2 id="66"><a href="#66" class="headerlink" title="66"></a>66</h2><table>
+<thead>
+<tr>
+<th>哪个文件包含“  flash_chat”聊天记录？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:userdata  (ExtX)/Root/data/co.splusbaby.flash_chat/databases/google_app_measurement_local.db;B:userdata  (ExtX)/Root/data/co.splusbaby.flash_chat/databases/firestore.%5BDEFAULT%5D.flash-chat-110d8.%28default%29;C:userdata  (ExtX)/Root/data/co.splusbaby.flash_chat/databases/google_app_measurement_local.db-journal;D:userdata  (ExtX)/Root/data/co.splusbaby.flash_chat/databases/firestore.%5BDEFAULT%5D.flash-chat-110d8.%28default%29-journal;E:msgstore.db</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>小众软件，厂商的取证软件无法解析，从答案路径找下去，检查数据库情况，数据库 一般是 sqlite 文件。</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026326.png" alt="image-20211021163933802"></p>
+<h2 id="67"><a href="#67" class="headerlink" title="67"></a>67</h2><table>
+<thead>
+<tr>
+<th>从“ flash_chat”找到的Bob的Windows密码是甚么？(某些字符被刻意用*遮盖)</th>
+<th></th>
+<th>3</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>高级</th>
+<th>A:44<strong><em>6;B:77</em></strong>9;C:11<strong><em>3;D:pa*</em></strong>rd;E:ta****</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026327.png" alt="image-20211021165232797"></p>
+<p>112233</p>
+<h2 id="68"><a href="#68" class="headerlink" title="68"></a>68</h2><table>
+<thead>
+<tr>
+<th>消息的消息号码(Message  ID)是甚么？</th>
+<th></th>
+<th>3</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>高级</th>
+<th>A:G2iytNuzajD4YU1MGVQz;B:0x04CM9o69pmKByxwnRj;C:j77xBc4hi8En7FTCPrDH;D:diPO4Huk2aymv2SdIubI;E:8XL2u5jIff5j1sKzGGvg</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026328.png" alt="image-20211021165326237"></p>
+<h2 id="69"><a href="#69" class="headerlink" title="69"></a>69</h2><table>
+<thead>
+<tr>
+<th>“  flash_chat”消息ID“ aGqBnI5Bxutv24SQvrBL”中的密码是甚么？(某些字符被刻意用*遮盖)</th>
+<th></th>
+<th>3</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>高级</th>
+<th>A:P@ss<strong><em>*;B:Hi</em></strong>ld;C:Hel<strong><em>ll;D:hel**</em></strong>ld;E:we****ne</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026329.png" alt="image-20211021165747242"></p>
+<h2 id="70-从Bob-iMAC-桌面名为Wallet-dat-的档案中可以取得以下那一个比特币地址-某些字符被刻意用-遮盖"><a href="#70-从Bob-iMAC-桌面名为Wallet-dat-的档案中可以取得以下那一个比特币地址-某些字符被刻意用-遮盖" class="headerlink" title="70 从Bob  iMAC 桌面名为Wallet.dat 的档案中可以取得以下那一个比特币地址?(某些字符被刻意用*遮盖)"></a>70 从Bob  iMAC 桌面名为Wallet.dat 的档案中可以取得以下那一个比特币地址?(某些字符被刻意用*遮盖)</h2><table>
+<thead>
+<tr>
+<th>从Bob  iMAC 桌面名为Wallet.dat 的档案中可以取得以下那一个比特币地址?(某些字符被刻意用*遮盖)</th>
+<th></th>
+<th>3</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>高级</th>
+<th>A:1L<strong>*WpEYvUi8FeG6BnXqfh1j</strong>gmJA1h1;B:<strong>1</strong>MzCeNJHw5<strong><em>J9vZexkweTtvKp8a1;C:351Wm</em></strong>npxKSWBwJQ3vXETVKFmus456kU;D:<strong>***fnLp7P8Vu7EA</strong>UJzkngnXxGMZWwo;E:以上都不对</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>看现场图片发现桌上的计算机是一台iMac，仿真一下用密码</p>
+<p>‘<img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026330.png" alt="image-20211020161803698"></p>
+<p>看出Bob的密码是Aa654321laptop仿真识别到该密码，试了试iMac仿真，无法重置密码，使用该密码可以登陆进去</p>
+<p>或者在取证大师中搜索关键词wallet.dat</p>
+<h2 id="71"><a href="#71" class="headerlink" title="71"></a>71</h2><table>
+<thead>
+<tr>
+<th>从Wallet.dat档案中取得的比特币地址，那一个有接收及传送过比特币?(某些字符被刻意用*遮盖)</th>
+<th></th>
+<th>3</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>高级</th>
+<th>A:<strong>**p9c74rqN6ymzGwr9JB</strong>8CPaX2458w;B:<strong>1WmYyhnpxKSWBwJQ3vXETVKFm*</strong>56kU;C:<strong>**UTiN5T7yrYXonCu54fWLHDK</strong>Y7dS9;D:3Q<strong><em>qGRprZsWWCgLrLDKmwEcwYqX7J</em></strong>;E:以上都不对</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>仿真可在桌面上发现，接着导出拖进winhex搜即可</p>
+<p>方法一：用正则在 winhex 上直接搜索（正则(1|3)[0-9,a-z,A-Z]{33,34}）</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026331.png" alt="image-20211021190316525"></p>
+<p>方法二：<a href="https://github.com/magnux/pywallet">https://github.com/magnux/pywallet</a> 用这个软件跑</p>
+<p>命令</p>
+<pre><code>pywallet.py --datadir=D:\工具包\工具包\取证工具\pywallet-master\pywallet-master --wallet=oldwallet.dat --dumpwallet &gt;wallet.csv</code></pre><p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026332.png" alt="image-20211021191806318"></p>
+<h2 id="72-以下那一个比特币接收或传送交易的哈希值与上述的比特币地址有直接关系？-某些字符被刻意用-遮盖"><a href="#72-以下那一个比特币接收或传送交易的哈希值与上述的比特币地址有直接关系？-某些字符被刻意用-遮盖" class="headerlink" title="72 以下那一个比特币接收或传送交易的哈希值与上述的比特币地址有直接关系？(某些字符被刻意用*遮盖)"></a>72 以下那一个比特币接收或传送交易的哈希值与上述的比特币地址有直接关系？(某些字符被刻意用*遮盖)</h2><table>
+<thead>
+<tr>
+<th>以下那一个比特币接收或传送交易的哈希值与上述的比特币地址有直接关系？(某些字符被刻意用*遮盖)</th>
+<th></th>
+<th>3</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>高级</th>
+<th>A:ab<strong><em>*7eea6f1da83c0917602ba086e70b900</em></strong>b21c0067a96f88ec4775221f;B:7e515<strong>***fea70dc29a07fbaf410d7fa</strong>610c2a4593d6d11b81b26f37da6db;C:<strong><strong>0f61e1b80cc1086445c4d</strong></strong>a8ec9bde6500e2850fc134860b82c97288e;D:<strong>yaE**</strong>NgBBRz9yUAf447Ei74K8rwuxo55k1aBjzDNNpq22U9Kk;E:以上都不对</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>方法一：在 <a href="https://btc.tokenview.com/">https://btc.tokenview.com/</a> 或者 oklink.com 可进行查询，只有 A 项进行过交易</p>
+<p>方法二：</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026332.png" alt="image-20211021191806318"></p>
+<h2 id="73"><a href="#73" class="headerlink" title="73"></a>73</h2><table>
+<thead>
+<tr>
+<th>上述的比特币交易中所涉及多少比特币？</th>
+<th></th>
+<th>3</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>高级</th>
+<th>A:0.01282210 BTC;B:0.01459400  BTC;C:0.00175178 BTC;D:0.00234500 BTC;E:以上都不对.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026333.png" alt="image-20211021192111231"></p>
+<p>查网站就行</p>
+<h2 id="74"><a href="#74" class="headerlink" title="74"></a>74</h2><table>
+<thead>
+<tr>
+<th>Bob iMac数据磁盘的哈希值（SHA-256）是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:29D4217939E37A4408FAE745363A4635A18CB0EE2E29771449E86F8BD7E7F839;B:29D4217939E37A4408FAE745363A4635A18CB0EE2E29771449E86F8BD7E7;C:D7E729D4217939E37A4408FAE745363A4635A18CB0EE2E29771449E86F8BF839;D:D7E7F83929D4217939E37A4408FAE745363A4635A18CB0EE2E29771449E86F8B;E:F83929D4217939E37A4408FAE745363A4635A18CB0EE2E29771449E86F8BD7E7.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>xways直接打开</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026334.png" alt="image-20211021192331573"></p>
+<h1 id="团体赛Cole部分"><a href="#团体赛Cole部分" class="headerlink" title="团体赛Cole部分"></a>团体赛Cole部分</h1><h2 id="75-更多操作Cole桌上计算机的哈希值（SHA-1）是甚么？"><a href="#75-更多操作Cole桌上计算机的哈希值（SHA-1）是甚么？" class="headerlink" title="75 更多操作Cole桌上计算机的哈希值（SHA-1）是甚么？"></a>75 更多操作Cole桌上计算机的哈希值（SHA-1）是甚么？</h2><table>
+<thead>
+<tr>
+<th>Cole桌上计算机的哈希值（SHA-1）是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:0D00A8A853B9001A9FC7BF89D9FBBA790C065CE2;B:0D22A8A853B9001A9FC7BF89D9FBBA795CE2;C:A8A853B9001A9FC7BF89D9FBBA790C065CE20D00;D:5CE20D00A8A853B9001A9FC7BF89D9FBBA790C06;E:5CE2A8A853B9001A9FC7BF89D9FBBA790C060D00.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026335.png" alt="image-20211021192845564"></p>
+<h2 id="76"><a href="#76" class="headerlink" title="76"></a>76</h2><table>
+<thead>
+<tr>
+<th>Cole桌上计算机的用户名是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:ADMIN;B:COLE;C:COLE-DESKTOP;D:COLE-PC;E:COLE-PC-841315.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026336.png" alt="image-20211021201731435"></p>
+<h2 id="77"><a href="#77" class="headerlink" title="77"></a>77</h2><table>
+<thead>
+<tr>
+<th>在Cole的桌上计算机中发现了多少潜在的受害者？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:100;B:150;C:200;D:250;E:300.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026337.png" alt="image-20211021202131537"></p>
+<p>200个</p>
+<h2 id="78"><a href="#78" class="headerlink" title="78"></a>78</h2><table>
+<thead>
+<tr>
+<th>潜在受害者的数据被储存在哪里?(某些字符被刻意用*遮盖)</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:Partition  3\secret\doc<strong>ent.txt;B:Partition 3\secrets\c</strong>tomer.txt;C:Partition  3\secrets\vi<strong>.txt;D:Partition 3\secrets\vi</strong>.zip;E:Partition  3\sec<em>ets\</em>ips.doc.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>可参考上题图</p>
+<h2 id="79"><a href="#79" class="headerlink" title="79"></a>79</h2><table>
+<thead>
+<tr>
+<th>预设浏览器何时安装？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:2019-10-01;B:2019-12-01;C:2019-12-07;D:2020-09-24;E:2020-09-28.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>感觉如果不精确到小时的话，看系统安装时间也是个好方法。</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026338.png" alt="image-20211022084920059"></p>
+<h2 id="80"><a href="#80" class="headerlink" title="80"></a>80</h2><table>
+<thead>
+<tr>
+<th>Cole桌上计算机上预设安装了甚么浏览器？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:Chrome;B:Edge;C:Firefox;D:Internet  Explorer;E:Opera.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026339.png" alt="image-20211022084952940"></p>
+<h2 id="81"><a href="#81" class="headerlink" title="81"></a>81</h2><table>
+<thead>
+<tr>
+<th>上述储存浏览记录的默认浏览器,该文件档案的类型是什么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:bat;B:dat;C:History;D:places;E:Web.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026340.png" alt="image-20211022090213812"></p>
+<p>找到浏览记录跳转源文件</p>
+<h2 id="82"><a href="#82" class="headerlink" title="82"></a>82</h2><table>
+<thead>
+<tr>
+<th>入侵Zello的证据文件是甚么？</th>
+<th>E</th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:Event  log;B:Email;C:Pretech;D:Ransome note;E:WebCacheV01.dat.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026341.png" alt="image-20211022090255380"></p>
+<p>历史记录源文件</p>
+<h2 id="83"><a href="#83" class="headerlink" title="83"></a>83</h2><table>
+<thead>
+<tr>
+<th>受感染网站的网址是什么?</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:<a href="http://www.apple.com;B:www.google.com;C:www.vmware.com">www.apple.com;B:www.google.com;C:www.vmware.com</a>;   D:<a href="http://fortess.com;E:http://zello-onlineshop.sytes.net">http://fortess.com;E:http://zello-onlineshop.sytes.net</a>.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>见上</p>
+<h2 id="84"><a href="#84" class="headerlink" title="84"></a>84</h2><table>
+<thead>
+<tr>
+<th>Cole桌上计算机上的DDoS勒索字条是甚么？(某些字符被刻意用*遮盖)</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:license.txt;B:Ransome Note  of <strong>OS.txt;C:Ransome Note of **OS.doc;D:edb.log;E:</strong>inst.log.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p> 仿真直接能看到，不仿真搜索关键词 DDoS 关键字也能找到。</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026342.png" alt="image-20211022090528779"></p>
+<h2 id="85"><a href="#85" class="headerlink" title="85"></a>85</h2><table>
+<thead>
+<tr>
+<th>在Cole桌上计算机上发现的DDoS勒索字条中，比特币钱包地址是甚么？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:1L6fKWpEYvUi8FeG6BnXqfh1joAgmJA1h1;B:2A6fKWpEYvUi8FeG6BnXqAA1joAgmJA1h1;C:3F6fKWpEYvUi8FeG11nXqAA1joAgmJA1h1;D:5C6fKWpEYvUi8FeG6BnXqAA1joAgfJA1h1;E:A1h1KWpEYvUi8FeG6BnXqfh1joAgmJ1L6f.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026343.png" alt="image-20211022090645057"></p>
+<h2 id="86-Cole笔记本计算机的哈希值（SHA-1）是甚么？"><a href="#86-Cole笔记本计算机的哈希值（SHA-1）是甚么？" class="headerlink" title="86 Cole笔记本计算机的哈希值（SHA-1）是甚么？"></a>86 Cole笔记本计算机的哈希值（SHA-1）是甚么？</h2><table>
+<thead>
+<tr>
+<th>Cole笔记本计算机的哈希值（SHA-1）是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:2EF559C89F2C5E6A2E02CFF13DBD61E423B89CD2;B:2EF59CD259C89F2C5E6A2E02CFF13DBD61E423B8;C:59C89F2C5E6A2E02CFF13DBD61E423B82EF59CD2;D:8CO259C89F2C5E6A2E02CFF13DBD61E423B82EF5;E:9CD259C89F2C5E6A2E02CFF13DBD61E423B82EF5.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026344.png" alt="image-20211022090738257"></p>
+<h2 id="87"><a href="#87" class="headerlink" title="87"></a>87</h2><table>
+<thead>
+<tr>
+<th>Cole笔记本计算机有多少个用户帐户？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:2;B:3;C:4;D:5;E:6.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026345.png" alt="image-20211022090939223"></p>
+<p>3个</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026346.png" alt="image-20211022091136570"></p>
+<h2 id="88"><a href="#88" class="headerlink" title="88"></a>88</h2><table>
+<thead>
+<tr>
+<th>当前登录用户帐户的用户名是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:Administrator;B:Bob;C:Cole;D:Daniel;E:Guest.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026347.png" alt="image-20211022091107142"></p>
+<h2 id="89"><a href="#89" class="headerlink" title="89"></a>89</h2><table>
+<thead>
+<tr>
+<th>在Cole笔记本的随机存取记忆体中, 是甚么Windows配置文件？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:Win7SP1x64;B:Win7SP1x64_25000;C:Win7SP2x64;D:Win2008R2SP1x64_24418;E:Win2008R2SP2x64.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026348.png" alt="image-20211022092142781"></p>
+<h2 id="90"><a href="#90" class="headerlink" title="90"></a>90</h2><table>
+<thead>
+<tr>
+<th>用户密码的前5个字符是甚么？</th>
+<th></th>
+<th>3</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>高级</th>
+<th>A:12345;B:78945;C:passw;D:P@ssw;E:qazws.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>两种方法：lsadump和hashdump再去在线md5解码</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026349.png" alt="image-20211022092542863"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026350.png" alt="image-20211022092525423"></p>
+<h2 id="91"><a href="#91" class="headerlink" title="91"></a>91</h2><table>
+<thead>
+<tr>
+<th>计算机中可疑的txt文件的名称是甚么？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:abc.txt;B:costomer.txt;C:secret.txt;D:vips.txt;E:No  suspicious file was found.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>显然是Vips.txt</p>
+<h2 id="92"><a href="#92" class="headerlink" title="92"></a>92</h2><table>
+<thead>
+<tr>
+<th>可疑txt文件曾经出现在哪个路径？</th>
+<th>B</th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:C:/Users/Cole;B:C:/Users/Cole/Desktop/;C:C:/Users/Cole/Desktop/Trade;D:E:/USB16GB;E:No  suspicious file was found.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026351.png" alt="image-20211022102036634"></p>
+<h2 id="93"><a href="#93" class="headerlink" title="93"></a>93</h2><table>
+<thead>
+<tr>
+<th>是否有任何证据表明该文件已执行？</th>
+<th>C</th>
+<th>3</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>高级</th>
+<th>A:是的，因为与此文件相关的lnk文件在内存偏移量  (Memory Offset) 0xcd40e382中找到;B:是的，因为与此文件相关的lnk文件在内存偏移量 (Memory Offset)  0x117a86230中找到;C:是的，因为在Cole \ AppData \ Roaming \ Microsoft \ Windows \  Recent \中找到了与此文件相关的lnk文件;D:找不到执行证据，因为没有与txt文件相关的预取文件;E:找不到可疑文件和lnk文件.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>根据选项往回找</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026352.png" alt="image-20211022112049545"></p>
+<p>最近访问记录找到该文件，并且看到有lnk文件生成，一般link文件生成说明该文件已经访问过</p>
+<h2 id="94"><a href="#94" class="headerlink" title="94*"></a>94*</h2><table>
+<thead>
+<tr>
+<th>以下哪个与上述可疑txt文件相关的发现是正确的？</th>
+<th>A</th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:在创建可疑txt文件之后，创建/访问了另一个txt文件;B:在创建另一个txt文件之后创建/访问该文件;C:Cole使用Microsoft  Word打开文件;D:无法确定与文件相关的时间事件;E:该文件是通过内部网络ip下载的.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>通过分析<br>//$Extend /UnJrnl/$J ，转换成日志，然后找文件的操作详情。<br>可以通过两个文件创建向后的时间来进行判断</p>
+<blockquote>
+<p><a href="http://www.360doc.com/content/21/0227/01/73897730_964172271.shtml">元文件</a>$UsnJrnl是变更日志文件，作用是记录文件发生的改变，文件一旦改变，其变化会记录在元文件$UsnJrnl中一个被命名为$J的数据属性中。$J数据属性具备稀疏属性，由变更日志项组成。$UsnJrnl中还有一个被命名为$Max的数据属性，用来记录有关用户日志的最大设置信息等参数。$UsnJrnl文件中$J数据属性的变更日志项结构见表4-89。表4-89　$J数据属性的变更日志项结构<img src="https://www.dgxue.com/huifu/img/huifu/image01356.jpeg" alt="元文件$UsnJrnl分析-数据恢复迷"></p>
+</blockquote>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026353.png" alt="image-20211027204250710"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026354.png" alt="image-20211027204308296"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026355.png" alt="image-20211027204312926"> </p>
+<p>或者可分析一下浏览器的历史记录</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026356.png" alt="image-20211031172329654"></p>
+<p>可看到三分钟后又访问了customers.txt</p>
+<h2 id="95"><a href="#95" class="headerlink" title="95"></a>95</h2><table>
+<thead>
+<tr>
+<th>根据系统时间，Cole在2020-09-18  01:01:08 UTC + 0000左右用笔记本计算机做了甚么？</th>
+<th>D</th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:他创建了一个新的xls文件;B:他从USB复制了一些文件;C:他打开了一些txt文件;D:他删除了一些文件;E:没有.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026357.png" alt="image-20211028192953458"></p>
+<p>其中在文件系统日志这里能看到详细信息</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026358.png" alt="image-20211028193804019">     </p>
+<p>操作可以看出是删除了某些信息</p>
+<p>或者使用取证大师</p>
+<p>提供了精确到秒的</p>
+<p>2020 09 18 01:01:08 UTC + 0000 ，通过搜时间找到这个时间点</p>
+<p>在应用程序运行痕迹最后访问时间排序也可</p>
+<p>打开了 eraser.exe（eraser是常见数据擦除软件）<br>通过分析<br>//$Extend /UnJrnl/$J ，转换成日志，然后找文件的操作详情。</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026359.png" alt="image-20211028195705318"></p>
+<h2 id="96"><a href="#96" class="headerlink" title="96"></a>96</h2><table>
+<thead>
+<tr>
+<th>FTK  Imager.exe的PID是甚么?</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:368;B:660;C:1288;D:2224;E:2456.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>内存镜像中获取</p>
+<p>Pslist 命令</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026361.png" alt="image-20211028202107947"></p>
+<h2 id="97"><a href="#97" class="headerlink" title="97"></a>97</h2><table>
+<thead>
+<tr>
+<th>FTK  Imager.exe的父应用程序是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:592;B:660;C:1288;D:2224;E:2456.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>同上</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026362.png" alt="image-20211028202210587"></p>
+<h2 id="98"><a href="#98" class="headerlink" title="98"></a>98</h2><table>
+<thead>
+<tr>
+<th>FTK  Imager.exe使用甚么DLL？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:mmlang.dll;B:Normal.dll;C:sensapi.dll;D:Secu.dll;E:WINNS.dll.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>方法一：dlllist命令，可导出到txt文件后挨个搜索</p>
+<p>dllist –pid=2456精确搜索</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026363.png" alt="image-20211028202418232"></p>
+<p>方法二：使用timeliner 命令</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026364.png" alt="image-20211028202547201"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026365.png" alt="image-20211028202552807"></p>
+<p>方法三：查找其pf 预读文件</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026366.png" alt="image-20211028203017341"></p>
+<p>导出后，使用Winprefetchview 来进行查看</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026367.png" alt="image-20211028203038696"></p>
+<h2 id="99"><a href="#99" class="headerlink" title="99"></a>99</h2><table>
+<thead>
+<tr>
+<th>MpCmdRun.exe的PID是甚么?</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:660;B:1288;C:1388;D:2240;E:2456.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>psscan和 psxview 可以查看隐藏进程</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026368.png" alt="image-20211028203153946"></p>
+<h2 id="100"><a href="#100" class="headerlink" title="100"></a>100</h2><table>
+<thead>
+<tr>
+<th>以下哪个与MpCmdRun.exe相关的项目是正确？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:该进程于2020-09-17 11:15:57 UTC  + 0000创建;B:该过程于2020-09-18 01:20:57 UTC +  0000终止;C:该进程由schost.exe启动;D:该过程是通过网络驱动器启动的;E:这不是合法程序.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026369.png" alt="image-20211028203909861"></p>
+<h2 id="101"><a href="#101" class="headerlink" title="101"></a>101</h2><table>
+<thead>
+<tr>
+<th>上次启动后，笔记本计算机连接的外部IP是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:31.12.82.1;B:40.10.261.1;C:218.112.79.1;D:218.112.172.8;E:未连接/未连接到任何外部IP.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>使用netscan命令查看有无远程连接进程</p>
+<p>foreign address里没有显示ip</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026370.png" alt="image-20211028204003775"></p>
+<h2 id="102"><a href="#102" class="headerlink" title="102"></a>102</h2><table>
+<thead>
+<tr>
+<th>上次启动后，笔记本计算机连接的网络驱动器路径是甚么？</th>
+<th>E</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:E:/;B:F:/;C:G:/;D:Z:/;E:未连接/未连接到任何外部IP.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>同上题</p>
+<h2 id="103"><a href="#103" class="headerlink" title="103*"></a>103*</h2><table>
+<thead>
+<tr>
+<th>Cole公司的一位客户有一封电子邮件<code>m*b*@ms**.z**.**.tw</code>，可以在Cole的笔记本计算机中找到此数据吗？ （某些字符被故意用*遮盖）</th>
+<th>A</th>
+<th>3</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>高级</th>
+<th>A:是;B:否;C:无法确定，因为找不到这样的文件;D:由于信息太有限，无法确定;E:由于数据已加密，无法确定.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>vips.txt里面有该电子邮件地址   </p>
+<h2 id="104"><a href="#104" class="headerlink" title="104*"></a>104*</h2><table>
+<thead>
+<tr>
+<th>收到上述电子邮件的客户名称是甚么？</th>
+<th>C</th>
+<th>3</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>高级</th>
+<th>A:陈志;B:陈志林;C:陈宜;D:郭倍;E:No  customer data was found.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026371.png" alt="image-20211031173748427"></p>
+<p>找到对应的该行</p>
+<h2 id="105"><a href="#105" class="headerlink" title="105*"></a>105*</h2><table>
+<thead>
+<tr>
+<th>属于上述客户的电话号码是甚么？ （某些字符被故意用*遮盖）</th>
+<th></th>
+<th>3</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>高级</th>
+<th>A:3225<strong>1*;B:61</strong>221<strong>;C:62</strong>6<em>82</em>;D:65<strong>25</strong>7;E:No  customer data was found.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>见上图</p>
+<h2 id="106"><a href="#106" class="headerlink" title="106*"></a>106*</h2><table>
+<thead>
+<tr>
+<th>上述客户可能居住的区域是甚么？</th>
+<th></th>
+<th>3</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>高级</th>
+<th>A:Hong Kong Island;B:Kowloon  City ;C:Tsuen Wan;D:Tin Shui wai;E:No customer data was found.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>TIN SHUI WAI，见上图</p>
+<h2 id="107-Cole的PI的哈希值（SHA-256）是甚么？"><a href="#107-Cole的PI的哈希值（SHA-256）是甚么？" class="headerlink" title="107 Cole的PI的哈希值（SHA-256）是甚么？"></a>107 Cole的PI的哈希值（SHA-256）是甚么？</h2><table>
+<thead>
+<tr>
+<th>Cole的PI的哈希值（SHA-256）是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:0556EABC9BECCFA67E825864EBAB7B503EEC293C6209CDC931016D2F1D081F7C;B:05569BECCFA67E825864EBAB7B503EEC293C6209CDC931016D2F1D081F7CEABC;C:9BECCFA67E825864EBAB7B503EEC293C6209CDC931016D2F1D081F7C0556EABC;D:AA8C9BECCFA67E825864EBAB7B503EEC293C6209CDC931016D2F1D081F7C0556;E:EABC9BECCFA67E825864EBAB7B503EEC293C6209CDC931016D2F1D081F7C0556.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026372.png" alt="image-20211028204907205"></p>
+<h2 id="108"><a href="#108" class="headerlink" title="108"></a>108</h2><table>
+<thead>
+<tr>
+<th>Cole PI 装置的操作系统是甚么？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:Android;B:Debian;C:Mac;D:Ubuntu24;E:Windows.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026373.png" alt="image-20211028205044727"></p>
+<p>但是仿真失败 </p>
+<p>火眼导入识别一下</p>
+<h2 id="109"><a href="#109" class="headerlink" title="109"></a>109</h2><table>
+<thead>
+<tr>
+<th>操作系统是甚么版本？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:20.1.1 LTS (Focal  Fossa);B:20.01.1 LTS (Focal Fossa);C:20.02.1 LTS (Focal Fossa);D:20.03.1 LTS  (Focal Fossa);E:20.04.1 LTS (Focal Fossa).</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>同上</p>
+<h2 id="110"><a href="#110" class="headerlink" title="110"></a>110</h2><table>
+<thead>
+<tr>
+<th>装置的文件系统是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:Android;B:Ext  4;C:EXT;D:iOS;E:NTFS.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026374.png" alt="image-20211028205427279"></p>
+<p>或</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026375.png" alt="image-20211028205507820"></p>
+<h2 id="111"><a href="#111" class="headerlink" title="111*"></a>111*</h2><table>
+<thead>
+<tr>
+<th>操作系统的时区是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:Asia/Amman;B:Asia/  Baku;C:Asia/Shanghai;D:Asia/Seoul;E:Asia/Tokyo.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>在/etc/timezone 可以找到</p>
+<h2 id="112"><a href="#112" class="headerlink" title="112"></a>112</h2><table>
+<thead>
+<tr>
+<th>哪个文件包含儿童色情物品内容？（某些字符被故意用*遮盖）</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:”Partition  2*<em>r\pt</em>c1.jpg,Partition 2*<em>r\pt</em>c2.jpg,Partition  2*<em>r\pt</em>c3.jpg”;B:”Partition 2\v<strong>\ptha1.jpg,Partition  2\v</strong>\ptha2.jpg,Partition 2\v<strong>\ptha3.jpg”     ;C:”Partition 2\mnt\pth</strong>.jpg,Partition 2\mnt\pth<strong>.jpg,Partition  2\mnt\pth</strong>.jpg”;D:”Partition 2*<em>hc1.jpg,Partition  2*</em>hc2.jpg,Partition 2*<em>hc3.jpg”;E:”Partition  2\media\pt*</em>.jpg,Partition 2\media\pt<strong>(1).jpg,Partition  2\media\pt</strong>(2).jpg”.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>找找图片</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026376.png" alt="image-20211029153123796"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026377.png" alt="image-20211029153247278"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026378.png" alt="image-20211029153258279"></p>
+<p>这三个</p>
+<h2 id="113"><a href="#113" class="headerlink" title="113"></a>113</h2><table>
+<thead>
+<tr>
+<th>Cole PI装置中的儿童色情物品的创建时间是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:2020/09/15  11:21;B:2020/09/15 17:21;C:2020/09/15 18:21;D:2020/09/16 19:21;E:242020/09/15  20:21.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026379.png" alt="image-20211029153358004"></p>
+<h2 id="114-Cole-NAS的哈希值（SHA-256）是甚么"><a href="#114-Cole-NAS的哈希值（SHA-256）是甚么" class="headerlink" title="114 Cole  NAS的哈希值（SHA-256）是甚么?"></a>114 Cole  NAS的哈希值（SHA-256）是甚么?</h2><table>
+<thead>
+<tr>
+<th>Cole  NAS的哈希值（SHA-256）是甚么?</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:28715B79890D90B661183F6849469FA2042D103D629A6BC9A4304E39B13C019D;B:2871890D90B661183F6849469FA2042D103D629A6BC9A4304E39B13C019D5B79;C:5B79890D90B661183F6849469FA2042D103D629A6BC9A4304E39B13C019D2871;D:6879890D90B661183F6849469FA2042D103D629A6BC9A4304E39B13C019D2871;E:890D90B661183F6849469FA2042D103D629A6BC9A4304E39B13C019D28715B79.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026380.png" alt="image-20211029154740393"></p>
+<h2 id="115"><a href="#115" class="headerlink" title="115"></a>115</h2><table>
+<thead>
+<tr>
+<th>儿童色情数据存放在哪里？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:Partition  3\cole-shared\media;B:Partition 4\cole\media;C:Partition  4\cole_shared\DCIM;D:Partition 4\cole_shared\media;E:Partition  4\cole_share\mnt.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026381.png" alt="image-20211029161919073"></p>
+<h2 id="116"><a href="#116" class="headerlink" title="116"></a>116</h2><table>
+<thead>
+<tr>
+<th>设备中现有多少儿童色情数据？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:1;B:2;C:3;D:4;E:5.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>同上</p>
+<h3 id="117"><a href="#117" class="headerlink" title="117"></a>117</h3><table>
+<thead>
+<tr>
+<th>Cole NAS装置中的儿童色情物品的创建时间是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:2020/09/13  16:51;B:2020/09/14 16:50;C:2020/09/14 16:51;D:2020/09/15 16:51;E:2020/09/15  17:57.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026382.png" alt="image-20211029161936343"></p>
+<h2 id="118-在Cole手机-的用户个人资料是甚么？"><a href="#118-在Cole手机-的用户个人资料是甚么？" class="headerlink" title="118 在Cole手机, 的用户个人资料是甚么？"></a>118 在Cole手机, 的用户个人资料是甚么？</h2><table>
+<thead>
+<tr>
+<th>在Cole手机, 的用户个人资料是甚么？</th>
+<th>D</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:<a href="mailto:colefung@gmail.com">colefung@gmail.com</a>;B:<a href="mailto:colefung99@gmail.com">colefung99@gmail.com</a>;C:<a href="mailto:cole909@gmail.com">cole909@gmail.com</a>;D:<a href="mailto:colefung909@gmail.com">colefung909@gmail.com</a>;E:<a href="mailto:colefung999@gmail.com">colefung999@gmail.com</a>.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>veracrypt里的文件有问题，当时也发了单独的镜像文件下载链接</p>
+<p>使用手机大师加载该镜像文件</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026383.png" alt="image-20211031203811004"></p>
+<h2 id="119"><a href="#119" class="headerlink" title="119"></a>119</h2><table>
+<thead>
+<tr>
+<th>Cole的手机上有社交媒体帐户吗？如有，那是甚么？</th>
+<th>B</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:<a href="mailto:63766465@s.whatsapp.net">63766465@s.whatsapp.net</a>;B:<a href="mailto:85263766465@s.whatsapp.net">85263766465@s.whatsapp.net</a>;C:<a href="mailto:852-62766465@s.whatsapp.net">852-62766465@s.whatsapp.net</a>;D:<a href="mailto:C85263766465@s.whatsapp.net">C85263766465@s.whatsapp.net</a>;E:<a href="mailto:COLE-63766465@s.whatsapp.net">COLE-63766465@s.whatsapp.net</a>.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026384.png" alt="image-20211031204223443"></p>
+<h2 id="120"><a href="#120" class="headerlink" title="120"></a>120</h2><table>
+<thead>
+<tr>
+<th>Cole与Bob和Alice在同一个小组中进行过交流吗？它是甚么？</th>
+<th>A</th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:是的，在whatsapp组ID中的群聊消息：<a href="mailto:85262547937-1600392878@g.us">85262547937-1600392878@g.us</a>;B:是的，在whatsapp组ID中的群聊消息：<a href="mailto:85262547937-1600392878@g.hk">85262547937-1600392878@g.hk</a>;C:是的，在whatsapp组ID中的群聊消息：85252547937-1600392878@.us;D:是的，在whatsapp组ID中的群聊消息：<a href="mailto:62547937-1600392878@g.us">62547937-1600392878@g.us</a>;E:不，他们在Cole的设备中找不到公共聊天组.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026385.png" alt="image-20211031204334751"></p>
+<h2 id="121"><a href="#121" class="headerlink" title="121"></a>121</h2><table>
+<thead>
+<tr>
+<th>Cole手机的Android ID是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:a626a98cb2bb965ec;B:606a98cb2bb965eca;C:626a98cb2bb965ec;D:65ec626a98cb2bb9;E:626aa8cb2bb965ec626a.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026386.png" alt="image-20211031204526974"></p>
+<h2 id="122"><a href="#122" class="headerlink" title="122"></a>122</h2><table>
+<thead>
+<tr>
+<th>已安装的WhatsApp APK文件的哈希值（SHA-256）是甚么?</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:06fa2cce80923de8646f835b72d1fb06a97343a5b7242bc3972627c78e1bb318;B:8e1b06fa2cce80923de8646f835b72d1fb06a97343a5b7242bc3972627c7b318;C:8e1bb31806fa2cce80923de8646f835b72d1fb06a97343a5b7242bc3972627c7;D:b31806fa2cce80923de8646f835b72d1fb06a97343a5b7242bc3972627c78e1b;E:b4l806fa2cce80923de8646f835b72d1fb06a97343a5b7242bc3972627c78elb.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>目前不具备手机镜像仿真能力，无法找到该 apk 文件×</p>
+<p>手机大师不好寻找，使用取证大师加载可以看到分区名称（火眼就行），在userdata分区有一个app目录，通常app的apk文件下载在此处</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026387.png" alt="image-20211031204820800"></p>
+<p>  找到后计算即可</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026388.png" alt="image-20211031204933190"></p>
+<h2 id="123"><a href="#123" class="headerlink" title="123"></a>123</h2><table>
+<thead>
+<tr>
+<th>列出Chrome的五个“关键词搜索”。</th>
+<th>B</th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:”bulk mailer, ddos  creator, fortress online, parknshop, GitHub malware”;B:”bulk mail,  bulk mailers, ddos creator, fortress online, bitcoin”;C:”bulk mail,  bulk mai1er, ddos creator, fortress online, bitcoin”;D:”bulk mai1,  bulk mailer, ddos creator, parknshop, GitHub malware”;E:”fortress  on1ine, bitcoin, apple, parknshop, GitHub malware”.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026389.png" alt="image-20211029190155085"></p>
+<p>小变化，考细心</p>
+<h2 id="124"><a href="#124" class="headerlink" title="124"></a>124</h2><table>
+<thead>
+<tr>
+<th>在哪里可以找到“Cole的电话”的通话记录？</th>
+<th>A</th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:Table:call;B:Table:calls;C:Table:contact;D:Table:contacts;E:Table:sms.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>火眼找到通话记录源文件</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026390.png" alt="image-20211031205616543"></p>
+<p>calls表里记载</p>
+<h2 id="125"><a href="#125" class="headerlink" title="125"></a>125</h2><table>
+<thead>
+<tr>
+<th>2020-09-01至2020-09-30之间，“Cole”收到了多少条SMS讯息？</th>
+<th>A</th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:2;B:3;C:4;D:5;E:6.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>删除的记录一定要减去，<br>官网的答案 是未删除的条数</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026391.png" alt="image-20211029190232175"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026392.png" alt="image-20211029190353620"></p>
+<h2 id="126"><a href="#126" class="headerlink" title="126"></a>126</h2><table>
+<thead>
+<tr>
+<th>在Cole的“  whatsapp”联络人中，有多少用户正在使用“  whatsapp”？</th>
+<th>A</th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:2;B:3;C:4;D:5;E:6.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>盘古石手机取证直接得出</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026393.png" alt="image-20211029190413362"></p>
+<h1 id="团体赛Daniel部分"><a href="#团体赛Daniel部分" class="headerlink" title="团体赛Daniel部分"></a>团体赛Daniel部分</h1><h2 id="127-Daniel的桌上计算机的哈希值（SHA-256）是甚么"><a href="#127-Daniel的桌上计算机的哈希值（SHA-256）是甚么" class="headerlink" title="127 Daniel的桌上计算机的哈希值（SHA-256）是甚么?"></a>127 Daniel的桌上计算机的哈希值（SHA-256）是甚么?</h2><table>
+<thead>
+<tr>
+<th>Daniel的桌上计算机的哈希值（SHA-256）是甚么?</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:E588564CA7AAA5352F6A1215A9F1FBE4;B:FBE4564CA7AAA5352F6A1215A9F1E588;C:01DD40CF28603F421F3A09CD38F1C8AA40A2AC4BFB46ECF8299C38CE6AE44EO5;D:07DD40CF28603F421F3A09CD38F1C8AA40A2AC4BFB46ECF8299C38CE6AE44ED5;E:4ED540CF28603F421F3A09CD38F1C8AA40A2AC4BFB46ECF8299C38CE6AE407DD.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>xways 直接得出</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026394.png" alt="image-20211029190952085"></p>
+<h2 id="128-该桌上计算机操作系统储存在哪个分区上？"><a href="#128-该桌上计算机操作系统储存在哪个分区上？" class="headerlink" title="128 该桌上计算机操作系统储存在哪个分区上？"></a>128 该桌上计算机操作系统储存在哪个分区上？</h2><table>
+<thead>
+<tr>
+<th>该桌上计算机操作系统储存在哪个分区上？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:Partition 1;B:Partition  2;C:Partition 3;D:Partition 4;E:Partition 5.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026395.png" alt="image-20211029192116422"></p>
+<h2 id="129"><a href="#129" class="headerlink" title="129"></a>129</h2><table>
+<thead>
+<tr>
+<th>在桌上计算器机中找到Daniel的电子邮件地址是甚么？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:<a href="mailto:daniel43346@gmail.com">daniel43346@gmail.com</a>;B:<a href="mailto:daniellaw43346@gmail.com">daniellaw43346@gmail.com</a>;C:<a href="mailto:daniellaw43346@yahoo.com">daniellaw43346@yahoo.com</a>;D:<a href="mailto:daniellaw43346@yahoo.com.hk">daniellaw43346@yahoo.com.hk</a>;E:<a href="mailto:daniellaw43346@ymail.com">daniellaw43346@ymail.com</a>.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026396.png" alt="image-20211029192158435"></p>
+<h2 id="130"><a href="#130" class="headerlink" title="130"></a>130</h2><table>
+<thead>
+<tr>
+<th>该恶意软件感染源是甚么？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:”<a href="mailto:daniellaw43346@gmail.com">daniellaw43346@gmail.com</a>  - Daniel_Gmail.pst, Paypal updated:New Account update needs to be  noticed”;B:”<a href="mailto:daniellaw43346@gmail.com">daniellaw43346@gmail.com</a> - Daniel_Gmails.pst, Paypal  updated:New Account update needs to be  noticed”;C:”<a href="mailto:daniellaw@gmail.com">daniellaw@gmail.com</a> - Daniel_Gmail.pst, Paypal  updated:New Account update needs to be  noticed”;D:”<a href="mailto:danielaw43346@gmail.com">danielaw43346@gmail.com</a> - Daniel_Gmail.pst, Paypal  updated:New Account update needs to be  noticed”;E:”<a href="mailto:daniellaw43346@yahoo.com">daniellaw43346@yahoo.com</a> - Daniel_Gmail.pst, Paypal updated:New  Account update needs to be noticed”.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026397.png" alt="image-20211029192426214"></p>
+<h2 id="131"><a href="#131" class="headerlink" title="131"></a>131</h2><table>
+<thead>
+<tr>
+<th>在Daniel的桌面上发现了甚么恶意软件？(某些字符被刻意用*遮盖)</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:wi<strong>ows.bat;B:ootd-4.0.</strong>2.0.exe;C:7z<strong>00-x64.exe;D:NDP452-KB290</strong>07-x86-x64-AllOS-ENU.exe;E:<strong>deo_view</strong>_3.1.2.4.zip.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>在 windows 默认下载目录找到一些文件<br>全导出后拖进火绒检测可找到</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026399.png" alt="image-20211029194733317"></p>
+<h2 id="132"><a href="#132" class="headerlink" title="132"></a>132</h2><table>
+<thead>
+<tr>
+<th>该恶意软件的哈希值（SHA-256）是甚么？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:508972AFE67F7991F13212E1FE517F82BDC032DE0F5CDF15FDF641ED1FDD233D;B:5089E67F7991F13212E1FE517F82BDC032DE0F5CDF15FDF641ED1FDD233D72AF;C:72AFE67F7991F13212E1FE517F82BDC032DE0F5CDF15FDF641ED1FDD233D5089;D:77AFB67F7991F13212E1FE517F82BDC032DE0F5CDF15FDF641ED1FDD233D50B9;E:E67F7991F13212E1FE517F82BDC032DE0F5CDF15FDF641ED1FDD233D508972AF.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026400.png" alt="image-20211029194927635"></p>
+<h2 id="133-该恶意软件的功能是甚么？"><a href="#133-该恶意软件的功能是甚么？" class="headerlink" title="133 **该恶意软件的功能是甚么？"></a>133 **该恶意软件的功能是甚么？</h2><table>
+<thead>
+<tr>
+<th>该恶意软件的功能是甚么？</th>
+<th>E</th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:远程桌面协议;B:作为获得管理员级别访问权限的rootkit;C:作为键盘侧录程序 (Keylogger);D:作为抢夺者 (Snipper);E:作为特洛伊木马 (Trojan Horse).</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026399.png" alt="image-20211029194733317"></p>
+<p>拖入微步云沙箱看看高危行为</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026401.png" alt="image-20211029202407134"></p>
+<p>提示应该是特洛伊木马</p>
+<p>下图从何得出</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026402.png" alt="image-20211030134338858"></p>
+<h2 id="134-Daniel的MacBook-计算机的哈希值（SHA-1）是甚么"><a href="#134-Daniel的MacBook-计算机的哈希值（SHA-1）是甚么" class="headerlink" title="134 Daniel的MacBook 计算机的哈希值（SHA-1）是甚么?"></a>134 Daniel的MacBook 计算机的哈希值（SHA-1）是甚么?</h2><table>
+<thead>
+<tr>
+<th>Daniel的MacBook 计算机的哈希值（SHA-1）是甚么?</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:B90D23B13560A619F682DE76991CD768;B:B9OD23B13560A619F682DE76991CO768;C:C71C21730461FC901FD99F76C3679C3FED0DFAB9;D:C77C21730461FC901FD99F76C3679C3FED0DFA89;E:FAB921730461FC901FD99F76C3679C3FED0DC71C.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026403.png" alt="image-20211030134406592"></p>
+<h2 id="135"><a href="#135" class="headerlink" title="135"></a>135</h2><table>
+<thead>
+<tr>
+<th>Daniel的MacBook 计算机中有多少个分区？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:2;B:3;C:4;D:5;E:6;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026404.png" alt="image-20211030134646170"></p>
+<h2 id="136-Daniel的iPhone的操作系统是甚么版本？"><a href="#136-Daniel的iPhone的操作系统是甚么版本？" class="headerlink" title="136 Daniel的iPhone的操作系统是甚么版本？"></a>136 Daniel的iPhone的操作系统是甚么版本？</h2><table>
+<thead>
+<tr>
+<th>Daniel的iPhone的操作系统是甚么版本？</th>
+<th></th>
+<th>1</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>初级</th>
+<th>A:12.0.0.1;B:12.3.2;C:12.4.7;D:12.5.1;E:13.4.6.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>版本太老了，不匹配，</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026405.png" alt="image-20211102141740796"></p>
+<p>应该改成Bob这样的iPhone备份格式</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026406.png" alt="image-20211102141835341"></p>
+<p>无法使用手机大师取出东西，可以使用脚本修改为常见iPhone格式，要不就手动寻找</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026407.png" alt="image-20211030135158690"></p>
+<h2 id="137"><a href="#137" class="headerlink" title="137"></a>137</h2><table>
+<thead>
+<tr>
+<th>Daniel的iPhone的wifi mac地址是甚么？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:22:9a:be:c4:99:7b;B:44:9a:be:c4:99:7d;C:50:9a:be:c9:99:7d;D:64:9a:be:c4:99:7d;E:7d:64:9a:be:c4:99.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>lockdown文件夹下的device_values.plist</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026408.png" alt="image-20211030134957485"></p>
+<h2 id="138"><a href="#138" class="headerlink" title="138"></a>138</h2><table>
+<thead>
+<tr>
+<th>Daniel的iPhone的IMEI是甚么？</th>
+<th>D</th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:256960065058545;B:300960065055854;C:359000065055845;D:356960065055845;E:456960065505845.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026409.png" alt="image-20211030135100631"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026410.png" alt="image-20211030135708696"></p>
+<h2 id="139"><a href="#139" class="headerlink" title="139"></a>139</h2><table>
+<thead>
+<tr>
+<th>iPhone上次连接WIFI的SSID是甚么？</th>
+<th></th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:Netgear;B:Netgear_5G;C:Net24-5G;D:Netgear24_4G;E:Netgear24_5G.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>修复后手机大师能看到</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032026411.png" alt="image-20211102144033261"></p>
+<h2 id="140"><a href="#140" class="headerlink" title="140"></a>140</h2><table>
+<thead>
+<tr>
+<th>根据调查结果，以下哪项关于Daniel的选项是正确的？</th>
+<th>E</th>
+<th>2</th>
+<th>第六届美亚杯</th>
+<th>电子数据取证</th>
+<th>单选</th>
+<th>中级</th>
+<th>A:Daniel 认识 Alice;B:Cole 入侵了 Daniel 的计算机;C:Daniel知情地入侵了Xeno的服务器;D:Daniel是犯罪团伙的一员;E:以上都不对.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>A Daniel 是cole网上招募到B 入侵zello的 C D 犯罪团伙应该是群里的一员 E</p>
+]]></content>
+      <categories>
+        <category>取证</category>
+      </categories>
+      <tags>
+        <tag>美亚杯</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2020年“美亚杯”第六届中国电子数据取证大赛个人赛解析</title>
+    <url>/20meiyacuppersonal.html</url>
+    <content><![CDATA[<h1 id="2020第六届美亚杯中国电子数据取证大赛个人赛-资格赛-writeup"><a href="#2020第六届美亚杯中国电子数据取证大赛个人赛-资格赛-writeup" class="headerlink" title="2020第六届美亚杯中国电子数据取证大赛个人赛(资格赛)writeup"></a>2020第六届美亚杯中国电子数据取证大赛个人赛(资格赛)writeup</h1><p>为了给2021年美亚杯做准备，这几天重新做了一下前几年美亚杯的题目，题量很大，做做复现记录一下。</p>
+<p>期待今年的美亚杯</p>
+<h2 id="个人赛解题-笔记本"><a href="#个人赛解题-笔记本" class="headerlink" title="个人赛解题-笔记本"></a>个人赛解题-笔记本</h2><p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0NfFelespibL6yOatUichwSY6p6oOxcJNUaU0ZteydoaIGprIUOnWFAEQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">img</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0DcfNea2j5NW5UT3ufMAPxvgibYXFibFyKUW8W5mHhvjDCibgUKXkRrxkg/640?wx_fmt=other&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">img</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0Hu1R82hhDVA521JFXs5BQsFb1xQJpNsL8WBCZsJoJxFib6VFhAiae8XA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">img</p>
+<h3 id="第1题"><a href="#第1题" class="headerlink" title="第1题"></a>第1题</h3><p>取证大师计算哈希可得sha1，但是<code>e01</code>格式的镜像文件内已经存储了打包镜像时计算的哈希值，我们完全不需要二次计算，只需使用<code>FTK</code>加载镜像，即可看到已经算好的哈希值，秒解</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0ZaAFyOFVziaf6aQnAT9tHfcA99qZLiaSZdJNQQMgz5XGYBUOYia2hG3kg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130200247571</p>
+<h3 id="第2到11题"><a href="#第2到11题" class="headerlink" title="第2到11题"></a>第2到11题</h3><p>取证大师即可</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0icpX5GccOC65ibLgJqrjoiaIVNJPXLHibWVXdicl308xTias2qIobHkatwdw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130200720106</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0EFZyXorricsoq3Xpp8kMuxXYflkP45mzgcuGmsSVSgaVmiaqLA55BwKA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130200744183</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0znhAephaRKCbBP0qPgyQjzGicT72CsYlic5sfZOFIYfTriaLv5liaCNIXQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130200823858</p>
+<p>ps.</p>
+<p>CST指的就是中国标准时间，UTC+8:00</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0ibxpudndXQlnL3Zz1taAicmWE6NrsboXfqIWxia7iaHPqXZ0nXYhicoWgdg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130200943339</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0q2eq3CgszKAWhE7gpLuJ8Ha9lKibVvibzupb3FEbwftThCXmkwbM5tJg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130201037841</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0ibZxjBOTzUI6RmuM6ReFf4OmKYLFqwwsogSOPia8wwBShHFNLibrJcianA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130201104575</p>
+<h3 id="第12题"><a href="#第12题" class="headerlink" title="第12题"></a>第12题</h3><p>仿真一下，即可看到</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0GbNzicFQgZadJ0iaWv9BKuibOrYLJoVj19gnWyryYz4BTsxtYBDRMy9fA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130201721195</p>
+<p>ps.</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0URInU7Yg2rCUYZItRkibS8eTk9Zjy4Mic4aj23mJ89xLsMJcpuzqtERg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130201221274</p>
+<p>这个不支持虚拟化的bug可以用关闭这里的选项解决，去掉这个钩</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0WIgibwAticErKvicwt2ByzjGqiaLibjFibYa5bXzZBib1MCmsR6qbMxOAbLEA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130201318942</p>
+<h3 id="第13题"><a href="#第13题" class="headerlink" title="第13题"></a>第13题</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0XKFF4xPYkV1DKpicPCItCuPnhGebZNlMX3Eicib1S8molJa8kn70jic88g/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130201430773</p>
+<p>看取证大师的搜索记录</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0kteTEjsUG9xZ3NbSEicOS72Jb8D3ia4YdsBztZveI5pGhASw8tBQLnZQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130201628531</p>
+<h3 id="第14、15题"><a href="#第14、15题" class="headerlink" title="第14、15题"></a>第14、15题</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0Kq24EXba9YLdJ0I2MKNYXSkmiaicVMpnYibz8s2YrTXDZ42Rt9hjZdAAA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130202009438</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0UOJ4ec0M7OG1JZ6c993v7UnBvia6rqopyu8KFdpicTNzTe3Xp0PZiacqQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130202000886</p>
+<p>信用卡小知识：</p>
+<blockquote>
+<p>信用卡安全码（英文：Card Security Code）是信用卡在进行网络交易和电话交易时的一个安全特征。它通常是印刷在信用卡上面的3或4位数字，用于证实付款人在交易时是拥有信用卡的，从而防止信用卡欺诈。</p>
+<p>信用卡的有效期(exp)</p>
+<p>填写的格式一般是 月/年 比如说0912 就是有效期到2012年9月</p>
+</blockquote>
+<h3 id="第16到18题"><a href="#第16到18题" class="headerlink" title="第16到18题"></a>第16到18题</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0tVDWXvxkC57jW2zIzSxb9iaazMqTqia1w3nMKOtrQY1MaR2FcXRCLY5w/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130202217228</p>
+<blockquote>
+<p>小知识</p>
+<p>压缩文件的英文是zip</p>
+</blockquote>
+<p>仿真电脑，在下载目录可以发现同名的</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0XhCaXDtOiaiasgvlH81hdG62qj8Hu8fbboqf77FibywZ0dmgUMiakLicNaw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130202958313</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0jH7pJ3eVXs5YSg8ml59eZ1nGzTy9v5oSLGBB5DGhgicPvOG3vWROOrg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130202932170</p>
+<h3 id="第19题"><a href="#第19题" class="headerlink" title="第19题"></a>第19题</h3><p>这一题我是用排除法做的，从u盘里的 <code>System Volume Information</code>创建时间可以看出是2020-09-29-1801</p>
+<p>看着就很像</p>
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image-20201130203603513</p>
+<h3 id="第20到22题"><a href="#第20到22题" class="headerlink" title="第20到22题"></a>第20到22题</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0yQs21hnta0yzHf3J4VyQP0Oyge411LKeldh1iaBc3EC9VuWfmml6DIA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130203815546</p>
+<p>虽然有加密，但是还是能看里面有啥文件</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0NJ9kK47aRLmibGbufZguonBs6n7Pd2zAdbrss0Fnc0RGbib4zdSHxwGA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130203119916</p>
+<p>里面的两张图片其实在download目录下有，跟压缩包里的相同，可以算一下crc</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0W2dMIATYEh2wtgibJVb6AogcQreMvNQV6d9Zo3WeqicGfiaaic0NPG4gPQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130204020617</p>
+<p>算在外面的图片的哈希即可</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp02NPFJGAvWLJ8AFX7JC1yibeP2Q8B99Kv4K9BCUMgzynNYVufIiahWQGw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130204103376</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp09qQprWXm3da4zHRPrwaTzUh1yl07fkaiaDnHAKJ6iaClwDSWw12f2rDw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130204051529</p>
+<h3 id="第23到31题"><a href="#第23到31题" class="headerlink" title="第23到31题"></a>第23到31题</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0q6nLGvtxUnE5UD08MZlk3qcjg1vvibnibMib7EUaia4nia5uEghQ3NLbIKw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130204154538</p>
+<p>取证大师即可</p>
+<p>版本可以仿真看</p>
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image-20201130204248073</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp07Dtys5FLJKVV50Hxu5ibOCc3nnicrrW4fekPXibPAlUiam4epEnOdw0RLA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">img</p>
+<p>取证大师即可</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0COUQP8BsUl3NtZn2KqDZ6QO7To9qib3cjyayYITppI6SCSDFpR8J14w/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130204210920</p>
+<p>不知道第25和29题，第27和30题之间为啥有重复部分。。</p>
+<p>这个第31题，我弄了好久都不知道AP是啥意思</p>
+<p>有哪位大佬知道。。。</p>
+<h3 id="第32题"><a href="#第32题" class="headerlink" title="第32题"></a>第32题</h3><p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image-20201130210239461</p>
+<p>找R3ZZ.txt</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp05icmtgBwcqwOTMrEt2tvyY6HWiaRFq5RUfKMVDOAia5l4p6llkMbpiblRw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130210344287</p>
+<h3 id="第33、34题"><a href="#第33、34题" class="headerlink" title="第33、34题"></a>第33、34题</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0t3hcn6ZhJBN3Bjmb7f9ZFawGauia9MQWR8DTAWwe6Hd5iaQ5p8uUIwYQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130210403405</p>
+<p>看那俩购买发票，就是那俩图</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0Ygh7LcrLBmkbXuuKraiazEyzJ6QpJeTYhbR19P88EVemQOaiaNJKiamMQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130210556035</p>
+<p>第34题我是推断的，就是用信用卡买东西需要提供什么信息</p>
+<h2 id="个人赛解题-手机"><a href="#个人赛解题-手机" class="headerlink" title="个人赛解题-手机"></a>个人赛解题-手机</h2><h3 id="第35到37题"><a href="#第35到37题" class="headerlink" title="第35到37题"></a>第35到37题</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0xfTe268Y4pUQkRPm44VafSXNcr4ZeEW0LiaYpPHvznmN8GtjhC2WIEg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130211009194</p>
+<p>第35题可以从给的案件调查报告里找到</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0kFKBYRBVVQxFvrs4CpfDZicwAq3aPadAXFrZPFDzeD8pqme2Ik5ytsQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130211254522</p>
+<p>至于是G3还是G4，emmm，他给的有手机照片，应该能直接看出来，但是我不知道。。。</p>
+<p>第36</p>
+<h4 id="37题"><a href="#37题" class="headerlink" title="37题*"></a>37题*</h4><p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp09RcpbGLguibCWj99sI1VibxibLDicpU6icB5icEV79IicMWiajLbznz6GHT3NQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130211450822</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0RZ9XbLFOnEsqObWvIWY72c0q78S6trUkjYZHIzWPicKoXwtBPUufuuA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130211649419</p>
+<h3 id="第38到42题"><a href="#第38到42题" class="headerlink" title="第38到42题"></a>第38到42题</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0ajUfTqzJoj1TCD0WdJOqYCb5ZVzMRxYF61T8KmwtddFwQrT0GwlXmA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">img</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0qyrBHxlevMhDibMEbHoLmiaAyTCbAKX13S9WTiaeL8m1qlusV5w9HbDOA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130211841136</p>
+<p>均能用盘古石的手机取证顺利取出</p>
+<p>第38</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0QHKSJIEKu3zTVuK7gCsHaDicz3d4BG7A5lhngWztJnkVp5pViaDxVFVw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130211746477</p>
+<p>第39</p>
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image-20201130211944484</p>
+<p>第40</p>
+<p>导出后再看就好了</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0hlfCicwasZbibflH9ibLiafVbIS8ZcvkdoarQzTPMIS4wDCY3jPEuR668A/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130212143354</p>
+<p>第41、42</p>
+<p>稍微有点不一样</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0ZMlwrDhpVBnwVzfLbaVg7HeC2xbFAgUXN5mYA62GCbk6D1UhoBeG5w/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130212327002</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0og0Aenib0IcWYM6ngQN21udgvwcx9a8pPcFGgw6Q2Av139dK2OS5YGA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201130212638074</p>
+<h3 id="第43到51题"><a href="#第43到51题" class="headerlink" title="第43到51题"></a>第43到51题</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0x8EnbXvhW9KF1guS7ozeW9QeIqrgMiczqNwox3m14QaBIcmGNYkQ5yg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201145328013</p>
+<p>第43、44</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0qjg9CGrwaqq6e031nqIUZA0UuIp2PUYC9RF31nXIWv5PMNBkaicMvvw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201145453592</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0OZfuT7clZNclTib0D8xzNsA2L4mktVuQ6XTwk9JEn6wSgazjAR73ia5Q/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201145659776</p>
+<p>第45题是推断题</p>
+<p>从整体的聊天记录可以看出，cole是提出意见，推动实施的人，bob我倒是没看出来，但是因为只有b选项有cole，所以当时选了b</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0rwLnVzsED7aibQk1hcyCESTexNhO5h0QEg8iaEXhA3QAYTSFhOyXOAGA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201145753152</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp03ib19PxmRjgBCWJ6vRDWcxHaiczA3icC0U1GlFszMH6dRibfIlyo6mfRoQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">img</p>
+<p>第46题</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0LpqBuB5Qlqk8UaLoCkwrwpu414cWkXFgRfpqd1p8QLC4Xby0EHVsibA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201150229857</p>
+<h4 id="第47、48题"><a href="#第47、48题" class="headerlink" title="第47、48题*"></a>第47、48题*</h4><p>搜索可得</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0F2Q2q7g85tgwgn4iczpOt5zicQ7Y2icqcPRlsxTTiaPcYmvwvSYgYz2iaMA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032040278.png" alt="image-20211019095404277"></p>
+<p>msgstore.db存储了聊天记录，发现creation，选择Unix时间戳转换可得时间</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032040280.png" alt="image-20211019095739267"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032040281.png" alt="image-20211019100006911"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0EReoIvOfias67XbyTsPP9v1icVENQG0MU6iafZ3Um254E2pRquIIDiaQ1g/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201151053089</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0KnHYTcI82fwSWBD61xL0ueG00dbzOrnNLkTAtyeItTdnibAOomA0TJg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201151118344</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0psU4zzO4RpmJx0jYicJyAIYWuMLN5qmNKDJsC6tYwmEiblUjic3fDZK2Q/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201150756840</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0BztzuSF1qFvWibg1XLw6ico6g1rIlO3yFGMDCZgYIvCh5OUGYww9uWOA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201145344034</p>
+<p>第50题</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp03dHOyvyPa4omoCUphS7JdO9tdcMt3ElvriaDnn9f9KxN5PPbgz6W1Rw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201150826508</p>
+<p>第51题</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0rjJ8KbibQow7Ciadg68NKuMev3ibicxVx7rhxC4H5XslgOfZEWIdDkXHlA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201151604727</p>
+<p>转时间戳</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0MKJTfuPPQCqkWYZpaP0WqFgQ73fn3NEFxNaUFRhoAyaBgS4d1Kcf6w/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201151745288</p>
+<p>查数据库</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0zW23oSevJicYVasmUWEX6ISze1snxNgpjnKy1dABcbwDcxQaPyHee6A/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201151841496</p>
+<h3 id="第52题"><a href="#第52题" class="headerlink" title="第52题"></a>第52题</h3><p>找到系统分区，从/etc/wifi/WCNSS配置文件可以找到</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032040282.png" alt="image-20211019140202055"></p>
+<p>或</p>
+<p><a href="https://img2020.cnblogs.com/blog/2217734/202011/2217734-20201120162542763-2096320726.png"><img src="https://img2020.cnblogs.com/blog/2217734/202011/2217734-20201120162542763-2096320726.png" alt="img"></a><br>可以把这个镜像拖到winhex里面搜一遍</p>
+<h3 id="第53题"><a href="#第53题" class="headerlink" title="第53题"></a>第53题</h3><p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">)<img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0ib9vVy7dIWKcicqHMBBXibOSXRCXTqDTDN0RWWxicKNcVYE3N8M1TqGt1g/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201153255949</p>
+<p>给的电脑照片上贴了俩纸条，挨个试一试就好了，那个QPzm的是对的</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0M70rpyhJWD0Zxg0rCNJXsiaZus5MaH4zYCbh3j9HwRIgicsRjria1CJsA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201152253053</p>
+<h3 id="第54到57题"><a href="#第54到57题" class="headerlink" title="第54到57题"></a>第54到57题</h3><p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">)<img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0BfHECtqyZn8xwiaicyQ4xUX91eWm2h25LE5f7TUAklGjUypH7uQlZSxA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201153242021</p>
+<p>挨个apk装一遍即可</p>
+<p>那俩纸条的另一个就是这个秘密讯息解密的密码</p>
+<p>这个apk是解密图片用的，U盘里正好有一个bob photo</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0kWdUNeyYsNgFoOmM1gJ2DfC5lwyDqhOCacOoudqe3CzHIiaibbYyJ9CA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p>image-20201201153559284</p>
+<h3 id="第58到61题"><a href="#第58到61题" class="headerlink" title="第58到61题"></a>第58到61题</h3><p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">)<img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp07HvwoAnJMXAXVUqzKB1xHfHwGe9IWyyykzwSpxicKu1QZovvZJZO1Dw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201201153953389</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1kzx23sqO1kH0tUcGjylSNvFNAyMECp0H3uBHgETUsQnEA58Q3ib8R5QNVur8xRyRsuiaFIvzYGoyMt7EHaLnSQA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">img</p>
+<p>简单题</p>
+<p>59</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032040283.png" alt="image-20211019094523998"></p>
+<p>取证大师算一下</p>
+<p>60</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032040284.png" alt="image-20211019094255981"></p>
+<p>61</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202111032040285.png" alt="image-20211019094035199"></p>
+]]></content>
+      <categories>
+        <category>取证</category>
+      </categories>
+      <tags>
+        <tag>美亚杯</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>第五届“蓝帽杯” 初赛WriteUp</title>
     <url>/bluehat2021chusai.html</url>
     <content><![CDATA[<h1 id="Pwn"><a href="#Pwn" class="headerlink" title="Pwn"></a>Pwn</h1><h2 id="slient"><a href="#slient" class="headerlink" title="slient"></a>slient</h2><p>存在shellcode执行</p>

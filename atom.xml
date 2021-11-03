@@ -6,7 +6,7 @@
   <link href="https://marmalade.vip/atom.xml" rel="self"/>
   
   <link href="https://marmalade.vip/"/>
-  <updated>2021-05-14T02:01:16.648Z</updated>
+  <updated>2021-11-03T13:05:26.606Z</updated>
   <id>https://marmalade.vip/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2020年“美亚杯”第六届中国电子数据取证大赛团队赛全解析</title>
+    <link href="https://marmalade.vip/20meiyacupgroup.html"/>
+    <id>https://marmalade.vip/20meiyacupgroup.html</id>
+    <published>2021-11-03T12:31:24.000Z</published>
+    <updated>2021-11-03T13:05:26.606Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;美亚杯2020 - 团体赛 Zello&amp;amp;Xeno服务器部分 Write Up&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="取证" scheme="https://marmalade.vip/categories/%E5%8F%96%E8%AF%81/"/>
+    
+    
+    <category term="美亚杯" scheme="https://marmalade.vip/tags/%E7%BE%8E%E4%BA%9A%E6%9D%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2020年“美亚杯”第六届中国电子数据取证大赛个人赛解析</title>
+    <link href="https://marmalade.vip/20meiyacuppersonal.html"/>
+    <id>https://marmalade.vip/20meiyacuppersonal.html</id>
+    <published>2021-11-03T11:33:02.000Z</published>
+    <updated>2021-11-03T13:05:28.059Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;2020第六届美亚杯中国电子数据取证大赛个人赛-资格赛-writeup&quot;&gt;&lt;a href=&quot;#2020第六届美亚杯中国电子数据取证大赛个人赛-资格赛-writeup&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="取证" scheme="https://marmalade.vip/categories/%E5%8F%96%E8%AF%81/"/>
+    
+    
+    <category term="美亚杯" scheme="https://marmalade.vip/tags/%E7%BE%8E%E4%BA%9A%E6%9D%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>第五届“蓝帽杯” 初赛WriteUp</title>
@@ -96,7 +146,7 @@
     <link href="https://marmalade.vip/phpserializezongjie.html"/>
     <id>https://marmalade.vip/phpserializezongjie.html</id>
     <published>2021-04-10T14:30:09.000Z</published>
-    <updated>2021-04-22T11:27:37.957Z</updated>
+    <updated>2021-11-03T13:04:05.409Z</updated>
     
     
       
@@ -146,7 +196,7 @@
     <link href="https://marmalade.vip/xsshaozishootingrange.html"/>
     <id>https://marmalade.vip/xsshaozishootingrange.html</id>
     <published>2021-04-05T11:34:29.000Z</published>
-    <updated>2021-04-05T11:57:09.169Z</updated>
+    <updated>2021-11-03T13:05:06.768Z</updated>
     
     
       
@@ -223,7 +273,7 @@
     <link href="https://marmalade.vip/from0to1webrumenxinxisouji.html"/>
     <id>https://marmalade.vip/from0to1webrumenxinxisouji.html</id>
     <published>2021-03-13T06:23:48.000Z</published>
-    <updated>2021-03-27T05:07:43.810Z</updated>
+    <updated>2021-11-03T13:04:44.115Z</updated>
     
     
       
@@ -436,48 +486,6 @@
     
     
     <category term="备案" scheme="https://marmalade.vip/tags/%E5%A4%87%E6%A1%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo博客百度谷歌收录</title>
-    <link href="https://marmalade.vip/baidugoogleseo.html"/>
-    <id>https://marmalade.vip/baidugoogleseo.html</id>
-    <published>2020-04-26T15:30:01.000Z</published>
-    <updated>2020-05-08T09:42:27.815Z</updated>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;Hexo博客百度收录（SEO）&quot;&gt;&lt;a href=&quot;#Hexo博客百度收录（SEO）&quot; class=&quot;headerlink&quot; title=&quot;Hexo博客百度收录（SEO）&quot;&gt;&lt;/a&gt;Hexo博客百度收录（SEO）&lt;/h3&gt;&lt;p&gt;曾迫不及待地想在百度上找到我的博文，可是找不到&lt;br&gt;后发现还要有百度收录操作才可显示&lt;br&gt;那就开始吧！&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="hexoSEO" scheme="https://marmalade.vip/categories/hexoSEO/"/>
-    
-    
-    <category term="seo" scheme="https://marmalade.vip/tags/seo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo+NexT(v7.72)博客主题美化，打造“超炫”网站（四）</title>
-    <link href="https://marmalade.vip/hexothemebeautify4.html"/>
-    <id>https://marmalade.vip/hexothemebeautify4.html</id>
-    <published>2020-04-26T14:55:28.000Z</published>
-    <updated>2021-01-25T05:54:50.922Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;自定义文章底部版权声明&lt;br&gt;在每篇文章末尾添加“本文结束”标记&lt;br&gt;字数统计和阅读时长(网站底部/文章内)&lt;br&gt;添加文章置顶功能&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="hexo+github博客建立与美化" scheme="https://marmalade.vip/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/"/>
-    
-    
-    <category term="next主题" scheme="https://marmalade.vip/tags/next%E4%B8%BB%E9%A2%98/"/>
-    
-    <category term="next主题美化" scheme="https://marmalade.vip/tags/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
-    
-    <category term="网站添加功能" scheme="https://marmalade.vip/tags/%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD/"/>
     
   </entry>
   
