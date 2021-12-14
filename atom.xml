@@ -6,7 +6,7 @@
   <link href="https://marmalade.vip/atom.xml" rel="self"/>
   
   <link href="https://marmalade.vip/"/>
-  <updated>2021-11-03T13:05:26.606Z</updated>
+  <updated>2021-12-14T10:40:02.506Z</updated>
   <id>https://marmalade.vip/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>由祥云杯层层取证分析手动仿真</title>
+    <link href="https://marmalade.vip/shoudongfangzhen2021xiangyunbei.html"/>
+    <id>https://marmalade.vip/shoudongfangzhen2021xiangyunbei.html</id>
+    <published>2021-12-14T10:30:44.000Z</published>
+    <updated>2021-12-14T10:40:02.506Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;2021年祥云杯-层层取证&quot;&gt;&lt;a href=&quot;#2021年祥云杯-层层取证&quot; class=&quot;headerlink&quot; title=&quot;[2021年祥云杯]层层取证&quot;&gt;&lt;/a&gt;[2021年祥云杯]层层取证&lt;/h2&gt;&lt;p&gt;想从该题为例进行一下手动仿真镜像的学习&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>2020年“美亚杯”第六届中国电子数据取证大赛团队赛全解析</title>
@@ -467,25 +482,6 @@
     
     
     <category term="seo" scheme="https://marmalade.vip/tags/seo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ICP和公安网备案以及网站底部添加相应备案号</title>
-    <link href="https://marmalade.vip/wangzhanbeian.html"/>
-    <id>https://marmalade.vip/wangzhanbeian.html</id>
-    <published>2020-04-27T04:54:13.000Z</published>
-    <updated>2021-01-25T06:41:42.328Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;网站备案&quot;&gt;&lt;a href=&quot;#网站备案&quot; class=&quot;headerlink&quot; title=&quot;网站备案&quot;&gt;&lt;/a&gt;网站备案&lt;/h2&gt;&lt;p&gt;要分别进行公信网备案和公安备案然后部署在网站底部&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="hexoSEO" scheme="https://marmalade.vip/categories/hexoSEO/"/>
-    
-    
-    <category term="备案" scheme="https://marmalade.vip/tags/%E5%A4%87%E6%A1%88/"/>
     
   </entry>
   

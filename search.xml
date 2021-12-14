@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>由祥云杯层层取证分析手动仿真</title>
+    <url>/shoudongfangzhen2021xiangyunbei.html</url>
+    <content><![CDATA[<h2 id="2021年祥云杯-层层取证"><a href="#2021年祥云杯-层层取证" class="headerlink" title="[2021年祥云杯]层层取证"></a>[2021年祥云杯]层层取证</h2><p>想从该题为例进行一下手动仿真镜像的学习</p>
+<span id="more"></span>
+
+<p>下载得到memdump.mem和Forensic_image.001-009</p>
+<p>前者为内存镜像，后者在查看txt内容看到是使用AccessData FTK Imager生成的硬盘镜像</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821334.png" alt="image-20211212153730256"></p>
+<p>取证比赛结束后授权过期了，于是考虑手动仿真</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821336.png" alt="image-20211212161237359"></p>
+<p>手动仿真有两种方法，第一种是先挂载到本地磁盘再用vmware仿真</p>
+<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一*"></a>方法一*</h2><h3 id="一-FTK-IMAGER-挂载镜像到本地"><a href="#一-FTK-IMAGER-挂载镜像到本地" class="headerlink" title="一.FTK IMAGER 挂载镜像到本地"></a>一.FTK IMAGER 挂载镜像到本地</h3><p>使用FTK Imager“可写”模式，挂载系统镜像到本地驱动器</p>
+<h3 id="1-选择-IMAGER-MOUNTING"><a href="#1-选择-IMAGER-MOUNTING" class="headerlink" title="1.选择 IMAGER MOUNTING"></a>1.选择 IMAGER MOUNTING</h3><p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821337.png" alt="image-20211212155524210"></p>
+<h3 id="2-选择系统镜像挂载"><a href="#2-选择系统镜像挂载" class="headerlink" title="2.选择系统镜像挂载"></a>2.选择系统镜像挂载</h3><pre><code>    1）选择需要挂载的镜像文件;
+    2）选择"Block Device/Writable"；//此步骤不可省略，否则无法成功仿真
+    3）点击"Mount";
+    4）记住"驱动器号";</code></pre><p>mount成功后，会在本地磁盘显示出新的分区，可以打开Windows资源管理器查看，以及默认在镜像位置新生成一个后缀为“.adcf”的镜像同名文件，用来存放可写模式下镜像虚拟写入的文件。</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821338.png" alt="image-20211212160038513"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821340.png" alt="image-20211212160130933"></p>
+<p>点击mount挂载后就会将镜像挂载到本地</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821341.png" alt="image-20211212160615188"></p>
+<h3 id="二-VMWARE新建虚拟机导入本地磁盘"><a href="#二-VMWARE新建虚拟机导入本地磁盘" class="headerlink" title="二.VMWARE新建虚拟机导入本地磁盘"></a>二.VMWARE新建虚拟机导入本地磁盘</h3><p>可参考博文<a href="https://www.freesion.com/article/51701409948/#DDE01_8的第二部创建虚拟机">https://www.freesion.com/article/51701409948/#DDE01_8的第二部创建虚拟机</a></p>
+<p>经过内存镜像分析可得该镜像为为win7 64位系统</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821342.png" alt="image-20211212160947255"></p>
+<p>选择使用物理磁盘，找到FTK Imager挂载的驱动器号</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821343.png" alt="image-20211212161834358"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821344.png" alt="image-20211212161929941"></p>
+<p>可是使用vmware启动却一直报错已被占用，经百度查询无法解决。。。于是采用另一种仿真方法</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821345.png" alt="image-20211212172421784"></p>
+<h2 id="方法二：制作镜像为vmdk然后再仿真"><a href="#方法二：制作镜像为vmdk然后再仿真" class="headerlink" title="方法二：制作镜像为vmdk然后再仿真"></a>方法二：制作镜像为vmdk然后再仿真</h2><h3 id="一-FTK里将Forensic-image导出为img文件，输出到本地"><a href="#一-FTK里将Forensic-image导出为img文件，输出到本地" class="headerlink" title="一.FTK里将Forensic_image导出为img文件，输出到本地"></a>一.FTK里将Forensic_image导出为img文件，输出到本地</h3><p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821346.png" alt="image-20211212194105318"></p>
+<p>选image File</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821347.png" alt="image-20211212194158792"></p>
+<p>将Forensic_image.001文件导入然后点击finish，之后</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821348.png" alt="image-20211212194506565"></p>
+<p>点击下一步，选择输出的文件夹和文件名，注意下方改为0</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821349.png" alt="image-20211212194918909"></p>
+<p>提取镜像后改后缀名为img即可</p>
+<h3 id="二-使用V2V-Converter工具输出为vmdk文件"><a href="#二-使用V2V-Converter工具输出为vmdk文件" class="headerlink" title="二.使用V2V_Converter工具输出为vmdk文件"></a>二.使用V2V_Converter工具输出为vmdk文件</h3><p>打开V2V_Converter，导入.img文件，之后全选默认即可</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821350.png" alt="image-20211212195308969"></p>
+<h3 id="三-vmware新建虚拟机，导入vmdk文件"><a href="#三-vmware新建虚拟机，导入vmdk文件" class="headerlink" title="三.vmware新建虚拟机，导入vmdk文件"></a>三.vmware新建虚拟机，导入vmdk文件</h3><p>和方法一新建虚拟机步骤相似，只是在下面的一步选择使用现有磁盘</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821351.png" alt="image-20211212195819414"></p>
+<p>接着启动虚拟机就可以了</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821352.png" alt="image-20211212200018804"></p>
+<p>我们接着回到本题，用取证大师加载一下，发现有一个磁盘采用了bitlocker加密</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821353.png" alt="image-20211213140335364"></p>
+<p>使用efdd工具可以通过内存镜像破解bitlocker加密的磁盘</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821354.png" alt="image-20211213144751988"></p>
+<p>恢复出key了</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821355.png" alt="image-20211213144836891"></p>
+<p>用该key在取证大师bitlocker用恢复密钥串可解密该磁盘，看到该盘下有一个流量包</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821356.png" alt="image-20211213145654011"></p>
+<p>导出分析一下</p>
+<p>追踪udp流里找到一个rar，里面包含了一个flag.docx</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821357.png" alt="image-20211213150723726"></p>
+<p>导出rar压缩包，发现加密，且提示与计算机加密密码相同</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821358.png" alt="image-20211213151528795"></p>
+<p>再考虑看一下用户桌面，用户XinSai的桌面只有一个wireshark安装包，不知道题目是否与流量分析有关，用户Xiaoming的桌面有一个flag.txt</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821359.png" alt="image-20211213140631942"></p>
+<p>提示让我们仿真，猜测是windows桌面便签可能有什么信息</p>
+<p>登录xiaoming需要密码，可以在给定的内存镜像中获取</p>
+<p>使用passwarekit工具加载内存镜像可得</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821360.png" alt="image-20211213142612069"></p>
+<p>仿真进入桌面</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821361.png" alt="image-20211213142811055"></p>
+<p>知道开机密码了就可以解压之前导出的压缩包</p>
+<p>再用桌面的文档密码解密flag.doc进入可以看到flag</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821362.png" alt="image-20211213151953032"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>2020年“美亚杯”第六届中国电子数据取证大赛团队赛全解析</title>
     <url>/20meiyacupgroup.html</url>
     <content><![CDATA[<p>美亚杯2020 - 团体赛 Zello&amp;Xeno服务器部分 Write Up<a href="https://forensics.xidian.edu.cn/wiki/Zello&amp;Xeno/#2020-zelloxeno-write-up">¶</a></p>

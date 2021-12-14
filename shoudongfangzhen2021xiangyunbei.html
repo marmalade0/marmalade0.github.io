@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Sqlmap工具基础用法详解, Marmalade&#39;s Blog">
+    <meta name="keywords" content="由祥云杯层层取证分析手动仿真, Marmalade&#39;s Blog">
     <meta name="description" content="一个网安人的成长之路">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Sqlmap工具基础用法详解 | Marmalade&#39;s Blog</title>
+    <title>由祥云杯层层取证分析手动仿真 | Marmalade&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -374,12 +374,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://gitee.com/marmalade0/images/raw/master/www.marmalade.vip/background/wallhaven-5758y8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Sqlmap工具基础用法详解</h1>
+                    <h1 class="description center-align post-title">由祥云杯层层取证分析手动仿真</h1>
                 </div>
             </div>
         </div>
@@ -497,17 +497,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/sqlmap/">
-                                <span class="chip bg-color">sqlmap</span>
-                            </a>
-                        
-                            <a href="/tags/dvwa/">
-                                <span class="chip bg-color">dvwa</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -519,28 +511,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-07
+                    2021-12-14
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-20
+                    2021-12-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    931
+                    838
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    2 分
                 </div>
                 
 
@@ -560,65 +552,71 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h6 id="1-主要功能："><a href="#1-主要功能：" class="headerlink" title="1.主要功能："></a>1.主要功能：</h6><p>一个用来做sql注入攻击的工具。<br>扫描、发现、利用给定的url的sql注入漏洞，内置许多绕过插件。</p>
-<blockquote>
-<p>注意：需要python2才能运行，python3不可</p>
-</blockquote>
-<p><a target="_blank" rel="noopener" href="http://sqlmap.org/">sqlmap工具压缩包官方下载地址</a></p>
+                <h2 id="2021年祥云杯-层层取证"><a href="#2021年祥云杯-层层取证" class="headerlink" title="[2021年祥云杯]层层取证"></a>[2021年祥云杯]层层取证</h2><p>想从该题为例进行一下手动仿真镜像的学习</p>
 <span id="more"></span>
-<h6 id="2-支持的数据库："><a href="#2-支持的数据库：" class="headerlink" title="2.支持的数据库："></a>2.支持的数据库：</h6><p>mysql、oracle、sql server、access、DB2、sqlite、postgresql、Firebird、sybase、sap maxDB。</p>
-<h6 id="3-采用5种注入技术："><a href="#3-采用5种注入技术：" class="headerlink" title="3.采用5种注入技术："></a>3.采用5种注入技术：</h6><p>[1]基于布尔的盲注：根据返回页面判断条件真假<br>[2]基于时间的盲注：使用条件语句查看时间延迟语句是否执行（页面返回时间是否增加）<br>[3]基于报错注入：返回错误信息，或将注入语句的结果返回页面中<br>[4]联合查询注入：在允许使用union的情况下注入<br>[5]堆查询注入：同时执行多条语句注入</p>
-<h6 id="4-用法"><a href="#4-用法" class="headerlink" title="4.用法"></a>4.用法</h6><blockquote>
-<p>以DVWA的low等级为实验网站,url为<code>http://127.0.0.1/DVWA-master/vulnerabilities/sqli/</code></p>
-</blockquote>
-<p><strong>(1)判断是否有注入点</strong><br>首先三步拿到url<br><img src="/images/sqlmapbasicuse/1.png" alt="03d75491bfd3b0989cda112f18a5626b.png"></p>
-<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py  -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<blockquote>
-<p>注：当注入点后的参数大于等于两个时，需要加双引号</p>
-</blockquote>
-<p>如果出现以下结果则表明sqlmap检测到有可以注入的地方</p>
-<p>结果显示如下<br><img src="/images/sqlmapbasicuse/2.png" alt="7597e5bf9a8503668c6acde63dee578f.png"><br>发现没有找到注入点。</p>
-<p>从结果看发现我们是需要cookie的，然后去dvwa看一下cookie</p>
-<p>然后在命令中加入cookie：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">
-python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>如果出现以下结果则表明sqlmap检测到有可以注入的地方<br><img src="/images/sqlmapbasicuse/3.png" alt="30235e9a3dfae35f806441331df7a74e.png"></p>
-<p><strong>(2)判断文本中的请求是否存在注入</strong></p>
-<p>sqlmap可以从一个文本文件中获取http请求（这样的好处在于：不用设置其他参数，例如cookie、post数据等）</p>
-<p>下图1.txt的内容是web数据包<br><img src="/images/sqlmapbasicuse/4.png" alt="dc032fb692dbd9e6ba6deb92354dfdf4.png"></p>
-<p>sqlmap.py  -r  路径/1.txt</p>
-<blockquote>
-<p>注：-r一般存在cookie注入时使用</p>
-</blockquote>
-<p><strong>(3)查询当前用户下的所有数据库</strong></p>
-<p>小提示：首先你要先确定有注入点，才能用该命令查询用户的数据库</p>
-<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py  -u  <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> --dbs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>执行后会拿到数据库信息<br><img src="/images/sqlmapbasicuse/5.png" alt="4079615a55a3fb4f22d5e5ff52dfe6f4.png"></p>
-<p><strong>(4)获取数据库中表的信息</strong></p>
-<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> -D dvwa --tables<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>可以拿到dvwa库中所有表的名字<br><img src="/images/sqlmapbasicuse/6.png" alt="bab165841e616ed70eea4fad1495fa91.png"></p>
-<blockquote>
-<p>注：将上一条命令中的–table缩写成-T时，表示在某表中继续查询<br>       若在该命令中不加-D参数来指定具体的数据库，那么sqlmap会把数据库中所有表列出</p>
-</blockquote>
-<p><strong>(5)获取表中的字段信息</strong></p>
-<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> -D dvwa -T <span class="token function">users</span> --columns<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>拿到了表中的所有字段<br><img src="/images/sqlmapbasicuse/7.png" alt="8475adb05acdab6fc0b7197226e03087.png"></p>
-<blockquote>
-<p>注：在后续注入中 –columns可以缩写成-C</p>
-</blockquote>
-<p><strong>(6)获取字段内容</strong></p>
-<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> -D dvwa -T <span class="token function">users</span> -C username,password --dump<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>这里获取的是dvwa数据库里的users表中的username和password的值<br><img src="/images/sqlmapbasicuse/8.png" alt="e61e6bfb9438a7f9b9c8bb5a5af80de8.png"></p>
-<p><strong>(7)获取数据库的所有用户</strong></p>
-<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> --users<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>(8)获取数据库</strong></p>
-<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> --passwords<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>(9)获取当前网站数据库的名称</strong></p>
-<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> --current-db<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/images/sqlmapbasicuse/9.png" alt="a9215034277537f3c18a2e891bf9640d.png"></p>
-<p><strong>(10)获取当前网站数据库的用户名称</strong></p>
-<pre class="line-numbers language-bash"><code class="language-bash">python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie <span class="token string">"security=low;PHPSESSID=b3qlu23g2t781bk3aslt******"</span> --current-user<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/images/sqlmapbasicuse/10.png" alt="984c2a56621209c4e9284cd63103991b.png"></p>
+
+<p>下载得到memdump.mem和Forensic_image.001-009</p>
+<p>前者为内存镜像，后者在查看txt内容看到是使用AccessData FTK Imager生成的硬盘镜像</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821334.png" alt="image-20211212153730256"></p>
+<p>取证比赛结束后授权过期了，于是考虑手动仿真</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821336.png" alt="image-20211212161237359"></p>
+<p>手动仿真有两种方法，第一种是先挂载到本地磁盘再用vmware仿真</p>
+<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一*"></a>方法一*</h2><h3 id="一-FTK-IMAGER-挂载镜像到本地"><a href="#一-FTK-IMAGER-挂载镜像到本地" class="headerlink" title="一.FTK IMAGER 挂载镜像到本地"></a>一.FTK IMAGER 挂载镜像到本地</h3><p>使用FTK Imager“可写”模式，挂载系统镜像到本地驱动器</p>
+<h3 id="1-选择-IMAGER-MOUNTING"><a href="#1-选择-IMAGER-MOUNTING" class="headerlink" title="1.选择 IMAGER MOUNTING"></a>1.选择 IMAGER MOUNTING</h3><p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821337.png" alt="image-20211212155524210"></p>
+<h3 id="2-选择系统镜像挂载"><a href="#2-选择系统镜像挂载" class="headerlink" title="2.选择系统镜像挂载"></a>2.选择系统镜像挂载</h3><pre><code>    1）选择需要挂载的镜像文件;
+    2）选择"Block Device/Writable"；//此步骤不可省略，否则无法成功仿真
+    3）点击"Mount";
+    4）记住"驱动器号";</code></pre><p>mount成功后，会在本地磁盘显示出新的分区，可以打开Windows资源管理器查看，以及默认在镜像位置新生成一个后缀为“.adcf”的镜像同名文件，用来存放可写模式下镜像虚拟写入的文件。</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821338.png" alt="image-20211212160038513"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821340.png" alt="image-20211212160130933"></p>
+<p>点击mount挂载后就会将镜像挂载到本地</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821341.png" alt="image-20211212160615188"></p>
+<h3 id="二-VMWARE新建虚拟机导入本地磁盘"><a href="#二-VMWARE新建虚拟机导入本地磁盘" class="headerlink" title="二.VMWARE新建虚拟机导入本地磁盘"></a>二.VMWARE新建虚拟机导入本地磁盘</h3><p>可参考博文<a target="_blank" rel="noopener" href="https://www.freesion.com/article/51701409948/#DDE01_8的第二部创建虚拟机">https://www.freesion.com/article/51701409948/#DDE01_8的第二部创建虚拟机</a></p>
+<p>经过内存镜像分析可得该镜像为为win7 64位系统</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821342.png" alt="image-20211212160947255"></p>
+<p>选择使用物理磁盘，找到FTK Imager挂载的驱动器号</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821343.png" alt="image-20211212161834358"></p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821344.png" alt="image-20211212161929941"></p>
+<p>可是使用vmware启动却一直报错已被占用，经百度查询无法解决。。。于是采用另一种仿真方法</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821345.png" alt="image-20211212172421784"></p>
+<h2 id="方法二：制作镜像为vmdk然后再仿真"><a href="#方法二：制作镜像为vmdk然后再仿真" class="headerlink" title="方法二：制作镜像为vmdk然后再仿真"></a>方法二：制作镜像为vmdk然后再仿真</h2><h3 id="一-FTK里将Forensic-image导出为img文件，输出到本地"><a href="#一-FTK里将Forensic-image导出为img文件，输出到本地" class="headerlink" title="一.FTK里将Forensic_image导出为img文件，输出到本地"></a>一.FTK里将Forensic_image导出为img文件，输出到本地</h3><p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821346.png" alt="image-20211212194105318"></p>
+<p>选image File</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821347.png" alt="image-20211212194158792"></p>
+<p>将Forensic_image.001文件导入然后点击finish，之后</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821348.png" alt="image-20211212194506565"></p>
+<p>点击下一步，选择输出的文件夹和文件名，注意下方改为0</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821349.png" alt="image-20211212194918909"></p>
+<p>提取镜像后改后缀名为img即可</p>
+<h3 id="二-使用V2V-Converter工具输出为vmdk文件"><a href="#二-使用V2V-Converter工具输出为vmdk文件" class="headerlink" title="二.使用V2V_Converter工具输出为vmdk文件"></a>二.使用V2V_Converter工具输出为vmdk文件</h3><p>打开V2V_Converter，导入.img文件，之后全选默认即可</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821350.png" alt="image-20211212195308969"></p>
+<h3 id="三-vmware新建虚拟机，导入vmdk文件"><a href="#三-vmware新建虚拟机，导入vmdk文件" class="headerlink" title="三.vmware新建虚拟机，导入vmdk文件"></a>三.vmware新建虚拟机，导入vmdk文件</h3><p>和方法一新建虚拟机步骤相似，只是在下面的一步选择使用现有磁盘</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821351.png" alt="image-20211212195819414"></p>
+<p>接着启动虚拟机就可以了</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821352.png" alt="image-20211212200018804"></p>
+<p>我们接着回到本题，用取证大师加载一下，发现有一个磁盘采用了bitlocker加密</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821353.png" alt="image-20211213140335364"></p>
+<p>使用efdd工具可以通过内存镜像破解bitlocker加密的磁盘</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821354.png" alt="image-20211213144751988"></p>
+<p>恢复出key了</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821355.png" alt="image-20211213144836891"></p>
+<p>用该key在取证大师bitlocker用恢复密钥串可解密该磁盘，看到该盘下有一个流量包</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821356.png" alt="image-20211213145654011"></p>
+<p>导出分析一下</p>
+<p>追踪udp流里找到一个rar，里面包含了一个flag.docx</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821357.png" alt="image-20211213150723726"></p>
+<p>导出rar压缩包，发现加密，且提示与计算机加密密码相同</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821358.png" alt="image-20211213151528795"></p>
+<p>再考虑看一下用户桌面，用户XinSai的桌面只有一个wireshark安装包，不知道题目是否与流量分析有关，用户Xiaoming的桌面有一个flag.txt</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821359.png" alt="image-20211213140631942"></p>
+<p>提示让我们仿真，猜测是windows桌面便签可能有什么信息</p>
+<p>登录xiaoming需要密码，可以在给定的内存镜像中获取</p>
+<p>使用passwarekit工具加载内存镜像可得</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821360.png" alt="image-20211213142612069"></p>
+<p>仿真进入桌面</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821361.png" alt="image-20211213142811055"></p>
+<p>知道开机密码了就可以解压之前导出的压缩包</p>
+<p>再用桌面的文档密码解密flag.doc进入可以看到flag</p>
+<p><img src="https://gitee.com/marmalade0/images/raw/master/img/202112141821362.png" alt="image-20211213151953032"></p>
 
                 
             </div>
@@ -645,7 +643,7 @@ python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vu
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://marmalade.vip/sqlmapbasicuse.html">https://marmalade.vip/sqlmapbasicuse.html</a>
+                    <a href="https://marmalade.vip/shoudongfangzhen2021xiangyunbei.html">https://marmalade.vip/shoudongfangzhen2021xiangyunbei.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -682,15 +680,7 @@ python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vu
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/sqlmap/">
-                                    <span class="chip bg-color">sqlmap</span>
-                                </a>
-                            
-                                <a href="/tags/dvwa/">
-                                    <span class="chip bg-color">dvwa</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1123,48 +1113,38 @@ python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vu
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/Materysettings1.html">
+                <a href="/shoudongfangzhen2021xiangyunbei.html">
                     <div class="card-image">
                         
-                        <img src="https://gitee.com/marmalade0/images/raw/master/www.marmalade.vip/background/lake6960981280.png" class="responsive-img" alt="Hexo-Matery主题细致美化(上)">
+                        <img src="https://gitee.com/marmalade0/images/raw/master/www.marmalade.vip/background/wallhaven-5758y8.jpg" class="responsive-img" alt="由祥云杯层层取证分析手动仿真">
                         
-                        <span class="card-title">Hexo-Matery主题细致美化(上)</span>
+                        <span class="card-title">由祥云杯层层取证分析手动仿真</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在一番瞎改js代码后，终于无法忍受next主题，于是愤然投入Matery大家庭，下面是我记录的配置Matery主题的流程，仅供后来的师傅们参考。
+                            想从[2021年祥云杯]层层取证为例进行一下手动仿真镜像的学习
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-14
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/hexo-github%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BE%8E%E5%8C%96/" class="post-category">
-                                    hexo+github博客建立与美化
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            lijunliang
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Matery%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/">
-                        <span class="chip bg-color">Matery主题美化</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -1175,32 +1155,43 @@ python2 sqlmap.py -u <span class="token string">"http://127.0.0.1/DVWA-master/vu
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/aliyunbeianjinggao.html">
+                <a href="/20meiyacupgroup.html">
                     <div class="card-image">
                         
+                        <img src="https://gitee.com/marmalade0/images/raw/master/www.marmalade.vip/background/pexels-photo-1005644.jpeg" class="responsive-img" alt="2020年“美亚杯”第六届中国电子数据取证大赛团队赛全解析">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Hexo博客：您备案的网站未指向阿里云国内节点（不含香港）服务器，备案号可能被取消接入">
-                        
-                        <span class="card-title">Hexo博客：您备案的网站未指向阿里云国内节点（不含香港）服务器，备案号可能被取消接入</span>
+                        <span class="card-title">2020年“美亚杯”第六届中国电子数据取证大赛团队赛全解析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            工信部备案后一段时间会发来 Hexo博客：您备案的网站未指向阿里云国内节点（不含香港）服务器，备案号可能被取消接入 的短信警告，下面讲述该问题的原因及解决方法。
+                            为了给2021年美亚杯做准备，这几天重新做了一下前几年美亚杯的题目，团队赛题量很大，涉及到各种各样的镜像，组成一个完整的犯罪体系。做做复现记录一下，期待今年的美亚杯
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-03
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            lijunliang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%8F%96%E8%AF%81/" class="post-category">
+                                    取证
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%BE%8E%E4%BA%9A%E6%9D%AF/">
+                        <span class="chip bg-color">美亚杯</span>
+                    </a>
+                    
                 </div>
                 
             </div>
